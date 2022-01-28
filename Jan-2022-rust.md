@@ -29,9 +29,6 @@
 ## GUI in Rust
 There are multiple frameworks available in Rust at different level of maturity. [areweguiyet.com](areweguiyet.com) kind of compiles them all and present an excellent way to look at all the options.
 
-## Go Generics Collection Library
-https://github.com/mikhailswift/go-collections
-
 ## Pijul
 * **Product Name**: Pijul
 * **About Authors**: [Pijul](https://pijul.com/)
@@ -39,5 +36,7 @@ https://github.com/mikhailswift/go-collections
 * **Source Code**: [Pijul Nest](https://nest.pijul.com/pijul/pijul) under GPL-2.0 License
 * **Focus Before**: 31-Aug-2022
 * **Study Concluded**: No
+
+## 
 
 
