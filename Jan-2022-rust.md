@@ -37,6 +37,30 @@ There are multiple frameworks available in Rust at different level of maturity. 
 * **Focus Before**: 31-Aug-2022
 * **Study Concluded**: No
 
-## 
+## RPC Frameworks
+### Socket.io
+* **Product Name**: socket.io
+* **About Authors**: [Socket.io](https://socket.io/)
+* **About Product**: Socket.IO enables real-time bidirectional event-based communication. It consists of a Node.js server and a javascript client library (or a Node.js client).
+* **Source Code**: [Github](https://github.com/socketio/socket.io) under MIT License
+* **Focus Before**: 31-Oct-2022
+* **Study Concluded**: No
+
+### gRPC
+
+### dubbo
+
+### thrift
+
+### tarpc
+https://github.com/google/tarpc
+
+### twirp
+https://github.com/twitchtv/twirp
+
+### Capnproto
+https://capnproto.org/
 
 
+### smf
+https://github.com/smfrpc/smf
