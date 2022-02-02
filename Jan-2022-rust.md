@@ -11,10 +11,10 @@
 ## pancakeDB
 
 ## pola-rs
-* **Product Name**: Qdrant
-* **About Authors**: [Qdrant Tech](https://qdrant.tech/)
-* **About Product**: Qdrant is a vector similarity search engine. It provides a production-ready service with a convenient API to store, search, and manage points - vectors with an additional payload. Qdrant is tailored to extended filtering support. It makes it useful for all sorts of neural network or semantic-based matching, faceted search, and other applications.
-* **Source Code**: [Github](https://github.com/qdrant/qdrant) under Apache-2.0 License
+* **Product Name**: Polars
+* **About Authors**: [Polars](https://www.pola.rs/) by Xomnia
+* **About Product**: Polars is lightning-fast DataFrame library for Rust and Python. Its embarrassingly parallel execution, cache efficient algorithms and expressive API makes it perfect for efficient data wrangling, data pipelines, snappy APIs and so much more. Polars is about as fast as it gets, see the results in the H2O.ai [benchmark](https://h2oai.github.io/db-benchmark/). It uses [Arrow2](https://github.com/jorgecarleitao/arrow2) under the hood. Arrow2 is a faster and safer implementation of the Apache Arrow Columnar Format. Arrow2 also has a more granular code base, helping to reduce the compiler bloat. Will put Arrow two under file format section.
+* **Source Code**: [Github](https://github.com/pola-rs/polars) under MIT License License
 * **Focus Before**: 31-Aug-2022
 * **Study Concluded**: No
 
