@@ -1,69 +1,69 @@
 [{:block/name "12-factors",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "a",
-  :block/created-at 1645585389248,
-  :block/updated-at 1645585389248}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "apache-arrow",
   :block/created-at 1644085188171,
   :block/updated-at 1644085203598}
  {:block/name "apache-arrow-integration",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "apache-orc",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "apache-parquet",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "areweguiyet.com",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "arrow-flight",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "b",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "c",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "card",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "code-quality",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "community-gathering-ignite3alpha4-1602022",
-  :block/created-at 1645585389248,
-  :block/updated-at 1645585389248}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "consensus-paxos",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "consensus-raft",
-  :block/created-at 1645585389248,
-  :block/updated-at 1645585389248}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "contents",
   :block/created-at 1644112876821,
   :block/updated-at 1644112877449}
  {:block/name "datamesh",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "deployments",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "doing",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "done",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "egromova@gridgain.com",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "favorites",
-  :block/created-at 1645585389248,
-  :block/updated-at 1645585389248}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "feb 10th, 2022",
   :block/created-at 1644457168968,
   :block/updated-at 1644457195051}
@@ -100,6 +100,9 @@
  {:block/name "feb 23rd, 2022",
   :block/created-at 1645574400000,
   :block/updated-at 1645574400000}
+ {:block/name "feb 24th, 2022",
+  :block/created-at 1645720845383,
+  :block/updated-at 1645720845383}
  {:block/name "feb 5th, 2022",
   :block/created-at 1644083754445,
   :block/updated-at 1644085699336}
@@ -116,65 +119,80 @@
   :block/created-at 1644370827097,
   :block/updated-at 1644422347360}
  {:block/name "feb-2022-aarondavidson",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "feb-2022-amplab-spark",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "feb-2022-rust",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "ignite3",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "in-progress",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "internal-of-spark",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "jan 2022",
-  :block/created-at 1645585389248,
-  :block/updated-at 1645585389248}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "jan-2022-go",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "jan-2022-rust",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "knowledge management",
   :block/created-at 1644083997869,
   :block/updated-at 1644113160653}
  {:block/name "later",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "learning_from_gridgain_2202222",
-  :block/created-at 1645585389248,
-  :block/updated-at 1645585389248}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "log",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "logseq",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
+ {:block/name "mar 10th, 2022",
+  :block/created-at 1646895963546,
+  :block/updated-at 1646895963546}
+ {:block/name "mar 11th, 2022",
+  :block/created-at 1646965786407,
+  :block/updated-at 1647011286122}
+ {:block/name "mar 7th, 2022",
+  :block/created-at 1646630698759,
+  :block/updated-at 1646630933511}
+ {:block/name "mar 8th, 2022",
+  :block/created-at 1646705054997,
+  :block/updated-at 1646705395231}
+ {:block/name "mar 9th, 2022",
+  :block/created-at 1646784000000,
+  :block/updated-at 1646784000000}
  {:block/name "now",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "obsidian",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "readme",
-  :block/created-at 1645585389248,
-  :block/updated-at 1645585389248}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "todo",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "traits_send",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292139,
+  :block/updated-at 1647011292139}
  {:block/name "wait",
-  :block/created-at 1645585389249,
-  :block/updated-at 1645585389249}
+  :block/created-at 1647011292140,
+  :block/updated-at 1647011292140}
  {:block/name "waiting",
-  :block/created-at 1645585389248, 
-  :block/updated-at 1645585389248}]
+  :block/created-at 1647011292139, 
+  :block/updated-at 1647011292139}]
