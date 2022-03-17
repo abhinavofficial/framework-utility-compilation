@@ -912,6 +912,50 @@ VALUES
 ,(COLOR_UID_SEQ.nextval, 'Indigo')
 ,(COLOR_UID_SEQ.nextval, 'Violet')
 ; 
+
+USE ROLE SYSADMIN;
+USE WAREHOUSE COMPUTE_WH;
+USE DATABASE DEMO_DB;
+USE SCHEMA PUBLIC; 
+
+
+CREATE FILE FORMAT COLORS_CSV
+TYPE = 'CSV'
+COMPRESSION = 'AUTO'
+FIELD_DELIMITER = ','
+RECORD_DELIMITER = '\n'
+SKIP_HEADER = 1
+FIELD_OPTIONALLY_ENCLOSED_BY = 'NONE'
+TRIM_SPACE = FALSE
+ERROR_ON_COLUMN_COUNT_MISMATCH = TRUE
+ESCAPE = 'NONE'
+ESCAPE_UNENCLOSED_FIELD = '\134'
+DATE_FORMAT = 'AUTO'
+TIMESTAMP_FORMAT = 'AUTO'
+NULL_IF = ('\\N');
+
+CREATE OR REPLACE STAGE LIKE_A_WINDOW_INTO_AN_S3_BUCKET 
+SET URL = 's3://uni-lab-files';
+-- CREDENTIALS = (AWS_KEY_ID = 'AKUMARGCP' AWS_SECRET_KEY = '***********');
+
+list@like_a_window_into_an_s3_bucket;
+
+copy into COLORS
+from @like_a_window_into_an_s3_bucket
+files = ( 'dabw/Color_Names.csv')
+file_format = ( format_name=COLORS_CSV );
+
+SELECT COLOR_NAME, COUNT(*) FROM COLORS GROUP BY COLOR_NAME;
+
+CREATE OR REPLACE SEQUENCE COLOR_UID_SEQ
+START 1002
+INCREMENT 1
+COMMENT = 'Restart the sequence at a higher number to avoid duplicates'; 
+
+UPDATE COLORS
+set color_name = 'EZ73197'
+where color_name = 'Indigo'
+
 ```
 
 https://vega.github.io/vega-lite/tutorials/getting_started.html
