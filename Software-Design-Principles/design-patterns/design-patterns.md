@@ -94,9 +94,3 @@ From a language perspective, there are two -
 * Object-Oriented Programming (OOP)
   * Encapsulated state and behavior
   * Efficiently maintainable programs
-
-| C                                 | C++                   |
-|-----------------------------------|-----------------------|
-| Procedural                        | C with classes        |
-| Very efficient - speed and memory | Less efficient than C |
-| Easily create bad designs         | Supports OOP          |

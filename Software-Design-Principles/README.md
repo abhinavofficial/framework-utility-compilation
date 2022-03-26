@@ -7,4 +7,5 @@
 5. [Inheritance and Composition](inheritance-composition.md)
 6. [SOLID](solid-design-principle.md)
 7. [Writing good code](good-code-practices.md)
-8. 
+8. [Design Patterns](design-patterns/design-patterns.md)
+9. [Language Perspective](programming-language-perspective/README.md)
