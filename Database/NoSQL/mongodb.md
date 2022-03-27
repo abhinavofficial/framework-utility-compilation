@@ -50,3 +50,10 @@ MongoDB Compass is a GUI application to access the DB and collection and data st
 Again this is an open-source software which you can get from its official website. 
 
 * [Install Guide Official Page](https://docs.mongodb.com/compass/master/install)
+
+## Initial Commands
+```shell
+abhinavofficial@ubuntu:~sudo systemctl start mongod
+abhinavofficial@ubuntu:~$ sudo systemctl status mongod
+abhinavofficial@ubuntu:~$ sudo systemctl stop mongod
+```
