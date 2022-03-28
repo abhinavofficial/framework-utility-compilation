@@ -37,6 +37,17 @@ It is aligned with SOLID (Single Responsibility Principle, Open/Close Principle,
 ## Prototype
 Prototype lets you copy existing objects without making your code dependent on their classes.
 
+**Usage**
+* It is costly to create a new object.
+* When we do not know how to create the object or does not have ownership, we can just call a clone.
+* While using multi-persona
+
+```Refine the cost
+New (maybe costly) and Clone (deepcopy)
+
+Singleton and Prototype does not go together.
+```
+
 [Wikipedia Link](https://en.wikipedia.org/wiki/Prototype_pattern)
 
 ## Builder

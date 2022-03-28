@@ -94,3 +94,6 @@ From a language perspective, there are two -
 * Object-Oriented Programming (OOP)
   * Encapsulated state and behavior
   * Efficiently maintainable programs
+
+## Further reading
+* [Design Principle Implementation in Rust](https://rust-unofficial.github.io/patterns/intro.html)
