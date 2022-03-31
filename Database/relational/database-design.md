@@ -206,30 +206,24 @@ Replication log will cause stale data reads from the replicas.
 
 Async replication can be established between each master.
 
-To implement this, we use something called sharing (horizontal partitioning)
+To implement this, we use something called **sharding** (horizontal partitioning)
 * Break data into small chunks (either vertically or by range of data, horizontally)
 * It allows me to have more compute capacity per server
 * Manual/Automatic sharding
   * Hash
   * Range
 
-MySql have manual sharding while MongoDB has automatically sharding.
+MySql basic have manual sharding while MongoDB Atlas has automatically sharding.
 
 When sharded, aggregating data is much harder.
 
+More on sharding [here](../sharding.md)
 
+## More learning
 
+### Links
+* [Normalization](https://www.essentialsql.com/database-normalization/)
 
-
-
-
-
-
-
-[Sharding](https://www.digitalocean.com/community/tutorials/understanding-database-sharding)
-[Index](https://dzone.com/articles/how-database-indexes-really-work)
-[Normalization](https://www.essentialsql.com/database-normalization/)
-
-Books
-Database Management System by Johannes Gehrke and Raghu Ramakrishnan
-Fundamentals of Database System by Ramez Elmasri
+### Books
+* Database Management System by Johannes Gehrke and Raghu Ramakrishnan
+* Fundamentals of Database System by Ramez Elmasri
