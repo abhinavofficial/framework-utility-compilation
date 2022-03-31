@@ -92,4 +92,8 @@ It method defines the skeleton of an algorithm as an abstract class, allowing it
 ## Visitor
 It separates an algorithm from an object structure by moving the hierarchy of methods into one object. So, in this case, algorithm or operation hierarchy can call the object hierarchy and vice versa making this a double dispatch mechanism or visitor method.
 
+```
+When we see word - **accept** or **visit**, it is 
+```
+
 Traits as implementation.
