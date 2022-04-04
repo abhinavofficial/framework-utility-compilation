@@ -99,3 +99,114 @@ For example, in Redis RDB or AOF serves for persistence. In RDS, frequency in wh
 
 ## Wide-Column Database
 
+Wide column data, also known as column family databases.
+
+* Hybrid of NoSQL & Relational DB
+  * Handles varied data types
+  * Efficient writes
+* Column based storage
+  * Organize related facts into column families
+  * Multidimensional mapping
+  * Better access patterns
+* Examples: Apache Cassandra, Google BigTable, Apache Hbase
+* Use cases:
+  * IoT devices telemetry and logs
+  * Time series data
+  * Transaction logs, Clickstream data
+  * Heavy write & straightforward read applications
+* Cassandra
+  * Cassandra Query Language: Keyspace, Table, Partition, Row, Column
+  * Data types: Native, Collections, Tuples, User Defined types
+  * Consistent Hashing, Virtual Nodes
+  * Replication Strategies, Tunable Consistency, Quorums
+
+Consistent Hashing allows addition or removal of nodes without reorganizing data. In Cassandra, every node is a virtual node. Tunable Consistency allows you to define how many replicated writes minimally need to be successful before we can declare the system consistent. Strongest consistency that I get is when I allow Quorums of (n/2)+1 nodes.
+
+```shell
+# pull latest image of cassandra - it is 4.0.3 for not
+docker pull cassandra:latest
+# Now run cassandra under cluster name cass_cluster
+docker run --name cass_cluster cassandra:latest
+# start interactive session with csqlsh
+docker exec -it cass_cluster cqlsh
+```
+
+## Document Database
+
+* Documents (json, bson, etc.) instead of rows/records
+  * Pair key with document
+  * Leverage key-value databases
+  * Hierarchical key-value pairs
+* Flexible schema
+  * Flexible field types across documents
+  * Easy extensibility
+* Better match for object models
+* Examples: MongoDB, Apache CouchDB, RethinkDB
+* Use cases:
+  * Standard content management - RDBMS replacement
+  * Flexible grouping like product catalogs, IoT devices
+  * Aggregate Analytics
+* MongoDB
+  * Data types: Standard RDBMS types, GeoData, Arbitrary JSON
+  * Collections, Relationships, Indexes
+  * Tools: MongoDB shell, MongoDB compass, MongoDB VS
+
+## Graph Database
+
+* Main entities
+  * Node - record/data
+  * Edge/Relationship - Specific connection between nodes
+  * Properties - Additional info on nodes
+* Fast traversal
+  * Quick path searches for network type queries
+  * Easy updates on natural graph extension
+* Examples: Neo4J, OrientDB, Amazon Neptune, ArangoDB
+* Use Cases:
+  * Social Network Graphs and Connections
+  * Customer Profiles and Fraud Detection
+  * Knowledge Graphs and Recommendations
+  * Maps and Geospatial Graphs
+  * Network Operations and Data Flow
+* Neo4J
+  * Nodes, Labels (to Node groups), Relationships, Properties
+  * Cyber Query Language
+  * Data modelling, Visualization
+  * Sessions, Transactions, Queries, Causal Chaining (Bookmarks)
+
+Causal Chaining - one query has to finish and next to start.
+
+```shell
+UserName: neo4j
+Password: hkXnuUPSZG8b6Ummk_rZF-230Q26rux-MaoX5aw5qyA
+```
+
+## Selection Criteria - Which database to use?
+
+* Available skill-set in the team
+* In the beginning, start with whatever you know best.
+
+Technical decision 
+* Data Model - Structure and Flexibility
+* Consistency requirements
+* Availability requirements
+* Concurrent load
+* Scalability goals
+* Querying (retrieval) capabilities and complexities
+* Insertion capabilities and throughput
+* Analytical and reporting capabilities
+* General robustness, reliability, historical usage
+* Storage and backup functionalities
+
+### Twitter timeline in Redis
+
+* Redis is key-value database
+* Twitter uses Redis as cache for user timelines, ads, DMs, tweets
+* Latest timeline available in Redis on reads
+* Fan-out service in writes
+  * Use adds a tweet in database
+  * Asynchronous updates to timeline cache of all followers
+* Scale: 100TB+ RAM, ~40MM QPS, 10k instances
+
+###
+
+
