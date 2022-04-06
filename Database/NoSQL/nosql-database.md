@@ -1,16 +1,25 @@
 # NoSQL Database
 
+NoSQL databases (aka "not only SQL") are non-tabular databases and store data differently than relational tables.
+
 ## Need for NoSQL
 
+Aided by the fact that cost of storage drastically decreased in late 2000s.
+
 Let's understand the limitation of RDBMS to get to understand the need for NoSQL
-### Rigid and Opinionated Schema
+
+### Need for Flexible schema
+
+RDBMS offered a very rigid and Opinionated Schema which turned out
 * Suboptimal for some use cases: Hierarchical, Geospatial, Graph, Semi-Structured, Unstructured
 * Schema updates are harder, might require downtime
 
 With advent of internet, Big Data became more relevant and requires
-* Large amount of structured and semi-structured data
+* Large amount of structured, semi-structured and polymorphic data
 * Better concurrency handling
 * Flexible schema
+
+With Agile picking up pace, the need to rapidly adapt to changing environment further generated the need for flexible schema.
 
 NoSQL provides all these
 
@@ -55,15 +64,18 @@ NoSQL databases are typically distributed and hence it provides required fault t
 
 ## Comparison between Relational and NoSQL
 
-| RDBMS                    | NoSQL                              |
-|--------------------------|------------------------------------|
-| Structured and organized | Semi-Structured and Flexible Data  |
-| SQL                      | Not only SQL                       |
-| Record and Relationships | No fixed schema                    |
-| Consistent & available   | Availability & Partition Tolerance |
-| ACID Properties          | BASE Transaction                   |
-| Vertical Scaling         | Horizontal scaling                 |
-| Single point of Failure  | Distributed by nature              |
+| Criteria               | RDBMS                    | NoSQL                                                                                                                                                                                                                                                           |
+|------------------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Schemas                | Structured and organized | Semi-Structured and Flexible Data                                                                                                                                                                                                                               |
+| Interacting Language   | SQL                      | Not only SQL                                                                                                                                                                                                                                                    |
+| Data Storage Model     | Record and Relationships | No fixed schema                                                                                                                                                                                                                                                 |
+| CAP Alignment          | Consistent & available   | Availability & Partition Tolerance                                                                                                                                                                                                                              |
+| Transaction Properties | ACID Properties          | BASE Transaction                                                                                                                                                                                                                                                |
+| Scaling                | Vertical Scaling         | Horizontal scaling                                                                                                                                                                                                                                              |
+| Failure points         | Single point of Failure  | Distributed by nature                                                                                                                                                                                                                                           |
+| Joins                  | Typically required       | Typically not required                                                                                                                                                                                                                                          |
+| Data to Object Mapping | Requires ORM             | Typically not required                                                                                                                                                                                                                                          |
+| Purpose                | General Purpose ORM      | **Document**: general purpose </br> **Key-value**: large amounts of data with simple lookup queries </br> **Wide-column**: large amounts of data with predictable query patterns </br> **Graph**: analyzing and traversing relationships between connected data |
 
 ## Types of NoSQL Databases
 
@@ -74,7 +86,12 @@ Broadly classified in 4 types:
 * Graph: Interconnected pieces of information
 
 ## Key Value Database
-* In-Memory Database
+
+The data is stored in a “key-value” format and optimized for reading and writing that data. The data is fetched by a unique key or a number of unique keys to retrieve the associated value with each key. The values can be simple data types like strings and numbers or complex objects.
+
+In its simplest form, a key-value store is like a dictionary/array/map object as it exists in most programming paradigms, but which is stored in a persistent way and managed by a Database Management System (DBMS). Key-value databases use compact, efficient index structures to be able to quickly and reliably locate a value by its key, making them ideal for systems that need to be able to find and retrieve data in constant time.
+
+* In-Memory Database (especially for cache implementation)
   * Fixed size - drops older keys, LRU based..
   * Guaranteed expiry (deletion), if specified
 * Globally distributed hash table
@@ -207,6 +224,37 @@ Technical decision
   * Asynchronous updates to timeline cache of all followers
 * Scale: 100TB+ RAM, ~40MM QPS, 10k instances
 
-###
+### Pinterest - MySQL Sharding
 
+* Very simple sharding process based on internal ids
+* Many more virtual shards than servers - easy redistribution (uses multi-master model)
+* Co-locate specific user related data on one shard
+* Scale: 10+ billion page views, ~100 million users
+
+MySQL is very stable - have never lost data.
+
+### Netflix - Apache Cassandra
+
+* Cache storage engine
+  * Subscriber data
+  * Video Metadata
+  * Pause Locations
+  * Ratings & Recommendations
+* Write heavy workloads
+* Scale: 10k instances, 6PB data, 10+ million QPS
+
+Tunability, Replicability - Cassandra
+
+### Neo4J - Multiple use cases
+
+* eBay - Knowledge graph for AI chat-bot
+  * Facilitates inferences and transfer learning (in probabilistic manner)
+  * Scale: 500 millions nodes, 20 billion relationships
+* Airbnb - Data management and analytics
+  * Sinks data from multiple data sources including Apache Hive
+  * Common graph UI across the whole dataset - Better search and analysis
+* Novartis - Knowledge graph for drug discovery
+  * Graph view of compounds, proteins, diseases, genes, etc.
+  * Actionable relationships populated by text mining scientific papers
+  * Automated discovery of strongly correlated nodes
 
