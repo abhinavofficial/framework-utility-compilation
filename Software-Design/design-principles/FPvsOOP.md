@@ -11,3 +11,7 @@ Algol -> Simula ->
 Modula -> Modularity
 
 Alan Kay introduced Object-Oriented.
+
+## Functional Program
+
+We would be learning functional programming using Scala. The knowledge would be tracked under [Functional Programming Using Scala](https://github.com/abhinavofficial/scala-learning/blob/main/functional-programming-using-scala.md)
