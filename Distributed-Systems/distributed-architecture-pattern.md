@@ -1,6 +1,6 @@
 # Distributed Architecture Pattern
 
-## Motivation (3 mins)
+## Motivation
 Distributed systems issues:
 * Failure of Network or hardware
 * Distributed system should look like a single system
@@ -161,21 +161,114 @@ A typical distributed PubSub system
 
 ## Microservices Architecture
 
-* Decompose monolith to microservices architecture
+Functional cohesion is the best way of cohesion.
+* Decompose monolith (single, large application) to microservices architecture (Collection of loosely-couple services)
 * Mapping microservices to containers - docker
-* Kubernetes as Orchestrator
+* Kubernetes as Orchestrator (CI-CD for DevOps)
 
-## Microservices Architecture in detail (6 mins)
+Microservices Architecture:
+* Small size, bound by context
+* Message enabled
+* Independently developed and deployed
 
-## Cloud Native Architecture (16 mins)
+### When to apply
+* Rapidly evolving business model - Application structure changes frequently
+* Frequent application scaling - apply functional decomposition
+* Tangled dependencies in monolith - difficult to evolve independently and to separate concerns
 
+We can have nano microservices which can further compose other microservices. This enhances re-usability tremendously.
 
+### How to decompose microservices
+* Business capabilities
+* Domain-driven subsystems
+* By verb or use-case responsible for specific action
+* By noun or resource action on all operations on any given entities
+* Classes of service should hold SRP (Single Responsibility Principle)
 
+### Implementation
+Microservice Instances:
+* Service instance per Host
+* Service instance per Container (More popular these days) - you should be able to scale independently.
+
+### Benefits
+* No single point of failure
+* Better fault isolation
+* Easier and more flexible deployment - continuous deployment using kubernetes and containers.
+* Improved testability
+* Maintainability
+* Multiple tech stacks can co-exist and evolve
+
+### Drawbacks
+* Inherent complexity in a distributed architecture
+* Handling requests spanning multiple services
+* Testing interactions between services becomes difficult
+* Addressing partial failure is difficult
+* Increased memory consumption
+* Deployment complexity (can be simplified using Kubernetes and other frameworks). This is where cloud native architecture comes to rescue.
+
+## Cloud Native Architecture
+
+* Designed for Automation - we can have declarative way to define the state of our service.
+  * Scale up, Scale down
+  * Monitoring and Recovery
+* Load Balancing
+  * Distribute workloads across compute resources
+    * Scheduling algorithms
+    * Load balancing policies
+  * Service-based Load Balancing (especially important for stateful services)
+    * Routes client requests to capable servers
+    * Flexible to add/subtract servers
+  * Depends on nature of tasks
+  * Advantages
+    * Scalability (Scale up when number of request hits beyond a threshold) - Lets deal with Auto-scale separately
+    * High availabilities of services
+    * Reliability
+  * Disadvantage
+    * Latency increase during spikes
+    * Inflexibility in pre-processing
+* Managed services - all the above can be handled using cloud native framework and solutions.
+
+### Auto Scaling
+* Compute resources vary, depending on the load - and hence the need
+* The make-up of Auto Scaling
+  * Auto Scaling Group
+  * Server Instances
+  * Desired Capacity
+  * Metric
+    * CPU utilization
+    * Memory utilization
+    * Network bandwidth
+  * Scaling Policy
+    * Updates the Group's desired capacity
+    * Based on changes to the metric
+
+In most of the cases, you can specify minimum capacity, desired capacity and maximum capacity within an auto-scaling group and policies (trigger points based on metric) around the scaling up and down the group.
+
+**Advantages**
+  * Responsive to actual usage patterns
+  * Reduces operational costs
+  * Better availability
+
+**Disadvantages**
+  * Hides application inefficiencies
+  * Capacity thrashing possible if configured suboptimally
+
+## Containers
+
+Containers work very differently than virtual machines.
+
+![Different](images/Containers-VirtualMachines.png)
+
+Docker started the container technology (as believed).
+
+## More References: 
+### Books
 1. Pattern-Oriented Software Architecture, Volume 4, A Pattern Language for Distributed Computing
 2. Using Docker: Developing and Deploying Software with Containers
 3. Distributed Systems, Principles & Paradigms, 2nd Edition: Andrew S Tanenbaum & Maarten van Steen.
 4. Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems: Martin Kleppmann
 
+### Links
 [EMR](https://aws.amazon.com/emr/)
 [Clock](https://www.mdpi.com/1424-8220/20/20/5928/htm)
 [Logical Clock](https://wintermade.it/blog/posts/logical-clocks-lamport-timestamps.html)
