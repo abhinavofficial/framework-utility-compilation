@@ -79,7 +79,7 @@ Example - UNIX, Windows NT Design
   * Context-switch overhead
 
 ### Notify Lock
-Let's understand this using Network file system (NFS). NFS is a client-server stateless system. Client sends both the file pointer and offset to server so that server does not need to maintain any state for client interaction. (Recovery becomes a challenge for stateful servers). Client utilizes remote procedure call (rpc). The way NFS works is - when client calls the server, the server sends few kb of data back (which is then maintained as cache at server and client). Client reads this data and if it needs more, requests more. Client polls every 30ms for data and every 3 sec for meta-data file. If there is any change to data, the cache is invalidated, and new set of data is received. This makes the architecture very network intensive. Hence, NFS cannot scale beyond few hundred nodes.
+Let's understand this using Network file system (NFS). NFS is a client-server stateless system. Client sends both the file pointer and offset to server so that server does not need to maintain any state for client interaction. (Recovery becomes a challenge for stateful servers). Client utilizes remote procedure call (rpc). The way NFS works is - when client calls the server, the server sends few kb of data back (which is then maintained as cache at server and client). Client reads this data and if it needs more, requests more. Client polls every 30ms for data and every 3 sec for meta-data file. If there is any change to data (i-node cache), the cache is invalidated, and new set of data is received. This makes the architecture very network intensive. Hence, NFS cannot scale beyond few hundred nodes. Also, note that if there are any change happening within 30ms or 3 sec (before the clients has refreshed the data), the change is lost.
 
 To solve this problem, Notify Lock can be implemented where-in if there is any change to the file, the client will be notified. This helps reduce network load and allows system to scale up over ten thousand nodes. This is what is called AFS (Andrew File System)
 
@@ -292,21 +292,3 @@ Kubernetes provides a managed framework for managing containers.
   * kubernetes CRI
 
 We can specify rollout strategy in kubernetes so newer versions can replace slowly when proved to be stable.
-
-
-## More References: 
-### Books
-1. Pattern-Oriented Software Architecture, Volume 4, A Pattern Language for Distributed Computing
-2. Using Docker: Developing and Deploying Software with Containers
-3. Distributed Systems, Principles & Paradigms, 2nd Edition: Andrew S Tanenbaum & Maarten van Steen.
-4. Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems: Martin Kleppmann
-
-### Links
-[EMR](https://aws.amazon.com/emr/)
-[Clock](https://www.mdpi.com/1424-8220/20/20/5928/htm)
-[Logical Clock](https://wintermade.it/blog/posts/logical-clocks-lamport-timestamps.html)
-[Brief Intro to Distributed Systems](https://link.springer.com/article/10.1007/s00607-016-0508-7)
-[Apache Kafka](https://kafka.apache.org/intro)
-[Docker](https://www.docker.com/)
-[Microservices](https://martinfowler.com/articles/microservices.html)
-
