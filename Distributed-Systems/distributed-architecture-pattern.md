@@ -253,13 +253,46 @@ In most of the cases, you can specify minimum capacity, desired capacity and max
   * Hides application inefficiencies
   * Capacity thrashing possible if configured suboptimally
 
-## Containers
+### Containers
 
 Containers work very differently than virtual machines.
 
 ![Different](images/Containers-VirtualMachines.png)
 
-Docker started the container technology (as believed).
+Docker started the container technology (as believed). Docker provides:
+* Abstract app layer - Packages application and dependencies together
+* Containers provide isolated workspace using linux namespaces
+* pid, net, ipc, mnt, uns
+* cgroups is the part of container which limits the system resources
+* Containers also have union FS - thin file system layers including btfrs, AUFS, vfs and device mapper
+* docker engine wraps namespaces, cgroups and union-fs in a container format, default is libcontainer. This libcontainer is more or less a standard image format for running docker images.
+
+Once a container becomes an image, we can now use this image to run your microservices.
+
+* Task isolation - one container per microservice
+* Supports multiple tech stacks
+* Database separate - data volumes mounted as containers
+* Automated monitoring - tools like prometheus, sysgid chisel and inspect
+
+### Container orchestration in Cloud using Kubernetes
+
+Kubernetes provides a managed framework for managing containers.
+
+* Deployed as a cluster
+* Includes worker nodes running containerized applications
+* Control plane
+  * kube-apiserver
+  * etcd
+  * kube-scheduler
+  * kube-controller manager
+  * cloud-controller-manager
+* Compute components
+  * kubelet
+  * kube-proxy
+  * kubernetes CRI
+
+We can specify rollout strategy in kubernetes so newer versions can replace slowly when proved to be stable.
+
 
 ## More References: 
 ### Books
