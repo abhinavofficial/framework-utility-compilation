@@ -132,4 +132,3 @@ Every time a message is exchanged, the sending host sends not only what it knows
 
 This allows establishing a lower bound on what other hosts know, and is useful in applications such as checkpointing and garbage collection.
 
-## Multi-threading with Thread Pools, and Multi-Process (37 mins)
