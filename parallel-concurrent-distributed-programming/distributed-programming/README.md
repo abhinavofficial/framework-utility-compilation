@@ -3,6 +3,7 @@
 * [Distributed Architecture Pattern](distributed-architecture-pattern.md)
 * [Distributed Systems Architecture](distributed-systems-architecture.md)
 * [Distributed Time](distributed-time.md)
+* [Transaction Concurrency Control](transaction-concurrency-control.md)
 
 
 ## More References:
