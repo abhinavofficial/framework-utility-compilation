@@ -4,7 +4,7 @@
 * [Distributed Systems Architecture](distributed-systems-architecture.md)
 * [Distributed Time](distributed-time.md)
 * [Transaction Concurrency Control](transaction-concurrency-control.md)
-
+* [Commit Protocols and Failure Recovery](commit-protocols-failure-recovery.md)
 
 ## More References:
 ### Books

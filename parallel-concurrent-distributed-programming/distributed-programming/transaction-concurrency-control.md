@@ -168,6 +168,15 @@ This leads to a problem - we have relaxed the _isolation_ property of a transact
 
 This way, Commit Protocol preserves both Consistency and Isolation property of the transaction.
 
+## Multiversion Concurrency Control (WIP)
+Source: https://en.wikipedia.org/wiki/Multiversion_concurrency_control
+
+Apache CouchDB uses MVCC. It is eventual consistency.
+
+
+## 
+
+
 ## Further Case Studies
 * [Distributed Locks with Redis](case-studies/distributed-lock-in-redis.md)
 * [Distributed Locks in Zookeeper](case-studies/distributed-lock-in-zookeeper.md)
