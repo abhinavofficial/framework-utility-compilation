@@ -91,8 +91,10 @@ Each node maintains Read and Write Transaction queue along with timestamp (using
 It gets little interesting when the above needs to be integrated with commit protocol when there is "write" involved, the data should not have visible to other transaction and must be kept on block until the commit is issued. Also, the writing transaction can have its pre-write copy to continue with its operation until commit is issued.
 
 
-## Optimistic Timestamping protocol - NOT CLEAR
+## Optimistic Timestamping protocol
 When most of the transactions do not conflict, this is the best approach. We allow the transactions to go on and at the very end, we validate if everything looks okay. If not, we will abort the transaction.
+
+Transactions maintain both Read Timestamp and Write Timestamp. It allows transactions to have separate semantics for Read and Write which would allow more concurrent transactions to happen for reads.
 
 In this case, clocks are loosely synchronized so each clock keep going at its own pace. If you discover that a clock has moved and the system should not have done some operations, then you can come back (meaning the transactions are unwinded and point to previous consistent clock).
 
