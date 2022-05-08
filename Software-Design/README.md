@@ -9,3 +9,4 @@
 7. [Writing good code](good-code-practices.md)
 8. [Design Patterns](design-patterns/design-patterns.md)
 9. [Language Perspective](programming-language-perspective/README.md)
+10. [12-Factor Design](12-Factors.md)

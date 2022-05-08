@@ -237,13 +237,41 @@ A lot of optimization is possible when messages are exchanged between the nodes.
 
 [Consensus Protocol](consensus-protocols.md)
 
-## Concurrency Control + Commit Protocol (7 mins)
+## Concurrency Control + Commit Protocol
+
+2PC and 3PC: Reentrant Protocols
+
+Scenario: If COORD0 runs commit protocol and fails, a new COORD1 is elected and restarts the protocol. If COORD1 fails as well, new COORD2 can be re-elected, and so on...
+
+Here Reentrant Protocol can be invoked. Configurations for Reentrancy:
+* Proactive: If COORD is in a state, enforce it on all PARTs
+* Pessimistic
+  * For COORD(i+1) state if any part in Prepare_To_Commit state, COORD(i+1) can restart 3PC
+  * Even if COORD(i) had taken an ABORT decision, COORD(i+1) can take a COMMIT decision if it receives response from all the nodes.
+
+Let's see a simple 2-Phase locking with 2-Phase commit protocol
+![](images/2PL-2PC.png)
+
+In case of distributed transaction, the above simple 2PL-2PC protocol needs to be modified a bit because part of transactions can be executed on different nodes. It is possible that one part of transaction, T1 may require read lock on a data element P and T2 of the same transaction may put a "write" lock on P. In such cases, we have a slighted modified protocol called, **Nested 2PL + 2PC** protocol where all the lock requests are routed through root transaction.
+
+![](images/Nested-2PL-PC.png)
+
+Root holds all the LOCKs. All the Child inherits locks from Parent. Child then executes the transaction and returns the locks to parent.
+
+> In Closed Nested 2-Phase Locking, transactions have only at the leaf node. In Open Nested 2-Phase Locking, any child node can execute transaction.
 
 ## Distributed Recovery (4 mins)
 
-## Byzantine General Problem (10 mins)
+In a distributed system, nodes may fail, and we may not even have the correct information about failure whether the failure was caused by network or storage or something else. It is also very difficult to detect the nature of failure. 
 
-## Byzantine Consensus Protocol (23 mins)
+For example, if we use heartbeat to detect node failure, it might really be an issue with network - wait long enough, and you may find node in a healthy condition.
+
+In another example, 3 Phase commit may be susceptible for issue if coordinator and nodes have network partitions. A set of nodes can continue to communicate within their network partitions but not across it - in such cases, each set can elect its own leader and continue to operate independently which may be a problem.
+
+To avoid total system failure, nodes should agree on a common strategy. However, nodes are inherently unreliable (byzantine fashion) - there could be nodes with software failure making them adversial node and may be working to subvert the protocol. Under Byzantine condition, distributed system can become very complex - node can be communicating different votes to different nodes, etc.
+
+More on byzantine problem and consensus [here](byzantine-problem-consensus.md)
+
 
 ## Introduction to Paxos (8 mins)
 
@@ -251,19 +279,6 @@ A lot of optimization is possible when messages are exchanged between the nodes.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-[Byzantine General Problem](https://zwyuan.github.io/2016/05/11/pr-lamport-tpls82-byzantine-general-problem/)
 [Raft Consensus Algorithm](https://raft.github.io/)
 [Zookeeper Coordinator Process](https://druid.apache.org/docs/latest/design/coordinator.html)
 

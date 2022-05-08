@@ -25,12 +25,8 @@ In general, in a loosely coupled system, we have message passing model which use
 
 One major performance difference between accessing a shared memory over a BUS and over a Network topology is drastically different - BUS is high speed and is comparable to access time of memory locations. 
 
-It is possible to simulate shared memory over message passing distributed system. Let us consider, a multinode distributed system where a node can access it 
-Read replicate to local and accessing local
-Write serialize
+It is possible to simulate shared memory over message passing distributed system. Let us consider, a multinode distributed system where a node can access other node's memory over the network - this can be very slow. Now, lets assume that we replicate memory to each node so that the reads can happen locally and thus the reads will be access memory over BUS.  For writes, we can serialize and apply them in the same order over each node. In a system, where reads are very high, this may work very well.
 
-In a system, where reads are very high, this may work very well.
-
-We can also partition memory and assign part of memory to individual nodes so as data requirement to compute becomes local to that node. When the node need other data partition for its computation, the partition can be re-assigned.
+We can also partition memory and assign part of memory to individual nodes so as data requirement to compute becomes local to that node. Locality for reference (????) i.e. when the node need other data partition for its computation, the partition can be re-assigned.
 
 Atomic Broadcast - Network can guarantee that it passes the received "broadcast" values from each connected node to other nodes in the same order. This can make consensus easy if we have a algorithm which states that the first value that nodes received would be an agreed value. One way to implement this is that every node has to get a serial number for its message before it sends it out or all the messages are serialized by one of the nodes or some other ways. Zookeeper uses atomic broadcast (popularly known as ZAP Zookeeper Atomic Protocol) to enforce on connected nodes a way of receiving values in the same order they are sent. 
