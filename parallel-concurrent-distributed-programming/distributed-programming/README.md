@@ -5,6 +5,9 @@
 * [Distributed Time](distributed-time.md)
 * [Transaction Concurrency Control](transaction-concurrency-control.md)
 * [Commit Protocols and Failure Recovery](commit-protocols-failure-recovery.md)
+* [CAP Theorem](CAP-Theorm.md)
+* [Consistency Models](consistency-models.md)
+* [Read-Write-Quorums](read-write-quoroms.md)
 
 ## More References:
 ### Books

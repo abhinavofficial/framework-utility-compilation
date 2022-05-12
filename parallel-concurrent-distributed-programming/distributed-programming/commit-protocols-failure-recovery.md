@@ -250,15 +250,18 @@ Here Reentrant Protocol can be invoked. Configurations for Reentrancy:
   * Even if COORD(i) had taken an ABORT decision, COORD(i+1) can take a COMMIT decision if it receives response from all the nodes.
 
 Let's see a simple 2-Phase locking with 2-Phase commit protocol
-![](images/2PL-2PC.png)
+![2PL 2PC](images/2PL-2PC.png)
 
 In case of distributed transaction, the above simple 2PL-2PC protocol needs to be modified a bit because part of transactions can be executed on different nodes. It is possible that one part of transaction, T1 may require read lock on a data element P and T2 of the same transaction may put a "write" lock on P. In such cases, we have a slighted modified protocol called, **Nested 2PL + 2PC** protocol where all the lock requests are routed through root transaction.
 
-![](images/Nested-2PL-PC.png)
+![Nested 2PL PC](images/Nested-2PL-PC.png)
 
 Root holds all the LOCKs. All the Child inherits locks from Parent. Child then executes the transaction and returns the locks to parent.
 
 > In Closed Nested 2-Phase Locking, transactions have only at the leaf node. In Open Nested 2-Phase Locking, any child node can execute transaction.
+
+One of the major drawback of 2-PC or 3-PC is that that coordinator is a single point of failure. It also does not allow to scale sufficiently. Microservices introduced Saga pattern to scale. You can review Saga pattern of Microservices [here](microservices-as-distributed-system.md)
+
 
 ## Distributed Recovery (4 mins)
 
@@ -273,12 +276,6 @@ To avoid total system failure, nodes should agree on a common strategy. However,
 More on byzantine problem and consensus [here](byzantine-problem-consensus.md)
 
 
-## Introduction to Paxos (8 mins)
 
-## Basic Paxos Algorithm (10 mins)
-
-
-
-[Raft Consensus Algorithm](https://raft.github.io/)
 [Zookeeper Coordinator Process](https://druid.apache.org/docs/latest/design/coordinator.html)
 

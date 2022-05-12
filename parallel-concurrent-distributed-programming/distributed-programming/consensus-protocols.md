@@ -29,4 +29,12 @@ It is possible to simulate shared memory over message passing distributed system
 
 We can also partition memory and assign part of memory to individual nodes so as data requirement to compute becomes local to that node. Locality for reference (????) i.e. when the node need other data partition for its computation, the partition can be re-assigned.
 
-Atomic Broadcast - Network can guarantee that it passes the received "broadcast" values from each connected node to other nodes in the same order. This can make consensus easy if we have a algorithm which states that the first value that nodes received would be an agreed value. One way to implement this is that every node has to get a serial number for its message before it sends it out or all the messages are serialized by one of the nodes or some other ways. Zookeeper uses atomic broadcast (popularly known as ZAP Zookeeper Atomic Protocol) to enforce on connected nodes a way of receiving values in the same order they are sent. 
+Atomic Broadcast - Network can guarantee that it passes the received "broadcast" values from each connected node to other nodes in the same order. This can make consensus easy if we have a algorithm which states that the first value that nodes received would be an agreed value. One way to implement this is that every node has to get a serial number for its message before it sends it out or all the messages are serialized by one of the nodes or some other ways. Zookeeper uses atomic broadcast (popularly known as ZAP Zookeeper Atomic Protocol) to enforce on connected nodes a way of receiving values in the same order they are sent.
+
+## Consensus Paxos
+
+Read more [here](consensus-paxos.md)
+
+## Consensus Raft
+
+Read more [here](consensus-raft.md)
