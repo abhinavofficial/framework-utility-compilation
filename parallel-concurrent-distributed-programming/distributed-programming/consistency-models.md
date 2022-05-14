@@ -73,3 +73,76 @@ RK is hashed - this is what is hashed and determines which nodes the data would 
 If another record with same PK arrives, the previous data would be overwritten.
 
 Volume, Velocity and Variety. Lets focus on velocity.
+
+
+### Failure / Partition Tolerance by replication
+
+
+```java
+private static final String ellEventCql = "insert into all_evenets(event_type, data, created_hh, created_min, created_sec, created_nn, data) values (?, ?, ?, ?, ?, ?, ?)";
+
+Session session = CassandraDAO.getEventSession();
+BoundStatement boundStatement = getWriteableStatement(session, allEventCql);
+session.execute(boundStatement.bind(....));
+```
+
+Every node can be a coordinator in a masterless architecture. Coordinator (whoever it is, at that point in time) handles all the incoming request (read/write)
+
+> Please note that the data (each column) is timestamped using coordinator node's time.
+
+There are multiple failure scenario when the coordinator is trying to write to a node and would face timeout. These failures are handled by cassandra using ***hinted handoff**.
+
+
+### Consistency Level
+Client thread (handling the operation) is waiting on coordinator to complete the request. Coordinator thread in turn is waiting on nodes (depending on replication factor) to complete the request. This is where consistency level comes into play.
+
+Consistency Level defines at what point in time the coordinator can respond back to the client on completion of operation. This is tunable at the runtime. The valid values are:
+* ONE (default) - the coordinator waits for one response from any of the node.
+* QUORUM (strict majority w.r.t RF) - Majority responds. You can read about [QUORUM](read-write-quoroms.md)
+* ALL - the coordinator waits for one response from all the node.
+* EACH -
+Similarly, there are about 9 such values.
+
+```java
+protected static BoundStatement getWriteableStatement(Session session, 
+        String cql, boolean setAnyConsistencyLevel) {
+    PreparedStatement statement = session.prepare(cql); //ideally prepare a statement once per session 
+    if(setAnyConsistencyLevel) {
+        statement.setConsistencyLevel(ConsistencyLevel.QUORUM);
+    }
+    
+    BoundStatement boundStatement = new BoundStatement(statement);
+    return boundStatement;
+}
+```
+This can be applied both to read and write.
+
+### Quorum
+
+```
+quorum = RoundDown(sum_of_replication_factors/2) + 1, where
+
+sum_of_replication_factors = datacenter1_RF + datacenter2_RF + ... + datacentern_RF
+```
+
+> Quorum can help manage tolerance of replica down upto (Total number of node - quorum). So, using replication factor of 6, a quorum is 4 - the cluster can tolerate 2 replicas down.
+
+Based on gossip (which provides an insight on load each node is handling currently), coordinator hands off the request to node(s) with minimum load (first). So, if consistency level is ONE, it would pick node with the least load.
+
+> Please note gossip is used only for reads and not write. For write, nodes are accessed based on hash per PK and replication factor.
+
+```91228 93949 - Sahil```
+
+### Write consistency level
+
+#### Write ONE
+Send requests to all replicas in the cluster applicable to the PK
+Wait for ONE ack before returning to client
+Other acks later, asynchronously
+
+#### Write QUORUM
+Send requests to all replicas in the cluster applicable to the PK
+Wait for QUORUM ack before returning to client
+Other acks later, asynchronously
+
+With performance reduced, we have increased the confidence of data availability.
