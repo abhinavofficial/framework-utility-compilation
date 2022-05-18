@@ -18,13 +18,10 @@ Cassandra using partitioner to distribute the data within its node. Partitioner 
 Hashmap minimally has two methods: ```put(k,v)``` for inserting or upserting and ```get(k)``` for selection. Hashmap takes the key, runs it via a hashing algorithm which producing a hashvalue,  representative for a location (also called a bucket) and puts value at that bucket. In case of hash collision, we can have a list or tree - lets not worry about it to understand the concept.
 
 The partitioner in Cassandra is called Murmur3 (created by Austin Appleby). Murmur3 takes a byte array, and it produces long (-2^63 to 2^63-1) which is also called token **consistently**. In general, any hashing algorithm should be fast and repeatable.
-Replication factor 3 is ideal. We should have minimally 3 nodes.
 
-Anti-clock wise and place the replicas in next two nodes.
+Idea is that based on this token ranges, we can put the data in different nodes. Now, let's bring in replication factor complexity in. Replication factor 3 is ideal which means we should have minimally 3 nodes in a distributed system get the benefits of replication factor. In a distributed system of n nodes therefore, each node would have equally distributed token ranges i.e ```token range / n``` in an ideal scenario. So, if the replication factor is 3, then the first node is determined by this token range and then places its replicas in next two nodes in clock wise. There are concepts of v-nodes but let's not get into that but, rather understand token based storage on a simplistic case as described.
 
-The behavior is same for insert / update / etc. While fetch the data, we again pass the key which also goes through the same hashing. This again allows me to get to the node where my data is presents.
-
-Now we can three situations -
+The behavior is same for insert / update / etc. While fetch the data, we again pass the key which also goes through the same hashing. This again allows me to get to the node where my data is present. Even in a very large cluster, we really do not care but rather just three based on our token and replication factor. Now we can three situations -
 1. All the nodes are up and live
 2. A part of 3 nodes are up and live.
 3. None of the nodes are up and live - Neither can we accept data nor can we serve it (key context). This is partial outage.
