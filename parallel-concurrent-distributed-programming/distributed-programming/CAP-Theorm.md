@@ -14,13 +14,16 @@ We want our system to be **partition tolerant** - this means that system should 
 
 Network failures in distributed system are unavoidable. We need to tolerate network partitions
 
+> 3 phase commit under network partition is not able to recover.
+
 ## Availability
 Availability characteristics of distributed system says that the system is always available in terms of read/write request for stored data. This means that every request is met with a non-error response. However, it does not guarantee the freshness or consistency of data.
 
 ## Consistency
 For every read to data in distributed system, the most recent written (and consistent) value is returned. An error is returned if we cannot find one.
 
-Now CAP theorem states that:
+### CAP Theorem
+CAP theorem states that:
 
 Any **distributed data store** can only provide two of the following three guarantees:
 * Consistency: Every read receives the most recent write or an error.
@@ -34,7 +37,7 @@ Thus, if there is a network partition, one has to choose between consistency and
 
 > Eric Brewer argues that the often-used "two out of three" concept can be somewhat misleading because system designers only need to sacrifice consistency or availability in the presence of partitions, but that in many systems partitions are rare.
 
-> AP(Availability and Partition tolerance): When availability is chosen over consistency, the system is will always process the client request and try to return the most recent available version of the information even if it cannot guarantee it is up to date due to network partitioning.
+> AP(Availability and Partition tolerance): When availability is chosen over consistency, the system will always process the client request and try to return the most recent available version of the information even if it cannot guarantee the data is up-to-date due to network partitioning.
 ![](images/Availability-Prioritized.png)
 
 > CP(Consistency and Partition tolerance): When consistency is chosen over availability, the system will return an error or time-out if particular information cannot be updated to other nodes due to network partition or failures.
