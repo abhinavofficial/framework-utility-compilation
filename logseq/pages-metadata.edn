@@ -1,30 +1,33 @@
 [{:block/name "1",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "1/59",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "1/59/0-release",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "12-factors",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "a",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
+ {:block/name "apache kafka",
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "apache-arrow",
   :block/created-at 1644085188171,
   :block/updated-at 1644085203598}
  {:block/name "apache-arrow-integration",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "apache-orc",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "apache-parquet",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "apr 12th, 2022",
   :block/created-at 1649721600000,
   :block/updated-at 1649721600000}
@@ -41,104 +44,149 @@
   :block/created-at 1650592740838,
   :block/updated-at 1650619056943}
  {:block/name "areweguiyet.com",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "arrow-flight",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "b",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "behavioral patterns",
-  :block/created-at 1650619999717,
-  :block/updated-at 1650619999717}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "behavioral-patterns",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "c",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "c and c++",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "c++ and java",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "c-cpp",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "cap-theorm",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "card",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "code-quality",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "cohesion and coupling",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "cohesion-coupling",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "commit protocols and failure recovery",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "commit-protocols-failure-recovery",
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "community-gathering-ignite3alpha4-1602022",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
+ {:block/name "consensus protocol",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "consensus-paxos",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
+ {:block/name "consensus-protocols",
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "consensus-raft",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "contents",
   :block/created-at 1644112876821,
   :block/updated-at 1644112877449}
  {:block/name "cpp-java",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "crate_bytes",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "crate_dashmap",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "crate_parking_lot",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "creational patterns",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "creational-patterns",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
+ {:block/name "dataflow parallelism",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "datamesh",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "deployments",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "design patterns",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "design-patterns",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "distributed architecture pattern",
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
+ {:block/name "distributed locks in zookeeper",
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
+ {:block/name "distributed locks with redis",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "distributed systems architecture",
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
+ {:block/name "distributed time",
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
+ {:block/name "distributed-architecture-pattern",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "distributed-lock-in-redis",
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
+ {:block/name "distributed-lock-in-zookeeper",
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
+ {:block/name "distributed-systems-architecture",
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
+ {:block/name "distributed-time",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "document-db-mongodb",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "doing",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "done",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "egromova@gridgain.com",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "favorites",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "feb 10th, 2022",
   :block/created-at 1644457168968,
   :block/updated-at 1644457195051}
@@ -194,77 +242,89 @@
   :block/created-at 1644370827097,
   :block/updated-at 1644422347360}
  {:block/name "feb-2022",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "feb-2022-aarondavidson",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "feb-2022-amplab-spark",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "feb-2022-rust",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "fpvsoop",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "functional and object-oriented design",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
+ {:block/name "functional parallelism",
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "good-code-practices",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "graphdb-neo4j",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "here",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "ignite-kubernetes-essentials-training-17032022",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "ignite3",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "in-progress",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "inheritance and composition",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "inheritance-composition",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "internal-of-spark",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "jan 2022",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "jan-2022-go",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "jan-2022-rust",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "knowledge management",
   :block/created-at 1644083997869,
   :block/updated-at 1644113160653}
  {:block/name "language perspective",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "later",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "learning_from_gridgain_2202222",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "log",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "logseq",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "loop parallelism",
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
+ {:block/name "main memory database concurrency",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "main-memory-database-concurrency",
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "mar 10th, 2022",
   :block/created-at 1646895963546,
   :block/updated-at 1646895963546}
@@ -292,93 +352,120 @@
  {:block/name "mar 9th, 2022",
   :block/created-at 1646784000000,
   :block/updated-at 1646784000000}
+ {:block/name "may 13th, 2022",
+  :block/created-at 1652406492154,
+  :block/updated-at 1652406533105}
+ {:block/name "may 4th, 2022",
+  :block/created-at 1651631099703,
+  :block/updated-at 1651631654172}
+ {:block/name "may 5th, 2022",
+  :block/created-at 1651708800000,
+  :block/updated-at 1651708800000}
  {:block/name "memory-management",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "module_marker",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "modules and functions",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
+ {:block/name "multi-threading-multi-processing",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "mysql",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "nextbigthing",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "nosql-database",
-  :block/created-at 1650619999717,
-  :block/updated-at 1650619999717}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "now",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "obsidian",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "productivity",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "program-structure",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "pyschology-insights-advertisement",
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "readme",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "relational-database-design",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "self-improvement",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "sharding",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "snowflake-webminar-1603",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "snowflake-webminar-1703",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "snowpark",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "solid",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "solid-design-principle",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "structural patterns",
-  :block/created-at 1650619999720,
-  :block/updated-at 1650619999720}
+  :block/created-at 1652406535178,
+  :block/updated-at 1652406535178}
  {:block/name "structural-patterns",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "sync",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "task parallelism",
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
+ {:block/name "task-parallelism",
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "todo",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "traits_send",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
+ {:block/name "transaction concurrency control",
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
+ {:block/name "transaction-concurrency-control",
+  :block/created-at 1652406535176,
+  :block/updated-at 1652406535176}
  {:block/name "wait",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "waiting",
-  :block/created-at 1650619999718,
-  :block/updated-at 1650619999718}
+  :block/created-at 1652406535175,
+  :block/updated-at 1652406535175}
  {:block/name "webcast-vmware-tanzu-cloud-native",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "wide-column-db-cassandra",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "wrapper",
-  :block/created-at 1650619999719,
-  :block/updated-at 1650619999719}
+  :block/created-at 1652406535177,
+  :block/updated-at 1652406535177}
  {:block/name "writing good code",
-  :block/created-at 1650619999720, 
-  :block/updated-at 1650619999720}]
+  :block/created-at 1652406535178, 
+  :block/updated-at 1652406535178}]
