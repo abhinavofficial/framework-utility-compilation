@@ -42,3 +42,20 @@ Electromechanical systems can really make dramatic shifts in life.
   * Take proactive actions - lead time, supply chain
 * Smart Devices
 * Systems - Productivity increase
+
+## IoT - Elements
+* Sensor - They sense, signal conditioning and collect data. Examples: Sensor for temperature, pressure, air quality. Sensor with something else can be device.
+* Communication - Wired and wireless. Examples: LAN, Modbus, WiFi, GSM. This forms the backbone of how sensors and other systems would exchange data and solve for purpose. It can be peer-to-peer or network.
+* Gateway - Immediate component. Pre-process, filter, process (convert into a format which a server can understand), aggregate. A gateway can support multiple protocols - it can have digital input-output, RS232, RS485, LAN, USB, etc.
+* Server - Collect, pre-process, process. It also stores in persistent storage (Database)
+* Access Systems - Allows access to various components of IoT Elements
+
+
+
+
+
+## Use Case - Telematics
+
+## Use Case - Telemetry
+
+## Demo - Temperature Data Collection

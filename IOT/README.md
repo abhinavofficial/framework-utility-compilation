@@ -1,7 +1,7 @@
 # Internet of Things
 
 * [Introduction to IoT](intro-to-iot.md)
-* IoT Architectures
+* [IoT Architectures](iot-architecture.md)
 * IoT Case Studies
 * Live Demo
 * MQTT Broker installation and configuration
