@@ -13,11 +13,12 @@ It is a very broad topic where we monitor something by collecting information ov
   * Temperature, Humidity, Air Quality
   * App-based configuration
 * Gateway
-  * Device-transmit data to server
+  * Device (mobile app) - transmit data to server
 * Cloud server
   * Data Collection framework
   * Saves data in database
   * Data process and analyse the data
+  * Send control data back to sensor directly or via gateway
 * Browser/App
   * View data - Analysis/Trends
   * Report Analytics
