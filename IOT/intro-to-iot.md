@@ -49,13 +49,3 @@ Electromechanical systems can really make dramatic shifts in life.
 * Gateway - Immediate component. Pre-process, filter, process (convert into a format which a server can understand), aggregate. A gateway can support multiple protocols - it can have digital input-output, RS232, RS485, LAN, USB, etc.
 * Server - Collect, pre-process, process. It also stores in persistent storage (Database)
 * Access Systems - Allows access to various components of IoT Elements
-
-
-
-
-
-## Use Case - Telematics
-
-## Use Case - Telemetry
-
-## Demo - Temperature Data Collection

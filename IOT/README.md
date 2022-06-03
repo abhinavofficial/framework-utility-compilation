@@ -2,8 +2,7 @@
 
 * [Introduction to IoT](intro-to-iot.md)
 * [IoT Architectures](iot-architecture.md)
-* IoT Case Studies
-* Live Demo
+* [IoT Use Cases](use-cases/iot-use-cases-demos.md)
 * MQTT Broker installation and configuration
 
 ## Source
