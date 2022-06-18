@@ -7,8 +7,8 @@ The objectives will be to :
 
 For that, we will cover -
 * [Introduction to Edge Computing](introduction.md)
-* Edge Computing Architecture
-* Edge Computing Case Study
-* Edge Computing Software Frameworks
+* [Edge Computing Architecture](architecture.md)
+* [Edge Computing Software Frameworks](edge-computing-software-framework.md)
+* [Edge Computing Case Study on Smart City](../use-cases/iot-use-case-smart-city.md)
 
 

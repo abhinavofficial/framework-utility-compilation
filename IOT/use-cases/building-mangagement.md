@@ -1,7 +1,18 @@
 # Building Management
 
 ## Use Case
-Corridor lighting, cleanliness of washrooms, whether ATM is on or off, Multiple such facilities across the country. Designing the
+A typical Facility Management Company
+* Manage Facilities at multiple locations
+* Local and Central Monitoring
+Typical Facility Management (Subsystems)
+* Parking
+* Lighting
+* Water Supply
+* Electricity Supply
+* Washrooms
+* Fire & Safety Systems
+
+Let's focus specifically on corridor lighting, cleanliness of washrooms, whether ATM is on or off, Multiple such facilities across the country. Designing the
 
 ## Architecture
 
@@ -23,6 +34,10 @@ Gateway to Server - MQTT over TCP.
 
 Notification, Alarms, reports, etc.
 
+## Edge computing
+Edge computing at the gateway makes it happen
+* Local processing - alerts (Edge)
+* Batch data to the central system (Cloud) - reports, trends, preemptive alerts, optimal usage of power, resources, etc.
 
 ## Network Elements and Protocol
 
@@ -42,3 +57,4 @@ Data exchange over object using Bluetooth profile.
 Data format from gateway to server and back - JSON
 
 Devices could be battery operated.
+
