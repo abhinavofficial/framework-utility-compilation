@@ -10,6 +10,8 @@ There are some very popular edge computing software frameworks from various manu
 
 ## AWS Greengrass
 
+[Source](https://aws.amazon.com/greengrass/)
+
 ### What is it?
 
 * Open source runtime and software services for edge servers

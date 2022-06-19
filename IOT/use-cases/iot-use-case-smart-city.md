@@ -1,9 +1,11 @@
 # Use Case - Smart City 22m0
 
+City is a densely populated area with less agricultural footprint and high commercial activity with significant urban assets, services and flows.
+
 ## Goals of Smart City
-* Manage urban assets, services and ﬂows
+* Manage urban assets, services and flows
 * Respond to various challenges in real-time or optimal time
-* Build a balanced city ecosystem 
+* Build a balanced city ecosystem
 * Long Lasting, Upgradable and Maintainable Systems
 
 ## What makes a city smart?
@@ -20,7 +22,7 @@
 ## How is a city made smart?
 * Use of electronic methods and sensors/instrumentation to collect data
   * Measurements & metering
-    * Water, electricity metering and monitoring
+    * Water and electricity metering and monitoring
   * Monitor the services
     * Street and Community Lighting, Traffic
   * Manage the flow of services
@@ -29,9 +31,9 @@
     * CCTV Cameras, Anomaly alerts (Water levels, Pollution levels)
   * Public Places
       * Sports Complexes, Malls, and Gardens
-* Analyse the data to gain insights
+* Analyse the data to gain insights which can provide patterns for further improvement 
 * Connect entities - Buildings, Services (Fire & Safety, Transportation)
-* Enable interactions with systems and community 
+* Enable interactions with systems and community
 
 > It’s all about an ecosystem which thrives, sustains and grows
 
@@ -63,11 +65,11 @@ Fire Detection & Monitoring
 * Alert notiﬁcations
   * Fire Department and first responders
   * Hospitals
-  * Transportation
+  * Transportation for evacuation
 
 IoT provides
 * Cityscape for “normal operation” - heatmaps
 * Detection of anomalies and multiple system notifications
-* Interconnected systems and collaboration mechanisms
+* Interconnected systems and collaboration (including crowd-sourcing) mechanisms
 
 ![use-case-example-fire-safety](../images/use-case-example-fire-safety.png)

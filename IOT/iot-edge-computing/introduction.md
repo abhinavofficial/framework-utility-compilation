@@ -43,7 +43,7 @@ Or, if we visualize the same in a data view. Ensuring not all the data need to b
 * No aggregate analytics
 * Redundancy and recovery - harder to achieve both in terms of cost and maintenance (configurations)
 
-## Gateways to ML 9m
+## Gateways to ML
 We have seen gateways as intermediate computing hardware. Typical gateways are headless. These gateways have transformed IoT evolution. It all began with simple gateways.
 * Simple Gateways - Transfer data as-it-is from devices to upstream server
 * Later, it had increased storage - Store-and-forward on intermittent connections
