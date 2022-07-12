@@ -7,6 +7,7 @@
 * ["Things" in IoT](things/README.md)
 * [IoT Networking Protocols and Applications](networking/README.md)
 * [Edge Computing](iot-edge-computing/README.md)
+* [AWS IoT](aws-iot/README.md)
 
 
 ## Source
