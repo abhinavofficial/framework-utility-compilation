@@ -4,9 +4,8 @@ This module will also cover the AWS IoT.
 
 ## Skills/Tools Learnt
 
-All these following topics will be covered in a more detailed manner and in-depth along with applications and examples. 
-* [IoT Use Cases in HealthCare](../use-cases/use-case-healthcare.md)
-* AWS IoT Services 
+All these following topics will be covered in a more detailed manner and in-depth along with applications and examples. Let's evaluate few of the use cases [IoT Use Cases in HealthCare](../use-cases/use-case-healthcare.md). Based on these use cases and architecture requirements, we need a good cloud solution. This is where we will explore AWS cloud services.
+* [AWS Services](aws-services.md)
 * AWS IoT Core - Introduction and Concepts 
 * IoT Core and DynamoDB
 
