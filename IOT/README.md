@@ -8,6 +8,7 @@
 * [IoT Networking Protocols and Applications](networking/README.md)
 * [Edge Computing](iot-edge-computing/README.md)
 * [AWS IoT](aws-iot/README.md)
+* [Data Processing in IoT](data-processing/README.md)
 
 
 ## Source

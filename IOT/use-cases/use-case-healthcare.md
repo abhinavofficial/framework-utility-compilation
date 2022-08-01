@@ -81,7 +81,7 @@ Goal solving the problem - remove pain point, enhance the system, realize use ca
 
 #### Device Monitoring
 * Ensure “on” state and correct device functioning/diagnostics
-* Device hardware (battery, tampering) and software (updates, security) checks and alerts
+* Device hardware (battery, tampering) and software (updates, maybe via FOTA firmware over the air, security) checks and alerts
 
 #### Stakeholder Updates
 * Push to family members and healthcare staff on multiple communication channels
@@ -110,3 +110,5 @@ Heterogeneous data
 * Body temperature - Collected by Skin-touch wearable sensors
 * Activity - Collected by Movement and acceleration sensors
 * Location - Collected by GPS monitoring in wearable or mobile
+
+High quality data
