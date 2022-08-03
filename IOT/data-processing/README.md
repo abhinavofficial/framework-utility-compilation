@@ -8,9 +8,12 @@
   * Periodic: Seconds or Minutes in time window, to validate continuity of alert conditions or to generate mini-averages
 * Requires relatively low processing power but continuous high availability
 
+More on [Stream-Processing](stream-processing.md)
+
 ## Batch Processing
 * Data processed together in larger time periods
 * Builds data connections for trends, correlations, insights, historical analysis
 * Requires heavy processing power for limited time periods
 
+More on [Batch-Processing](batch-processing.md)
 
