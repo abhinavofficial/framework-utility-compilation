@@ -138,7 +138,7 @@ Take an example of **Fleet Management**. This involves -
 * Driving raw data collected frequently - per second
 * Computing determines type of operation and behaviour - abnormalities detected
 * Movement data sent periodically - Location, Aggregate data on driving characteristics 
-* Data - over a period of time - analysed for compare and contrast, and aggregate analysis on a monthly on quarterly basis
+* Data - over a period of time - analysed for compare and contrast, and aggregate analysis on a monthly or quarterly basis
 
 ## Tools and Frameworks
 * Storage - HDFS, HBase, DynamoDB, S3, Azure Blob

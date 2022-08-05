@@ -30,4 +30,17 @@
 * It gets its speed via in-memory processing.
 * Databricks as a company was created by the original authors of Spark and is the undisputed leader of spark. It is cloud-based.
 
+## Summary
+* Fast distributed computing using in-memory primitives
+* Offers real-time stream processing, interactive processing, graph processing, as well as batch processing in distributed, parallel process environment.
+* Handles limitations by previous paradigms like intensive disk usage, poor use of memory, linear workflows constraining use cases
+* Complex data flow definitions can be specified using Directed Acyclic Graphs (DAGs)
+  * Vertices are RDDs and edges are the operations applied on this RDDs.
+  * Prepared DAG is submitted to DAG Scheduler
+  * Processed in stages separated by data restructuring, and execution plan is optimized.
+* Data locality - Processing is scheduled based on closeness to data at process, node, rack levels
+  * Maps to distributed file systems like HDFS for optimal processing and on-disk persistence
+* Automatic partitioning and node distribution
+* Fault-tolerance by storing complete lineage and the ability to replay the whole pipeline for the failed partition
+
 Source: [Wiki](https://en.wikipedia.org/wiki/Apache_Spark)
