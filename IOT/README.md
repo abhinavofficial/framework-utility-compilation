@@ -9,6 +9,7 @@
 * [Edge Computing](iot-edge-computing/README.md)
 * [AWS IoT](aws-iot/README.md)
 * [Data Processing in IoT](data-processing/README.md)
+* [IOT-Analytics](analytics/README.md)
 
 
 ## Source
