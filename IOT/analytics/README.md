@@ -105,7 +105,73 @@ Time Series Data is a collection of immutable data points obtained by periodic (
 - Vehicle throughput at a busy traffic signal captured every five minutes
 - Anomalies detected in real-time heart rate measurements - Irregular
 
-Sub-types:
+### Sub-Types
 * Trend Analysis: Spectral analysis - Cyclic/Seasonal Behaviour, Auto-correlation, Change Visualization
 * Predictive Analysis: Extrapolation by curve fitting, Forecasting 
 * Anomaly Detection:Segment comparison against baseline models - Rule-based or ML
+
+### Example: Environmental Monitoring System Solution
+![](../images/environmental-monitoring-system-solution.png)
+
+### Amazon Time Stream (ATS)
+As appreciated, time series data are really huge, coming from heterogeneous systems. We need a very capability system to allow querying for historical data. Amazon Time Stream is fast, scalable and serverless time series database for IoT systems. It can handle trillions of data per day, up to 1000 times faster, at fractional cost. It manages cost by managing the lifecycle of this time series data. Typically, recent data is placed in memory and others can be moved to some cost optimized storage. While querying, both recent and historical data can be unioned within ATS while returning the result. It has built-in analytics functions, helping identify trends and patterns in realtime. See the overall generic flow -
+
+![](../images/amazon-time-series.png)
+
+## IoT Analytics - Tools and Frameworks
+
+### Popular Tools
+* AWS IoT Analytics
+* Azure Stream Analytics
+* IBM Watson IoT Platform
+* Thingspeak
+* Thingsboard
+* Apache StreamPipes
+
+### Libraries and Frameworks:
+* Scikit-Learn - Extensive library with implementations of various ML techniques including classification, regression and clustering
+* Tensorflow - Build neural networks and deep learning models on image and textual data
+* Pandas - Data exploration and pre-processing for machine learning modeling
+
+#### AWS IoT Analytics and its components
+
+##### General Flow
+
+![](../images/IoT-analytics-generic-flow.png)
+
+##### Components
+* **Channel**
+  * Ingest data from MQTT topics and publish to pipelines, can buffer data temporarily
+* **Pipeline**
+  * Transform and homogenize input data in various formats
+  * Clean up data outliers and data created due to errors
+  * Enrich data by adding relevant information - weather data based on time and location, addresses based on lat/long, etc.
+* **Data Store and DataSet**
+  * Processed data storage after pipeline processing
+  * Flexible time-series storage, provides SQL based querying capabilities
+  * Defined dynamic datasets based on queries and periodic ‘refresh’ updates
+* **Analysis**
+  * SQL queries based results
+  * Time-series analysis
+  * AWS Quicksight Visualization
+  * Hosted Jupyter notebooks for deeper analytics and machine learning
+
+## Analytics Scenarios and Use case
+
+### Some common scenarios
+* **Continuous Data Analytics**: Time series data, aggregate monitoring and predictive actions
+* **On-Demand Data Analytics**: ML model enhancements, Operational state updates, Predictive financial planning requirements
+* **ETL - Extract, Transform and Load**: Enrich and transform data from various sources, aggregate in common data models for further processing
+* **Data Visualization**: Visualization and BI tools for default and custom visualizations. Drive by business requirements, and operational and planning use cases
+
+### Use Case: Predictive Maintenance
+
+Towards the edge (AWS Greengrass)
+![](../images/predictive-maintenance-1.png)
+
+Let's focus on the Cloud section where analytics can happen.
+
+![](../images/predictive-maintenance-2.png)
+
+## Further studies
+* [AWS IoT Analytics](https://docs.aws.amazon.com/iotanalytics/latest/userguide/welcome.html)
