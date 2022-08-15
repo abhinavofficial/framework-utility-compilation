@@ -2,33 +2,16 @@
 
 [AWS Doc on EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)
 
+## Other considerations
+* AWS provides vCPUs
 
-## CPU Refresher
+### Capacity Reservation
+Capacity Reservations reserve capacity for your EC2 instances in a specific Availability Zone. You can launch instances into a Capacity Reservation if they have matching attributes (instance type, platform, and Availability Zone), and available capacity. It may cost extra.
 
-* A microcomputer has a CPU, Memory, I/O devices and business
-* The clock synchronizes all CPU operations
-* Control Unit (CU) coordinates the sequence of execution steps
-* ALU perform the arithmetic and logic operations
-* Memory storage holds the application code and data the program uses
-* Buses transfer data, address information and control signals.
+### EBS-optimized instance
+It enables additional, dedicated throughput between EC2 and Amazon EBS, and therefore improved performance for your Amazon EBS volumes
 
-![CPU](images/CPU.png)
-
-### The Clock
-* synchronizes all CPU and BUS operations
-* machine (clock) cycle measures time of a single operation
-* clock is used to trigger events
-* Basic unit of time, 1 GHz -> clock cycle = 1 ns
-* An instruction could take multiple cycles to complete, e.g. multiply in 8088 processor takes 50cycles.
-
-### CPU's job
-
-![](images/CPU-job.png)
-
-* Fetch
-* Decode
-* Fetch operands
-* Execute
-* Store output
-
-Number of vCPUs = Core count * Threads per core
+### Elastic Interface
+* Elastic Inference provides a cost-efficient hardware acceleration for deep learning inference for all EC2 instance types, at a fraction of the cost of standalone GPU instances.
+* CUDA is a parallel computing platform and programming model developed by NVIDIA for general computing on graphical processing units (GPUs). With CUDA, developers are able to dramatically speed up computing applications by harnessing the power of GPUs.
+* In GPU-accelerated applications, the sequential part of the workload runs on the CPU - which is optimized for single-threaded performance - while compute intensive portion of the application runs on thousands of GPU cores in parallel. When using CUDA, developers program in populated languages such as C, C++, Fortran, Python and MATLAB, and express parallelism through extensions in the form of a few basic keywords.
