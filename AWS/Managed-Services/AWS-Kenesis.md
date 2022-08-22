@@ -19,11 +19,11 @@ A Kinesis data stream is a set of shards. Each shard has a sequence of data reco
 A data record is the unit of data stored in a Kinesis data stream. Data records are composed of a sequence number, a partition key, and a data blob, which is an immutable sequence of bytes. Kinesis Data Streams does not inspect, interpret, or change the data in the blob in any way. A data blob can be up to 1 MB.
 
 ### Capacity Mode
-A data stream capacity mode determines how capacity is managed and how you are charged for the usage of your data stream. Currenly, in Kinesis Data Streams, you can choose between an on-demand mode and a provisioned mode for your data streams. For more information, see Choosing the Data Stream Capacity Mode.
+A data stream capacity mode determines how capacity is managed and how you are charged for the usage of your data stream. Currently, in Kinesis Data Streams, you can choose between an on-demand mode and a provisioned mode for your data streams. For more information, see Choosing the Data Stream Capacity Mode.
 
 With the on-demand mode, Kinesis Data Streams automatically manages the shards in order to provide the necessary throughput. You are charged only for the actual throughput that you use and Kinesis Data Streams automatically accommodates your workloads’ throughput needs as they ramp up or down. For more information, see On-demand Mode.
 
-With the provisioned mode, you must specify the number of shards for the data stream. The total capacity of a data stream is the sum of the capacities of its shards. You can increase or decrease the number of shards in a data stream as needed and you are charged for the number of shards at an hourly rate. For more information, see Provisioned Mode.
+With the provisioned mode, you must specify the number of shards for the data stream. The total capacity of a data stream is the sum of the capacities of its shards. You can increase or decrease the number of shards in a data stream as needed, and you are charged for the number of shards at an hourly rate. For more information, see Provisioned Mode.
 
 ### Retention Period
 The retention period is the length of time that data records are accessible after they are added to the stream. A stream’s retention period is set to a default of 24 hours after creation. You can increase the retention period up to 8760 hours (365 days) using the IncreaseStreamRetentionPeriod operation, and decrease the retention period down to a minimum of 24 hours using the DecreaseStreamRetentionPeriod operation. Additional charges apply for streams with a retention period set to more than 24 hours.
@@ -45,7 +45,7 @@ A partition key is used to group data by shard within a stream. Kinesis Data Str
 ### Sequence Number
 Each data record has a sequence number that is unique per partition-key within its shard. Kinesis Data Streams assigns the sequence number after you write to the stream with ```client.putRecords``` or ```client.putRecord```. Sequence numbers for the same partition key generally increase over time. The longer the time period between write requests, the larger the sequence numbers become.
 
-> Sequence numbers cannot be used as indexes to sets of data within the same stream. To logically separate sets of data, use partition keys or create a separate stream for each dataset.
+> Sequence numbers cannot be used as indexes to "sets" of data within the same stream. To logically separate sets of data, use partition keys or create a separate stream for each dataset.
 
 ### Kinesis Client Library
 The Kinesis Client Library is compiled into your application to enable fault-tolerant consumption of data from the stream. The Kinesis Client Library ensures that for every shard there is a record processor running and processing that shard. The library also simplifies reading data from the stream. The Kinesis Client Library uses an Amazon DynamoDB table to store control data. It creates one table per application that is processing data.
@@ -67,3 +67,17 @@ It then put it back in another (or same) destination (currently supported are S3
 We need to specify buffer size (upto 128MB) and buffer interval (from 60sec to 900sec), compression(GZip, Snappy or Zip), encryption, error logging to CloudWatch, IAM role, etc.
 
 https://docs.aws.amazon.com/streams/latest/dev/introduction.html
+
+## Kinesis Data Analysis
+* Interact with both Kinesis Data Streams and Kinesis Firehose
+* Useful to process and analyze streaming data with Standard SQL and enable sql execution against streaming sources (and using Flink)
+* Supports ingest data and writing data to/from Amazon Kinesis stream and kinesis firehose streaming sources
+* Result persistence using destination, most 
+* The source and kinesis analytics application must be SQL supported code based.
+
+### Use cases
+* Generate time series analytics
+* Feed real time dashboard
+* Creation of real time metrics
+* Analyzing Game data
+

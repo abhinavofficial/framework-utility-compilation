@@ -1,7 +1,20 @@
 # CloudWatch
 
 ## Salient Features
-Log group, in a single dashboard, export the logs in S3, alerts and notification
+Log group, in a single dashboard, export the logs in S3, alerts and notification,
+
+Logs for custom application from several instances via EC2 agent. Documentation [here](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-EC2-Instance.html)
+
+While setting up you specify log file, log group name, log stream name (EC2 instance id, hostname or custom), log event timestamp format, initial position of upload (from the start or end of the file), and more log files to configure (which is where we specify the custom application)
+
+## Working
+Event -> Rules
+
+Logs -> Log groups
+
+Metrics -> 
+
+Create an alarms
 
 ## Unified CloudWatch Agent
 The unified CloudWatch agent enables you to do the following:
