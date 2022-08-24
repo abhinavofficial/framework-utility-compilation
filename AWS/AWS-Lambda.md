@@ -1,5 +1,34 @@
-# Lambda
-Serverless compute service that lets you run code without provisioning or managing servers, c
+# AWS Lambda
+AWS Lambda is serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers.
+
+Run code without provisioning or managing infrastructure. Simply write and upload code as a .zip file or container image.
+
+Automatically respond to code execution requests at any scale, from a dozen events per day to hundreds of thousands per second.
+
+Save costs by paying only for the compute time you use—by per-millisecond—instead of provisioning infrastructure upfront for peak capacity.
+
+Optimize code execution time and performance with the right function memory size. Respond to high demand in double-digit milliseconds with Provisioned Concurrency.
+
+> Is function, not application. And it is containerized
+
+## How can you generate Lambda?
+Is can be generated
+* AWS UI
+* IDE
+* CLI can bundle
+* CI-CD pipeline can generate artefact
+
+To create a lambda function, you first create lambda function deployment package, .zip or .jar consisting of your code and any dependencies. When creating the zip, include only the code and its dependencies, not the containing folder. You will then need to set the appropriate security permissions for the zip package. The package must have a 755 permission.
+
+## Invocation Types
+AWS Lambda supports synchronous and asynchronous invocation of lambda function. You can control the invocation type only when you invoke a lambda function (referred to as on-demand invocation) using ```invoke``` operation.
+Your custom application can invoke a lambda function or you manually invoke a lambda using, say AWS CLI.
+
+However, when you are using AWS services as event sources, the invocation type is predetermined for each service. You have not control over the invocation type that these event sources use when they invoke your lambda function. 
+
+
+## Pricing
+1 million requests is free. It can be number of invocations, memory used, data exchanged, time (chunk of time) it takes.
 
 ## Features
 * Zero administration
