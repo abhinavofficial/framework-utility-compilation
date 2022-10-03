@@ -20,15 +20,6 @@
 | terraform apply    | will create/delete resources                                   |
 | terraform destroy  | will delete all the resources created by terraform             |
 
-
-VPC
-Subnet
-CIDR
-Internet Gateway
-Route table
-Route table association
-Security Group - egress and ingress
-
 * Scope: Identify the infrastructure of your project
 * Author: Write the configuration for your infrastructure
 * Initialize; Install the plugins Terraform needs to manage the infrastructure
@@ -63,6 +54,34 @@ Resources are the most important element in the Terraform language. Each resourc
 ### Data Sources
 Data sources allow Terraform to use information defined outside of Terraform, defined by another separate Terraform configuration, or modified by functions. Each provider may offer data sources alongside its set of resource types. More on this is present [here](https://www.terraform.io/language/data-sources)
 
+This means we can use pick some value as provided by some via data sources.
+
+```shell
+# Find the latest available AMI that is tagged with Component = web
+data "aws_ami" "web" {
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+
+  filter {
+    name   = "tag:Component"
+    values = ["web"]
+  }
+
+  most_recent = true
+
+  owners = ["982938239"] 
+}
+
+# The id can then be used here.
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.web.id
+  instance_type = "t1.micro"
+}
+
+```
+
 ### Using AWS as provider
 To install this provider, copy and paste this code into your Terraform configuration. Then, run terraform init.
 
@@ -84,3 +103,17 @@ provider "aws" {
 ```
 
 If you need to read on how to use terraform for any specific resource type, you can read [here](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+
+When we start to build out terraform documents, it is important to understand various details like VPC, Subnet, CIDR, Internet Gateway, Route table, Route table association and Security Group - egress and ingress, some of these concepts are covered under [Software-Design](../../Software-Design). Please read through under network-address section.
+
+## Provisioners
+You can use provisioners to model specific actions on the local machine or on a remote machine in order to prepare servers or other infrastructure objects for service.
+
+Terraform includes the concept of provisioners as a measure of pragmatism, knowing that there are always certain behaviors that cannot be directly represented in Terraform's declarative model.
+
+However, they also add a considerable amount of complexity and uncertainty to Terraform usage. Firstly, Terraform cannot model the actions of provisioners as part of a plan because they can in principle take any action. Secondly, successful use of provisioners requires coordinating many more details than Terraform usage usually requires: direct network access to your servers, issuing Terraform credentials to log in, making sure that all of the necessary external software is installed, etc.
+
+local-exec, remote-exec, connection,
+
+## Outputs
+to capture the output return from terraform.
