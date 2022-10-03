@@ -117,3 +117,9 @@ local-exec, remote-exec, connection,
 
 ## Outputs
 to capture the output return from terraform.
+
+## Next steps
+
+* [Terraform](https://www.terraform.io/docs)
+* [Terraform and AWS](https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/#:~:text=Terraform%20by%20HashiCorp%2C%20an%20AWS,Web%20Services%20(AWS)%20infrastructure.)
+* [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
