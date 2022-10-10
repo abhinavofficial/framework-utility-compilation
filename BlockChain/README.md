@@ -1,29 +1,35 @@
 # Blockchain
 
-## hash function
-Takes an arbitrary length input and returns a unique deterministic fixed length output. It is a one way function - you can generate output but cannot regenerate the original value from the hash output. There are many hash engines like Hashing engines supported: md2, md4, md5, sha1, sha224, sha256, sha384, sha512, ripemd128, ripemd160, ripemd256, ripemd320, whirlpool, tiger128,3, tiger160,3, tiger192,3, tiger128,4, tiger160,4, tiger192,4, snefru, snefru256, gost, gost-crypto, adler32, crc32, crc32b, fnv132, fnv1a32, fnv164, fnv1a64, joaat, haval128,3, haval160,3, haval192,3, haval224,3, haval256,3, haval128,4, haval160,4, haval192,4, haval224,4, haval256,4, haval128,5, haval160,5, haval192,5, haval224,5, haval256,5, etc.
+## Core Concepts
 
-[Online Hash Password](https://www.tools4noobs.com/online_tools/hash/)
+## BlockChain
 
+The private or permissioned blockchain have an authorization scheme to identify which participant/user is entering and has access to the blockchain network. Whereas, in a public or permissionless blockchain system, anyone can join the network and there are no restrictions when it comes to participation.
 
-Rainbow tables - is a precompiled tables of passwords and its hash values. To avoid, some companies like Google, will add some salt to the password - this is random generated value based on some algorithm and now this is what is hashed and saved.
+If we are running any particular protocol, what we see is blockchain that is the state of the transaction, this is available with all the nodes of the network.
 
-Hash is 
+There are three types of blocks that exist in different blockchains.
+* Genesis block: It is the first block of a blockchain
+* Valid blocks are all blocks that have been mined and added to the blockchain.
+* Orphan blocks: Blocks that are not part of the blockchain network
 
-## Encryption
-Two-way function
+This is how a distributed ledge is created and is available with all the nodes. There are pool of pending transactions which has to be confirmed. Any node in the network can pick up a transaction and convert it in a block and can attempt to add this block into a blockchain - this is the proposal state. To get the confirmation, rest of the nodes have to agree. For this agreement to happen, a consensus protocol has to be run.
 
-It is a means of securing data by encoding it
+Consensus protocols are the backbone of blockchain. It comprises some specific purposes which include collaboration, cooperation, equal rights to every node, coming to an agreement, and mandatory participation of each node in the consensus process. There are many consensus protocols. One of them is Proof of Work (PoW) - that involves solving a computationally challenging puzzle in order to create new blocks in the Bitcoin blockchain.
 
-Data encryption is the process that translates the data from its original form to another form. The original form of data is known as plaintext and the encrypted form of data is known as ciphertext. The ciphertext is decrypted by a secret key.
+In a bitcoin blockchain, the genesis block has the hash generated for that block. The following block has the hash of the previous hash and additional property and some leading zeros in the hash key. Each node agrees to solve this crypto puzzle. Whichever node solves it first makes the announcement to the rest, so the proposal for that node is accepted by the rest. This is how a blockchain progresses.
 
-[Difference between both of them](https://www.baeldung.com/cs/hashing-vs-encryption)
+Peer to peer network is based on zero trust, which no node trusts the other node. Each node keep its copy of blockchain and can verify if the next block getting added into the chain is the correct block. This means that building a blockchain is a very expensive process, and we can get only few blocks getting added per second as compared to traditional databases, where it can be in tens of thousands of records per sec. So, unless trust is the most important thing, we should not be implementing blockchain.
 
-There are two types of encryption. Symmetric and Asymmetric encryption.
+Key difference between blockchain and distributed database is that 
+* In distributed database, part of the transaction is run on multiple node across different sites either on the same network or on entirely different networks and as part of commit protocol, either all or none is accepted as change. Looking closely, each of these nodes in that sense are trusted nodes.
+* Immutable ledger in blockchain represents any record that has the ability to remain unaltered. It cannot be changed and therefore the data cannot be changed with ease, which in turn tightens the security.
 
-Asymmetric Encryption - public key and private key.
+## Issues in current systems
 
-* Create the cipher text using public key, and I can decipher it using private key. Example - Message interaction like Whatsapp
-* Create the cipher text using private key, and I can decipher it using public key. Example - Digital signature
-
-We will use Asymmetric encryption in Blockchain.
+| Issues with having a single Central Controller.                                                                     | Resolution |
+|---------------------------------------------------------------------------------------------------------------------|------------|
+| Failure in one controller, system availability becomes an issue                                                     ||
+| It is easy to attack a single controller, leading to security issues                                                ||
+| Since the data is kept at one single place, if the data is corrupted, the integrity of the entire system is at risk ||
+| Defects in a single controller is difficult to be checked.                                                          ||
