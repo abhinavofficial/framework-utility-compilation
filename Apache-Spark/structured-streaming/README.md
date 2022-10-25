@@ -92,6 +92,197 @@ accumulator.value should contain allOf (("player_1", 9), ("player_2", 12), ("pla
 case class CsvEntry(player: String, points:Int)
 ```
 
+## Watermarking
+Watermark - moving threshold of how late data is expected to be and when to drop old state.
+
+Trails behind max event time seen by the engine.
+
+Watermark delay = trailing gap
+
+Data newer than watermark may be late, but allowed to aggregate. Data older than watermark is "too late" and is dropped.
+
+Windows older than watermark automatically deleted to limit the amount of intermediate state.
+
+```scala
+parsedData
+        .withWatermark("timestamp", "10 minutes")
+        .groupBy(window("timestamp", "5 minutes"))
+        .count()
+```
+
+It is used only in stateful operations and ignored in non-stateful streaming queries and batch queries.
+
+Trade off between lateness tolerance and state size. The more late data processed, the more memory consumed.
+
+### Streaming Deduplication
+Drop duplicate records in a stream. Specify columns with uniquely identifies a record. Spark SQL will store past unique column values as state drop any record that matches the state.
+
+```scala
+userActions
+        .dropDuplicates("uniqueRecordId")
+```
+
+You can use watermark here. Timestamp as a unique column along with watermark allows old value in the state to be dropped. Records older than watermark delay is not going to get any further duplicates.
+
+Timestamp must be same for duplicate records.
+
+```scala
+userActions
+        .withWatermark("timestamp")
+        .dropDuplicates("uniqueRecordId", "timestamp")
+```
+
+## Arbitrary Stateful Operations
+
+Many use cases require more complicated logic than SQL ops.
+
+Two APIs - ```MapGroupsWithState``` and ```FlatMapGroupsWithState``` - General APIs for per-key user-defined stateful processing.
+
+### How to use MapGroupsWithState
+* Define the data structures - Input event, state data and output event.
+* Define functions to update state of each grouping key using the new data - grouping key, new data and previous state.
+```scala
+case class UserAction(userId: String, action: String)
+case class UserStatus(userId: String, active: Boolean)
+
+def updateState(userId: String, actions: Iterator[UserAction], state: GroupState[UserStatus]) : UserStatus = {
+  val prevStatus = state.getOption.getOrElse {
+    new UserStatus()
+  }
+  
+  actions.foreach {
+    action => prevStatus.updateWith(action)
+  }
+  
+  state.update(prevStatus)
+  
+  return prevStatus
+}
+```
+
+* User the user-defined function on a grouped Dataset
+```scala
+userActions
+        .groupByKey(_.userId)
+        .mapGroupsWithState(updateState)
+```
+
+> This works with both batch and streaming queries. In batch query, the function is called only once per group with no prior state
+
+
+#### Timeout
+When a group does not get any event for a while, then the function is called for that group with an empty iterator
+
+Must specify a global timeout type, and set per-group timeout timestamp / duration
+
+Ignored in a batch queries.
+
+##### How to use EventTime timeout?
+* Enable EventTimeTimeout in mapGroupsWithState
+* Enable watermarking
+* Update the mapping function - 
+  * every time function is called, set the timeout timestamp using the max seen event timestamp + timeout duration
+  * Update state when timeout occurs
+
+watermark is calculated with max event time across all groups.
+
+For a specific group, if there is no event till watermark exceeds the timeout timestamp,
+* then function is called with empty iterator, and hasTimedOut is set to true.
+* else function is called with new data, and timeout is disabled. Needs to explicitly set timeout timestamp everytime.
+
+Let's see with an example.
+
+```scala
+
+case class UserAction(userId: String, action: String)
+case class UserStatus(userId: String, active: Boolean)
+
+def updateState(userId: String, actions: Iterator[UserAction], state: GroupState[UserStatus]) : UserStatus = {
+  if(!state.hasTimedOut) {
+    val prevStatus = state.getOption.getOrElse {
+      new UserStatus()
+    }
+
+    actions.foreach {
+      action => prevStatus.updateWith(action)
+    }
+
+    state.update(prevStatus)
+
+    state.setTimeoutTimestamp(maxActionTimestamp, "1 hour")
+  } else {
+    userStatus.handleTimeout()
+    state.remove()
+  }
+  return prevStatus
+}
+
+userActions
+        .withWatermark("timestamp")
+        .groupByKey(_.userId)
+        .mapGroupsWithState(EventTimeout)(updateState)
+```
+
+##### How to use Processing-time timeout?
+Instead of setting timeout timestamp, function sets timeout duration (in terms of wall-clock-time) to wait before timing out. It is independent of watermark.
+
+> Note, query downtimes will cause lots of timeout after recovery.
+
+Let's see with an example.
+
+```scala
+case class UserAction(userId: String, action: String)
+case class UserStatus(userId: String, active: Boolean)
+
+def updateState(userId: String, actions: Iterator[UserAction], state: GroupState[UserStatus]) : UserStatus = {
+  if(!state.hasTimedOut) {
+    val prevStatus = state.getOption.getOrElse {
+      new UserStatus()
+    }
+
+    actions.foreach {
+      action => prevStatus.updateWith(action)
+    }
+
+    state.update(prevStatus)
+
+    state.setTimeoutDuration("1 hour")
+  } else {
+    userStatus.handleTimeout()
+    state.remove()
+  }
+  return prevStatus
+}
+
+userActions
+        .groupByKey(_.userId)
+        .mapGroupsWithState(ProcessTimeTimeout)(updateState)
+```
+
+### How to use FlatMapGroupsWithState
+
+More generic version where the function can return any number of events, possibly none at all.
+
+Let's see with an example.
+
+```scala
+case class UserAction(userId: String, action: String)
+case class UserStatus(userId: String, active: Boolean)
+
+def updateState(userId: String, actions: Iterator[UserAction], state: GroupState[UserStatus]) : Iterator[SpecialUserAction] = {
+}
+
+userActions
+        .groupByKey(_.userId)
+        .flatMapGroupsWithState(outputMode, timeoutConf)(updateState)
+```
+
+Function output mode gives spark insights into the output from this opaque function - these can be Update mode or Append mode. This allows spark SQL planner to correctly compose flatMapGroupsWithState with other operations.
+
+> Please note this output mode is not the same as query output.
+
+
+
 ## How to architect a structured streaming pipeline
 
 ### Pattern 1: ETL
@@ -162,7 +353,34 @@ streamingDataFrame.foreachBarch(
 ### Pattern 3.2: Joining multiple inputs (fast fact and dimension as fast)
 * **What and why**: input: two fast streams where either stream maybe delayed. Output is a combined information even if one is delayed over the other
 * **How**:
-    * **Process**: Use stream-stream joins in structured streaming. Data will be buffered as state. Watermarks define how long to buffer before giving up on matching
+    * **Process**: Use stream-stream joins in structured streaming. Data will be buffered as state using time constraint and watermarks. Watermarks define how long to buffer before giving up on matching
+
+Let's understand with an example.
+* Impressions can be 2 hours late. ```val impressionWithWatermark = impressions.withWatermark("impressionTime", "2 hours")```
+* Clicks can be 3 hours late. ```val clickWithWatermark = clicks.withWatermark("clickTime", "3 hours")```
+* A click can occur within 1 hour after the corresponding impression
+
+```scala
+impressionWithWatermark.join(
+  clickWithWatermark,
+  expr(
+    """
+      clickAdId = impressionAdId AND
+      clickTime >= impressionTime AND
+      clickTime <= impressionTime + interval 1 hour
+      """
+  ),
+  joinType = "letOuter" // can be inner (default) / leftOuter / rightOuter
+)
+```
+
+Left and right outer joins are allowed only with time constraints and watermarks. Needed for correctness, Spark must output nulls when an event cannot get any future match.
+
+Spark can calculate that
+* impressions need to be buffered for 4 hours
+* clicks need to be buffered for 2 hours
+
+Spark drops events older than these thresholds.
 
 ### Pattern 4: Change data capture
 * **What**: input: change data based on a primary key. Output is the final table after the changes
@@ -205,7 +423,7 @@ streamingDataFrame.foreachBarch( batchSummaryData =>
 Don't care about sources and sinks. Just test your business logic, using batch DataFrames. Pros: Easy to do in scala / python. Cons: Not all batch operations are supported in streaming
 
 #### Strategy 2
-Leverage the StreamTest test harness available in Apache Spark.
+Leverage the StreamTest test harness available in Apache Spark. Use MemorySource and MemorySink to test business logic.
 
 ```scala
 val input = MemoryStream[Array[Byte]]
@@ -258,13 +476,94 @@ Pros: Closest option to mirror production. Cons: Hard to set up and is expensive
 #### What else to watch out for?
 * Table schemas: Changing the schema/logic of one stream upstream can break cascading jobs
 * Dependency hell: The environment your local machine or continuous integration service may differ from Production. Think containerization here.
+* Stress Testing: Most times Spark isn't the bottleneck. In fact, throwing more money at your Spark clusters make the problem worse!. 
+  * Do not forget to tune your kafka brokers (num.io.threads, num.network.threads) or S3
+  * Most cloud services have rate limits, make sure you avoid them as much as you can
 
 ### Monitor
+Get last progress of the streaming query
+* Current input and processing rates 
+* Current processed offsets 
+* Current state metrics
+
+This can be run by
+```scala
+streamingQuery.lastProgress()
+
+{
+  ...
+  "inputRowsPerSecond": 10024,
+  "processedRowsPerSecond": 10063
+  "durationMs" : { .. }
+  "sources" : [ .. ]
+  "sink" : { .. }
+  ...
+}
+```
+
+This should be done asynchronously using StreamQueryListener API
+```scala
+new StreamingQueryListener {
+  def onQueryStart(...)
+  def onQueryProgress(...) //every epoch
+  def onQueryTermination(...)
+}
+```
+
+Once you have this, you can push the data to AWS CloudWatch or Apache Kafka
+
+Even if you are running a map-only job, you can add a watermark. This allows you to collect event time min, max, average in metrics.
+You can add current_timestamp() to keep track of ingress timestamps - ```udf(() => new java.util.Timestamp(System.currentTimeMillis))``` to get accurate processing timestamp
+
+Start streams on your tables for monitoring and building streaming dashboards. Use ```display(streaming_df)``` to get live updating displays in Databricks. Use foreach/foreachBatch to trigger alerts.
 
 ### Deployment
+* **Multiplex** many streams on a single cluster
+  * Pros:
+    * Better cluster utilization
+    * Potential Delta cache re-use
+  * Cons:
+    * Driver becomes a bottleneck. This happens primarily due to:
+      * Locks
+        * JSON serialization of offsets in streaming (Jackson)
+        * Scala compiler (Encoder creation)
+        * Hadoop Configuration (java.util.Properties)
+        * Whole Stage Codegen (ClassLoader.loadClass)
+      * Garbage Collection
+      * So, how many streams can you run on a single driver?
+        * This really depends on your streaming sources and sinks. Efficient Sources Delta Lake > Event based file sources > Kafka/Azure EventHub/Kenesis > Other file formats (JSON / CSV) can handle more streams. Similarly, efficient sinks kafka > delta lake > other file formats
+    * Determining how many streams on a clusters is difficult
+    * Load balancing streams across clusters also difficult
 
 ### Updating structured streaming jobs
+Most important thing here is checkpoint.
+* The checkpoint location is the unique identity of your stream
+* Contains:
+  * The id of the stream (json file named metadata)
+  * Source offsets (folder names sources, contains json files)
+  * Aggregation state (folder named state, contains binary files)
+  * Commit files (folder named commits, contains json files)
+  * Source Metadata (folder named sources)
 
+Based on files stored in a checkpoint, what can you change?
+* Sinks
+* Input/Output schema (in the absence of stateful operations)
+* Triggers
+* Transformations
+* Spark Versions
+
+Based on files stored in a checkpoint, what cannot you change?
+* Stateful operations: agg, flatMapGroupsWithState, dropDuplicates, join, etc. Neither below can be changed.
+  * Schema: key, value
+  * Parallelism: spark.sql.shuffle.partitions
+  * Can't add or remove stateful operators
+* OutputMode (will work, but semantics of stream has changed)
+* Sources
+
+To workaround these:
+* Restart stream from scratch
+  * Use new checkpoint location - avoid eventual consistency on S3
+  * Partition source tables by date, restart stream from a given date
 
 ## Spark 3.3.0 improvements
 
@@ -343,7 +642,7 @@ RocksDB is the state store added in the Spark 3.2.0 release. A new configuration
 
 New metrics ``block-cache-usage`` is also added.
 
-![](images/issue-fix-stream-to-stream-processing.png)
+![](../images/issue-fix-stream-to-stream-processing.png)
 
 ## Distribution and ordering for DataSource V2 writes
 
@@ -373,3 +672,7 @@ Note the ```val newQuery = DistributionAndOrderingUtils.prepareQuery(write, quer
 * [Structed Streaming](https://www.waitingforcode.com/apache-spark-structured-streaming/structured-streaming/read)
 * [What new in Spark 3.3.0](https://www.waitingforcode.com/apache-spark-structured-streaming/what-new-apache-spark-3.3.0-structured-streaming/read#trigger_once_multiple_batches)
 * 
+
+
+## Open queries
+* How to find bottlenecks in a pipeline
