@@ -39,3 +39,4 @@ The first way to reduce memory consumption is to avoid the Java features that ad
 * Avoid nested structures with a lot of small objects and pointers when possible.
 * Consider using numeric IDs or enumeration objects instead of strings for keys. 
 * If you have less than 32 GiB of RAM, set the JVM flag -XX:+UseCompressedOops to make pointers be four bytes instead of eight. You can add these options in spark-env.sh.
+* If your objects are still too large to efficiently store despite this tuning, store them in serialized form like MEMORY_ONLY_SER. In such case, please use Kryo since it leads to small size.

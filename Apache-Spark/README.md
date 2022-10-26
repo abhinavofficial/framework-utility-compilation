@@ -3,8 +3,10 @@
 * [Introduction](intro-to-spark.md)
 * [Architecture](architecture/README.md)
 * [Spark Streaming](structured-streaming/README.md)
-* [Performance Optimization](best-practices/performance-best-practices.md)
-* 
+* Performance Optimization and Best Practices
+  * [Memory Management](best-practices/memory-management.md)
+  * [Garbage Collection](best-practices/garbage-collection.md)
+  * [Performance Best Practices](best-practices/performance-best-practices.md)
 * Spark Integrations
   * [With Snowflake](Snowflake/Snowpark.md)
   * [With Apache Arrow](apache-arrow/Apache-Arrow-Integration.md)
