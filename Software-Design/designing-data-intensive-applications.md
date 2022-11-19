@@ -30,7 +30,9 @@ Usually difficult to detect and often lie dormant for a long time until they are
 ### Scalability
 It is about measuring load and performance, Latency percentile throughput and is often used to describe a system's ability to cope with increased load.
 
-**Load** can be described with few numbers, called _load parameters_. This is system dependent and are numbers like _requests per second_, _ratio of reads to writes in a database_, _hit rate on a cache_. Essentially load is very closely related to system bottlenecks.
+**Load** can be described with few numbers, called _load parameters_. This is system dependent and are numbers like _requests per second_, _ratio of reads to writes in a database_, _hit rate on a cache_, _number of records process per second_ or _time taken to run a job on dataset of a certain kind_. Essentially load is very closely related to system bottlenecks.
+
+It is important to describe **Performance** well.
 
 
 ### Maintainability
