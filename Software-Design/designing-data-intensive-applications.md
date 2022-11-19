@@ -40,7 +40,15 @@ Performance of a system is contextual - for a batch process, for example, it man
 
 > Latency and response time are often used synonymously, but they are not the same. The response time is what client sees which includes service time, network delays and queuing delays. Latency is the duration that a request is waiting to be handled - during which it is _latent_, awaiting service.
 
+For a similar workload, you might see different response time - this may be due many factors, including page faults, TCP retransmission, GC pauses, etc. In general, we tend to report average response time (more like arthematic average), but it may not be a good way to look at performance metric. **Percentile** is more reasonable way to look at this. If you take all the response times and sort them from fastest to slowest, _median_, also known as _50th percentile_ or _p50_ is the half way point.
 
+In order to figure out how bad your outliers are, you can look at higher percentile, 95th, 99th and 99.9th percentile aka p95, p99 and p999. High percentile of response times, also known as _tail latencies_, are important because they directly affect users' experience of the service. 
+
+> In fact, if you look closely, the customer impacted here are those who use your data the most and are perhaps the most valuable. We need to determine what percentile is required to be optimized while law of diminishing returns in view.
+
+Percentiles are often used in _service level objectives_ (SLO) and _service level agreements_ (SLA), contracts that define the expected performance and availability of a service. An example - SLA may state that the service is considered to be up if it has median response time of less than 2 sec and a 99th percentile under 5 sec, and the service may be required to be up at least 99.9% of the time.
+
+Queuing delays often account for a large part of the response time at high percentiles. For example, your spark job submitted on EMR may be waiting to be accepted, and then from getting into progress.
 
 ### Maintainability
 Operability, simplicity and evolability
