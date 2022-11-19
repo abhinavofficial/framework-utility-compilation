@@ -48,7 +48,8 @@ In order to figure out how bad your outliers are, you can look at higher percent
 
 Percentiles are often used in _service level objectives_ (SLO) and _service level agreements_ (SLA), contracts that define the expected performance and availability of a service. An example - SLA may state that the service is considered to be up if it has median response time of less than 2 sec and a 99th percentile under 5 sec, and the service may be required to be up at least 99.9% of the time.
 
-Queuing delays often account for a large part of the response time at high percentiles. For example, your spark job submitted on EMR may be waiting to be accepted, and then from getting into progress.
+_Queuing delays_ often account for a large part of the response time at high percentiles. For example, your spark job submitted on EMR may be waiting to be accepted, and then from getting into progress, commonly referred as _head-of-line blocking_. This test should happen to mimic real life scenario.
+
 
 ### Maintainability
 Operability, simplicity and evolability
