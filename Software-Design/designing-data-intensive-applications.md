@@ -30,9 +30,16 @@ Usually difficult to detect and often lie dormant for a long time until they are
 ### Scalability
 It is about measuring load and performance, Latency percentile throughput and is often used to describe a system's ability to cope with increased load.
 
-**Load** can be described with few numbers, called _load parameters_. This is system dependent and are numbers like _requests per second_, _ratio of reads to writes in a database_, _hit rate on a cache_, _number of records process per second_ or _time taken to run a job on dataset of a certain kind_. Essentially load is very closely related to system bottlenecks.
+**Load** can be described with few numbers, called _load parameters_. This is system dependent and are numbers like _requests per second_, _ratio of reads to writes in a database_, _hit rate on a cache_, _number of records processed per second_ or _time taken to run a job on dataset of a certain kind_. Essentially load is very closely related to system bottlenecks.
 
-It is important to describe **Performance** well.
+It is important to describe **Performance** well. There are two ways to look at this:
+* When you increase a load parameter and keep the system resources unchanged, how is the performance of your systems affected?
+* When you increase a load parameter, how much do you need to increase the resources if you want to keep the performance unchanged?
+
+Performance of a system is contextual - for a batch process, for example, it many be _throughput_ - the number of records processed per second or time time for the job, or for an online system, it may be response time.
+
+> Latency and response time are often used synonymously, but they are not the same. The response time is what client sees which includes service time, network delays and queuing delays. Latency is the duration that a request is waiting to be handled - during which it is _latent_, awaiting service.
+
 
 
 ### Maintainability
