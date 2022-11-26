@@ -27,3 +27,4 @@ ways in which such parameters can be passed to your container: through environme
 ### Ambassadors
 
 The ambassador pattern introduces introduces the concept where an ambassador container brokers interactions between the application container and the rest of the world. As with other single-node patterns, the two containers are tightly linked in a symbiotic pairing that is scheduled to a single machine.
+
