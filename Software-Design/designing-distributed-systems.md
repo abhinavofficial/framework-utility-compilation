@@ -18,6 +18,7 @@ used to add functionality to a container that might otherwise be difficult to im
 #### How to use?
 
 One of the other main advantages of using the sidecar pattern is modularity and reuse of the components used as sidecars. To be successful, it should be reusable across a wide variety of applications and deployments. By achieving modular reuse, sidecars can dramatically speed up the building of your application. However, this modularity and reusability, just like achieving modularity in highquality software development requires focus and discipline. In particular, you need to focus on developing three areas:
-* Parameterizing your containers
+* Parameterizing your containers: Each parameter represents an input that can customize a generic container to a specific situation. There are two
+ways in which such parameters can be passed to your container: through environment variables or the command line. Though either is feasible, I have a general preference for passing parameters via environment variables. 
 * Creating the API surface of your container
-* Documenting the operation of your container
+* Documenting the operation of your container: For every container image, the most obvious place to look for documentation is the Dockerfile from which the container was built. Focus on EXPOSE, ENV and LABEL. The names for these labels are drawn from the schema established by the Label Schema project. The project is working to establish a shared set of well-known labels. By using a common taxonomy of image labels, multiple different tools can rely on the same meta information in order to visualize, monitor, and correctly use an application. By adopting shared terms, you can use the set of tools developed in the community without modifying your image. Of course, you can also add whatever additional labels make sense in the context of your image.
