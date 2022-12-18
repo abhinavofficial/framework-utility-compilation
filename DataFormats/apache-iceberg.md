@@ -108,3 +108,5 @@ The solution relies on moving to a different implementation for persisting table
 Hence the implementation can be to _switch to preserving version using directory listing instead, so each writer will use CREATE(overwrite-=false) to create a new file to signal the new version while readers will have to list the versions directory and pick the highest value present at that particular moment in time_.
 
 **Iceberg Community may address and fix it differently**.
+
+## Taking Query Optimizations to the Next Level with Iceberg
