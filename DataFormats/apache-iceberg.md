@@ -20,3 +20,36 @@ Iceberg employs an elegant and proven design to these problems, Multi-Version Co
 Table metadata is stored as JSON. Each table metadata change creates a new table metadata file that is committed by an atomic operation. This operation is used to ensure that a new version of table metadata replaces the version on which it was based. This produces a linear history of table versions and ensures that concurrent writes are not lost.
 
 The atomic operation used to commit metadata depends on how tables are tracked and is not standardized by Iceberg. However, there is a default implementation for File System tables stored on HDFS like backends such as AWS (relies on the rename operation in AWS, which is guaranteed to be atomic if overwrite is set to true).
+
+## Time-Travel and Incremental Reads
+Beyond the reliability features described above Iceberg also brings a number of useful features such as Time Travel and Incremental Reads, enabled through its use and management of table metadata. Time-Travel is the ability to make a query reproducible at a given snapshot and/or time. Incremental Reads is the ability to query what has changed between two snapshots and/or times.
+
+### Querying By Snapshot (i.e. Time Travel)
+Querying a specific version of the table:
+```
+SELECT * FROM dataset VERSION AS OF {SNAPSHOT_ID}
+```
+Querying a specific version of the table:
+```
+SELECT * FROM dataset VERSION AS OF {ISO_8601_DATETIME}
+```
+### Querying for Deltas (i.e. Incremental Reads)
+Querying table for changes between snapshot versions:
+```
+SELECT * FROM dataset VERSION BETWEEN {START_SNAPSHOT_ID} AND {END_SNAPSHOT_ID}
+```
+Querying table for changes between start snapshot version to the current latest version:
+```
+SELECT * FROM dataset VERSION SINCE {START_SNAPSHOT_ID}
+```
+Querying table for changes that arrived between timestamps:
+```
+SELECT * FROM dataset VERSION BETWEEN {START_ISO_8601_DATETIME} AND {END_ISO_8601_DATETIME}
+```
+Querying table for changes that arrived after TIMESTAMP:
+```
+SELECT * FROM dataset VERSION SINCE {START_ISO_8601_DATETIME}
+```
+The above syntax shows types of queries that can now be expressed with DataSets backed by Iceberg tables.
+
+> Note: The syntax for both Time Travel and Incremental Read features allows for either Timestamp or Snapshot based predicates. Due to the distributed nature of writes, there is a risk of time drift. As a result, the use of Snapshot Ids is best practice when accuracy is a requirement.
