@@ -147,5 +147,5 @@ Hence the implementation can be to _switch to preserving version using directory
 
 
 ## Additional Resources
-* Dremio[dremio.com/subsurface/apache-iceberg]
-* Get hands on - [iceberg.apace.org/getting-started]
+* [Dremio Abstract](https://dremio.com/subsurface/apache-iceberg)
+* [Get hands on](https://iceberg.apace.org/getting-started)
