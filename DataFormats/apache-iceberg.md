@@ -110,3 +110,42 @@ Hence the implementation can be to _switch to preserving version using directory
 **Iceberg Community may address and fix it differently**.
 
 ## Taking Query Optimizations to the Next Level with Iceberg
+
+
+## Compaction: Enabled by Design
+* Asynchronously compact small files into fewer larger files
+* It being asynchronously helps balance the write-side and read-side trade offs
+* Input and output of compaction jobs can be different file types
+  * E.g. avro from streaming writes, compacted into larger parquet files for analytics
+* Scheduling/trigger and the actual compaction work is done by external tools
+  * Scheduling/triggering: scheduler, workflow tool, etc. - every hour of so, if required
+  * Compaction work execution: processing engine (e.g. Spark, Dremio)
+
+## Benefits of Apache Iceberg
+* **Efficiently make smaller updates**
+  * Make changes at the file level (128 or 256 MB)
+* **Snapshot isolation for transactions**
+  * Reads and writes don't interference with each other and all writes are atomic
+  * Concurrent writes
+* **Faster planning and execution**
+  * List of files defined on the write-side
+  * Column stats in manifest files used to eliminate files
+* **Reliable metrics for CBO**
+  * Done on write instead of "infrequent" expensive read job
+* **Abstract the physical, expose a logical view**
+  * Hidden partitioning
+  * Compaction
+  * Tables can change over time
+  * Data Engineers can transparently experiment with table layout
+* **Rich schema evolution support**
+* **All engine see changes immediately**
+* **Event listener**
+  * Like trigger in rdbms
+  * Cache and materialized view maintenance
+  * Incremental processing
+  * Future and pluggability
+
+
+## Additional Resources
+* dremio.com/subsurface/apache-iceberg
+* Get hands on - iceberg.apace.org/getting-started
