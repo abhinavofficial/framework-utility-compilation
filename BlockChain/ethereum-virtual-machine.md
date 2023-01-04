@@ -6,7 +6,7 @@
 * Huge, decentralized transaction-based state machine
 * Implemented by various open-source groups in multiple languages - Geth (Go), Aleth (C++), EthereumJS (Javascript), Trinity (Python), Parity (Rust), EthereumJ (Java), Hyperledger Besu (Java)
 
-![](../images/EVM-High-level-flow.png)
+![](images/EVM-High-level-flow.png)
 
 ## Internals
 
@@ -29,7 +29,7 @@
     * PUSH1- 3, MLOAD - 3, SLOAD (Storage load) - 800
     * GASLIMIT - 2, BLOCKHASH - 20, CREATE (contract) - 32000*
 
-![](../images/EVM-High-level-architecture.png)
+![](images/EVM-High-level-architecture.png)
 
 ## Specifics
 * Deterministic state machine, has to behave the same on all nodes across all programming language
@@ -43,3 +43,8 @@
   * Simple implementations lead to consistency
   * Will require more memory access 
   * Due to gas cost, writing contract code becomes particularly specialized
+
+## Further studies
+* [Ethereum Virtual Machine Opcodes](https://www.ethervm.io/)
+* [EVM Opcodes and Instruction Reference](https://github.com/crytic/evm-opcodes)
+* [Consensys-Quorum](https://consensys.net/quorum/)

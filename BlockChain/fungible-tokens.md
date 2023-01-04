@@ -1,3 +1,6 @@
+# Fungible Tokens
+
+
 ## Introduction
 * A token is a currency or digital asset in a limited environment on top of the blockchain
 * 'Fungible' means that each token is equivalent to any other token
@@ -34,44 +37,48 @@
 * Anyone can write and deploy their token system
 * Writing smart contracts is hard - especially for such a big use case
 * Multiple standard specifications proposed and implemented to facilitate token management
-* On Ethereum -> ERC-20 (Most popular), ERC-223, ERC-777
+* On Ethereum, there are several standards defined, like ERC-20 (Most popular), ERC-223, ERC-777
 * Standards also allow popular wallets to implement and allow management of multiple tokens for normal users
 
-## Fungible Tokens - ERC-20
-* Initiated by Vitalik Buterin, detailed proposal by Fabian Vogelsteller in 2015
+## Token Standard - ERC-20
+* Initiated by Vitalik Buterin, co-founder of Ethereum detailed proposal by Fabian Vogelsteller in 2015
 * Supports
   * Direct transfer - Normal transactions, buying, selling
-  * Pre-approval to allow later expense by a third party - Escrow, subscriptions, auto-deduction based on task completion or delivery
+  * Pre-approval to allow later expense by a third party - like Escrow Account, subscriptions, auto-deduction based on task completion or delivery
 * Contract API - Main functions:
   * _totalSupply_ - Returns the total tokens in the whole system
-  * _balanceOf(address_owner)_ - Returns the balance of any account, given the _owner address 
-  * _transfer(address_to, uint256_value)_ - Transfers _value to _to, from the current account 
+  * _balanceOf(address_owner)_ - Returns the balance of any account, given the address_owner 
+  * _transfer(address_to, uint256_value)_ - Transfers _value to _to, from the current account as default address
   * _approve(address_spender, uint256_value)_ - Allows _spender to transfer upto total _value from the current account to anyone else, in multiple transactions
   * _transferFrom(address_from, address_to, uint256_value)_ - Allows a pre-approved sender to send _value from _from to _to
   * _name_ - Returns name of the token
   * _symbol_ - Returns symbol of the token
 
-### Scale (on Ethereum)
+## Scale (on Ethereum)
 * 400,000+ different tokens
-* ~600 tokens with USD 1 million+ market cap 
+* ~600 tokens with USD 1 million+ market cap
 * Combined market cap of just the top 10 tokens is USD 100+ billion
 * ~300,000 daily active ERC-20 addresses
-* Just Tether (number one token by market cap) has 10% of all Ethereum transactions
+* Just Tether (one of the fungible token pegged on 1 USD) (number one token by market cap) has 10% of all Ethereum transactions
 
 ## Examples
-* Tether - Pegged at $1, USD ~30 billion market cap, digital equivalent of cash currency
+* Tether - Pegged at $1, USD ~30 billion market cap, digital equivalent of cash currency. It is very stable.
 * Binance BNB - ~$300, USD ~5 billion market cap, utility token for various goods/services
 * USD Coin - Pegged at $1, USD ~25 billion market cap, "Stable-coin" used in various financial services like payments, lending, trading, investing, etc.
-* HEX - ~$0.01, USD ~50 billion market cap, Certificates of Deposit (CD) - interest generation based on investments like a fund
+* HEX - ~$0.01, USD ~50 billion market cap. It helps with Certificates of Deposit (CD) - interest generation based on investments like a fund
 * Uniswap - ~$20, USD ~20 billion market cap, a cryptocurrency and token exchange with this token as the internal currency
 * Chainlink - ~$20, USD ~20 billion market cap, the largest provider of oracles, internal currency for usage payment
-* Theta - ~$6, USD ~6.5 billion market cap, video delivery using participating nodes who get paid in the token
+* Theta - ~$6, USD ~6.5 billion market cap, video delivery using participating nodes (on their free bandwidth) who get paid in the token
 
 ## ICO Examples
-* NEO - Smart contract-driven blockchain platform based in China
+* NEO - Smart contract-driven blockchain platform based in China in .Net
 * Ethereum - Ethereum itself launched with an ICO
 * NXT - Fintech focused blockchain platform
-* Filecoin, Storj - Cloud storage with users participating as nodes for storage
+* Filecoin, Storj - Cloud storage services with users participating as nodes for storage
 * Bancor - Cryptocurrency trading exchange
 * Sirin Labs - Security and privacy focused smartphones
-* Brave BAT - Web browser with reward for advertising views
+* Brave BAT - Web browser (compared against Edge and Chrome) with reward for advertising views
+
+## Further studies
+* [ERC-20 Token Standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)
+* 
