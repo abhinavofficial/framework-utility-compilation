@@ -83,7 +83,7 @@ Double spending is a flaw in digital cash that means that the same units of a cr
 * The trust is established by cryptographic protocols running behind the blockchain technology
 * All the parties must agree to make a chain in blockchain which is nearly impossible.
 
-> Peer 2 peer network is a simple network of computers where a group of computers are linked together with equal responsibilities and permissions for processing data.
+> Peer 2 peer network is a simple network of computers where a group of computers are linked together with equal responsibilities and permissions for processing data. It is a decentralized network communications model consisting of a group of devices (aka nodes) that collectively save and share files where each node behaves as an individual peer. P2P communication doesn't have a centralized administration or server, hence all nodes have equal power and perform the same tasks.
 
 #### Enhanced Security with Cryptocurrency
 

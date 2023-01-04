@@ -11,6 +11,8 @@ Consensus protocol: A distributed algorithm used to agree on data value(s)
 
 A correct process: Has not experienced a failure
 
+It is on a high level, a fault-tolerant mechanism utilized in a blockchain to achieve an agreement on a single state of the network among distributed nodes.
+
 ## Consensus Protocol - Shared Memory Model
 
 Let's assume there are n processes, P1, P2, ..., Pn sharing a common memory. All these processes can do a read or write on a shared memory but in exclusive fashion. Let's assume that the process will be conducting a full atomic operation - **compare-and-swap**. So, if all the processes start with the initial value of x which is present in the shared memory. The one process which is able to match this value and swap its value to y. Other process will fail the comparison and will not be able to do a swap and instead read y. At the end of the process, all the processes will have one single value of y being agreed (and a consensus is reached).

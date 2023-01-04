@@ -24,7 +24,7 @@ We will use Asymmetric encryption in Blockchain.
 * Blockchain account credentials
   * Private Key - Used for sending transaction information
   * Public Address - Used for receiving transaction information 
-* Is a one-way function
+* Is a one-way function. You can derive public key from the private key, but not vice versa.
 * Public Address are transformed from the public key
 * Private key leak can lead to complete cryptocurrency takeover and transfer
 * Private Key Example: L34EXrFCuxQCorfE66sxQe8Tyh71SyU8cc9z7HnbEWwW8YsgbvTw
