@@ -31,7 +31,7 @@
   * Generally run by a domain-based consortium or a federation
   * Different roles based on identity verification
   * Account identity is public (to creators) but transactions are private (from the outside world)
-  * Example - Ripple (real-time settlement between banks), Quorum (built by JP Morgan finance-domain, consortium-based)
+  * Example - [Ripple](https://ripple.com/) (real-time settlement between banks), [Quorum](https://consensys.net/quorum/) (built by JP Morgan finance-domain, consortium-based)
 
 ## Benefits
 * Low transaction fees - Creator can set any level for transaction/gas fees

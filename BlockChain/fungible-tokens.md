@@ -79,6 +79,8 @@
 * Sirin Labs - Security and privacy focused smartphones
 * Brave BAT - Web browser (compared against Edge and Chrome) with reward for advertising views
 
+> ERC (Ethereum Request for Comments) 721 is a data standard for creating non-conversable token. In ERC 721, each token is different and cannot be divided or directly exchanged for another ERC-721 token
+
 ## Further studies
 * [ERC-20 Token Standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)
 * 

@@ -11,7 +11,7 @@
 ## Internals
 
 * Stack-based architecture (LIFO). Its components are -
-  * Everything is 256-bit in length to match common attributes
+  * Everything is "256-bit" in length to match common attributes
   * Stack: Size 1024, 256-bit item length
   * Memory: Volatile (ROM or vROM), word (256 bit) addressable
   * Storage: Persistent, part of world state, 256 bits to 256 bits key-value store per account 
