@@ -339,7 +339,7 @@ contract DerivedImpl is BaseImpl {
 * **delegatecall**
   * Useful
     * To call contracts behaving as libraries and utilities
-    * For storage and computation separation
+    * For storage (which is attached to calling contract) and computation (which is attached to called contract) separation
     * For Proxy pattern
   * "msg.sender" and "msg.value" are of the original caller
   * Any storage action is done on variables of the calling contract

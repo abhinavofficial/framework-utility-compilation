@@ -1,7 +1,8 @@
 # Consensus
-Consensus: Coordinating processes agree on a data value that they require during computation. Examples:
+Consensus: Coordinating processes agree on a data value that they require during computation. It is a decision-making process accounting for the whole group. Consensus is not unanimous - majority should agree but everyone might not. Examples:
 * Choosing transactions to commit on a data store
 * Selecting an order of those transactions
+* A democratic election process voted by all citizen. Leader appointed based on various majority algorithm.
 
 Consensus protocol: A distributed algorithm used to agree on data value(s)
 * Non-trivial

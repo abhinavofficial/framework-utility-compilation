@@ -3,9 +3,14 @@
 
 * [Core Concepts](core-concepts.md)
 * [Basics of Blockchain](basics-of-blockchain.md)
-* [Transactions and Blocks](transactions-blocks.md)
 * [Blockchain Transaction](blockchain-transaction.md)
-* [Mining and Consensus](mining-consensus.md)
+* [Consensus in Blockchain](consensus-in-blockchain.md)
+* [Mining](mining.md)
+* [Ethereum Virtual Machine](ethereum-virtual-machine.md)
+* [Fungible Tokens](fungible-tokens.md)
+* [Private Permissioned Blockedchain](private-permissioned-blockchains.md)
+* [Solidity and Smart Contracts](solidity-and-smart-contracts.md)
+* [Remix IDE](remix-ide.md)
 
 
 ## More reading

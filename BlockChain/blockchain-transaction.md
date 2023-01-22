@@ -7,6 +7,39 @@
 * Financial transactions always include a financial asset - Bonds, money, shares, mortgages etc.
 * Bitcoin Blockchain - An effective and distributed way of conducting financial transactions
 
+### Properties of a Transaction
+* **A**tomicity: The total number of atoms in a molecule is known as its atomicity. In transaction world, it means to execution all the instructions or none. It is managed by typically by log, which is managed by Transaction Manager.
+* **C**oncurrency: The simultaneous execution of several instruction sequences is known as concurrency. In such cases, when both transactions are acting on same entity, there is a possibility of losing one of the changes made by a transaction. We need to ensure that this does not happen and systems always remains in a consistent state. This is where serializability of transactions comes into play - one transaction must complete before the other, even though they are running concurrently. The idea of serializability in a transaction aids in determining which non-serial schedule is appropriate and will preserve database consistency.
+* **I**solation: The transaction integrity visibility for other users and systems is governed by isolation. The effect of one transaction does not cause side effect on the other. For example, if transaction 1 is in progress and is change an entity. The other transaction should not be reading this data unless the transaction 1 has committed the change.
+* **D**urability: The committed transactions will endure indefinitely.
+
+In a distributed Transaction, multiple parts of the transaction is executed in different parts of the nodes. Here we need to ensure that either all parts of the transactions are committed or none of them to meet atomicity property of the transaction. To ensure atomicity, commit protocols are used. One such protocol is 2-phase commit.
+
+In a 2-phase commit protocol, there is a co-ordinator who initiate a commit protocol along side the participating nodes. In the first phase, co-ordinator initiates the prepare message and the participants have to respond with ready message when they are ready to commit. Post acknowledgement from all, co-ordinator initiates commit message in the 2-phase and participants have to acknowledge after committing the transaction.
+
+2-phase commit is resilient to any failure in 1st phase.
+* In case of a node failure, the co-ordinator can decide to send abort transaction post timeout period.
+* In case of co-ordinator failure, the nodes can run leader election algorithm (explains how a group of nodes without a leader can communicate with one another to select one of them as leader) post timeout. The transaction begins all over again.
+
+2-phase commit is also resilient to any failure in 2nd phase, but in a slightly different way.
+* In case of a node failure, when the failed node comes back in action, it would check and act per co-ordinators decision for the transaction.
+* In case of co-ordinator failure, the nodes can run leader election algorithm (explains how a group of nodes without a leader can communicate with one another to select one of them as leader) post timeout. The nodes already have the decision from the previous co-ordinator, which is then used to get to consistent state.
+
+2-phase commit will have problem if -
+* One of the participating nodes have failed along with co-ordinator and the other live nodes have not heard from the co-ordinator and the failed node did receive the message from the co-ordinator and acted on it before it failed.
+
+The 2-phase commit protocol is a standardised protocol that ensures that a transaction either commits or aborts at all the resource managers that it accessed. It avoids the undesirable result that the transaction commits at one resource manager and aborts at another.
+* Advantage: The information is reliable and always accessible.
+* Disadvantage: It is blocking protocol
+
+This protocol is meant for fail-stop failures. Fail-stop failure imitates crash failure where process behavior becomes arbitrary. Implementations of fail-stop behavior helps in detecting which processor has failed. If a system is not able to tolerate fail-stop failure, then it cannot tolerate crash.
+
+> Byzantine Fault Tolerance is a consensus algorithm introduced in the late 90s by Barbara Liskov and Miguel Castro. It is a feature of a distributed network to obtain consensus even when some nodes in the network respond with incorrect information or fail to respond.
+> Generally software failures are known as byzantine failures while hardware failures are fail-stop failures.
+
+Solving byzantine failure is slightly tricky and requires trust to be built. This is where Blockchain transactions differ from tradition distributed transactions.
+
+
 ## Main Phases of Blockchain Transaction
 Transaction dissemination
 Block Generation
@@ -21,14 +54,27 @@ Blockchain facilitates transaction between trust-less parties and without a comm
 * No special node for commit acceptance - Proportionate voting based consensus
 * Consensus building takes time - Dependent on propagation and acceptance
 
-Keep the previous hash, PoW and then publish the new block with new hash. PoW takes around 10mins and with 1 mb of hash, throughput can be 5-6 transactions per sec. In traditional network, the throughput would be 1600 to 2000 transactions per sec.
 
+Blockchain Network is a P2P network. Peer 2 Peer is a decentralized network communications model consisting of a group of devices (aka nodes) that collectively saves and share files where each node behaves as an individual peer. P2p communication doesn't have a centralized administration or server, hence all nodes have equal power and perform the same tasks.
+
+A client would submit a transaction to the network using his private key. A node having the public key of the client would be able to verify the ownership and content of the transaction. Once the transaction is submitted, it is submitted in the pool of transactions called mempoool which are yet to be committed. The nodes in the network can pick up set of transactions to create block. The nodes can chose the transactions, say on the basis of fee they would get. Once the block is generated, it would want to add this block in existing blockchain. To add, they need to run a consensus protocol (since there can other nodes picking similar set of transactions). Once they agree (meaning the miner has completed the PoW and the block has been has been broadcasted to other nodes to validate and then agree), the block is consistently added to blockchain by keeping the hash of the previous block.
+
+One of the consensus protocol is **proof of work**.In blockchain mining, miners validate transactions by solving a difficult mathematical puzzle called proof of work (PoW). In this protocol, the miners have to come up with a hash with specific property and n-number of leading zeros.
+
+Note: If the block is large, the propagation of the block to all the nodes can be significant. Hence the block size should be limited. It cannot be too small because that would mean very less number of transactions into a block. Mind that solving the PoW takes around around 10min. So, small block size can significantly drop the network throughput. Keep the previous hash, PoW and then publish the new block with new hash. PoW takes around 10mins and with 1 mb of hash, throughput can be 5-6 transactions per sec. In traditional network, the throughput would be 1600 to 2000 transactions per sec.
+
+> Private key is a 256-bit alphanumeric secure code that enables the holders to make cryptocurrency transactions and prove ownership of their holdings.
+> A public key is crytographic code that permits users to receive crytocurrencies into their accounts/wallets.
+> Private key to Public key is a one-way function. You can generate the public key based on private key and never vice-versa.
+> Consensus mechanism is a fault-tolerant mechanism utilized in a blockchain to achieve an agreeement on a single state of the network among distributed nodes.
+> Private key can be changed each 10 mins making it impossible even for the known quantum computer to crack the keys.
+> A bitcoin wallet is a digital crypto wallet that can hold Bitcoin allowing you to send and receive Bitcoin. A secure means to sell, buy, trade, and use cryptocurrencies.
 > Quantum computing is a novel form of computation that uses "quantum states" to solve logic puzzles that would require either an extraordinary amount of processing power or be virtually impossible for conventional supercomputer to solve. Quantum computers are also capable of simultaneously analysing enormous amounts of potential puzzle pieces and solutions.
 
 ## Blockchain solution for Transactions
 * **Initiation**: You request a transaction (typically from a wallet)
 * **Broadcasting**: Your transaction is broadcasted to a P2P network, which has many nodes
-* **Validation**: The network of nodes validates your transaction and your status using an algorithm. A verified transaction can involve cryptocurrency, contracts, records and other information.
+* **Validation**: The network of nodes validates your transaction and your status using an algorithm. A verified transaction can involve cryptocurrency, contracts, records and other information. (PoW or PoS)
 * **Blockchain**: The new block is then added to the existing blockchain that is permanent. No one can temper it. Once verified, your transaction is combined with other transactions to create a new block of data for the ledger.
 * **Completion**: Your transaction is complete.
 
@@ -115,10 +161,13 @@ scriptPubKey: OP_DUP OP_HASH160 1KePhdGYYR8mnw8rV9gDhvbcsLHiZuvWs2 OP_EQUALVERIF
 
 ## Structure of Block
 * A typical structure of block looks like this:
-  * **Block Header** - Has the information about merkle root, timestamp (epoch) and the previous block hash.
+  * **Block Header** - Has the information about merkle root, timestamp (epoch), nounce and the previous block hash.
   * **Block Identifiers** - These are used to identify blocks. For example block hash or block height.
   * **Transactions** - Complete list of all transactions part of the block.
 * A block could also include protocol information like version, size, transaction counter etc.
+
+![Block](images/block-component.png)
+
 
 ### Example block structure
 | Field               | Description                                                                                                |
