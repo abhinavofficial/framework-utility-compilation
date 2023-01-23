@@ -95,7 +95,7 @@ a node so that both the users can interact with Blockchain.
 * Validators/Miners also have access to the same memory pool. Once the transaction reaches
   memory pool. The validators start working over the same. 
 * The job of validators is to take the transaction out, verify the same and then start building up
-  a block. 
+  a block including its merkle root. 
 * The block parameters are dependent on the Blockchain for example in Bitcoin you can only
   add up to 1MB of transaction inside a block.
 * Once the transaction is added into a block. In public Blockchains. Validators perform a
@@ -161,10 +161,16 @@ scriptPubKey: OP_DUP OP_HASH160 1KePhdGYYR8mnw8rV9gDhvbcsLHiZuvWs2 OP_EQUALVERIF
 
 ## Structure of Block
 * A typical structure of block looks like this:
-  * **Block Header** - Has the information about merkle root, timestamp (epoch), nounce and the previous block hash.
+  * **Block Header** - Has the information about merkle root, timestamp (epoch), nounce, difficulty target and the previous block hash.
+    * **Merkle Root**: Hash of all the child nodes get you the parent hash. Going all the way up where there are no further parent (i.e. the root) is a hash which is called the merkle root. This is a special type of hash generated in order to facilitate the verification of data within a Merkle tree. A node with partial blockchain can use this information to verify the correctness of the chain.
+    * **Hash of previous block**: This is used to linking.
+    * **Nounce**: It stands for "Number Only Used oNCE" is a one-time randomly generated 32-bit number added to a hashed or encrypted block in a blockchain and assists in created a new block or validating a transaction. Only nounce in the miner's control to solve the crypto puzzle.
+    * **Difficulty target**: Based on different considerations. It is a measure of how difficult it is to mine a bitcoin block. A high difficulty implies that it would take more computing power to mine the same number of blocks, hences making the network more immune towards attacks.
+    * **State**: current balance, code and storage implemented in the smart control and others defines the state of the node (which is essence is the state of the blockchain).
   * **Block Identifiers** - These are used to identify blocks. For example block hash or block height.
   * **Transactions** - Complete list of all transactions part of the block.
 * A block could also include protocol information like version, size, transaction counter etc.
+  * **Version**: This is the protocol version that this block conforms to.
 
 ![Block](images/block-component.png)
 
@@ -191,7 +197,7 @@ scriptPubKey: OP_DUP OP_HASH160 1KePhdGYYR8mnw8rV9gDhvbcsLHiZuvWs2 OP_EQUALVERIF
 * In bitcoin blockchain we use SHA256 algorithm twice to get the block hash which can be used as a unique identifier.
 * As the hash value changes even if single bit of data is changed, that means no two hashes for blocks will have the same value. Thus making them unique.
 * Another entity, which is used for identifiers is block height.
-* Block height is defined as how many blocks are behind the current block. It’s like a floor in a building. For example, if we say block height is 100, that means 99 blocks are behind it.
+* Block height is defined as how many blocks are behind the current block. It is to either the location of a particular block in the blockchain relative to the first block or also referred to as a measure of the entire blockchain's length. It’s like a floor in a building. For example, if we say block height is 100, that means 99 blocks are behind it.
 
 ## Block Linking
 * Each block in blockchain has a unique hash and that is one of the most important aspect of blockchain.

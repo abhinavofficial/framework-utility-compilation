@@ -77,3 +77,9 @@ If the block size is too small, the throughput is reduced.
 
 ## Block withholding attack
 It mines but withholds with itself and keeps building within itself without publishing. When the time is appropriate, it publishes and attaches this to the blockchain. It may succeed as well due to the longest chain rule. It is also mean that the miner directly discards the block even though the block is legal. This attack will make the mining pool loose all the bitcoin rewards that are there within the block.
+
+## More studies
+* [Proof of Stake](https://en.bitcoin.it/wiki/Proof_of_Stake)
+* [Blockchain Architecture & Consensus protocols](https://www.mdpi.com/2073-8994/11/10/1198/htm)
+* [Blockchain Consensus](https://devopedia.org/blockchain-consensus)
+* [Proof of Elapsed Time](https://sawtooth.hyperledger.org/docs/core/releases/latest/architecture/poet.html)
