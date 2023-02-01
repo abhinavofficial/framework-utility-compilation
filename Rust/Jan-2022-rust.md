@@ -64,3 +64,6 @@ https://capnproto.org/
 
 ### smf
 https://github.com/smfrpc/smf
+
+## Serialization/Deserialization
+### https://serde.rs/

@@ -5,6 +5,8 @@
 * [Blockchain Transaction](blockchain-transaction.md)
 * [Consensus in Blockchain](consensus-in-blockchain.md)
 * [Mining](mining.md)
+* [Bitcoin Overview and Introduction to Smart Contract](bitcoin-smart-contract.md)
+* [Ethereum](ethereum.md)
 * [Ethereum Virtual Machine](ethereum-virtual-machine.md)
 * [Fungible Tokens](fungible-tokens.md)
 * [Private Permissioned Blockchain](private-permissioned-blockchains.md)
