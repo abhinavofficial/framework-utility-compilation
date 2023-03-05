@@ -106,4 +106,6 @@ https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html
 
 https://docs.docker.com/get-started/overview/
 
+https://docs.docker.com/get-started/resources/
+
 https://www.docker.com/resources/what-container/#/package_software

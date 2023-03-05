@@ -83,8 +83,9 @@ Use cases for StatefulSets are:
 
 [Kubernetes Learning](https://github.com/abhinavofficial/kubernetes-learning/blob/main/README.md)
 
+[Kubernetes Wikipedia](https://en.wikipedia.org/wiki/Kubernetes)
 
-
+[Nigel Poulton](https://nigelpoulton.com/video-courses/)
 
 
 
