@@ -22,7 +22,14 @@ For a wide inner source adoption (meaning a majority of projects run with an inn
 The execution of the inner source project is managed at the project level operating inline with policies, strategies and standards as defined by inner source program office. In general, the goal of an inner source project is to build out a project based on its vision. Typically, the base project is developed by a limited set of people to solve a particular problem or a set of related problems, which forms the purpose and vision of project. While the purpose and vision may change over the period of time, it generally is a refinement or expansion of the initial one. If its purpose resonates and finds utility with a larger group of people, one of the options is that the original team may want to turn the project into an inner source project to meet the demands for a larger group.
 
 ## The challenge
-This mode of development bring its own set of challenges. Let me take a dig on few of them.
+This mode of development bring its own set of challenges. These include:
+* Cultural Challenges
+* Middle management
+* Discoverability of inner-sourced software
+* Type of projects to apply open source methods to
+* Re-usability of inner-source software
+
+Let me take a dig on few of them.
 
 * How to ensure that purpose of the project is being respected?
 * How people get to discuss what should be built?
@@ -49,6 +56,7 @@ This document is structured in various sections to address key challenges as lis
 
 It follows an agile methodology and product development strategy for building out the inner source practices.
 
+* Chapter 0: InnerSource Patterns
 * Chapter 1: [Start small](start-small.md)
 * Chapter 2: [Prove the point](prove-the-point.md)
 * Chapter 3: [Derive the value](derive-the-value.md)
@@ -57,7 +65,15 @@ It follows an agile methodology and product development strategy for building ou
 * Chapter 6: [Do more till it does not work. Revise.](continuous-improvement.md)
 
 
-Open Source Maturity Model - https://survey.osmm.finos.org/551476
+## InnerSource Patterns
+The overall inner source relies on a product or project to drive a cycle of develop, publish, use/test and contribute.
+
+One way to address the challenges is to adopt InnerSource patterns, which is a level of abstraction showing a proven solution to a problem with a context.
+
+A pattern describes a problem and forces that lead to a context on which it applies. The pattern also describes the resulting context which we would like to achieve by applying resolution. A pattern has a meaningful title, list of authors and instances in which the pattern has been applied.
+
+A variant of this called a donut pattern, in which resolution is not known. One of the goals of inner sourcing to share your donut pattern with others, so that they can propose resolution. Knowledge is worth more when it is shared!
+
 
 ## Credits
 This document is inspired by
