@@ -1,4 +1,4 @@
-# Community based development
+# InnerSourcing
 
 Open source and inner source are similar in that they both involve collaboration and sharing of software development resources, but they differ in terms of their scope and target audience.
 
@@ -74,6 +74,8 @@ A pattern describes a problem and forces that lead to a context on which it appl
 
 A variant of this called a donut pattern, in which resolution is not known. One of the goals of inner sourcing to share your donut pattern with others, so that they can propose resolution. Knowledge is worth more when it is shared!
 
+https://patterns.innersourcecommons.org/
+
 
 ## Credits
 This document is inspired by
@@ -81,3 +83,7 @@ This document is inspired by
 * [Linux foundation Open source Guide](https://www.linuxfoundation.org/resources/open-source-guides)
 * [Open Source Guide](https://opensource.guide/)
 * [InnerSource Commons](https://innersourcecommons.org/)
+
+https://github.com/finos/reference-foss-policy/blob/master/src/FINOS-reference-FOSS-policy.adoc
+
+https://grafana.com/
