@@ -1,6 +1,6 @@
 
 
-Convince your leader
+## Convince your leader
 
 If innersource is working.
 
@@ -11,3 +11,7 @@ Organizations that use InnerSource experience benefits that are typical of open 
 * **Effective code reuse**: Code and architecture are discoverable and available across teams and the organization. 
 * **Strong collaboration**: Code reviews have less friction, communication becomes stronger, and contributions increase in number. 
 * **Healthy culture**: Silos are broken down, so developer job satisfaction improves, leading to better retainment and recruitment.
+
+## Building ecosystem around your project
+
+Contributing user libraries to Spark

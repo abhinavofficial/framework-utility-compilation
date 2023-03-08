@@ -1,3 +1,10 @@
+# Proving the point
+
+Congratulations. If you are now on this page, you have successfully initiated your inner source project started, and have started getting contribution. It is time for you to check the effectiveness of your inner sourcing. 
+
+## Checking on Cadence
+
+## 
 
 Contribution
 https://opensource.guide/how-to-contribute/
