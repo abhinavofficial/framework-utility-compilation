@@ -33,11 +33,47 @@ A monthly knowledge sharing session is another important cadence amongst the par
 A distribution list to include the community member for the project is a useful way to communicate. Microsoft team or any other such communication platform can also be used to communicate. Another alternative can be use of StackOverflow, where people can ask questions and get answers to.
 
 ## Create the Kanban board to implement the changes
-A publicly accessible Kanban board is a must. It can be on JIRA or GitLab. This the single version of truth for feature or bug list. Define clearly what each of the fields in the issue means, and how they should be populated. This allows the project to define new JIRA types, affected version(s), priority, fix version(s), resolution, state, components, labels, language, etc. - they just need to define each of the attributes and its valid values.
+A publicly accessible Kanban board is a must. It can be on JIRA or GitLab. This the single version of truth for feature or bug list.
 
 This board is not meant to collect ideas, raise questions, etc.
 
 Idea collection should happen within a confluence site under the project. Questions regarding usage can be managed on communication platform as defined in Way of Working.
+
+JIRAs are used to describe what should be fixed or changed, and high-level approaches, and pull requests describe how to implement that change in the project’s source code. For example, major design decisions are discussed in JIRA.
+
+Define clearly what each of the fields in the issue means, and how they should be populated. This allows the project to define new JIRA types, affected version(s), priority, fix version(s), resolution, state, components, labels, language, etc. - they just need to define each of the attributes and its valid values.
+
+Ultimately, define how you expect the JIRA to be managed. Please see below how Apache Spark does it for itself -
+
+* Find the existing Spark JIRA that the change pertains to.
+  * Do not create a new JIRA if creating a change to address an existing issue in JIRA; add to the existing discussion and work instead
+  * Look for existing pull requests that are linked from the JIRA, to understand if someone is already working on the JIRA
+* If the change is new, then it usually needs a new JIRA. However, trivial changes, where the what should change is virtually the same as the how it should change, do not require a JIRA. Example: Fix typos in Foo scaladoc
+* If required, create a new JIRA:
+  * Provide a descriptive Title. “Update web UI” or “Problem in scheduler” is not sufficient. “Kafka Streaming support fails to handle empty queue in YARN cluster mode” is good.
+  * Write a detailed Description. For bug reports, this should ideally include a short reproduction of the problem. For new features, it may include a design document.
+  * Set required fields:
+    * Issue Type. Generally, Bug, Improvement and New Feature are the only types used in Spark. 
+    * Priority. Set to Major or below; higher priorities are generally reserved for committers to set. The main exception is correctness or data-loss issues, which can be flagged as Blockers. JIRA tends to unfortunately conflate “size” and “importance” in its Priority field values. Their meaning is roughly:
+      * Blocker: pointless to release without this change as the release would be unusable to a large minority of users. Correctness and data loss issues should be considered Blockers for their target versions.
+      * Critical: a large minority of users are missing important functionality without this, and/or a workaround is difficult 
+      * Major: a small minority of users are missing important functionality without this, and there is a workaround
+      * Minor: a niche use case is missing some support, but it does not affect usage or is easily worked around
+      * Trivial: a nice-to-have change but unlikely to be any problem in practice otherwise 
+    * Component
+    * Affects Version. For Bugs, assign at least one version that is known to exhibit the problem or need the change
+    * Label. Not widely used, except for the following:
+      * correctness: a correctness issue
+      * data-loss: a data loss issue
+      * release-notes: the change’s effects need mention in release notes. The JIRA or pull request should include detail suitable for inclusion in release notes – see “Docs Text” below. 
+      * starter: small, simple change suitable for new contributors
+    * Docs Text: For issues that require an entry in the release notes, this should contain the information that the release manager should include in Release Notes. This should include a short summary of what behavior is impacted, and detail on what behavior changed. It can be provisionally filled out when the JIRA is opened, but will likely need to be updated with final details when the issue is resolved.
+  * Do not set the following fields:
+    * Fix Version. This is assigned by committers only when resolved.
+    * Target Version. This is assigned by committers to indicate a PR has been accepted for possible fix by the target version.
+  * Do not include a patch file; pull requests are used to propose the actual change.
+* If the change is a large change, consider inviting discussion on the issue at dev@spark.apache.org first before proceeding to implement the change.
+
 
 ## Define practices for versioning, release cycle and support model
 It is important to define version - In general, 
@@ -89,16 +125,44 @@ Error messages should answer the following questions:
 Apache Spark provides an excellent guide on error message and handling - https://spark.apache.org/error-message-guidelines.html
 
 ## Define Source Code Management strategy
+CONTRIBUTING file should clear state the code management strategy. For example,
 
+You can have two main branches - 
+* master (which is always the latest code - nightly builds would be created on this branch), and
+* individual "branch-major.minor". Patch release would always be merged in release branches.
+
+and feature and bug branch. Under this developers can create feature/<JIRA_ID-Short_Desc> or bug/<JIRA_ID-Short_Desc>. 
+
+Feature branch would be enhancements and hence merged via PR in main branch. If developer do not want to merge, they mark "[WIP]" to facilitate review.
+
+Bug would be branched from affected version and same process to be followed. In case multiple versions (current - 2 would only be supported) are impacted by the same bug, multiple PRs to be created.
+
+Merge strategy should be matured to avoid bad code being merged - this is a tricky portion. And therefore review process is important.
+
+### Review process
+* Other reviewers, including committers, may comment on the changes and suggest modifications. Changes can be added by simply pushing more commits to the same branch.
+* Lively, polite, rapid technical debate is encouraged from everyone in the community. The outcome may be a rejection of the entire change.
+* Keep in mind that changes to more critical parts of Spark, like its core and SQL components, will be subjected to more review, and may require more testing and proof of its correctness than other changes. 
+* Reviewers can indicate that a change looks suitable for merging with a comment such as: “I think this patch looks good”. Spark uses the LGTM convention for indicating the strongest level of technical sign-off on a patch: simply comment with the word “LGTM”. It specifically means: “I’ve looked at this thoroughly and take as much ownership as if I wrote the patch myself”. If you comment LGTM you will be expected to help with bugs or follow-up issues on the patch. Consistent, judicious use of LGTMs is a great way to gain credibility as a reviewer with the broader community.
+* Sometimes, other changes will be merged which conflict with your pull request’s changes. The PR can’t be merged until the conflict is resolved. This can be resolved by, for example, adding a remote to keep up with upstream changes by git remote add upstream https://github.com/apache/spark.git, running git fetch upstream followed by git rebase upstream/master and resolving the conflicts by hand, then pushing the result to your branch.
+* Try to be responsive to the discussion rather than let days pass between replies
+
+### Closing the pull request / JIRA
+* If a change is accepted, it will be merged and the pull request will automatically be closed, along with the associated JIRA if any
+  * Note that in the rare case you are asked to open a pull request against a branch besides master, that you will actually have to close the pull request manually
+  * The JIRA will be Assigned to the primary contributor to the change as a way of giving credit. If the JIRA isn’t closed and/or Assigned promptly, comment on the JIRA.
+* If your pull request is ultimately rejected, please close it promptly
+  * … because committers can’t close PRs directly
+  * Pull requests will be automatically closed by an automated process at Apache after about a week if a committer has made a comment like “mind closing this PR?” This means that the committer is specifically requesting that it be closed.
+* If a pull request has gotten little or no attention, consider improving the description or the change itself and ping likely reviewers again after a few days. Consider proposing a change that’s easier to include, like a smaller and/or less invasive change.
+* If it has been reviewed but not taken up after weeks, after soliciting review from the most relevant reviewers, or, has met with neutral reactions, the outcome may be considered a “soft no”. It is helpful to withdraw and close the PR in this case.
+* If a pull request is closed because it is deemed not the right approach to resolve a JIRA, then leave the JIRA open. However, if the review makes it clear that the issue identified in the JIRA is not going to be resolved by any pull request (not a problem, won’t fix) then also resolve the JIRA.
 
 ## Ensure Continuous Integration and Continuous Deployment
-CONTRIBUTING file should clearly link the build/run section to project build module.
+Even the basic InnerSource project requires a good CICD pipeline. 
 
 ## Define process for code changes
-Define the process in CONTRIBUTING.md
-
-## Define Code review process
-CONTRIBUTING file should clearly link the build/run section to project build module.
+Community members can contribute in many ways, as explained in the note above. 
 
 ## Building of appropriate mindset to welcome contribution
 One of the key factors to achieve is depersonalization. This enhances collaboration and minimizes conflicts. 

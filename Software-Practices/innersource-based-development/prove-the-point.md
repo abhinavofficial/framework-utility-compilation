@@ -3,13 +3,16 @@
 Congratulations. If you are now on this page, you have successfully initiated your inner source project started, and have started getting contribution. It is time for you to check the effectiveness of your inner sourcing. 
 
 ## Checking on Cadence
+While defining way of working, you would have established cadence for meetings, new ideas, monthly knowledge sharing sessions, etc. You should record for example, people in attendance and # of new ideas generated. These can be a good indicator of proving your point.
 
-## 
+These would also feed into the next section - deriving the value.
+
+## Marking interest for contribution
 
 Contribution
 https://opensource.guide/how-to-contribute/
 
-
+## Measuring metrics
 | Business Goals                           | Metric Candidates                                                                                                                                                                                                             |
 |------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Remove silos and bottlenecks             | # of PRs from external contributors <br> # of PRs from external contributors that are merged <br> # of external contributors <br> # of issues created from external contributors <br> # of reviews from external contributors |

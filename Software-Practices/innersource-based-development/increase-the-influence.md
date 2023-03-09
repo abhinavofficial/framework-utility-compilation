@@ -1,4 +1,12 @@
+# Influence for InnerSource
+Congratulations, you have come a long way. You have started small - with one or two projects and involved like-minded colleagues, probably within your hierarchy during the journey. You have evidences proving your point. You have shown the value that can be derived using InnerSourcing.
 
+Next step should be to increase the area of influence. Finally, InnerSource may only succeed or get to desire state when an appreciable mass believes the same.
+
+## Build the mindset around InnerSource
+This section can virtually be implemented in any large scale implementation.
+
+You have a hypothesis, and you want to understand the probability of hypothesis given a condition for success. WIP...
 
 ## Convince your leader
 
@@ -15,3 +23,5 @@ Organizations that use InnerSource experience benefits that are typical of open 
 ## Building ecosystem around your project
 
 Contributing user libraries to Spark
+
+
