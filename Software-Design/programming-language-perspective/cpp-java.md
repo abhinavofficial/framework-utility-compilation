@@ -21,6 +21,6 @@ The second most feature of Java is its Just-In-Time(JIT) compilation to improve 
 The next most feature of Java is its Garbage Collection - this is the memory management module for Java. Garbage collection examines heap memory, identifies referenced and unreferenced objects and releases unreferenced memory. There are many algorithms for garbage collection. 
 * **mark-and-sweep** algorithm. The steps involved in this are **marking**, **normal deletion** and **deletion with compaction**. When garbage collection runs, it may hold all the threads impacting the overall execution time.
 * **Generational Garbage Collection**. As the object list grows, gc time increases. We categorized objects into short-lived and long-lived objects. So, breakup the heap into generations - Young, Old and Permanent. Object which survives Young is moved into old and object surviving old is moved into permanent. Garbage collection needs to happen frequently on young (most objects are short-lived) and with a decreasing frequency on old and permanent.
-![GC Generation](GC-generations.png)
+![GC Generation](../images/GC-generations.png)
 
 **A side effect to consider - program ended and GC did not trigger before that. Finalizer - More research required** 

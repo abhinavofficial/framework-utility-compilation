@@ -7,18 +7,13 @@ While defining way of working, you would have established cadence for meetings, 
 
 These would also feed into the next section - deriving the value.
 
-## Marking interest for contribution
-
-Contribution
-https://opensource.guide/how-to-contribute/
-
 ## Measuring metrics
-| Business Goals                           | Metric Candidates                                                                                                                                                                                                             |
-|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Remove silos and bottlenecks             | # of PRs from external contributors <br> # of PRs from external contributors that are merged <br> # of external contributors <br> # of issues created from external contributors <br> # of reviews from external contributors |
-| Knowledge sharing                        | # of clone or forks from external guests <br> # of visits from external guests                                                                                                                                                |
-| Creating reusable software               | # of submodule usage <br> # of code reuse across projects <br> # of clone or forks from external guests                                                                                                                       |
-| Increase development speed               | Time to market <br> Mean-time-to-review                                                                                                                                                                                       |
-| Employee satisfaction & talent retention | eNPS score <br> attrition rate                                                                                                                                                                                                |
-| Improve quality                          | # of automated test runs on PRs <br> # of issues created from external contributors <br> Rework rate                                                                                                                          |
-| Others                                   | # of repositories using InnerSource components (managed contributing guidelines, assigned TCs) <br> Days of host's responsiveness on the issues/PRs created by external contributors                                          |
+
+| Inner-sourcing Goals         | Metric Candidates                                                                                                                                                                                                             |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Remove silos and bottlenecks | # of PRs from external contributors <br> # of PRs from external contributors that are merged <br> # of external contributors <br> # of issues created from external contributors <br> # of reviews from external contributors |
+| Knowledge sharing            | # of clone or forks from external guests <br> # of visits from external guests                                                                                                                                                |
+| Increase development speed   | Time to market <br> Mean-time-to-review                                                                                                                                                                                       |
+| Improve quality              | # of automated test runs on PRs <br> # of issues created from external contributors <br> Rework rate                                                                                                                          |
+| Automated build              | # of automated builds using established CI-CD                                                                                                                                                                                 |
+| Others                       | Days of host's responsiveness on the issues/PRs created by external contributors                                                                                                                                              |

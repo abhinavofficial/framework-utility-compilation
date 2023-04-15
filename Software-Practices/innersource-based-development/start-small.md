@@ -48,7 +48,7 @@ Ultimately, define how you expect the JIRA to be managed. Please see below how A
 * Find the existing Spark JIRA that the change pertains to.
   * Do not create a new JIRA if creating a change to address an existing issue in JIRA; add to the existing discussion and work instead
   * Look for existing pull requests that are linked from the JIRA, to understand if someone is already working on the JIRA
-* If the change is new, then it usually needs a new JIRA. However, trivial changes, where the what should change is virtually the same as the how it should change, do not require a JIRA. Example: Fix typos in Foo scaladoc
+* If the change is new, then it usually needs a new JIRA. However, trivial changes, where the "what" should change is virtually the same as the "how" it should change, do not require a JIRA. Example: Fix typos in Foo scaladoc
 * If required, create a new JIRA:
   * Provide a descriptive Title. “Update web UI” or “Problem in scheduler” is not sufficient. “Kafka Streaming support fails to handle empty queue in YARN cluster mode” is good.
   * Write a detailed Description. For bug reports, this should ideally include a short reproduction of the problem. For new features, it may include a design document.
@@ -142,9 +142,9 @@ Merge strategy should be matured to avoid bad code being merged - this is a tric
 ### Review process
 * Other reviewers, including committers, may comment on the changes and suggest modifications. Changes can be added by simply pushing more commits to the same branch.
 * Lively, polite, rapid technical debate is encouraged from everyone in the community. The outcome may be a rejection of the entire change.
-* Keep in mind that changes to more critical parts of Spark, like its core and SQL components, will be subjected to more review, and may require more testing and proof of its correctness than other changes. 
-* Reviewers can indicate that a change looks suitable for merging with a comment such as: “I think this patch looks good”. Spark uses the LGTM convention for indicating the strongest level of technical sign-off on a patch: simply comment with the word “LGTM”. It specifically means: “I’ve looked at this thoroughly and take as much ownership as if I wrote the patch myself”. If you comment LGTM you will be expected to help with bugs or follow-up issues on the patch. Consistent, judicious use of LGTMs is a great way to gain credibility as a reviewer with the broader community.
-* Sometimes, other changes will be merged which conflict with your pull request’s changes. The PR can’t be merged until the conflict is resolved. This can be resolved by, for example, adding a remote to keep up with upstream changes by git remote add upstream https://github.com/apache/spark.git, running git fetch upstream followed by git rebase upstream/master and resolving the conflicts by hand, then pushing the result to your branch.
+* Keep in mind that changes to more critical parts of the project will be subjected to more review, and may require more testing and proof of its correctness than other changes. 
+* Reviewers can indicate that a change looks suitable for merging with a comment such as: “I think this patch looks good”. The project can use the LGTM convention for indicating the strongest level of technical sign-off on a patch: simply comment with the word “LGTM”. It specifically means: “I’ve looked at this thoroughly and take as much ownership as if I wrote the patch myself”. If you comment LGTM you will be expected to help with bugs or follow-up issues on the patch. Consistent, judicious use of LGTMs is a great way to gain credibility as a reviewer with the broader community.
+* Sometimes, other changes will be merged which conflict with your pull request’s changes. The PR can’t be merged until the conflict is resolved. This can be resolved by, for example, adding a remote to keep up with upstream changes by git remote add upstream <path to your git repo>, running git fetch upstream followed by git rebase upstream/master and resolving the conflicts by hand, then pushing the result to your branch.
 * Try to be responsive to the discussion rather than let days pass between replies
 
 ### Closing the pull request / JIRA
@@ -159,7 +159,7 @@ Merge strategy should be matured to avoid bad code being merged - this is a tric
 * If a pull request is closed because it is deemed not the right approach to resolve a JIRA, then leave the JIRA open. However, if the review makes it clear that the issue identified in the JIRA is not going to be resolved by any pull request (not a problem, won’t fix) then also resolve the JIRA.
 
 ## Ensure Continuous Integration and Continuous Deployment
-Even the basic InnerSource project requires a good CICD pipeline. 
+Even the basic InnerSource project requires a good CI-CD pipeline. 
 
 ## Define process for code changes
 Community members can contribute in many ways, as explained in the note above. 

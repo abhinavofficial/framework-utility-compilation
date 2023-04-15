@@ -63,6 +63,7 @@ It follows an agile methodology and product development strategy for building ou
 * Chapter 4: [Increase the influence](increase-the-influence.md)
 * Chapter 5: [Build out the practice](buildout-the-practice.md)
 * Chapter 6: [Do more till it does not work. Revise.](continuous-improvement.md)
+* Chapter 7: [Frequently asked question](faq.md)
 
 
 ## InnerSource Patterns
@@ -74,8 +75,7 @@ A pattern describes a problem and forces that lead to a context on which it appl
 
 A variant of this called a donut pattern, in which resolution is not known. One of the goals of inner sourcing to share your donut pattern with others, so that they can propose resolution. Knowledge is worth more when it is shared!
 
-https://patterns.innersourcecommons.org/
-
+More reading available at [Inner-Source Patterns](https://patterns.innersourcecommons.org/)
 
 ## Credits
 This document is inspired by
@@ -83,7 +83,5 @@ This document is inspired by
 * [Linux foundation Open source Guide](https://www.linuxfoundation.org/resources/open-source-guides)
 * [Open Source Guide](https://opensource.guide/)
 * [InnerSource Commons](https://innersourcecommons.org/)
-
-https://github.com/finos/reference-foss-policy/blob/master/src/FINOS-reference-FOSS-policy.adoc
-
-https://grafana.com/
+* [FOSS](https://github.com/finos/reference-foss-policy/blob/master/src/FINOS-reference-FOSS-policy.adoc)
+* [Grafana](https://grafana.com/)

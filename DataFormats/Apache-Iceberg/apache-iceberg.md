@@ -14,7 +14,7 @@ Manifests track the following data points:
 * **Lower and Upper-level Bounds for Partition Values**: When query planning and determining what files to read, Iceberg uses min/max partition values to cherry-pick manifests. This ensures out-of-bounds manifests are completely skipped and our query processing engine does not waste cycles reading those files.
 * **Metrics for cost-based optimizations**: Includes file-level stats (e.g. row count) and column-level stats (e.g. min value, max value). These stats help our query processing engine group tasks in an optimized manner and skip files where possible during query planning.
 
-These additional data points enable optimizations in Iceberg such as partition pruning, file-skipping, and predicate pushdowns to the snapshot and manifest level. This coupled with columnar storage format like Parquet, makes data access significantly more lightweight and faster 
+These additional data points enable optimizations in Iceberg such as partition pruning, file-skipping, and predicate push-downs to the snapshot and manifest level. This coupled with columnar storage format like Parquet, makes data access significantly more lightweight and faster 
 
 ### Manifest Lists
 A Manifest List is a metadata file that link manifests with the snapshots that make up a table. Each manifest file in the manifest list is stored with information about its contents, like partition value ranges, used to also speed up metadata operations and query planning. The manifest list acts as an index over the manifest files, making it possible to plan without reading all manifests.
@@ -22,6 +22,7 @@ A Manifest List is a metadata file that link manifests with the snapshots that m
 > delegates it’s write operation to Iceberg’s DataFrame writer, which not only writes the JSON data to disk (compressed and partitioned) but also a) writes table metadata (snapshots, manifests, and manifest lists) and b) commits both the data and metadata to Data Lake in an atomic transaction.
 
 ### Snapshot
+Table is a series for snapshots
 Table is a series for snapshots
 
 ## Data Layer
@@ -118,7 +119,7 @@ This raises inconsistency since both the Iceberg reader and writer to depend on 
 
 The solution relies on moving to a different implementation for persisting table version by leveraging the ADLS filesystem APIs guarantees — such as atomicity of CREATE(overwrite=false) and read-after-write consistency of list directory.
 
-Hence the implementation can be to _switch to preserving version using directory listing instead, so each writer will use CREATE(overwrite-=false) to create a new file to signal the new version while readers will have to list the versions directory and pick the highest value present at that particular moment in time_.
+Hence, the implementation can be to _switch to preserving version using directory listing instead, so each writer will use CREATE(overwrite-=false) to create a new file to signal the new version while readers will have to list the versions directory and pick the highest value present at that particular moment in time_.
 
 **Iceberg Community may address and fix it differently**.
 
