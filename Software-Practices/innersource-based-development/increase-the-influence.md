@@ -1,12 +1,12 @@
 # Influence for InnerSource
 Congratulations, you have come a long way. You have started small - with one or two projects and involved like-minded colleagues, probably within your hierarchy during the journey. You have evidences proving your point. You have shown the value that can be derived using InnerSourcing, and have been able to build ecosystem around your project.
 
-Next step should be to increase the area of influence. Finally, InnerSource may only succeed or get to desire state when an appreciable mass believes the same.
+Next step should be to increase the area of influence. InnerSource may only succeed or get to desire state when an appreciable mass believes the same. Leaders within the organization play a very critical role -
+1. To layout organization roadmap along the lines of inner-sourcing and promote the same
+2. To secure minimum funding to the ecosystem to thrive and incentivize the process
+3. To play master servant role within Program Office and restrict getting inner-sourcing working by direct involvement. 
 
 ## Convince your leader
-
-If inner-source is working.
-
 Organizations that use InnerSource experience benefits that are typical of open source development, such as:
 
 * **High-quality code**: With unit tests, code coverage, and continuous integration, teams improve code quality earlier in the lifecycle.
@@ -15,7 +15,11 @@ Organizations that use InnerSource experience benefits that are typical of open 
 * **Strong collaboration**: Code reviews have less friction, communication becomes stronger, and contributions increase in number.
 * **Healthy culture**: Silos are broken down, so developer job satisfaction improves, leading to better retention and recruitment.
 
-Make remarks in town-hall.
+You have data to show if organization can adopt inner-sourcing. If your leader trusts the data and believe in possible great outcomes of inner-sourcing, he can
+* Secure some small base funding, so collaboration based events like hackathon can be held. Inner-Source projects can advertise for contributors.  
+* Make remarks in town-hall.
+* Share the vision for organization with several inner-sourced projects.
+* Volunteer projects under their organizations to be inner-sourced. 
 
 ## Build the mindset around InnerSource
 This section can virtually be implemented in any large scale implementation.
