@@ -29,3 +29,22 @@ These partitions are loaded into executors. You should have "ideally" same numbe
 
 Having too many executors - It may lead to more network shuffles (or wide transformation) since one executor may not all the data required to complete the progress.
 
+DAG or directed acyclic graph optimizes workflows. Lazy evaluation system.
+
+RDD - Resilient Distributed Dataset Huge key-value pair.
+Transforming RDD
+* map
+* flatmap
+* filter
+* distinct
+* sample
+* union, intersection, subtract, cartesian
+
+Actions
+* collect
+* count
+* countByValue
+* take
+* top
+* reduce
+
