@@ -48,3 +48,5 @@ Actions
 * top
 * reduce
 
+Spark aims for binary API compatibility between releases, using MiMa, so if you are using the stable API theoretically, you generally should not need to recompile to run a job against a new version of Spark unless the major version has changed. In practice, we recommend recompiling all Spark jobs against the latest MINOR version as mistakes in binary compatibility have been known to happen.
+MiMa is the Migration Manager for Scala and tries to catch binary incompatibilities between releases. 
