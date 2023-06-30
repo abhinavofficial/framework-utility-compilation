@@ -258,3 +258,8 @@ Tunability, Replicability - Cassandra
   * Actionable relationships populated by text mining scientific papers
   * Automated discovery of strongly correlated nodes
 
+## More on No-SQL databases
+* [neo4j](graphdb-neo4j.md)
+* [casandra](wide-column-db-cassandra.md)
+* [scylladb](scylladb.md)
+

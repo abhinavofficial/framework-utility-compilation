@@ -10,6 +10,7 @@
 * [The book](https://doc.rust-lang.org/book/) or [Improved The Book](https://rust-book.cs.brown.edu/)
 * [Rust by examples](https://doc.rust-lang.org/rust-by-example/)
 * [Rustlings](https://github.com/rust-lang/rustlings)
+* [Rust by Practice](https://practice.rs/why-exercise.html)
 
 ## Next steps - Intermediate stage
 * [How cargo works](https://doc.rust-lang.org/cargo/index.html)
@@ -27,3 +28,6 @@
 * [Performance](https://perf.rust-lang.org/)
 * https://nnethercote.github.io/perf-book/
 * https://rustc-dev-guide.rust-lang.org/
+
+## Work
+https://github.com/abhinavofficial/rust-ventures

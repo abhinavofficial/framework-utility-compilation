@@ -1,7 +1,6 @@
 # Terraform
-
 * Built by Harshicorp in 2014. It is written in Go Language.
-* It is infrastructure as code service. It is more descriptive in nature than cloud-formation. It uses a human-readable language known as Harshicorp configuration language (HCL)
+* It is [infrastructure as code](#infrastructure-as-code-iac) service. It is more descriptive in nature than cloud-formation. It uses a human-readable language known as Harshicorp configuration language (HCL)
 * Automate infrastructure creation
 * Maintains state. You can push it in git and maintain state. State changes allows you to track resource changes.
 * Supports major cloud platform like AWS, Azure, Google Cloud, Alibaba, etc. Suitable for multi-cloud.
@@ -9,8 +8,22 @@
 * No official Graphical UI
 * It runs on machine Terraform server.
 
-## Basic Terraform commands
+## Basics
+Binary makes API calls to cloud providers. It reads the configuration file as defined by us and makes API calls with cloud providers, like AWS, GCP and Azure. In terms of cloud provider portability, the features are different, Terraform's technical approach is not. Cloud providers don't support the exact same infrastructure.
 
+Terraform persists state - this means it knows what has been created before and applies changes. This state is stored in internal databases, each resource is represented by a key-value in the entry (json). Any changes to the resources will be reflected in the state. Locally, the state is saved in the file terraform.tfstate. Remote state handling exists to support consistent team collaboration and is preferred for enterprise - this needs to configured though. Terraform Cloud or Enterprise provides this out of box. There are many benefits of managing this state -
+* Dependencies: Resources can have dependencies on each other - Terraform retains this metadata to be able to safely perform operation e.g. delete
+* Performance: Terraform stores a cache of the attribute values for all resources in the state for performance reasons
+* Consistency: TF employs locking to avoid synchronization and collaboration issues, it used .lock file.
+
+## Components
+Key building blocks in architecture
+* **Executable**: Binary run from the command line that contains the core functions
+* **Configuration file(s)**: files with extension .tf or .tfvars that define the desired config for provisioning infra
+* **Provider plugins**: Executables invokes by Terraform to interact with cloud provider APIs, hosted on a registry
+* **State data**: the desired configuration and its current state to optimize.
+
+## Basic Terraform commands
 | Commands           | Usage                                                          |
 |--------------------|----------------------------------------------------------------|
 | terraform init     | Downloads any plugins required to run templates                |
@@ -79,7 +92,6 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.web.id
   instance_type = "t1.micro"
 }
-
 ```
 
 ### Using AWS as provider
@@ -111,15 +123,64 @@ You can use provisioners to model specific actions on the local machine or on a 
 
 Terraform includes the concept of provisioners as a measure of pragmatism, knowing that there are always certain behaviors that cannot be directly represented in Terraform's declarative model.
 
-However, they also add a considerable amount of complexity and uncertainty to Terraform usage. Firstly, Terraform cannot model the actions of provisioners as part of a plan because they can in principle take any action. Secondly, successful use of provisioners requires coordinating many more details than Terraform usage usually requires: direct network access to your servers, issuing Terraform credentials to log in, making sure that all of the necessary external software is installed, etc.
+However, they also add a considerable amount of complexity and uncertainty to Terraform usage. Firstly, Terraform cannot model the actions of provisioners as part of a plan because they can in principle take any action. Secondly, successful use of provisioners requires coordinating many more details than Terraform usage usually requires: direct network access to your servers, issuing Terraform credentials to log in, making sure that all the necessary external software is installed, etc.
 
 local-exec, remote-exec, connection,
 
 ## Outputs
 to capture the output return from terraform.
 
+## Infrastructure as Code (IaC)
+Very simply, it is to manage infrastructure with the help of code.
+* Treats all aspects of operations as software via configuration
+* These configurations are managed in one and more files. Code is tracked in SCM repository, for example git
+* Post this, you would need some tool to automatically apply those configurations for actual provision. This automation makes the provisioning process consistent, repeatable and updates fast & reliable. 
+
+### Salient feature of IaC
+* **Repeatable Processes**: Clear instructions that describe the desired state
+  * A set of instructions are defined with the help of declarative language.
+  * Operations are idempotent, e.g. an update to the environment will only make necessary changes but not duplicate what already exists
+* **Consistent Environments**: Environment should look extremely similar
+  * Projects often use a variety of deployment environment, e.g. development, staging, and productions
+  * The same automation code can be used to provision infrastructure so that it looks consistent across all environments.
+* **Reusable Functionality**: Configuration can be abstracted and applied to a set of projects
+  * Configuration is defined with the help of code
+  * Code can be shared across different repositories
+* **Self-Documenting**: Source code represents the architecture
+  * Each piece of infrastructure has been described with a set of instructions (code comment)
+  * No more guesswork on what configuration has been used to provision infrastructure.
+* **Financial Savings**: Increased efficiency, less mistakes through automation
+  * Reduced risk due to minimizing human error
+  * Infrastructure can be verified with [automated tests](#automated-test) .
+  * IaC functions can be used to spin down environments during times of less traffic. Example, decrease the manual grunt work for DevOps personnel and spending it on mission-critical tasks instead. 
+
+## Automated Test
+Learning in progress..
+
+## Example work
+* [TFC getting started]()
+
 ## Next steps
 
 * [Terraform](https://www.terraform.io/docs)
 * [Terraform and AWS](https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/#:~:text=Terraform%20by%20HashiCorp%2C%20an%20AWS,Web%20Services%20(AWS)%20infrastructure.)
 * [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+
+## Terraform and other tools
+
+### Terraform and Ansible
+* **Ansible**: Configuration management tool for installing/configuring software and tools in the infrastructure.
+* **Terraform**: May invoke Ansible after infrastructure as been deployed
+* When to involve Ansible?
+  * You already
+
+### Terraform and packer
+* **Packer**: Creates machine images for multiple platforms.
+* **Terraform**: May invoke Ansible after infrastructure as been deployed
+* When to involve Ansible?
+    * You already
+
+### Terraform and Consul
+Do I need to involve a state backend?
+
+* Terraform
