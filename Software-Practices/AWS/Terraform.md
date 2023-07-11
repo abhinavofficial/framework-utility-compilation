@@ -9,7 +9,7 @@
 * It runs on machine Terraform server
 
 ## How does Terraform work
-When we install Terraform, we install the terraform binary. Binary makes API calls to endpoints exposed by cloud providers. It uses its CLI tool for deploying the infrastructure - under the hood, it makes API calls on behalf of a provider including authentication mechanisms. It reads the configuration file as defined by us, which tells which API calls to make with cloud providers, like AWS, GCP and Azure. In terms of cloud provider portability, the features are different, Terraform's technical approach is not. Cloud providers don't support the exact same infrastructure and are named differently. Terrform allows you to use the same approach to define provider-specific configuration. You can use the same Terraform language, toolset, and IaC practices.
+When we install Terraform, we install the terraform binary. Binary makes API calls to endpoints exposed by cloud providers. It uses its CLI tool for deploying the infrastructure - under the hood, it makes API calls on behalf of a provider including authentication mechanisms. It reads the configuration file as defined by us, which tells which API calls to make with cloud providers, like AWS, GCP and Azure. In terms of cloud provider portability, the features are different, Terraform technical approach is not. Cloud providers don't support the exact same infrastructure and are named differently. Terraform allows you to use the same approach to define provider-specific configuration. You can use the same Terraform language, toolset, and IaC practices.
 
 ## Terraform Components
 Key building blocks in architecture
@@ -30,32 +30,39 @@ You can use [tfswitch](https://github.com/warrensbox/terraform-switcher) which l
 ## Basic Terraform commands
 
 Main commands:
-init          Prepare your working directory for other commands
-validate      Check whether the configuration is valid
-plan          Show changes required by the current configuration
-apply         Create or update infrastructure
-destroy       Destroy previously-created infrastructure
+
+| Command  | What does it do                                    |
+|----------|----------------------------------------------------|
+| init     | Prepare your working directory for other commands  |
+| validate | Check whether the configuration is valid           |
+| plan     | Show changes required by the current configuration |
+| apply    | Create or update infrastructure                    |
+| destroy  | Destroy previously-created infrastructure          |
+       
 
 All other commands:
-console       Try Terraform expressions at an interactive command prompt
-fmt           Reformat your configuration in the standard style
-force-unlock  Release a stuck lock on the current workspace
-get           Install or upgrade remote Terraform modules
-graph         Generate a Graphviz graph of the steps in an operation
-import        Associate existing infrastructure with a Terraform resource
-login         Obtain and save credentials for a remote host
-logout        Remove locally-stored credentials for a remote host
-metadata      Metadata related commands
-output        Show output values from your root module
-providers     Show the providers required for this configuration
-refresh       Update the state to match remote systems
-show          Show the current state or a saved plan
-state         Advanced state management
-taint         Mark a resource instance as not fully functional
-test          Experimental support for module integration testing
-untaint       Remove the 'tainted' state from a resource instance
-version       Show the current Terraform version
-workspace     Workspace management
+
+| Command      | What does it do                                             |
+|--------------|-------------------------------------------------------------|
+| console      | Try Terraform expressions at an interactive command prompt  |
+| fmt          | Reformat your configuration in the standard style           |
+| force-unlock | Release a stuck lock on the current workspace               |
+| get          | Install or upgrade remote Terraform modules                 |
+| graph        | Generate a Graphviz graph of the steps in an operation      |
+| import       | Associate existing infrastructure with a Terraform resource |
+| login        | Obtain and save credentials for a remote host               |
+| logout       | Remove locally-stored credentials for a remote host         |
+| metadata     | Metadata related commands                                   |
+| output       | Show output values from your root module                    |
+| providers    | Show the providers required for this configuration          |
+| refresh      | Update the state to match remote systems                    |
+| show         | Show the current state or a saved plan                      |
+| state        | Advanced state management                                   |
+| taint        | Mark a resource instance as not fully functional            |
+| test         | Experimental support for module integration testing         |
+| untaint      | Remove the 'tainted' state from a resource instance         |
+| version      | Show the current Terraform version                          |
+| workspace    | Workspace management                                        |
 
 
 | Commands           | Usage                                                          |
@@ -161,7 +168,7 @@ resource "aws_instance" "web" {
 #### Provisioners
 You can use provisioners to model specific actions on the local machine or on a remote machine in order to prepare servers or other infrastructure objects for service.
 
-Terraform includes the concept of provisioners as a measure of pragmatism, knowing that there are always certain behaviors that cannot be directly represented in Terraform's declarative model.
+Terraform includes the concept of provisioners as a measure of pragmatism, knowing that there are always certain behaviors that cannot be directly represented in Terraform declarative model.
 
 However, they also add a considerable amount of complexity and uncertainty to Terraform usage. Firstly, Terraform cannot model the actions of provisioners as part of a plan because they can in principle take any action. Secondly, successful use of provisioners requires coordinating many more details than Terraform usage usually requires: direct network access to your servers, issuing Terraform credentials to log in, making sure that all the necessary external software is installed, etc.
 
@@ -316,7 +323,7 @@ Three-step approach on a high level: Write -> Plan -> Apply
 
 * Write:
   * Write configuration files with an IDE or text editor
-  * Souce code checked into version control
+  * Source code checked into version control
   * Terraform syntax can be automatically formatted and validated
 * Plan:
   * Preview changes without actually perform them
@@ -346,9 +353,265 @@ Three-step approach on a high level: Write -> Plan -> Apply
 * Delete infrastructure in target environment based on state data
 * You can delete one or more resource or full environment.
 
-### Working with input variables, local/output values, and data sources
+### Working with variables
 
+Before diving into variables, let's understand what data types can be supported in the input variables.
+* Primitive: string, number, bool
+* Collection or Complex: list / tuple like [a, b], set, map / object like { name="Mabel", age=52 }
 
+Resource addressing: Referencing a variable or resource attribute in a different context can be done as `BLOCK_LABEL.BLOCK-LABEL-NAME.IDENTIFIER`.
+
+* **Defining Named Values**: Concepts of requesting, referencing, and publishing values. **Input variable** is used for passing information to the terraform configuration. **Local variables** are computed values defined in a configuration file. We can assign an input variable to a local value. Finally, we can have an **output values**, which is return values (typically a run-time value generation when change is applied) of a specific resource in the configuration. So, let understand these with typical use cases.
+
+| Named Value     | Use case                                                                                                  |
+|-----------------|-----------------------------------------------------------------------------------------------------------|
+| Input Variable  | I want to capture values from the CLI when the end user invokes Terraform and use it in my configuration. |
+| Local Variable  | I want to create a variable, assign a value, and reuse it in my configuration similar to a constant       |
+| Output Variable | I want to render a runtime value in the console output or use it as an input for a resource or module     |
+
+As specified earlier, there can be multiple configuration files. Many of those files follows certain naming conventions. These naming conventions are now not enforced, but can generally be a good practice. Terraform will automatically resolve those files.
+
+#### Input variables
+
+Input variables can be defined in a file called `variables.tf`
+
+| Argument    | Description                                                      |
+|-------------|------------------------------------------------------------------|
+| default     | Value to be used if not provided                                 |
+| type        | Accepted type for values assigned to variable                    |
+| description | End user description that explains the purpose and kind of value |
+| validation  | Validation rules applied to provided value                       |
+| sensitive   | Obfuscate sensitive information in CLI output                    |
+| nullable    | Defines if assigned value can be null                            |
+
+```hcl
+variable "ami_id" {
+  type = string
+  description = "The AMI identifier to use for EC2 instance"
+}
+
+variable "availability_zone_names" {
+  type = list(string)
+  default = ["us-west-2"]
+}
+
+# to use it "var.name_of_the_input_variable" notation
+resource "aws_instance" "example" {
+  ami = var.ami_id
+  instance_type = var.availability_zone_names[0]
+}
+```
+Now, when you run ```terraform plan```, terraform will expect user input.
+
+```shell
+terraform plan
+var.ami_id
+  The AMI identifier to use for EC2 instance
+  
+  Enter a value:
+```
+
+If you want to override interactive prompt, you can use `-var` option when running the `plan` and `apply` commands. This is used in CI/CD program.
+
+```shell
+terraform apply -var="ami_id=ami-0c55bsbbsk940gt0"
+
+terraform apply -var='availability_zone_names=["us-east-1a", "us-west-1c"]'
+```
+
+The third option is to pull the input variables from a `.tfvars` file and is a preferred way to operate for large programs.
+
+```shell
+terraform apply -var-file="runtime-var.tfvars"
+
+cat runtime-var.tfvars
+  ami_id = "ami-0c55bsbbsk940gt0"
+  availability_zone_names=["us-east-1a", "us-west-1c"]
+```
+
+Finally, there is way to automatically load of variable files, but some standard naming convention will apply, as below -
+* Files named exactly `terraform.tfvars` or `terraform.tfvars.json`
+* Any files with name ending in `.auto.tfvars` or `.auto.tfvars.json`
+
+If we have to inject secrets into configuration files, please use that as environment variable with `TF_VAR_` prefix. Please do not put them in .tfvars, since input variables will be stored in the state in plain text. To do that,
+```shell
+export TF_VAR_third_party_pwd=s3cr3t
+export TF_VAR_third_api_key=jlkasjdl323k121j12m
+
+cat main.tf
+  #use variables
+  var.third_party_pwd
+  var.api_key
+```
+
+One example to show validation
+```hcl
+variable "ami_id" {
+  type = string
+  description = "The AMI identifier to use for EC2 instance" 
+  validation { # Some builtin functions
+    condition = length(var.ami_id) > 4 &&
+                substr(var.ami_id, 0, 4) == "ami-"
+    error_message = "The image_id value must be a valid AMI Id, starting with \"ami-\"."
+  }
+}
+```
+
+#### Local variables
+Local values can be similarly be defined in `locals.tf`
+
+Local variable is made available to support re-usability of the same value in a configuration. It is typically a computed value, so you do not need to calculate multiple times, and if you need to fix it, you need to do it in just one place.
+
+```hcl
+locals {
+  some_others = var.from_cli
+  default_tags = {
+    Organization = "O'Reilly"
+    Owner = "Benjamin Muschko"
+  }
+}
+
+# to use. A local value can be used with the local.name notation.
+provider "aws" {
+  region = "us-west-2"
+  default_tags {
+    tags = local.default_tags # Assign the local value from the locals definition block
+  }
+}
+```
+
+#### Output values
+Output values are defined in `outputs.tf`, by standard naming convention. It holds the outputs as generated for resources post `terraform apply`.
+
+```hcl
+output "example_ip_address" {
+  value = aws_instance.example.private_ip # references the private IP address attribute of the AWS instance named example
+  description = "The private IP address of the main server instance"
+}
+```
+
+Output would only be populated post apply command is complete.
+```shell
+terraform output
+  Warning: No output found
+  The state file either has no outputs defined, or all the defined outputs are empty
+  
+terraform apply
+  example_ip_address = "..."
+  
+terraform output
+  example_ip_address = "..."
+```
+
+### Dependency management
+If we have to work with creating multiple resources, it is sometimes important to understand the dependency between them.
+
+#### Implicit Dependency
+Using an output value as input for a resource. Example -
+```hcl
+resource "aws_eip" "ip" {
+  vpc = true
+  instance = aws_instance.example.id
+}
+```
+
+Terraform understand that aws_instance needs to be created before aws_eip, and it can create a directed acyclic graph in memory and execute per that.
+
+#### Explicit Dependency
+Sometimes Terraform cannot determine dependencies. Example -
+```hcl
+module "example_sqs_queue" {
+  source = "terraform-aws-module/sqs/aws"
+  version = "2.1.0"
+  depends_on = [aws_s3_bucket.bucket, aws_instance.example_c] # depends_on has datatype of a list or set. It does not define the order of these dependencies.
+}
+```
+
+### Working with data sources
+We have seen some basic things about data source. Let dig further. Data source does not create any resource on the cloud - it is used to get information about resources external to terraform. An example -
+
+```hcl
+terraform {
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "~> 5.0"
+    }
+  }
+}
+
+# Configure the GitHub Provider
+provider "github" {}
+
+# define data source
+data "github_repository_pull_requests" "pull_requests" { # keyword - data
+  base_repository = "example_repository"
+  base_ref = "main"
+  state = "open"
+}
+
+# reference data
+# data.github_repository_pull_requests.pull_requests.results
+```
+
+### Looping Constructs
+Terraform provides looping syntax for different use cases.
+
+#### count argument
+Assigns an integer that determines # of loops. Count is a simple integer value assignment. Argument because it is a property on resource.
+
+```hcl
+resource "aws_instance" "app_server" {
+  count = 3
+  ami = "ami_0c55bb159cbfafe1f0"
+  instance_type = "t2_micro"
+  tags {
+    Name = "app_server_${count.index}" # current index of loop can used as variable, 0 based index
+  }
+}
+```
+
+#### for_each argument
+Iterate over each element of a map or set. Iteration element can be reference by key and value attribute.
+```hcl
+resource "azurerm_resource_group" "rg" {
+  for_each = {
+    a_group = "eastus" # it can be map or set
+    another_group = "westus2" # it can be map or set
+  }
+  name = each.key # each is the key word
+  location = each.value
+  # Please note: For a set data type the key is the same as value
+}
+```
+
+#### for expression
+Used to transform elements in a map or set. It applies an expression to each element to transform it.
+```hcl
+output "all_tags" {
+  value = [for key, value in var.tags : # Iterate over elements in a map
+    upper(key) => upper(value)] # Transforms key and value with function and outputs a map.
+}
+```
+
+#### dynamic blocks
+Similar to a traditional for-loop but uses the dynamic nested block syntax. It helps with implementing DRY for more elaborate configurations
+
+```hcl
+resource "aws_security_group" "security" {
+  # ...
+  dynamic "ingress" {
+    for_each = local.ingress_rules # local variable point to a set of tuples with port numbers and descriptions
+    content { # configure the whole "block" for each iteration of the set
+      description = ingress.value.description
+      from_port = ingress.value.port
+      to_port = ingress.value.port
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
+```
 
 ## Example work
 * [TFC getting started]()
