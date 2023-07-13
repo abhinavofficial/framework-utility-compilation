@@ -589,8 +589,9 @@ resource "azurerm_resource_group" "rg" {
 Used to transform elements in a map or set. It applies an expression to each element to transform it.
 ```hcl
 output "all_tags" {
-  value = [for key, value in var.tags : # Iterate over elements in a map
-    upper(key) => upper(value)] # Transforms key and value with function and outputs a map.
+  # commenting to avoid showing errors. md is not able to parse =>
+#  value = [for key, value in var.tags : # Iterate over elements in a map
+#    upper(key) => upper(value)] # Transforms key and value with function and outputs a map.
 }
 ```
 
@@ -611,6 +612,283 @@ resource "aws_security_group" "security" {
     }
   }
 }
+```
+
+### Built-in functions
+Functionality for transforming, combining, and formatting data.
+
+* Grouped into higher-level categories e.g. collections, type, conversion, data and time
+* The general syntax for function calls is a function name followed by comma-separated arguments in parentheses: function_name(arg1, ...) per definition
+* Functions can be combined with each other by nesting them
+* Terraform provides a console ```terraform console``` to try out function against state data
+
+> Please note that custom functions are not supported yet in Terraform.
+
+
+More details in https://developer.hashicorp.com/terraform/language/functions
+
+### Interacting with Modules
+Module Structure and Syntax, Inputs & Outputs
+
+Module lets better manage the configuration file code, and introduce concept of re-usability in the world of terraform.
+* Usually defines inputs, resources / data sources, and outputs (though they are all optional)
+* Modules are versioned (standardized on semantic versioning - major.minor.patch). Published modules are also available in terraform registry. If we want to use any module, we would like to resolve it as a versioned module, similar to provider's semantic.
+* The `init` command will download remote modules and store them in the `.terraform` directory
+
+#### Module sources
+A module can be sourced from different [locations](https://developer.hashicorp.com/terraform/language/modules/sources). Some key ones are - 
+* A local path to a directory present on disk
+```hcl
+module "consul" {
+  source = "./consul"
+}
+```
+* A registry like [Terraform Registry](https://registry.terraform.io/?product_intent=terraform)
+```hcl
+module "consul" {
+  source = "app.terraform.io/example-corp/k8s-cluster/azurerm"
+  version = "1.1.0"
+}
+```
+* A Git repository e.g. GitHub or BitBucket
+```hcl
+module "consul" {
+  source = "git@github.com:hashicorp/example.git"
+}
+```
+* HTTP(S) URL that follows specific referencing semantics 
+
+```hcl
+module "vpc" {
+  source = "https://example.com/vpc-module.zip"
+  }
+```
+
+#### Root and Child Modules
+Every Terraform configuration has at least one module, known as its root module, which consists of the resources defined in the .tf files in the main working directory. For example, main.tf. We can now reference other modules which are subdirectories, with `module` keyword.
+```hcl
+# main.tf
+
+module "child-1" {
+  
+}
+## we can have sub-directory child-1 with another main.tf
+## child-1/main.tf
+module "child-2" {
+
+}
+module "child-3" {
+
+}
+```
+Directory structure looks like this for example above.
+```mermaid
+---
+title: Root and Child modules
+---
+stateDiagram-v2
+  Root --> Child_1
+  Child_1 --> Child_2
+  Child_1 --> Child_3
+```
+
+In general, a Terraform module (usually the root module of a configuration) can call other modules to include their resources into the configuration. A module that has been called by another module is often referred to as a child module. Child modules can be called multiple times within the same configuration, and multiple configurations can use the same child module.
+
+#### Module Data Exchanges
+Modules only communicate via inputs and outputs. Root module can send an input variable to child module, and can receive back output values.
+
+#### Module structure
+Organized in a subdirectory, and defined by .tf files. Please note `modules` as the subdirectory. Even though Terraform does not mandate the use of standard convention for modules, it is considered best practice.
+
+![Module Structure](images/module-structure.png)
+
+#### Consuming a local module
+For locally available modules, we can call it using `module` and reference it by key word `source`, no version needs to be defined.
+
+```hcl
+module "aws_eks_cluster" { # aws_eks_cluster is the name.
+  source = "./modules/eks" # reference using source and providing location of module in directory structure. Note ./ - if missed, terraform will look into registry
+  cluster_name = "my_cluster" # providing the value for the input variable
+}
+
+resource "..." {
+  endpoint = module.aws_eks_cluster.endpoint # accessing the the output value from the local module.
+}
+```
+
+#### Consuming a public module
+We saw above how to reference local modules using keyword `module` and `source`. In public module, we need to provide `version` as well.
+
+```hcl
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.2.3" # follows the same conventions and notation as provider versions.
+}
+```
+
+If you are consuming from private registry, you need to provide the host name in front of the source argument, as we do in provider.
+
+## Multiple Environments
+Let's consider the use case, where we have to manage multiple environments (development, staging and production) which are typically in separate accounts. Most of the functionality will be common, while some values may differ. The picture below demonstrates this -
+
+![multiple-environments](images/managing-multiple-environments.png)
+
+One way to solve this is by [workspace](https://developer.hashicorp.com/terraform/cloud-docs/workspaces). A workspace manages requirements.
+
+* Shared configuration, but different input variable values per context.
+* Unique credentials per environment to decrease security risks
+* Holds unique and dedicated state per environment
+* Increased maintenance effort and potential complexity to end users
+* HashiCorp discourages use of workspaces and offers [alternatives](https://developer.hashicorp.com/terraform/cli/workspaces#alternatives-to-workspaces).
+
+Terraform Default workspace - this cannot be deleted and uses state file in the root directory. Terraform (as of today, 1.5.x) provides TF commands to interact with workspace.
+
+```shell
+$ terraform workspace show
+default
+
+$ terraform workspace list
+ * default
+```
+
+| subcommands | Description                                                             |
+|-------------|-------------------------------------------------------------------------|
+| delete      | Delete a workspace - folder & state file (should be in other workspace) |
+| list        | List Workspaces                                                         |
+| new         | Create a new workspace                                                  |
+| select      | Select a workspace (switch)                                             |
+| show        | Show the name of the current workspace                                  |
+
+```shell
+$ terraform workspace new development
+Created and switched to workspace "development"!
+```
+
+### Workspace Variable Values
+Please note that input variables needs to be resolved per workspace configuration.
+
+* In Development - instance_type and instance_count may be small 
+* In Staging - instance_type and instance_count may be similarly sized as production (or slightly lower)
+* In Product - instance_type and instance_count may be right sized for performance and utilization
+
+So, where can we define these?
+
+* These can be specified in a variable of type map in `locals.tf` file.
+```hcl
+locals {
+  ec2_instance_type = {
+    development = "t2.small"
+    staging = "t2.4xLarge"
+    production = "t2.8xLarge"
+  }
+  ec2_instance_count = {
+    development = 2
+    staging = 8
+    production = 16
+  }
+}
+
+# Use the variable "terraform.workspace" to select value and 
+resource "aws_instance" "web_server" {
+  ami           = "ami-0c55b1asdfk7jk"
+  instance_type = local.ec2_instance_type[terraform.workspace]
+  instance_count = local.ec2_instance_count[terraform.workspace]
+}
+```
+
+## Implementing and Maintaining State
+Local vs Remote Backend, State Locking and Secret Management.
+
+### Backend - Local 
+Allows for comparing desired with current infrastructure definition.
+
+* Terraform only creates / updates what has actually changed
+* Enabler for improving performance
+* The command ```plan``` and ````apply```` interact with the state
+* Local or remote backend for different use cases. We can configure local backend in terraform in more detail (though not required)
+```hcl
+terraform {
+  backend "local" {
+    path = "relative/path/to/terraform.tfstate"
+  }
+}
+# For ad-hoc tasks, you can use the -state command line option
+```
+
+Remote backends are optimized for access by multiple users.
+* Never store state data on local disk, only loaded into memory and flushed after the operation
+* Locking is established on remote backend implementation
+* Terraform currently support different [backend](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#available-backends).
+* Enhanced backends (e.g. Terraform Cloud and Enterprise) run Terraform operation on remote service (secured)
+
+### Backend - Remote
+Credentials shouldn't be configured in .tf file to avoid sending them as plain text over the wire or committing them to version control.
+
+```hcl
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "company"
+    
+    workspaces { # Please note workspaces in Terraform cloud / Enterprise is not exactly the same as CLI
+      name = "my-app-prod"
+    }
+  }
+}
+```
+
+You can do it partially. In such case, information can be provided from the CLI with init command.
+```hcl
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    
+    workspaces { # Please note workspaces in Terraform cloud / Enterprise is not exactly the same as CLI
+      name = "my-app-prod"
+    }
+  }
+}
+
+# $ terraform init -backend-config=organization=company
+```
+
+There is a different way to configure Terraform Cloud specifically.
+```hcl
+terraform {
+  cloud { # instead of remote backend, this is preferred
+    hostname = "app.terraform.io"
+    organization = "company"
+    
+    workspaces { # Please note workspaces in Terraform cloud / Enterprise is not exactly the same as CLI
+      name = "my-app-prod"
+    }
+  }
+}
+
+# $ terraform init -backend-config=organization=company
+```
+
+### State and locking
+Backends are used to manage to state.
+
+State locking ensures that state does not get corrupted by concurrent access. Lock management can be circumvented using ```-lock=false``` (but, please use it with caution).
+
+### Secret Management & State
+State data is not encrypted and shouldn't store sensitive data
+* Sensitive data can be provided with environment variables (`TF_VAR_` prefix) for some remote backend implementations
+* Enhance backends send and store state information in encrypted form
+* Credential-management platforms like [HashiCorp Vault](https://www.vaultproject.io/) can be integrated as viable alternative for storing and providing credentials.
+
+## Managing Resource Drift
+Ensures that state synchronizes with deployed infrastructure. https://developer.hashicorp.com/terraform/tutorials/state/resource-drift
+
+This is managed by refresh command. Usage: terraform refresh [options]
+
+```shell
+$ terraform plan -refresh-only
+
+$ terraform apply -refresh-only
+
 ```
 
 ## Example work
