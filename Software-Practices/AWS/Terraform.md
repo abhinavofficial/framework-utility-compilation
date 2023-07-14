@@ -882,17 +882,31 @@ State data is not encrypted and shouldn't store sensitive data
 ## Managing Resource Drift
 Ensures that state synchronizes with deployed infrastructure. https://developer.hashicorp.com/terraform/tutorials/state/resource-drift
 
-This is managed by refresh command. Usage: terraform refresh [options]
+This is managed by refresh command. Usage: terraform refresh [options]. However, we do not need to call refresh explicitly, and may be [deprecated](https://medium.com/ecs-digital/terraform-refresh-is-deprecated-fd3418552da2) in the future. If you need terraform plan or apply, Terraform would automatically try to sync its state from the cloud.
 
 ```shell
 $ terraform plan -refresh-only
 
 $ terraform apply -refresh-only
-
 ```
 
 ## Example work
 * [TFC getting started]()
+
+
+## Auxiliary
+
+### Symbols
+When we ran plan / apply / destroy, we saw symbol indicating that resource will be created or destroyed. Below is the full list of symbols
+
+| Symbol | Meaning                                                                           |
+|--------|-----------------------------------------------------------------------------------|
+| +      | Create                                                                            |
+| -      | Destroy                                                                           |
+| -/+    | Replace (destroy and then create, or vice-versa if create-before-destroy is used) |
+| ~      | Update in-place                                                                   |
+| <=     | Read (only applies to data sources)                                               |
+
 
 ## Next steps
 
