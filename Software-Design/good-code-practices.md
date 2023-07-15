@@ -1,6 +1,36 @@
 # Good Code Design
 Write code with good design with abstraction can be considered as beautiful code and with it, as ugly code.
 
+## Context
+Code maintenance takes about 2/3 of the entire code lifecycle. This cost is high because the code is messy, which makes it hard to:
+* Understand existing code
+* Find and fix bugs
+* Add new features
+* Adapt to new technology
+
+Let's understand some of the symptoms of the bad design.
+* **Rigidity**: The system is hard to change because every change forces many other changes to other parts of the system. [Remember the line: It was more complex than I thought]
+* **Fragility**: Hidden dependencies make systems easy to break. The consequences of change are not localized.
+* **Immobility**: It is hard to disentangle the system into components that can be reused in another systems.
+* **Viscosity**: Tools, environment, and design impede progress. It is slower to do the right thing than the wrong thing.
+* **Needless complexity, repetition**: 
+* **Opacity**: Hard to understand.
+
+Below the bad designs are code smells.
+* Duplication (DRY): Accidental duplication - which can evolve differently is fine.
+* Long method
+* Big Class
+* Feature envy
+* Useless comment
+* Poor name
+* Inappropriate intimacy
+* Shotgun surgery
+* Switch
+* God Class
+* Primitive Obsession
+* Refused Bequest
+
+
 ## Code Smell
 Broadly, three smells -
 
@@ -33,3 +63,23 @@ Program Abstraction is the key. Two simple abstractions (not exhaustive list) ar
 ### Deep smells
 These arise from issues like inefficient codes, poor memory management, poor concurrency management, poor race condition handling, etc. It is little difficult to detect - it may require specialized tools to detect like stress testing, etc.
 Some of these are also programming language specific. For example, we can probably use ```enumerate(list)``` instead of ```range(len(list))``` or using a ```loop``` instead using ```comprehension```
+
+## Remedies for bad designs
+Primarily using dependencies Management: Organize the system to keep it untangled. The way to do this is to separate concerns - build a firewall across components across which changes cannot propagate. This is what can be achieved by class design principles called [SOLID](design-principles/solid-design-principle.md) principles. There are other set of 6 principles called the [component](design-principles/component-principles.md) and [architecture](design-principles/architecture-principles.md) principles.
+
+> Class is used here symbolically. There are many programming languages which does not use the keyword class, but has conception of data elements and functions which forms a cohesive unit.
+
+Symptoms of a good design
+* Reveal Intent
+  * Provides insights into requirements analysis
+* Adaptable
+  * Tolerates evolution of business needs
+  * Accepts new technologies without undue cost - Cost of the change is proportional to scope of the change
+
+Code, Design and Architecture are always in continuum. If one is bad, the other cannot be okay, at least on a sustainable period of time. 
+
+## References
+* Martin Fowler - Refactoring
+
+
+https://www.youtube.com/watch?v=7EmboKQH8lM&list=PLmmYSbUCWJ4x1GO839azG_BBw8rkh-zOj
