@@ -69,17 +69,26 @@ Primarily using dependencies Management: Organize the system to keep it untangle
 
 > Class is used here symbolically. There are many programming languages which does not use the keyword class, but has conception of data elements and functions which forms a cohesive unit.
 
-Symptoms of a good design
+### Symptoms of a good design
 * Reveal Intent
   * Provides insights into requirements analysis
 * Adaptable
   * Tolerates evolution of business needs
   * Accepts new technologies without undue cost - Cost of the change is proportional to scope of the change
 
-Code, Design and Architecture are always in continuum. If one is bad, the other cannot be okay, at least on a sustainable period of time. 
+Code, Design and Architecture are always in continuum. If one is bad, the other cannot be okay, at least for a sustainable period of time.
+
+## Professionalism
+Doing right requires some bit of professionalism.
+
+* Check the code in cleaner than you checked out every single time. You have to craft it, and clean it.
+* The only way to go fast is to go well. Rushing does not help. This is our professional responsibility.
+
 
 ## References
 * Martin Fowler - Refactoring
+* Tools: CRAP: High cyclomatic complexity of a function against the code coverage.
+* Testing suiting is critical.
 
 
 https://www.youtube.com/watch?v=7EmboKQH8lM&list=PLmmYSbUCWJ4x1GO839azG_BBw8rkh-zOj
