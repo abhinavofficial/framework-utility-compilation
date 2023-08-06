@@ -84,6 +84,11 @@ Doing right requires some bit of professionalism.
 * Check the code in cleaner than you checked out every single time. You have to craft it, and clean it.
 * The only way to go fast is to go well. Rushing does not help. This is our professional responsibility.
 
+## Next Steps from here
+* [Clean Code](clean-code.md)
+* [Solid principles](design-principles/solid-design-principle.md)
+* 
+
 
 ## References
 * Martin Fowler - Refactoring
