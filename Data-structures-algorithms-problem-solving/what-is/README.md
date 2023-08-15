@@ -53,6 +53,27 @@ This might be discussed with you in all tech discussion
 Low level design
 more on the low level design on how are we going to implement it..
 
+To read - 
+* [Caching](../../Software-Design/caching.md)
+* [Built-in Functions](../../Languages/Python/Built-in-Functions.md)
+* [Built-in Types](../../Languages/Python/Built-in-Types.md)
+* [Collections](../../Languages/Python/Collections.md)
+* [String](../../Languages/Python/String.md)
+* [Hashes](Hashes.md)
+* [Hashmap](Hashmap.md)
+* [Trees](Trees.md)
+* [Binary Tree Searches](BFS-DFS-Searches.md)
+* [LinkedList](Linked-Lists.md)
+* [Heap](Heaps.md)
+* [Heap-Algorithms](Heap-Algorithms.md)
+* [Queue](Queues.md)
+* [Queue-Algorithms](Queue-Algorithms.md)
+* [Stacks](Stacks.md)
+* [Stack-Algorithms](Stack-Algorithms.md)
+* [Disjoint-Sets](Disjoint-Sets.md)
+* [Sorting-Algorithms](Sorting-Algorithms.md)
+
+
 https://www.techinterviewhandbook.org/coding-interview-prep/
 
 https://www.techinterviewhandbook.org/coding-interview-study-plan/
@@ -156,3 +177,5 @@ https://practice.geeksforgeeks.org/explore?page=1&sortBy=submissions
 https://www.educative.io/courses/data-structures-coding-interviews-python
 https://medium.com/javarevisited/50-data-structure-and-algorithms-interview-questions-for-programmers-b4b1ac61f5b0
 https://learning.oreilly.com/library/view/data-structures/9780134855912/ch01.xhtml#ch01lev1sec1
+
+https://www.javatpoint.com/python-design-pattern

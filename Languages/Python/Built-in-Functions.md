@@ -1,11 +1,16 @@
 # Python Built-in Functions
 
+https://docs.python.org/3.10/library/functions.html#hash
+
 * abs()	Returns the absolute value of a number 
+* aiter
 * all()	Returns True if all items in an iterable object are true 
 * any()	Returns True if any item in an iterable object is true 
+* anext()
 * ascii()	Returns a readable version of an object. Replaces none-ascii characters with escape character 
 * bin()	Returns the binary version of a number 
 * bool()	Returns the boolean value of the specified object 
+* breakpoint()
 * bytearray() Returns an array of bytes 
 * bytes()	Returns a bytes object 
 * callable()	Returns True if the specified object is callable, otherwise False 
@@ -21,9 +26,36 @@
 * eval()	Evaluates and executes an expression 
 * exec()	Executes the specified code (or object)
 * filter()	Use a filter function to exclude items in an iterable object 
-* float()	Returns a floating point number 
-* format()	Formats a specified value 
-* frozenset()	Returns a frozenset object 
+* float()	Returns a floating point number
+* format()	Formats a specified value, returns `str`
+  * Syntax: format(value, format)
+  * format: Legal values:
+    * '<' - Left aligns the result (within the available space)
+    * '>' - Right aligns the result (within the available space)
+    * '^' - Center aligns the result (within the available space)
+    * '=' - Places the sign to the left most position
+    * '+' - Use a plus sign to indicate if the result is positive or negative
+    * '-' - Use a minus sign for negative values only
+    * ' ' - Use a leading space for positive numbers
+    * ',' - Use a comma as a thousand separator
+    * '_' - Use a underscore as a thousand separator
+    * 'b' - Binary format
+    * 'c' - Converts the value into the corresponding unicode character
+    * 'd' - Decimal format
+    * 'e' - Scientific format, with a lower case e
+    * 'E' - Scientific format, with an upper case E
+    * 'f' - Fix point number format
+    * 'F' - Fix point number format, upper case
+    * 'g' - General format
+    * 'G' - General format (using a upper case E for scientific notations)
+    * 'o' - Octal format
+    * 'x' - Hex format, lower case
+    * 'X' - Hex format, upper case
+    * 'n' - Number format
+    * '%' - Percentage format
+* frozenset()	Returns a frozenset object (but unchangeable)
+  * Syntax: frozenset(iterable)
+  * An iterable object, like list, set, tuple etc.
 * getattr()	Returns the value of the specified attribute (property or method)
 * globals()	Returns the current global symbol table as a dictionary
 * hasattr()	Returns True if the specified object has the specified attribute (property/method)
@@ -64,6 +96,6 @@
 * sum()	Sums the items of an iterator
 * super()	Returns an object that represents the parent class
 * tuple()	Returns a tuple
-* type()	Returns the type of an object
+* type()	Returns the type of object
 * vars()	Returns the __dict__ property of an object
 * zip()	Returns an iterator, from two or more iterators

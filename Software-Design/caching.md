@@ -12,3 +12,22 @@ Write data to the system:
 🔹 **Write through**: Data is written in cache & DB; I/O completion is confirmed only when data is written in both places
 
 ![caching-strategies](images/caching-strategies.png)
+
+
+## What are the various cache eviction strategies?
+
+| Strategy                    | Eviction policy                       | Use case                                                 |
+|-----------------------------|---------------------------------------|----------------------------------------------------------|
+| First-In/First-Out (FIFO)   | Evicts the oldest of the entries      | Newer entries are most likely to be reused               |
+| Last-In/First-Out (LIFO)    | Evicts the latest of the entries      | Older entries are most likely to be reused               |
+| Least Recently Used (LRU)   | Evicts the least recently used entry  | Recently used entries are most likely to be reused       |
+| Most Recently Used (MRU)    | Evicts the most recently used entry   | Least recently used entries are most likely to be reused |
+| Least Frequently Used (LFU) | Evicts the least often accessed entry | Entries with a lot of hits are more likely to be reused  |
+
+https://en.wikipedia.org/wiki/Distributed_cache
+https://en.wikipedia.org/wiki/Cache-oblivious_algorithm
+https://en.wikipedia.org/wiki/Cache_stampede
+https://en.wikipedia.org/wiki/Cache_language_model
+https://en.wikipedia.org/wiki/Cache_coherence
+https://en.wikipedia.org/wiki/Cache_replacement_policies
+https://en.wikipedia.org/wiki/Locality_of_reference

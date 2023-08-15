@@ -22,14 +22,16 @@ Two keywords used in this context:
 
 ## Comparison Operators in Python
 
-| Operator | 	Description                                                                             | Syntax |
-|----------|------------------------------------------------------------------------------------------|--------|
-| >        | 	Greater than: True if the left operand is greater than the right                        | x > y  |
-| <        | 	Less than: True if the left operand is less than the right                              | x < y  |
-| ==       | 	Equal to: True if both operands are equal                                               | x == y |
-| !=       | 	Not equal to – True if operands are not equal                                           | x != y |
-| >=       | 	Greater than or equal to True if the left operand is greater than or equal to the right | x >= y |
-| <=       | Less than or equal to True if the left operand is less than or equal to the right        | x <= y |
+| Operator | 	Description                                                                             | Syntax     |
+|----------|------------------------------------------------------------------------------------------|------------|
+| >        | 	Greater than: True if the left operand is greater than the right                        | x > y      |
+| <        | 	Less than: True if the left operand is less than the right                              | x < y      |
+| ==       | 	Equal to: True if both operands are equal                                               | x == y     |
+| !=       | 	Not equal to – True if operands are not equal                                           | x != y     |
+| >=       | 	Greater than or equal to True if the left operand is greater than or equal to the right | x >= y     |
+| <=       | Less than or equal to True if the left operand is less than or equal to the right        | x <= y     |
+| is       | object identity                                                                          | x is y     |
+| is not   | negated object identity                                                                  | x is not y |
 
 > In python, the comparison operators have lower precedence than the arithmetic operators. All the operators within comparison operators have same precedence order.
 > Both “is” and “==” are used for object comparison in Python. The operator “==” compares values of two objects, while “is” checks if two objects are same (In other words two references to same object).
@@ -48,16 +50,21 @@ Two keywords used in this context:
 
 Python Bitwise operators act on bits and perform bit-by-bit operations. These are used to operate on binary numbers.
 
-| Operator | 	Description         | Syntax |
-|----------|----------------------|--------|
-| &        | 	Bitwise AND         | x & y  |
-| \|       | 	Bitwise OR          | x \| y |
-| ~        | 	Bitwise NOT         | ~x     |
-| ^        | 	Bitwise XOR         | x ^ y  |
-| >>       | 	Bitwise right shift | x>>    |
-| <<       | Bitwise left shift   | x<<    |
+| Operator | 	Description                  | Syntax |
+|----------|-------------------------------|--------|
+| &        | 	Bitwise AND                  | x & y  |
+| \|       | 	Bitwise OR                   | x \| y |
+| ~        | 	Bitwise NOT                  | ~x     |
+| ^        | 	Bitwise XOR                  | x ^ y  |
+| >>       | 	Bitwise right shift by n bit | x>> n  |
+| <<       | Bitwise left shift by n bit   | x<< n  |
 
 > The precedence of Bitwise Operators in python is as follows: Bitwise NOT -> Bitwise Shift -> Bitwise AND -> Bitwise XOR -> Bitwise OR
+> Negative shift counts are illegal and cause a ValueError to be raised. 
+> A left shift by n bits is equivalent to multiplication by pow(2, n). 
+> A right shift by n bits is equivalent to floor division by pow(2, n). 
+> Performing these calculations with at least one extra sign extension bit in a finite two’s complement representation (a working bit-width of 1 + max(x.bit_length(), y.bit_length()) or more) is sufficient to get the same result as if there were an infinite number of sign bits.
+
 
 ## Assignment Operators in Python
 
