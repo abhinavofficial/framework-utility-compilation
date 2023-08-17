@@ -61,19 +61,16 @@ To read -
 * [String](../../Languages/Python/String.md)
 * [Hashes](Hashes.md)
 * [Hashmap](Hashmap.md)
-* [Trees](Trees.md)
-* [Binary Tree Searches](BFS-DFS-Searches.md)
-* [LinkedList](Linked-Lists.md)
-* [Heap](Heaps.md)
-* [Heap-Algorithms](Heap-Algorithms.md)
 * [Queue](Queues.md)
-* [Queue-Algorithms](Queue-Algorithms.md)
 * [Stacks](Stacks.md)
-* [Stack-Algorithms](Stack-Algorithms.md)
+* [LinkedList](Linked-Lists.md)
+* [Trees](Trees.md)
+* [Heap](Heaps.md)
 * [Disjoint-Sets](Disjoint-Sets.md)
 * [Sorting-Algorithms](Sorting-Algorithms.md)
 
 https://realpython.com/lru-cache-python/
+
 
 https://www.techinterviewhandbook.org/coding-interview-prep/
 
