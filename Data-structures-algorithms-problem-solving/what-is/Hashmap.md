@@ -32,5 +32,5 @@ By keeping the initial capacity higher increases the time complexity of iteratio
 
 ## Different version of Hashmaps
 ### Python
-
+https://www.geeksforgeeks.org/hash-map-in-python/
 ### Java

@@ -52,3 +52,5 @@ while True:
 ```
 
 More on [generator](https://docs.python.org/3.10/reference/expressions.html#generator-expressions) and [yield](https://docs.python.org/3.10/reference/expressions.html#generator-expressions) expressions.
+
+https://realpython.com/introduction-to-python-generators/
