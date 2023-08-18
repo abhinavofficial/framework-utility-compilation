@@ -84,11 +84,11 @@ Ex. 3-sum triple ~ 1/6* N^3
 
 The small set of functions: 1, log N, N, NlogN, N^2, N^3, and 2^N suffices to describe order-of-growth of typical algorithms. We ignore the leading constant here.
 
-![common-order-of-growth](images/common-order-of-growth.png)
+![common-order-of-growth](../images/common-order-of-growth.png)
 
 We strive for 1, log N, N, NlogN. Linear or linearithmetic algo is required to keep pace with Moore's law (which crudely states that processing power doubles every two years). Let's see some examples.
 
-![common-examples](images/Common-example.png)
+![common-examples](../images/Common-example.png)
 
 ### Binary Search: Mathematical analysis
 Proposition: Binary searches uses at most 1 + logN compares to search in a sorted array of size N.
@@ -132,7 +132,7 @@ Step2: N2logN with binary search
 * Eliminate variability in input model by focusing on the worst case
 
 ### Notations
-![notations](images/commonly-used-notations.png)
+![notations](../images/commonly-used-notations.png)
 
 Big Theta -> Just a way to describe the order of growth
 Big Oh -> Upper bounds on performance

@@ -25,7 +25,7 @@ To track an object or person, you are really tracking numbers in a matrix.
 
 A flowchart is a type of diagram that represents an algorithm, workflow or process.
 
-![](images/flowchart-surveillance.png)
+![](../images/flowchart-surveillance.png)
 
 ### Turning an image into numbers
 An image of m by n pixels is represented mathematically by an m by n matrix. An m by n matrix is an array of numbers with exactly m rows and n columns. We can take each column of that matrix and stack them on top of each other to turn it into a tall vector, of length ```m * n``` - now each of pixels are in the vector.
@@ -35,7 +35,7 @@ An image of m by n pixels is represented mathematically by an m by n matrix. An 
 ### Turning a video into matrix
 Because you have the n columns and the m rows and that what is called vectorizing an image. So, if you now see a video becomes a matrix because each of the frames is a very, very, very long vector and if you stack it together you will get an m*n times K matrix, where K is a number of frames you have.
 
-![](images/suveillance-algo-flowchart.png)
+![](../images/suveillance-algo-flowchart.png)
 
 ### Ho do we know if our algorithm is going to work?
 
