@@ -121,6 +121,14 @@ A minimum spanning tree (MST) or minimum weight spanning tree is a subset of the
 We use [Prim's](../Algorithms/Prim-Algorithm.md) algorithm to create MST.
 
 ## Strongly connected component
+SCC is a component in which we can reach every vertex of the component from every other vertex in that component. This can be a single vertex component as well. To do this, we use an algorithm called [Kosaraju's](../Algorithms/Kosaraju-Algorithm.md) algorithm.
+
+This component presumes a directed graph. A undirected graph is strongly connected by the definition of SCC.
+
+## Bridge in Graphs
+Bridge is an edge which deletion increases the graph's number of connected components. To find such bridges, we use an algorithm called [Tarjan's](../Algorithms/Tarjan-Algorithm.md) Algorithm
+
+## Articulation Point
 
 
 

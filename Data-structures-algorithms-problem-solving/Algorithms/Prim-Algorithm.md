@@ -16,3 +16,5 @@ Since we need to find the minimum weight edge, probably priority queue is the be
 We can use array (visited) to track nodes in MST.
 
 Time Complexity: O(E* logE)
+
+Implementation is present at https://github.com/abhinavofficial/prep-inteview/blob/main/Graph.py
