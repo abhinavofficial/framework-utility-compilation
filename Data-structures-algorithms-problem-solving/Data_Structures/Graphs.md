@@ -107,6 +107,22 @@ Weighted graph: We need to find the overall weight to reach from vertex A to B. 
 * [Dijksta's](../Algorithms/Dijkstra-Algorithm.md) Algorithm
 * [Bellman Ford](../Algorithms/BellmanFord-Algorithm.md) Algorithm
 
+## Minimum Spanning Tree
+A minimum spanning tree (MST) or minimum weight spanning tree is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycle and with the minimum possible total edge weight.
+
+* MST presumes that graphs are
+    * undirected
+    * connected
+    * weighted
+* Weight of the graph is the sum of weight of all edges. MST needs to connect all the vertices without creating a cycle and with minimum possible total weight.
+* Since there is no cycle is MST, we can call it a tree as well
+* It is a subset of the graph
+
+We use [Prim's](../Algorithms/Prim-Algorithm.md) algorithm to create MST.
+
+## Strongly connected component
+
+
 
 ## Use cases:
 * Cycle Detection: If a vertex to be visited is present in recursion stack (implemented as array, not stack - since traveling through stack has higher time complexity).

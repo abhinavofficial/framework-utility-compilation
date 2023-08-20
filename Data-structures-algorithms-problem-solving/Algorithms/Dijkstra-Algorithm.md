@@ -27,3 +27,5 @@ Implementation is present at https://github.com/abhinavofficial/prep-inteview/bl
 
 Time Complexity: O(E + E*logV)
 E*logV is due to priority queue
+
+> Please note that Dijkstra's algorithm does not work well when the edges have negative value.
