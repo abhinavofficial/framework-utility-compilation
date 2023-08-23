@@ -34,3 +34,9 @@ By keeping the initial capacity higher increases the time complexity of iteratio
 ### Python
 https://www.geeksforgeeks.org/hash-map-in-python/
 ### Java
+
+## Hashset
+Set does not allow duplicates
+* Insert/Add - O(1)
+* Search/Contains - O(1)
+* Delete/Remove - O(1)

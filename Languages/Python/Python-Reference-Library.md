@@ -1,4 +1,4 @@
-
+https://docs.python.org/3.10/reference/index.html
 * Introduction
 * Lexical Analysis
 * Data Model

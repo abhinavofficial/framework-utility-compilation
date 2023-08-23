@@ -73,7 +73,7 @@ To read -
 * [Caching](../Software-Design/caching.md)
 * [Built-in Functions](../Languages/Python/Built-in-Functions.md)
 * [Built-in Types](../Languages/Python/Built-in-Types.md)
-* [Collections](../Languages/Python/Collections.md)
+* [Collections](../Languages/Python/Modules/collections.md)
 * [String](../Languages/Python/String.md)
 * [Queue](Data_Structures/Queues.md)
 * [Stacks](Data_Structures/Stacks.md)
@@ -88,6 +88,18 @@ To read -
 * [Sorting-Algorithms](Sorting-Algorithms.md)
 
 https://realpython.com/lru-cache-python/
+
+Binary Seach
+BFS/DFS/Flood fill
+Tree traversals
+Hash tables
+linked list, stacks, queues, two pointer/sliding window
+binary heap
+Dynamic programming
+Union find
+Adhoc/string manipulations
+trie
+segment tree / fenwick trees / bitmask
 
 https://www.techinterviewhandbook.org/coding-interview-prep/
 

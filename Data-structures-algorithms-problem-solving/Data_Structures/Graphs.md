@@ -129,8 +129,18 @@ This component presumes a directed graph. A undirected graph is strongly connect
 Bridge is an edge which deletion increases the graph's number of connected components. To find such bridges, we use an algorithm called [Tarjan's](../Algorithms/Tarjan-Algorithm.md) Algorithm
 
 ## Articulation Point
+A vertex in an undirected connected graph is an articulation point (or cut vertex) if removing it (and edges through it) disconnects the graph.
+A graph can have multiple articulation point. This articulation point is used to find vulnerability in a network.
+To find this component, we can use [Tarjan's](../Algorithms/Tarjan-Algorithm.md) Algorithm.
 
+Ancestor: A node A that was discovered before curr_node in DFS is the ancestor of curr. 
 
+A vertex is articulation point (AP) if 
+1. Vertex is a corner point (meaning parent node for this vertex is -1 - starting point of DFS) and its children if are disconnected are greater than 1.
+2. If there is only one path to reach to V via U, then U is a AP. This would imply that there is no back-edge from V to U - in such case, V is never an ancestor of U. V can ONLY be visited via U.
+3. Vertex U is root of a cycle.
+
+> Please note children in this case is when the destination (or neighbour) is not already visited. If it is already visited, it must have been so via back edge and is actually its ancestor. 
 
 ## Use cases:
 * Cycle Detection: If a vertex to be visited is present in recursion stack (implemented as array, not stack - since traveling through stack has higher time complexity).
