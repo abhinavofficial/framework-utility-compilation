@@ -17,7 +17,7 @@ HBase manages data in distributed databases. It is an open source implementation
 ## Why Distributed Systems?
 
 * Scale
-  * Overcomes limitations to follow Moore's Law
+  * Overcomes limitations to follow [Moore's Law](moore-law.md) and [Little's Law](little-law.md)
   * Horizontal scaling
   * Example: Google Search indexing
 * Collaboration
@@ -26,6 +26,7 @@ HBase manages data in distributed databases. It is an open source implementation
   * Online Games
 * Mobility
   * Internet of Things (IoT)
+* To manage consistent service state with distributed State and partial failures within the system
 
 Enables Cloud Systems.
 

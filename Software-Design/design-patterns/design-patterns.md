@@ -2,6 +2,8 @@
 
 A pattern describes a **problem** which occurs over and over again in our environment, and then describes the core of the **solution** to the problem, in such a way that you can reuse this solution a million times over without ever doing it the same way twice, as described by Christopher Alexander. It is not domain specific.
 
+The pattern also provide well established names for specific solutions is very useful. It helps describe high level designs by linking patterns together. Termed as a pattern sequence or a patter sequence.
+
 A design pattern is a representation of **communicating objects and classes** that are customized to solve a general design problem in a particular context, as described by GoF, Design Patterns.
 
 To come up with a design Pattern, below are the three steps involved:
@@ -14,7 +16,7 @@ To come up with a design Pattern, below are the three steps involved:
 * Intent
   * What does the pattern do?
   * What particular design issue or problem does it address?
-* Also Known As
+* Also, Known As
   * Other names of the pattern
 * Motivation
   * How the class and object structures solve the problem

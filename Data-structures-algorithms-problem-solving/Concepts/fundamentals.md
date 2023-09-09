@@ -18,8 +18,8 @@
 > Client get poor performance because programmer did not understand performance characteristics.
 
 ## Some algorithm successes
-* Discrete Fourier transform using FFT algorithm: N log N steps.
-* N-body simulation using Barnes-Hut algorithm: N log N steps.
+* Discrete Fourier transform using [FFT algorithm](../Algorithms/FFT-Algorithm.md): N log N steps.
+* N-body simulation using [Barnes-Hut algorithm](../Algorithms/Barnes-Hut-Algorithm.md): N log N steps.
 
 ## Scientific method applied to analysis of algorithms
 Insight [Donald Knuth, 1970] - The art of computer programming
@@ -91,7 +91,7 @@ We strive for 1, log N, N, NlogN. Linear or linearithmetic algo is required to k
 ![common-examples](../images/Common-example.png)
 
 ### Binary Search: Mathematical analysis
-Proposition: Binary searches uses at most 1 + logN compares to search in a sorted array of size N.
+Proposition: Binary searches uses at most 1 + logN compares to search in a **sorted** array of size N.
 
 Def. T(N) = # of compares to binary search in a sorted sub-array of size <= N
 

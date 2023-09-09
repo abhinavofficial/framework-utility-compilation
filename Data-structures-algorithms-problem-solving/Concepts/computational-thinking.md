@@ -14,6 +14,7 @@ These practices represent things to think about as you work to develop a plan to
 ## Graphic Organization
 
 One iteration per page
+
 Each page has sections of problem identification, decompositions, pattern recognition and abstraction.
 
 ## Case Study: Surveillance using Image processing

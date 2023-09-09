@@ -89,7 +89,7 @@ It also uses DFS for sorting (of course, slightly modified). We just need to tra
 ## Cycles in Graph
 For undirected graph, we can use DFS / BFS or DSU (Disjoint set union).
 
-For directed graph, we can use DFS / BFS / Topological sorting ([Kahn's algorithm](../Algorithms/kahns-algorithm.md)) / Graph coloring
+For directed graph, we can use DFS / BFS / Topological sorting ([Kahn's algorithm](../Algorithms/Kahns-algorithm.md)) / Graph coloring
 
 Let's learn here using DFS (which is recursion based)
 
