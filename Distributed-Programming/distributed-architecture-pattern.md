@@ -1,7 +1,9 @@
 # Distributed Architecture Pattern
 
 ## Motivation
+
 Distributed systems issues:
+
 * Failure of Network or hardware
 * Distributed system should look like a single system
 * Distributed system should scale
@@ -9,24 +11,30 @@ Distributed systems issues:
 There are patterns for common issues faced by people working with distributed system.
 
 ## Client-Server Systems
+
 Client is proactive. It generates and sends request. Server is reactive. It processes request and sends response.
 
 Single client, single server is a very simple model but does reflect the real world. Practical model involves multiple clients and servers for real world like eCommerce Portals and Online Banking.
 
-The first pattern that we look at multiple clients and servers is **Conversational Continuity**. A client initiates the communication to a server which can then be directed to an available server, after which communication is set up between the two. If the communication is stateless, then there is no co-ordination required between the servers. It may have load balancer to balance the workload amongst the server. However, consistency becomes a challenge when the communication is stateful. Servers need to intercommunicate and remain updated with the latest state of the system. 
-There are many ways to address this issue 
+The first pattern that we look at multiple clients and servers is **Conversational Continuity**. A client initiates the communication to a server which can then be directed to an available server, after which communication is set up between the two. If the communication is stateless, then there is no co-ordination required between the servers. It may have load balancer to balance the workload amongst the server. However, consistency becomes a challenge when the communication is stateful. Servers need to intercommunicate and remain updated with the latest state of the system.
+
+There are many ways to address this issue:
+
 * Server Pool pattern
 * Leader - Follower pattern
 * Half Sync - Half Async pattern
 * Notify Lock Pattern
 
 ### Server Pool
+
 We create a set of servers in a pool to start with. Now a central server, working as dispatch server, routes the request to one of the available servers in the pool. Once the assigned server completes the processing, it gets back into the pool as being available. In this model, the overhead to create the server is eliminated and response time to client improves. There are various implementations of this strategy:
+
 * Thread Pool: The process is passed on to one of the available threads in the pool. Example - Java Socket Pool
 * Proxy Server: Transparently routes the request to one of the available server in server nodes. It can also do load balancing. Example - HTTP REST Servers
 * Request Handoff
 
 #### Advantage and Disadvantage of server pool
+
 * Advantages:
   * Single Server is not blocked for a very long time.
   * Concurrent processing
@@ -35,7 +43,9 @@ We create a set of servers in a pool to start with. Now a central server, workin
   * Server pool is limited by the number of already created servers. Adding servers to handle spikes can be suboptimal in longer run.
 
 ### Leader - Follower
+
 All the servers are chained together. The first server (S1) in the chain is called a leader and others are marked followers. 
+
 * Leader (S1) takes the request
 * The second server (S2) in queue becomes leader and ready to take the new request
 * S1 handles request.
@@ -44,6 +54,7 @@ All the servers are chained together. The first server (S1) in the chain is call
 Example - TCP Crash Recover
 
 #### Advantage and Disadvantage of Leader - Follower
+
 * Advantages:
   * Low latency.
   * Minimal synchronization needed
@@ -52,7 +63,9 @@ Example - TCP Crash Recover
   * Complex implementation
 
 ### Half Sync - Half Async
+
 This pattern is used to solve the blocking issue that a client faces while the server is processing its request. By doing this, we can increase the parallelism on the client side. This certainly makes most sense if the client can do "something" while waiting for result to be back. 
+
 * Server receives request
 * Server returns Future object to client immediately
 * Server invokes Worker thread to handle the request
@@ -61,6 +74,7 @@ This pattern is used to solve the blocking issue that a client faces while the s
 * Client receives result
 
 As you can see, tasks are split in High-level and Low-level
+
 * High-level Layer: Synchronous, simple (Receiving )
 * Low-level Layer: Asynchronous, efficient
 * Queuing Layer: Buffering Point
@@ -70,6 +84,7 @@ Server can implement either callback based approach or future object based appro
 Example - UNIX, Windows NT Design
 
 #### Advantage and Disadvantage of Half Sync - Half Async
+
 * Advantages:
   * Simplified programming.
   * Enhanced efficiency
@@ -79,6 +94,7 @@ Example - UNIX, Windows NT Design
   * Context-switch overhead
 
 ### Notify Lock
+
 Let's understand this using Network file system (NFS). NFS is a client-server stateless system. Client sends both the file pointer and offset to server so that server does not need to maintain any state for client interaction. (Recovery becomes a challenge for stateful servers). Client utilizes remote procedure call (rpc). The way NFS works is - when client calls the server, the server sends few kb of data back (which is then maintained as cache at server and client). Client reads this data and if it needs more, requests more. Client polls every 30ms for data and every 3 sec for meta-data file. If there is any change to data (i-node cache), the cache is invalidated, and new set of data is received. This makes the architecture very network intensive. Hence, NFS cannot scale beyond few hundred nodes. Also, note that if there are any change happening within 30ms or 3 sec (before the clients has refreshed the data), the change is lost.
 
 To solve this problem, Notify Lock can be implemented where-in if there is any change to the file, the client will be notified. This helps reduce network load and allows system to scale up over ten thousand nodes. This is what is called AFS (Andrew File System)
@@ -90,11 +106,13 @@ Presentation Tier (Mobile App) <--> Logic Tier (Application Server) <--> Data Ti
 A lot of web applications are built using this pattern. Example - LAMP Stack (Linux - Apache Webserver - Mysql - Php)
 
 Client-server architecture with separate layers, which can be managed/scaled independently of one other:
+
 * Presentation
 * Processing
 * Data Management
 
 ### Motivation
+
 * Flexible and Reusable applications
 * Cache of Database connections
   * Reusable for future requests
@@ -117,17 +135,20 @@ Client-server architecture with separate layers, which can be managed/scaled ind
     * Advantage: Database server can optimize process based on its scheduling selection to optimize disc access time, as an example.
 
 ## Publish - Subscribe Model (PubSub)
+
 A messaging pattern:
+
 * Publishers: Create and categorize messages
 * Subscribes: Receive messages of interest
 * No direct interaction
 
 ### Mechanism
+
 * Topic Based: Publish messages to logical channels. Subscriber subscribes to topic and are notified for new message arrival.
 * Content Based: Match messages attribute to Subscriber
 
-
 ### Advantages and Disadvantages of PubSub
+
 * Advantages
   * Loose coupling
   * Better scalability through caching
@@ -139,8 +160,11 @@ A messaging pattern:
 There are many broking systems (like Kafka) which would help remove some challenges like delivery guarantees (exactly once, or at least once)
 
 ### Distributed PubSub Broker
+
 Broker plays a crucial role in keeping the communication as good as possible between Sender (Publisher) and Receiver (Subscriber)
+
 It's main role are:
+
 * Translates message from Sender to Receiver
 * Manages message queues
 * Provides message routing
@@ -162,16 +186,19 @@ A typical distributed PubSub system
 ## Microservices Architecture
 
 Functional cohesion is the best way of cohesion.
+
 * Decompose monolith (single, large application) to microservices architecture (Collection of loosely-couple services)
 * Mapping microservices to containers - docker
 * Kubernetes as Orchestrator (CI-CD for DevOps)
 
 Microservices Architecture:
+
 * Small size, bound by context
 * Message enabled
 * Independently developed and deployed
 
 ### When to apply
+
 * Rapidly evolving business model - Application structure changes frequently
 * Frequent application scaling - apply functional decomposition
 * Tangled dependencies in monolith - difficult to evolve independently and to separate concerns
@@ -179,6 +206,7 @@ Microservices Architecture:
 We can have nano microservices which can further compose other microservices. This enhances re-usability tremendously.
 
 ### How to decompose microservices
+
 * Business capabilities
 * Domain-driven subsystems
 * By verb or use-case responsible for specific action
@@ -186,11 +214,14 @@ We can have nano microservices which can further compose other microservices. Th
 * Classes of service should hold SRP (Single Responsibility Principle)
 
 ### Implementation
+
 Microservice Instances:
+
 * Service instance per Host
 * Service instance per Container (More popular these days) - you should be able to scale independently.
 
 ### Benefits
+
 * No single point of failure
 * Better fault isolation
 * Easier and more flexible deployment - continuous deployment using kubernetes and containers.
@@ -199,6 +230,7 @@ Microservice Instances:
 * Multiple tech stacks can co-exist and evolve
 
 ### Drawbacks
+
 * Inherent complexity in a distributed architecture
 * Handling requests spanning multiple services
 * Testing interactions between services becomes difficult
@@ -229,6 +261,7 @@ Microservice Instances:
 * Managed services - all the above can be handled using cloud native framework and solutions.
 
 ### Auto Scaling
+
 * Compute resources vary, depending on the load - and hence the need
 * The make-up of Auto Scaling
   * Auto Scaling Group
@@ -244,14 +277,16 @@ Microservice Instances:
 
 In most of the cases, you can specify minimum capacity, desired capacity and maximum capacity within an auto-scaling group and policies (trigger points based on metric) around the scaling up and down the group.
 
-**Advantages**
-  * Responsive to actual usage patterns
-  * Reduces operational costs
-  * Better availability
+#### Advantages
 
-**Disadvantages**
-  * Hides application inefficiencies
-  * Capacity thrashing possible if configured suboptimally
+* Responsive to actual usage patterns
+* Reduces operational costs
+* Better availability
+
+#### Disadvantages
+
+* Hides application inefficiencies
+* Capacity thrashing possible if configured suboptimally
 
 ### Containers
 
@@ -260,6 +295,7 @@ Containers work very differently than virtual machines.
 ![Different](images/Containers-VirtualMachines.png)
 
 Docker started the container technology (as believed). Docker provides:
+
 * Abstract app layer - Packages application and dependencies together
 * Containers provide isolated workspace using linux namespaces
 * pid, net, ipc, mnt, uns
@@ -294,9 +330,11 @@ Kubernetes provides a managed framework for managing containers.
 We can specify rollout strategy in kubernetes so newer versions can replace slowly when proved to be stable.
 
 ## Write Ahead Log
+
 This helps solve the following **problem** - In case of a server failure, we need to preserve data without incurring the cost of flushing all the state, which may be spanning across multiple files on the disk.
 
 The solution:
+
 * Store each state change as a command in a file on a hard disk
 * A single log is maintained for each server process which is sequentially appended
 * Each log entry is given a unique identifier which is monotonically increasing. The unique log identifier helps in implementing certain other operations on the log like Segmented Log or cleaning the log with Low-Water mark, etc.

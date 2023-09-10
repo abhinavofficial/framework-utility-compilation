@@ -1,6 +1,7 @@
 # Distributed System Architecture
 
 A distributed system is **a set of independent processes that work together, and appear to be a single coherent system**. It has:
+
 * No shared memory
 * No common global clock (Each node is using its local clock and synchronization can become an issue and hence notion of time become very important in distributed systems)
 * No shared OS
@@ -8,6 +9,7 @@ A distributed system is **a set of independent processes that work together, and
 Processes interact with each other using messages over the network. There is a possibility of shared memory distributed systems, but we will ignore it for now. For us, the abstraction is a node which is a computing system with storage which is connected to another node via network.
 
 ## Core Idea
+
 There can be many systems running a function, say database. Client request some data - it does not know where the data is. It is the job of **distributed middleware** to manage these complexities internally and should return the data to client transparently. Middleware can use any of the many protocols available (message parsing protocol) to manage internal communication.
 
 There are several kinds of middlewares, providing several kind of abstraction for the end user.
@@ -36,7 +38,7 @@ Elastic MapReduce can be used for writing map-reduce programs and doing distribu
 
 Hadoop Master node remains in safe mode if it is not able to meet the desired replica configuration. Data node sends heartbeat period - timeout is critical details. What kind of failures are we assuming in our systems. What if the data nodes are sending wrong information to master and other data nodes.
 
-**Properties of Distributed Systems**
+## Properties of Distributed Systems
 
 * **Fault-Tolerance**: Specify replication factor of 3 (the number of replicas that master will manage is 3). Data node sends heart-beat message.
 
@@ -68,3 +70,35 @@ Hadoop Master node remains in safe mode if it is not able to meet the desired re
 * Serviceability - System should be able to discover the fault and automatically recover if possible.
 * Manageability
   * Load Balancing mechanism to optimize the usage
+
+CPU
+RAM
+Network
+Disk
+
+Problems that we write on the distributed system.
+
+* **Process Crash**
+  * It can be take down for routine maintenance by system admins
+  * It can be killed because some exception is not properly handled.
+  * In cloud environment, it can be even trickier, as some unrelated events can bring down the servers down.
+* **Unsynchronized Clocks**
+  * Time of the day can drift at different rates
+  * Adjustments done with the NTP can cause the clocks to go "back in time"
+  * Clocks from different servers cannot be compared.
+* **Network Delays**
+  * TCP/IP is by design 'asynchronous'.
+  * There is no upper bound on the network delays.
+  * A server cannot wait indefinitely to know if another server has failed.
+  * There should not be two sets of servers serving clients, each considering the other has failed.
+* **Process Pause**
+  * Garbage collection pause.
+  * A process is not scheduled by the scheduled by the scheduler.
+  * The process is not aware that it was paused.
+
+These problems can cause -
+
+* Loss of data in memory.
+* Inconsistent data state
+  
+We need to give some guarantee to consumers.

@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
+        "Lamport",
         "linearizable",
         "PACELC",
+        "Paxos",
         "serializability"
     ]
 }

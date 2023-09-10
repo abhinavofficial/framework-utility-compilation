@@ -1,4 +1,5 @@
 # Paxos
+
 Paxos is one of the protocol that belongs to the family of consensus protocols. This protocol was introduced by Leslie Lamport in 1989, named after a fictional legislative consensus system used on the Paxos island in Greece.
 
 In this protocol, the order of execution of instruction is maintained in all the participating nodes so that all the replicas finally converge to the same value. When a client submits a request to all the participating node, it gets back a promise that the node would not accept any request with the previous timestamp.

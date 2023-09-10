@@ -1,38 +1,5 @@
 # Distributed Systems
 
-CPU
-RAM
-Network
-Disk
-
-Problems that we write on the distributed system.
-
-* **Process Crash**
-  * It can be take down for routine maintenance by system admins
-  * It can be killed because some exception is not properly handled.
-  * In cloud environment, it can be even trickier, as some unrelated events can bring down the servers down.
-* **Unsynchronized Clocks**
-  * Time of the day can drift at different rates
-  * Adjustments done with the NTP can cause the clocks to go "back in time"
-  * Clocks from different servers cannot be compared.
-* **Network Delays**
-  * TCP/IP is by design 'asynchronous'.
-  * There is no upper bound on the network delays.
-  * A server cannot wait indefinitely to know if another server has failed.
-  * There should not be two sets of servers serving clients, each considering the other has failed.
-* **Process Pause**
-  * Garbage collection pause.
-  * A process is not scheduled by the scheduled by the scheduler.
-  * The process is not aware that it was paused.
-
-These problems can cause -
-
-* Loss of data in memory.
-* Inconsistent data state
-  
-We need to give some guarantee to consumers
-
-* [Distributed Architecture Pattern](distributed-architecture-pattern.md)
 * [Distributed Systems Architecture](distributed-systems-architecture.md)
 * [Distributed Time](distributed-time.md)
 * [Transaction Concurrency Control](transaction-concurrency-control.md)
@@ -40,6 +7,7 @@ We need to give some guarantee to consumers
 * [CAP Theorem](CAP-Theorem.md)
 * [Consistency Models](consistency-models.md)
 * [Read-Write-Quorums](read-write-quoroms.md)
+* [Distributed Architecture Pattern](distributed-architecture-pattern.md)
 
 ## More References
 
@@ -53,9 +21,6 @@ We need to give some guarantee to consumers
 ### Links
 
 * [EMR](https://aws.amazon.com/emr/)
-* [Clock](https://www.mdpi.com/1424-8220/20/20/5928/htm)
-* [Logical Clock](https://wintermade.it/blog/posts/logical-clocks-lamport-timestamps.html)
-* [Vector Clock](https://en.wikipedia.org/wiki/Vector_clock)
 * [Brief Intro to Distributed Systems](https://link.springer.com/article/10.1007/s00607-016-0508-7)
 * [Apache Kafka](https://kafka.apache.org/intro)
 * [Docker](https://www.docker.com/)

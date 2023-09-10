@@ -1,10 +1,13 @@
 # Consensus
+
 Consensus: Coordinating processes agree on a data value that they require during computation. It is a decision-making process accounting for the whole group. Consensus is not unanimous - majority should agree but everyone might not. Examples:
+
 * Choosing transactions to commit on a data store
 * Selecting an order of those transactions
 * A democratic election process voted by all citizen. Leader appointed based on various majority algorithm.
 
 Consensus protocol: A distributed algorithm used to agree on data value(s)
+
 * Non-trivial
 * Depends on input to some process
 * Voting: agreeing on a majority value
@@ -26,9 +29,9 @@ Let's assume there are n processes, P1, P2, ..., Pn sharing a common memory. All
 
 In general, in a loosely coupled system, we have message passing model which uses ```send()``` and ```receive()``` primitives.
 
-One major performance difference between accessing a shared memory over a BUS and over a Network topology is drastically different - BUS is high speed and is comparable to access time of memory locations. 
+One major performance difference between accessing a shared memory over a BUS and over a Network topology is drastically different - BUS is high speed and is comparable to access time of memory locations.
 
-It is possible to simulate shared memory over message passing distributed system. Let us consider, a multinode distributed system where a node can access other node's memory over the network - this can be very slow. Now, lets assume that we replicate memory to each node so that the reads can happen locally and thus the reads will be access memory over BUS.  For writes, we can serialize and apply them in the same order over each node. In a system, where reads are very high, this may work very well.
+It is possible to simulate shared memory over message passing distributed system. Let us consider, a multi-node distributed system where a node can access other node's memory over the network - this can be very slow. Now, lets assume that we replicate memory to each node so that the reads can happen locally and thus the reads will be access memory over BUS.  For writes, we can serialize and apply them in the same order over each node. In a system, where reads are very high, this may work very well.
 
 We can also partition memory and assign part of memory to individual nodes so as data requirement to compute becomes local to that node. Locality for reference (????) i.e. when the node need other data partition for its computation, the partition can be re-assigned.
 
