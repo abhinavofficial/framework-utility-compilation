@@ -1,10 +1,36 @@
 # Distributed Systems
 
-* Process Crash
-  * It can take down for routine maintenance by system admins
+CPU
+RAM
+Network
+Disk
+
+Problems that we write on the distributed system.
+
+* **Process Crash**
+  * It can be take down for routine maintenance by system admins
   * It can be killed because some exception is not properly handled.
   * In cloud environment, it can be even trickier, as some unrelated events can bring down the servers down.
-* 
+* **Unsynchronized Clocks**
+  * Time of the day can drift at different rates
+  * Adjustments done with the NTP can cause the clocks to go "back in time"
+  * Clocks from different servers cannot be compared.
+* **Network Delays**
+  * TCP/IP is by design 'asynchronous'.
+  * There is no upper bound on the network delays.
+  * A server cannot wait indefinitely to know if another server has failed.
+  * There should not be two sets of servers serving clients, each considering the other has failed.
+* **Process Pause**
+  * Garbage collection pause.
+  * A process is not scheduled by the scheduled by the scheduler.
+  * The process is not aware that it was paused.
+
+These problems can cause -
+
+* Loss of data in memory.
+* Inconsistent data state
+  
+We need to give some guarantee to consumers
 
 * [Distributed Architecture Pattern](distributed-architecture-pattern.md)
 * [Distributed Systems Architecture](distributed-systems-architecture.md)
@@ -15,14 +41,17 @@
 * [Consistency Models](consistency-models.md)
 * [Read-Write-Quorums](read-write-quoroms.md)
 
-## More References:
+## More References
+
 ### Books
+
 1. Pattern-Oriented Software Architecture, Volume 4, A Pattern Language for Distributed Computing
 2. Using Docker: Developing and Deploying Software with Containers
 3. Distributed Systems, Principles & Paradigms, 2nd Edition: Andrew S Tanenbaum & Maarten van Steen.
 4. Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems: Martin Kleppmann
 
 ### Links
+
 * [EMR](https://aws.amazon.com/emr/)
 * [Clock](https://www.mdpi.com/1424-8220/20/20/5928/htm)
 * [Logical Clock](https://wintermade.it/blog/posts/logical-clocks-lamport-timestamps.html)
@@ -31,7 +60,6 @@
 * [Apache Kafka](https://kafka.apache.org/intro)
 * [Docker](https://www.docker.com/)
 * [Microservices](https://martinfowler.com/articles/microservices.html)
-
 
 ## FAQ
 
@@ -51,7 +79,7 @@ Reads won't see the value unless it's available in the kvstore exposed to client
 
 Yes the delay is to write to only one file which is append only. That can be optimized a bit by making it an async operation as we will see. But this is a compromise to give durability guarantee by only adding the cost of single append operation
 
-### Is the WAL cleaned up? If yes when.
+### Is the WAL cleaned up? If yes, when?
 
 Yes it's cleaned up as explained here https://martinfowler.com/articles/patterns-of-distributed-systems/low-watermark.html
 

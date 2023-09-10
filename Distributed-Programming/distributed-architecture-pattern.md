@@ -292,3 +292,11 @@ Kubernetes provides a managed framework for managing containers.
   * kubernetes CRI
 
 We can specify rollout strategy in kubernetes so newer versions can replace slowly when proved to be stable.
+
+## Write Ahead Log
+This helps solve the following **problem** - In case of a server failure, we need to preserve data without incurring the cost of flushing all the state, which may be spanning across multiple files on the disk.
+
+The solution:
+* Store each state change as a command in a file on a hard disk
+* A single log is maintained for each server process which is sequentially appended
+* Each log entry is given a unique identifier which is monotonically increasing. The unique log identifier helps in implementing certain other operations on the log like Segmented Log or cleaning the log with Low-Water mark, etc.
