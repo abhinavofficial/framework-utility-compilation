@@ -338,3 +338,19 @@ The solution:
 * Store each state change as a command in a file on a hard disk
 * A single log is maintained for each server process which is sequentially appended
 * Each log entry is given a unique identifier which is monotonically increasing. The unique log identifier helps in implementing certain other operations on the log like Segmented Log or cleaning the log with Low-Water mark, etc.
+
+### with this write ahead log solution, how any immediate read queries would be handled ?
+
+Reads won't see the value unless it's available in the kvstore exposed to clients, the hashmap in our example. The reads which are concurrent with writes will either see those writes or will not see those writes
+
+### have one quick question , in grand scheme of things , 1) Adding it to file will delay the put operation a bit provided we scale to millions of request (so are we trade off with latency in order to have durability) 2) What will happen if the local store crashes ?
+
+Yes the delay is to write to only one file which is append only. That can be optimized a bit by making it an async operation as we will see. But this is a compromise to give durability guarantee by only adding the cost of single append operation
+
+### Is the WAL cleaned up? If yes, when?
+
+Yes it's cleaned up as explained [here](https://martinfowler.com/articles/patterns-of-distributed-systems/low-watermark.html)
+
+### Is possible please explain WAL snapshot with an example? Also which ACID properties does WAL provide?
+
+You can refer to [this](https://martinfowler.com/articles/patterns-of-distributed-systems/low-watermark.html)

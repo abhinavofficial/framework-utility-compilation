@@ -1,4 +1,4 @@
-# Distributed System Architecture
+# Fundamentals of Distributed Systems
 
 A distributed system is **a set of independent processes that work together, and appear to be a single coherent system**. It has:
 
@@ -34,7 +34,7 @@ Enables Cloud Systems.
 
 ## AWS Elastic MapReduce
 
-Elastic MapReduce can be used for writing map-reduce programs and doing distributed analytics. While using EMR, you can create a cluster of servers. OS and middleware (Hadoop) runs on each of these servers. You can create any number of nodes - node failures are automatically taken care of. If the master (also known as name node) detects a node being failed, it replicated those portion of the data on other healthy nodes. Discover of an issue and recovering from the issue is a part of distributed systems. If the data node does not communicate with the master node, master node considers that data node failed which then triggers recovery action. Similarly, the way data consistency is maintained (in terms of replicas, etc.) is also part of distributed system. 
+Elastic MapReduce can be used for writing map-reduce programs and doing distributed analytics. While using EMR, you can create a cluster of servers. OS and middleware (Hadoop) runs on each of these servers. You can create any number of nodes - node failures are automatically taken care of. If the master (also known as name node) detects a node being failed, it replicated those portion of the data on other healthy nodes. Discover of an issue and recovering from the issue is a part of distributed systems. If the data node does not communicate with the master node, master node considers that data node failed which then triggers recovery action. Similarly, the way data consistency is maintained (in terms of replicas, etc.) is also part of distributed system.
 
 Hadoop Master node remains in safe mode if it is not able to meet the desired replica configuration. Data node sends heartbeat period - timeout is critical details. What kind of failures are we assuming in our systems. What if the data nodes are sending wrong information to master and other data nodes.
 
