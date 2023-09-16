@@ -3,6 +3,7 @@
         "Lamport",
         "linearizable",
         "PACELC",
+        "Parameterizing",
         "Paxos",
         "serializability"
     ]
