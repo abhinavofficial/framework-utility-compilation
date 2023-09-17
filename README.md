@@ -21,3 +21,4 @@ All the learnings are grouped by Month Year. I am assuming I will not be learnin
 * [Is Your Data Ready for Generative AI](https://www.dataversity.net/is-your-data-ready-for-generative-ai/)
 * [Developers staff+ opensource](https://www.infoq.com/articles/developers-staff-plus-open-source)
 * [Domain Driven Cloud](https://www.infoq.com/articles/domain-driven-cloud)
+* [https://oindrila-chakraborty88.medium.com/introduction-to-partition-in-apache-spark-66e005c6e15d]
