@@ -3,7 +3,7 @@
 It was first coined by Robert C. Martin in his book - Agile Software Development: Principles, Patterns, and Practices.
 
 Other 
-* Using comp.object debates - Google Archive (mid 90s)
+* Using "comp.object" debates - Google Archive (mid 90s)
 * NCARB Project was referenced where reusable framework
 * Some principles came from James O. Coplien, Barbara Liskov and Bertrand Meyer
 * Designing Object-Oriented C++ Applications using the Booch Method
@@ -98,6 +98,6 @@ https://medium.com/@saschagrunert/demystifying-containers-part-i-kernel-space-2c
 Suppose A and B are types, and T<U> denotes application of a type constructor T with type argument U. Within the type system of a programming language, a typing rule for a type constructor I is:
 * **covariant** if it preserves the ordering of types (≤), which orders types from more specific to more generic: If A ≤ B, then I<A> ≤ I<B>
 * **contravariant** if it reverses this ordering: If A ≤ B, then I<B> ≤ I<A> 
-* **bivariant** if both of these apply (i.e., if A ≤ B, then I<A> ≡ I<B>)
+* **bi-variant** if both of these apply (i.e., if A ≤ B, then I<A> ≡ I<B>)
 * **variant** if **covariant**, **contravariant** or **bivariant**
-* **invariant** or **nonvariant** if not variant.
+* **invariant** or **non-variant** if not variant.
