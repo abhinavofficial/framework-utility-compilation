@@ -3,13 +3,13 @@
 ## What are the top caching strategies?
 
 Read data from the system:
-🔹 **Cache aside**: Application reads from Cache. If cache miss happen, it reads from DB and updates the cache.
-🔹 **Read through**: Application reads from Cache. If cache miss happen, the data is fetched from DB and updated in cache directly, and then serviced to the caller. 
+* **Cache aside**: Application reads from Cache. If cache miss happen, it reads from DB and updates the cache.
+* **Read through**: Application reads from Cache. If cache miss happen, the data is fetched from DB and updated in cache directly, and then serviced to the caller. 
 
 Write data to the system:
-🔹 **Write around**: data is written in DB only; I/O completion is confirmed when data is written in DB
-🔹 **Write back**: data is written in cache first; When data is written in cache, I/O completion is confirmed; data is written to DB asynchronously (background job) and does not block the request from being processed
-🔹 **Write through**: Data is written in cache & DB; I/O completion is confirmed only when data is written in both places
+* **Write around**: data is written in DB only; I/O completion is confirmed when data is written in DB
+* **Write back**: data is written in cache first; When data is written in cache, I/O completion is confirmed; data is written to DB asynchronously (background job) and does not block the request from being processed
+* **Write through**: Data is written in cache & DB; I/O completion is confirmed only when data is written in both places
 
 ![caching-strategies](images/caching-strategies.png)
 
@@ -24,10 +24,12 @@ Write data to the system:
 | Most Recently Used (MRU)    | Evicts the most recently used entry   | Least recently used entries are most likely to be reused |
 | Least Frequently Used (LFU) | Evicts the least often accessed entry | Entries with a lot of hits are more likely to be reused  |
 
-https://en.wikipedia.org/wiki/Distributed_cache
-https://en.wikipedia.org/wiki/Cache-oblivious_algorithm
-https://en.wikipedia.org/wiki/Cache_stampede
-https://en.wikipedia.org/wiki/Cache_language_model
-https://en.wikipedia.org/wiki/Cache_coherence
-https://en.wikipedia.org/wiki/Cache_replacement_policies
-https://en.wikipedia.org/wiki/Locality_of_reference
+## Further reading
+
+* [Distributed Cache](https://en.wikipedia.org/wiki/Distributed_cache)
+* [Cache Oblivious Algorithm](https://en.wikipedia.org/wiki/Cache-oblivious_algorithm)
+* [Cache Stampede](https://en.wikipedia.org/wiki/Cache_stampede)
+* [Cache Language Mode](https://en.wikipedia.org/wiki/Cache_language_model)
+* [Cache Coherence](https://en.wikipedia.org/wiki/Cache_coherence)
+* [Cache Replacement Policies](https://en.wikipedia.org/wiki/Cache_replacement_policies)
+* [Locality of Reference](https://en.wikipedia.org/wiki/Locality_of_reference)

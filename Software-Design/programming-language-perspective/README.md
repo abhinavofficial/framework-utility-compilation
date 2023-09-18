@@ -7,6 +7,7 @@ This is a wrapper for detailed discussion on various programming languages. The 
 * Scala
 * Rust
 * Go
+* Python
 
 [C and C++](c-cpp.md)
 [C++ and Java](cpp-java.md)
