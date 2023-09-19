@@ -32,4 +32,8 @@ let my_boxed_str: Box<str> = my_string.into_boxed_str();
 println!("My boxed str: {}", my_boxed_str)
 ```
 
-* `Rc<str>` is a shared, immutable string slice. 
+* `Rc<str>` is a shared, immutable string slice.
+
+## Source
+
+* [All Rust string types explained](https://www.youtube.com/watch?v=CpvzeyzgQdw)

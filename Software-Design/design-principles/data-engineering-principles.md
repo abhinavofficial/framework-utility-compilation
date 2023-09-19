@@ -140,3 +140,4 @@ YAGNI: May not hold good for DE.
 3. [Design principles and Best Practices: DE is not SE](https://medium.com/@mbayebabacar/design-principles-and-best-practices-data-engineering-d-e-is-not-software-engineering-s-e-3b3578ae277a)
 4. [Data Engineering Design Principles : Holds true even in modern era](https://www.linkedin.com/pulse/data-engineering-design-principles-holds-true-even-modern-dhopade/)
 5. [SOLID Principles in Data Engineering - Part 1](https://blog.det.life/solid-principles-in-data-engineering-part-1-49d6025fe0c9), [SOLID Principles in Data Engineering— Part 2](https://blog.det.life/solid-principles-in-data-engineering-part-2-52b9ce2c7070) and [SOLID Principles in Data Engineering — Part 3](https://blog.det.life/solid-principles-in-data-engineering-part-3-249d5869266f)
+6. [Data Engineering Best Practices](https://www.nexla.com/data-engineering-best-practices/)
