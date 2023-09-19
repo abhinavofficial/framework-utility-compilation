@@ -2,7 +2,7 @@
 
 In a typical scenario where Kafka is used as a pub-sub messaging middleware, there are 3 important components: producer, broker, and consumer. The producer is the message sender, and the consumer is the message receiver. The broker is usually deployed in a cluster mode, which handles incoming messages and writes them to the broker partitions, allowing consumers to read from them.
 
-Note that Kafka is positioned as an event streaming platform, so the term “message”, which is often used in message queues, is not used in Kafka. We call it an “event”. 
+Note that Kafka is positioned as an event streaming platform, so the term “message”, which is often used in message queues, is not used in Kafka. We call it an “event”.
 
 ![kafka-architecture](images/kafka-architecture.png)
 
@@ -51,12 +51,12 @@ The data plane handles the data replication. The diagram below shows an example.
 
 ![data-plane](images/data-plane.png)
 
-
 ## Record
 
 Kafka uses the Record class as an abstraction of an event. The unbounded event stream is composed of many Records.
 
-There are 4 parts in a Record： 
+There are 4 parts in a Record：
+
 * Timestamp
 * Key
 * Value
@@ -83,4 +83,3 @@ We discussed brokers as the storage layer. The data is organized in topics and s
 **Steps 9 and 10:** The network thread picks up the response from the response queue and sends it to the corresponding socket send buffer. Note that the network thread is bound to a certain client. Only after the response for a request is sent out, will the network thread take another request from the particular client.
 
 ![broker](images/broker.png)
-

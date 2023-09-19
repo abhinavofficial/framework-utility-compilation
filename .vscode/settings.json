@@ -5,6 +5,8 @@
         "PACELC",
         "Parameterizing",
         "Paxos",
-        "serializability"
+        "playload",
+        "serializability",
+        "zstd"
     ]
 }
