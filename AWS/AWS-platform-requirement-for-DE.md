@@ -93,3 +93,7 @@
 
 * Workspace
 * GitLab
+
+## Integration with Hadoop, GCP, Azure
+
+* Dell Faction
