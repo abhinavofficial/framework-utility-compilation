@@ -1,12 +1,17 @@
 {
     "cSpell.words": [
+        "debuginfo",
         "Lamport",
         "linearizable",
         "PACELC",
         "Parameterizing",
         "Paxos",
+        "Pijul",
         "playload",
+        "Qdrant",
+        "rustc",
         "serializability",
+        "Xomnia",
         "zstd"
     ]
 }

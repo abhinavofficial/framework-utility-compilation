@@ -133,8 +133,6 @@ YAGNI: May not hold good for DE.
 
 5 from sources
 
-
-
 ## Sources
 
 1. [AWS Prescriptive Guidance - Data Engineering Principles](https://docs.aws.amazon.com/prescriptive-guidance/latest/modern-data-centric-use-cases/data-engineering-principles.html)

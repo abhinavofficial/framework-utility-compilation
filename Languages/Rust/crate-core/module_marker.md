@@ -1,6 +1,7 @@
 # Marker
 
 ## Traits
+
 ### Send
 
 Types that can be transferred across thread boundaries.

@@ -7,6 +7,7 @@
 * Set code generation units to 1
 
 In cargo.toml
+
 ```shell
 [profile.release]
 strip = true # automatically strip symbols from binary
@@ -34,4 +35,4 @@ cargo bloat --release --crates
 
 This would show which dependencies are taking the biggest size, which you can then change for optimization.
 
-For more information, https://github.com/johnthagen/min-sized-rust
+For more information, [min-sized-rust](https://github.com/johnthagen/min-sized-rust)
