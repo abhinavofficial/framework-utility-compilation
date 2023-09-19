@@ -88,6 +88,8 @@
 ## Data Transfer
 
 * Apache Nifi
+* Wandisco
+* pySFTP
 
 ## Development Process
 
