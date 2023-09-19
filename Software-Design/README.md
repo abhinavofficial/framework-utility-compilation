@@ -1,4 +1,6 @@
-# Table of Content
+# Software Design
+
+## Table of Content
 
 1. [CPU Concepts](cpu-concepts.md)
 2. [Modules and Functions](design-principles/program-structure.md)
@@ -10,6 +12,7 @@
 8. [Design Patterns](design-patterns/design-patterns.md)
 9. [Language Perspective](programming-language-perspective/README.md)
 
+## System Design in nut-shell
 
 1. For a Read-Heavy System - Consider using a Cache.
 2. For a Write-Heavy System - Use Message Queues for async processing
