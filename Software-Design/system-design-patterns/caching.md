@@ -11,7 +11,7 @@ Write data to the system:
 * **Write back**: data is written in cache first; When data is written in cache, I/O completion is confirmed; data is written to DB asynchronously (background job) and does not block the request from being processed
 * **Write through**: Data is written in cache & DB; I/O completion is confirmed only when data is written in both places
 
-![caching-strategies](images/caching-strategies.png)
+![caching-strategies](../images/caching-strategies.png)
 
 
 ## What are the various cache eviction strategies?
@@ -23,6 +23,14 @@ Write data to the system:
 | Least Recently Used (LRU)   | Evicts the least recently used entry  | Recently used entries are most likely to be reused       |
 | Most Recently Used (MRU)    | Evicts the most recently used entry   | Least recently used entries are most likely to be reused |
 | Least Frequently Used (LFU) | Evicts the least often accessed entry | Entries with a lot of hits are more likely to be reused  |
+
+
+## Caching Solution
+
+* Memcached
+* Redis
+
+
 
 ## Further reading
 

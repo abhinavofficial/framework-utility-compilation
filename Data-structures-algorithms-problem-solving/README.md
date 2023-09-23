@@ -70,7 +70,7 @@ Low level design
 more on the low level design on how are we going to implement it..
 
 To read -
-* [Caching](../Software-Design/caching.md)
+* [Caching](../Software-Design/system-design-patterns/caching.md)
 * [Built-in Functions](../Languages/Python/Built-in-Functions.md)
 * [Built-in Types](../Languages/Python/Built-in-Types.md)
 * [Collections](../Languages/Python/Modules/collections.md)
