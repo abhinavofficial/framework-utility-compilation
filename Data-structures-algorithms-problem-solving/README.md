@@ -75,5 +75,6 @@ https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/
 https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2005/
 https://ocw.mit.edu/courses/6-852j-distributed-algorithms-fall-2009/
 
+https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/
 
 https://ocw.mit.edu/search/?t=Algorithms%20and%20Data%20Structures
