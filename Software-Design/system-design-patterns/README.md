@@ -34,4 +34,4 @@
 28. For IP resolution & Domain Name Query - Mention DNS (Domain Name System).
 29. Handling Large Data in Network Requests - Implement Pagination.
 30. Cache Eviction Policy - Preferred is LRU (Least Recently Used) Cache.
-31. Deployment Strategies
+31. Deployment Strategies - Depending on application. See the details [here](../../Software-Practices/DevOps/deployment-strategies.md)

@@ -1,4 +1,4 @@
 # Specific Implementation
 
-* [Bloom Filter](BloomFilter.md)
+* [Bloom Filter](bloomFilter.md)
 * [LRUCache](lruCache.md)
