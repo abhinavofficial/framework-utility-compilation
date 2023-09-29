@@ -2,24 +2,128 @@
 
 ## Why containerization?
 
+### The software industry has changed
+
+* Before
+  * Monolithic applications
+  * Long Development cycles
+  * Single environment
+  * Slowly scaling up
+* Now
+  * Decoupled services
+  * Fast, iterative improvements
+  * Multiple environments
+  * Quickly scaling out
+
+### Deployment becomes very complex
+
+* Many different stacks
+  * Languages
+  * Frameworks
+  * Databases
+* Many different targets
+  * Individual development environments
+  * Pre-production, QA, staging..
+  * Production: On-prem, Cloud, hybrid
+
+## How does container help in this situation?
+
+Similar to how shipping company transport our physical material in boxes - all of stuff is put in a container and contained can then be shipped in any kind of transport, we have container which can package all of digital stuff and orchestrator which can transport or operate them.
+
+This can lead to very interesting outcome
+
+* Dev-to-prod reduced from 9 months to 15 mins (ING)
+* Continuous integration job time reduced by more than 60% (BBC)
+* Dev-to-prod reduced from weeks to minutes (GILT)
+
+You can also escape the dependency hell
+
+* Write installation instructions into an INSTALL.txt file
+* Using this file, write an "install.sh" script that works for *you*
+* Turn this file into a "Dockerfile", test it on your machine
+* If the Dockerfile builds on your machine, it would build anywhere
+* Rejoice as you escape dependency hell and "works on my machine"
+
+You can on-board developers and contributors rapidly
+
+* Write Dockerfiles for your application components
+* Use pre-made images from the Docker Hub (mysql, redis)
+* Describe your stack with a Compose file
+* On-board somebody with two commands:
+
+```shell
+> git clone
+> docker-compose up
+```
+
+* Also works to create dev, integration, QA environments in minutes!
+
 ### Simplicity
+
 * Command should be similar whether we are creating database or application server.
 * Simple command to interact with our application or server
 * How to start and stop our application not as a virtual machine but as a process.
 
 ### Predictable, repeatable and works in multiple different environments
+
 * Different user groups can install applications flawlessly in a repeatable manner.
 * Developers could document the application details easily
 
 ### Easy to package everything up into deployable which can be maintained easily
-* 
+
+* Helps implement reliable CI easily
+  * For each run, stage up a new container or stack
+  * Each run is now in a clean environment
+  * No pollution from previous tests
+
+> Way faster and cheaper than creating VMs each time!
 
 ### Allow us time for scalability
+
 We know what auto-elasticity is about and the role in plays especially in Cloud.
 
 In traditional management, there are three zones - zone of under-utilization, zone of utilization and zone of over-utilization. Over-Utilization leads to service outage.
 
 Process of incrementally adding or removing capacity per demand is called scalability. Provisioning time is the time elapsed between when the capacity was starting to add to the point where it started showing up. We need to reduce provisioning time otherwise if our demand is steep, we get into over-utilization zone.
+
+## History of containers... and Docker
+
+* Initial experiments
+  * IBM VM/370 - 1972
+  * Linux VServers - 2001
+  * Solaris Containers - 2004
+  * FreeBSD jails - 1999
+
+* The origins of the Docker Project
+  * dotCloud was operating a PaaS, using a custom container engine
+  * This engine was based on OpenVZ (and later, LXC) and AUFS
+  * It started (circa 2008) as a single Python Script
+  * By 2012, the engine had multiple (~10 python components) and ~100 other micro-services
+  * End of 2012, dotCloud refactors this container engine.
+  * The codename for this project is "Docker"
+* First public release
+  * March 2013, PyCon, Santa Clara: DOcker is shown to a public audience for the first time.
+  * It is released with an open source license
+  * Very positive reactions and feedback!
+  * The dotCloud team progressively shifts to Docker development
+  * The same year, dotCloud changes name to Docker
+  * In 2014, the PaaS activity is sold.
+* First Users of Docker
+  * PaaS builders (Flynn, Dokku, Tsuru, Deis...)
+  * PaaS users
+  * CI platforms
+  * developers, developers, developers, developers
+* Docker becomes a platform
+  * The initial engine is now known as "Docker engine"
+  * Other tools are added:
+    * Docker Compose (formerly "Fig")
+    * Docker Machine
+    * Docker Swarm
+    * Kitematic
+    * Docker Cloud (formerly "Tumtum")
+    * Docker Datacenter
+    * etc.
+  * Docker Inc. launches commercial offers.
 
 **What are the different ways of reducing provisioning time?**
 
@@ -28,15 +132,19 @@ Provisioning time = Time take for Infra initialization + Time take for Applicati
 We would see how containerization can help reduce Time take for Infra initialization.
 
 ## VM vs Containers
+
+```text
 One VM
-- App 
-- App dep 
-- OS 
-- Hypervisor
+  - App 
+  - App dep 
+  - OS 
+  - Hypervisor
+```
 
 If we are installing two VMs, there are too many things that are duplicates which cannot be an efficient use of disk. Also, with change of environment, multiple impacts can happen which may or may not work.
 
 In a Container, however, we see something like this
+
 * Application
 * Application Library Layer
 * Service Layer
@@ -71,6 +179,7 @@ K8S and Docker - scalable, availability, responsiveness to incoming traffic.
 AWS provides the managed service across K8S (**E**lastic **K**ubernetes **S**ervice) and Docker (**E**lastic **C**ontainer **S**ervice) and we as developer just need to provide them our application image.
 
 So, when we interact with docker daemon via docker client and provide the image name. Docker daemon tries to get the image in below order.
+
 * Do I have the image locally?
 * If not, Find out
   * In docker-hub (default behavior)
@@ -89,10 +198,8 @@ Container are ephemeral, so you would lose all local data within container once 
 
 docker ps -a
 
-
-
-
 ## Overlay2 Storage Driver for Docker
+
 As of Ubuntu 14.10, the ```aufs``` storage driver used by Docker has been deprecated and now the preferred storage driver for Linux distributions is ```overlay2```.  As a result of this change, the location of the layers has been moved from ```/var/lib/docker/aufs/layer``` to ```/var/lib/docker/overlay2```. Going forward, ```overlay2``` is the default storage driver on Docker installations on Linux. If ```aufs``` must be used, it has to be explicitly configured.
 
 Please follow the link below to learn more on [this](https://docs.docker.com/storage/storagedriver/select-storage-driver/)
@@ -101,11 +208,9 @@ These updates and changes do not impact the core operations of Docker.
 
 > If you remove the image from docker, corresponding layers would also get removed from storage driver
 
+## Further reading
 
-https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html
-
-https://docs.docker.com/get-started/overview/
-
-https://docs.docker.com/get-started/resources/
-
-https://www.docker.com/resources/what-container/#/package_software
+* [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
+* [Docker Getting started](https://docs.docker.com/get-started/overview/)
+* [Docker Resources](https://docs.docker.com/get-started/resources/)
+* [Docker What container](https://www.docker.com/resources/what-container/#/package_software)
