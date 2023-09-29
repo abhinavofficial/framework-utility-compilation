@@ -1,4 +1,5 @@
 # Terraform
+
 * Built by Harshicorp in 2014. It is written in Go Language.
 * It is [infrastructure as code](#infrastructure-as-code-iac) service. It is more descriptive in nature than cloud-formation. It uses a human-readable language known as Harshicorp configuration language (HCL) or JSON
 * Automate infrastructure creation - deployment of infrastructure happens with a push-based approach (no agent to be installed on remote machines).
@@ -9,10 +10,13 @@
 * It runs on machine Terraform server
 
 ## How does Terraform work
-When we install Terraform, we install the terraform binary. Binary makes API calls to endpoints exposed by cloud providers. It uses its CLI tool for deploying the infrastructure - under the hood, it makes API calls on behalf of a provider including authentication mechanisms. It reads the configuration file as defined by us, which tells which API calls to make with cloud providers, like AWS, GCP and Azure. In terms of cloud provider portability, the features are different, Terraform technical approach is not. Cloud providers don't support the exact same infrastructure and are named differently. Terraform allows you to use the same approach to define provider-specific configuration. You can use the same Terraform language, toolset, and IaC practices.
+
+When we install Terraform, we install the terraform binary. Binary makes API calls to endpoints exposed by cloud providers. It uses its CLI tool for deploying the infrastructure - under the hood, it makes API calls on behalf of a provider including authentication mechanisms. It reads the configuration file as defined by us, which tells which API calls to make with cloud providers, like AWS, GCP and Azure. In terms of cloud provider portability, the features are different, Terraform technical approach is not. Cloud providers don't support the exact same infrastructure and are named differently. Terraform allows you to use the same approach to define provider-specific configuration. You can use the same Terraform language, tool-set, and IaC practices.
 
 ## Terraform Components
+
 Key building blocks in architecture
+
 * **Executable**: Binary run from the command line that contains the core functions
 * **Configuration file(s)**: files with extension ```.tf``` or ```.tfvars``` that define the desired config for provisioning infra
 * **Provider plugins** aka provider: Executables invokes by Terraform to interact with cloud provider APIs, hosted on a registry
@@ -22,10 +26,10 @@ Key building blocks in architecture
   * Consistency: Terraform employs locking to avoid synchronization and collaboration issues, it used .lock file.
 
 ## Installation
+
 Please use standard guideline as provided by Harshicorp.
 
 You can use [tfswitch](https://github.com/warrensbox/terraform-switcher) which lets you manage and use Terraform versions in parallel.
-
 
 ## Basic Terraform commands
 
@@ -38,7 +42,6 @@ Main commands:
 | plan     | Show changes required by the current configuration |
 | apply    | Create or update infrastructure                    |
 | destroy  | Destroy previously-created infrastructure          |
-       
 
 All other commands:
 
@@ -64,7 +67,6 @@ All other commands:
 | version      | Show the current Terraform version                          |
 | workspace    | Workspace management                                        |
 
-
 | Commands           | Usage                                                          |
 |--------------------|----------------------------------------------------------------|
 | terraform init     | Downloads any plugins required to run templates                |
@@ -80,24 +82,27 @@ All other commands:
 * Plan: Preview the changes Terraform will make to match your configuration
 * Apply: Make the planned changes
 * Destroy: To destroy the infrastructure
-* Providers: Providers are a logical 
+* Providers: Providers are a logical
 * Module:  Modules are reusable Terraform configurations that can be called and configured by other configurations. Most modules manage a few closely related resources from a single provider.
 * Registry:  The Terraform Registry makes it easy to use any provider or module. To use a provider or module from this registry, just add it to your configuration; when you run `terraform init`, Terraform will automatically download everything it needs.
 
 Examples of learnings:
-[Here](https://github.com/abhinavofficial/iitm-cloud-blockchain-iot/tree/main/cloud-devops/Week_3/terraform_exercises)
 
-Terraform Comparison: https://terraform.io/intro/vs/index.html
-Terraform Resources: 
-Getting Started: https://learn.hashicorp.com/terraform?utm_source=terraform_io
+* [Here](https://github.com/abhinavofficial/iitm-cloud-blockchain-iot/tree/main/cloud-devops/Week_3/terraform_exercises)
+* [Terraform Comparison](https://terraform.io/intro/vs/index.html)
+* Terraform Resources:
+* [Getting Started](https://learn.hashicorp.com/terraform?utm_source=terraform_io)
 
 ## Infrastructure as Code (IaC)
+
 Very simply, it is to manage infrastructure with the help of code.
+
 * Treats all aspects of operations as software via configuration
 * These configurations are managed in one and more files. Code is tracked in SCM repository, for example git
-* Post this, you would need some tool to automatically apply those configurations for actual provision. This automation makes the provisioning process consistent, repeatable and updates fast & reliable. 
+* Post this, you would need some tool to automatically apply those configurations for actual provision. This automation makes the provisioning process consistent, repeatable and updates fast & reliable.
 
 ### Salient feature of IaC
+
 * **Repeatable Processes**: Clear instructions that describe the desired state
   * A set of instructions are defined with the help of declarative language.
   * Operations are idempotent, e.g. an update to the environment will only make necessary changes but not duplicate what already exists
@@ -113,29 +118,37 @@ Very simply, it is to manage infrastructure with the help of code.
 * **Financial Savings**: Increased efficiency, fewer mistakes through automation
   * Reduced risk due to minimizing human error
   * Infrastructure can be verified with [automated tests](#automated-test) .
-  * IaC functions can be used to spin down environments during times of less traffic. Example, decrease the manual grunt work for DevOps personnel and spending it on mission-critical tasks instead. 
+  * IaC functions can be used to spin down environments during times of less traffic. Example, decrease the manual grunt work for DevOps personnel and spending it on mission-critical tasks instead.
 
 ## Automated Test
+
 Learning in progress..
 
 ## Key Concept for working with Terraform
+
 Terraform configuration is defined by a collection of files (.tf or tf.json). A module defines a set of (potentially versioned) configuration files(s). Root module and child module can be based of directory
 
 ### Object Types
+
 #### Providers
+
 Providers are the plugins that Terraform uses to interact with a cloud provider through its API. Every supported service or infrastructure platform has a provider that defines which resources are available and performs API calls to manage those resources.
 
 Each provider adds a set of resource types and/or data sources that Terraform can manage. Every resource type is implemented by a provider; without providers, Terraform can't manage any kind of infrastructure. Most providers configure a specific infrastructure platform (either cloud or self-hosted). Providers can also offer local utilities for tasks like generating random numbers for unique resource names.
 
 #### Resources
+
 Resources are the most important element in the Terraform language. It defines the infrastructure pieces to be created in a target environment. Each resource block describes one or more infrastructure objects, such as virtual networks, compute instances, or higher-level components such as DNS records.
+
 * ```Resource Blocks``` documents the syntax for declaring resources.
 * ```Resource Behavior``` explains in more detail how Terraform handles resource declarations when applying a configuration.
 * The Meta-Arguments section documents special arguments that can be used with every resource type, including ```depends_on```, ```count```, ```for_each```, ```provider```, and ```lifecycle```.
 * ```Provisioners``` documents configuring post-creation actions for a resource using the ```provisioner``` and ```connection``` blocks.
+
 > Since provisioners are non-declarative and potentially unpredictable, it is strongly recommended that you treat them as a last resort.
 
 #### Data Source
+
 Data sources allow Terraform to use information defined outside of Terraform, usually provider by provider, or as defined by another separate Terraform configuration, or modified by functions. Each provider may offer data sources alongside its set of resource types. More on this is present [here](https://www.terraform.io/language/data-sources)
 
 This means we can use pick some value as provided by some via data sources.
@@ -166,6 +179,7 @@ resource "aws_instance" "web" {
 ```
 
 #### Provisioners
+
 You can use provisioners to model specific actions on the local machine or on a remote machine in order to prepare servers or other infrastructure objects for service.
 
 Terraform includes the concept of provisioners as a measure of pragmatism, knowing that there are always certain behaviors that cannot be directly represented in Terraform declarative model.
@@ -175,9 +189,11 @@ However, they also add a considerable amount of complexity and uncertainty to Te
 local-exec, remote-exec, connection,
 
 #### Outputs
+
 to capture the output return from terraform.
 
 ## Working with Terraform
+
 ### Configuration Syntax
 
 HCL is preferred over JSON.
@@ -193,18 +209,22 @@ BLOCK_TYPE "BLOCK_LABEL" "BLOCK-LABEL-NAME" {
 ```
 
 The syntax has some constraints:
+
 * Identifier can contain letters, digits, underscores, and hyphens. The first character of an identifier must not be a digit, to avoid ambiguity with literal numbers
-* Comments can be defined by #, //, or /* */
+* Comments can be defined by #, //, or /*..*/
 * Configuration files must always be UTF-8 encoded
 
 ### Working with provider
+
 HCL is a plugin-based architecture. Core terraform binary is small, providers are developed as plugins and is used for interacting with endpoints with providers.
+
 * Terraform Core: The binary that communicates with plugins to manage infrastructure resources.
 * Terraform plugins: Executable binaries written in Go that communicates with Terraform core over an RPC interact.
 
 ![interaction](images/terraform-core-provider-interaction.png)
 
 Provider plugins are available in public [registry](https://registry.terraform.io/browse/providers), a central location for plugins and their documentation. To tell our configuration file about these providers is simple. For example, for using AWS as provider, copy and paste the below code into your Terraform configuration. Then, run terraform init.
+
 ```hcl
 # Terraform 0.13+
 # Until we point it to a private registry, it would refer to public registry.
@@ -232,10 +252,10 @@ no assigned value attribute     Picks latest version of the provider available i
 ```
 
 > If you need to read on how to use terraform for any specific resource type, you can read [here](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
-
 > When we start to build out terraform documents, it is important to understand various details like VPC, Subnet, CIDR, Internet Gateway, Route table, Route table association and Security Group - egress and ingress, some of these concepts are covered under [Software-Design](../../Software-Design). Please read through under network-address section.
 
 When you run a terraform command which requires some functionality within plugin from a provider, it would create a lock file. It lives locally and stores resolved versions + checksum of provider plugins.
+
 * Terraform creates or updates the dependency lock file each time you run the **init** command.
 * The dependency lock file is always name ```.terraform.lock.hcl``` and is meant to be checked into version control.
 * Use the ```-upgrade``` flag with the ```init``` command to upgrade a provide plugin version or simply change the version number.
@@ -245,12 +265,15 @@ All providers publish the API in the registry along with the documentation, incl
 Defining a provider is optional, so if we do not define it, terraform will use the prefix of block level to determine provider on Terraform registry and download the latest version available. This is not the best practice though.
 
 #### Configuring Provider(s)
-If we are using a provider, say AWS, we also need to define which regin to use. 
+
+If we are using a provider, say AWS, we also need to define which regin to use.
+
 ```hcl
 provider "aws" {
   region = "us-east-2" # Default provider" Any resource that does not assign a provider explicitly will use this region.
 }
 ```
+
 In case you need to use multiple providers, you need to use an alias to reference the same.
 
 ```hcl
@@ -261,11 +284,13 @@ provider "aws" {
 ```
 
 When we run terraform init,
+
 * Terraform automatically fetches plugin from the registry and stores them (local cache) in the .terraform subdirectory.
 * Caching is enabled by default and a plugin version already available in the .terraform subdirectory will be reused.
 * Cache directory be configured with the environment variable ```TF_PLUGIN_DIR``` or the CLI option ```--plugin-dir``` - this can be used when sharing this with team, but generally not used
 
 We also need to provide credentials to deploy the infrastructure. It can be done by looking at the provider's exposed attributes for consuming credentials. For example, with aws
+
 ```hcl
 provider "aws" {
   region = "us-east-2"
@@ -273,7 +298,9 @@ provider "aws" {
   secret_key = "my-secret-key"
 }
 ```
+
 This is not recommended due to security concern. Alternately,
+
 ```hcl
 provider "aws" {
   region = "us-east-2"
@@ -333,29 +360,35 @@ Three-step approach on a high level: Write -> Plan -> Apply
   * Commit changes to version control
 
 ```terraform init```
+
 * Prepare work directory
 * Parse config
 * Retrieve provider plugins
 * Cache in the .terraform directory
 
 ```terraform validate```
+
 * Check for syntax errors
 * Does not guarantee successful deployment
 * Should be done in CI/CD before plan and apply
 
 ```terraform plan```
+
 * Determine differences between local state and deployed infra
 
 ```terraform apply```
+
 * Deploying the infrastructure or changing its delta
 
 ```terraform destroy```
+
 * Delete infrastructure in target environment based on state data
 * You can delete one or more resource or full environment.
 
 ### Working with variables
 
 Before diving into variables, let's understand what data types can be supported in the input variables.
+
 * Primitive: string, number, bool
 * Collection or Complex: list / tuple like [a, b], set, map / object like { name="Mabel", age=52 }
 
@@ -401,6 +434,7 @@ resource "aws_instance" "example" {
   instance_type = var.availability_zone_names[0]
 }
 ```
+
 Now, when you run ```terraform plan```, terraform will expect user input.
 
 ```shell
@@ -430,10 +464,12 @@ cat runtime-var.tfvars
 ```
 
 Finally, there is way to automatically load of variable files, but some standard naming convention will apply, as below -
+
 * Files named exactly `terraform.tfvars` or `terraform.tfvars.json`
 * Any files with name ending in `.auto.tfvars` or `.auto.tfvars.json`
 
 If we have to inject secrets into configuration files, please use that as environment variable with `TF_VAR_` prefix. Please do not put them in .tfvars, since input variables will be stored in the state in plain text. To do that,
+
 ```shell
 export TF_VAR_third_party_pwd=s3cr3t
 export TF_VAR_third_api_key=jlkasjdl323k121j12m
@@ -445,6 +481,7 @@ cat main.tf
 ```
 
 One example to show validation
+
 ```hcl
 variable "ami_id" {
   type = string
@@ -458,6 +495,7 @@ variable "ami_id" {
 ```
 
 #### Local variables
+
 Local values can be similarly be defined in `locals.tf`
 
 Local variable is made available to support re-usability of the same value in a configuration. It is typically a computed value, so you do not need to calculate multiple times, and if you need to fix it, you need to do it in just one place.
@@ -481,6 +519,7 @@ provider "aws" {
 ```
 
 #### Output values
+
 Output values are defined in `outputs.tf`, by standard naming convention. It holds the outputs as generated for resources post `terraform apply`.
 
 ```hcl
@@ -491,6 +530,7 @@ output "example_ip_address" {
 ```
 
 Output would only be populated post apply command is complete.
+
 ```shell
 terraform output
   Warning: No output found
@@ -504,10 +544,13 @@ terraform output
 ```
 
 ### Dependency management
+
 If we have to work with creating multiple resources, it is sometimes important to understand the dependency between them.
 
 #### Implicit Dependency
+
 Using an output value as input for a resource. Example -
+
 ```hcl
 resource "aws_eip" "ip" {
   vpc = true
@@ -518,7 +561,9 @@ resource "aws_eip" "ip" {
 Terraform understand that aws_instance needs to be created before aws_eip, and it can create a directed acyclic graph in memory and execute per that.
 
 #### Explicit Dependency
+
 Sometimes Terraform cannot determine dependencies. Example -
+
 ```hcl
 module "example_sqs_queue" {
   source = "terraform-aws-module/sqs/aws"
@@ -528,6 +573,7 @@ module "example_sqs_queue" {
 ```
 
 ### Working with data sources
+
 We have seen some basic things about data source. Let dig further. Data source does not create any resource on the cloud - it is used to get information about resources external to terraform. An example -
 
 ```hcl
@@ -555,9 +601,11 @@ data "github_repository_pull_requests" "pull_requests" { # keyword - data
 ```
 
 ### Looping Constructs
+
 Terraform provides looping syntax for different use cases.
 
 #### count argument
+
 Assigns an integer that determines # of loops. Count is a simple integer value assignment. Argument because it is a property on resource.
 
 ```hcl
@@ -572,7 +620,9 @@ resource "aws_instance" "app_server" {
 ```
 
 #### for_each argument
+
 Iterate over each element of a map or set. Iteration element can be reference by key and value attribute.
+
 ```hcl
 resource "azurerm_resource_group" "rg" {
   for_each = {
@@ -586,7 +636,9 @@ resource "azurerm_resource_group" "rg" {
 ```
 
 #### for expression
+
 Used to transform elements in a map or set. It applies an expression to each element to transform it.
+
 ```hcl
 output "all_tags" {
   # commenting to avoid showing errors. md is not able to parse =>
@@ -596,6 +648,7 @@ output "all_tags" {
 ```
 
 #### dynamic blocks
+
 Similar to a traditional for-loop but uses the dynamic nested block syntax. It helps with implementing DRY for more elaborate configurations
 
 ```hcl
@@ -615,6 +668,7 @@ resource "aws_security_group" "security" {
 ```
 
 ### Built-in functions
+
 Functionality for transforming, combining, and formatting data.
 
 * Grouped into higher-level categories e.g. collections, type, conversion, data and time
@@ -624,39 +678,48 @@ Functionality for transforming, combining, and formatting data.
 
 > Please note that custom functions are not supported yet in Terraform.
 
-
-More details in https://developer.hashicorp.com/terraform/language/functions
+More details is present [here](https://developer.hashicorp.com/terraform/language/functions)
 
 ### Interacting with Modules
+
 Module Structure and Syntax, Inputs & Outputs
 
 Module lets better manage the configuration file code, and introduce concept of re-usability in the world of terraform.
+
 * Usually defines inputs, resources / data sources, and outputs (though they are all optional)
 * Modules are versioned (standardized on semantic versioning - major.minor.patch). Published modules are also available in terraform registry. If we want to use any module, we would like to resolve it as a versioned module, similar to provider's semantic.
 * The `init` command will download remote modules and store them in the `.terraform` directory
 
 #### Module sources
-A module can be sourced from different [locations](https://developer.hashicorp.com/terraform/language/modules/sources). Some key ones are - 
+
+A module can be sourced from different [locations](https://developer.hashicorp.com/terraform/language/modules/sources). Some key ones are -
+
 * A local path to a directory present on disk
+
 ```hcl
 module "consul" {
   source = "./consul"
 }
 ```
+
 * A registry like [Terraform Registry](https://registry.terraform.io/?product_intent=terraform)
+
 ```hcl
 module "consul" {
   source = "app.terraform.io/example-corp/k8s-cluster/azurerm"
   version = "1.1.0"
 }
 ```
+
 * A Git repository e.g. GitHub or BitBucket
+
 ```hcl
 module "consul" {
   source = "git@github.com:hashicorp/example.git"
 }
 ```
-* HTTP(S) URL that follows specific referencing semantics 
+
+* HTTP(S) URL that follows specific referencing semantics
 
 ```hcl
 module "vpc" {
@@ -665,7 +728,9 @@ module "vpc" {
 ```
 
 #### Root and Child Modules
+
 Every Terraform configuration has at least one module, known as its root module, which consists of the resources defined in the .tf files in the main working directory. For example, main.tf. We can now reference other modules which are subdirectories, with `module` keyword.
+
 ```hcl
 # main.tf
 
@@ -681,7 +746,9 @@ module "child-3" {
 
 }
 ```
+
 Directory structure looks like this for example above.
+
 ```mermaid
 ---
 title: Root and Child modules
@@ -695,14 +762,17 @@ stateDiagram-v2
 In general, a Terraform module (usually the root module of a configuration) can call other modules to include their resources into the configuration. A module that has been called by another module is often referred to as a child module. Child modules can be called multiple times within the same configuration, and multiple configurations can use the same child module.
 
 #### Module Data Exchanges
+
 Modules only communicate via inputs and outputs. Root module can send an input variable to child module, and can receive back output values.
 
 #### Module structure
+
 Organized in a subdirectory, and defined by .tf files. Please note `modules` as the subdirectory. Even though Terraform does not mandate the use of standard convention for modules, it is considered best practice.
 
 ![Module Structure](images/module-structure.png)
 
 #### Consuming a local module
+
 For locally available modules, we can call it using `module` and reference it by key word `source`, no version needs to be defined.
 
 ```hcl
@@ -717,6 +787,7 @@ resource "..." {
 ```
 
 #### Consuming a public module
+
 We saw above how to reference local modules using keyword `module` and `source`. In public module, we need to provide `version` as well.
 
 ```hcl
@@ -729,6 +800,7 @@ module "s3_bucket" {
 If you are consuming from private registry, you need to provide the host name in front of the source argument, as we do in provider.
 
 ## Multiple Environments
+
 Let's consider the use case, where we have to manage multiple environments (development, staging and production) which are typically in separate accounts. Most of the functionality will be common, while some values may differ. The picture below demonstrates this -
 
 ![multiple-environments](images/managing-multiple-environments.png)
@@ -765,15 +837,17 @@ Created and switched to workspace "development"!
 ```
 
 ### Workspace Variable Values
+
 Please note that input variables needs to be resolved per workspace configuration.
 
-* In Development - instance_type and instance_count may be small 
+* In Development - instance_type and instance_count may be small
 * In Staging - instance_type and instance_count may be similarly sized as production (or slightly lower)
 * In Product - instance_type and instance_count may be right sized for performance and utilization
 
 So, where can we define these?
 
 * These can be specified in a variable of type map in `locals.tf` file.
+
 ```hcl
 locals {
   ec2_instance_type = {
@@ -797,15 +871,18 @@ resource "aws_instance" "web_server" {
 ```
 
 ## Implementing and Maintaining State
+
 Local vs Remote Backend, State Locking and Secret Management.
 
-### Backend - Local 
+### Backend - Local
+
 Allows for comparing desired with current infrastructure definition.
 
 * Terraform only creates / updates what has actually changed
 * Enabler for improving performance
 * The command ```plan``` and ````apply```` interact with the state
 * Local or remote backend for different use cases. We can configure local backend in terraform in more detail (though not required)
+
 ```hcl
 terraform {
   backend "local" {
@@ -816,12 +893,14 @@ terraform {
 ```
 
 Remote backends are optimized for access by multiple users.
+
 * Never store state data on local disk, only loaded into memory and flushed after the operation
 * Locking is established on remote backend implementation
 * Terraform currently support different [backend](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#available-backends).
 * Enhanced backends (e.g. Terraform Cloud and Enterprise) run Terraform operation on remote service (secured)
 
 ### Backend - Remote
+
 Credentials shouldn't be configured in .tf file to avoid sending them as plain text over the wire or committing them to version control.
 
 ```hcl
@@ -838,6 +917,7 @@ terraform {
 ```
 
 You can do it partially. In such case, information can be provided from the CLI with init command.
+
 ```hcl
 terraform {
   backend "remote" {
@@ -853,6 +933,7 @@ terraform {
 ```
 
 There is a different way to configure Terraform Cloud specifically.
+
 ```hcl
 terraform {
   cloud { # instead of remote backend, this is preferred
@@ -869,34 +950,39 @@ terraform {
 ```
 
 ### State and locking
+
 Backends are used to manage to state.
 
 State locking ensures that state does not get corrupted by concurrent access. Lock management can be circumvented using ```-lock=false``` (but, please use it with caution).
 
 ### Secret Management & State
+
 State data is not encrypted and shouldn't store sensitive data
+
 * Sensitive data can be provided with environment variables (`TF_VAR_` prefix) for some remote backend implementations
 * Enhance backends send and store state information in encrypted form
 * Credential-management platforms like [HashiCorp Vault](https://www.vaultproject.io/) can be integrated as viable alternative for storing and providing credentials.
 
 ## Managing Resource Drift
-Ensures that state synchronizes with deployed infrastructure. https://developer.hashicorp.com/terraform/tutorials/state/resource-drift
+
+Ensures that state synchronizes with deployed infrastructure. Read more about [resource-drift](https://developer.hashicorp.com/terraform/tutorials/state/resource-drift)
 
 This is managed by refresh command. Usage: terraform refresh [options]. However, we do not need to call refresh explicitly, and may be [deprecated](https://medium.com/ecs-digital/terraform-refresh-is-deprecated-fd3418552da2) in the future. If you need terraform plan or apply, Terraform would automatically try to sync its state from the cloud.
 
 ```shell
-$ terraform plan -refresh-only
+> terraform plan -refresh-only
 
-$ terraform apply -refresh-only
+> terraform apply -refresh-only
 ```
 
 ## Example work
-* [TFC getting started]()
 
+* [TFC getting started]()
 
 ## Auxiliary
 
 ### Symbols
+
 When we ran plan / apply / destroy, we saw symbol indicating that resource will be created or destroyed. Below is the full list of symbols
 
 | Symbol | Meaning                                                                           |
@@ -907,7 +993,6 @@ When we ran plan / apply / destroy, we saw symbol indicating that resource will 
 | ~      | Update in-place                                                                   |
 | <=     | Read (only applies to data sources)                                               |
 
-
 ## Next steps
 
 * [Terraform](https://www.terraform.io/docs)
@@ -917,6 +1002,7 @@ When we ran plan / apply / destroy, we saw symbol indicating that resource will 
 ## Terraform and other tools
 
 ### Terraform and Ansible
+
 * **Ansible**: Configuration management tool for installing/configuring software and tools in the infrastructure which already exists.
 * **Terraform**: Manages Infrastructure - it may invoke Ansible after infrastructure as been deployed.
 * When to involve Ansible?
@@ -924,14 +1010,17 @@ When we ran plan / apply / destroy, we saw symbol indicating that resource will 
   * Nowadays, it is more common to create an immutable image that already contains the software needed.
 
 ### Terraform and Packer
+
 * **Packer**: It is provided by Harshicorp. It creates machine images for multiple platforms.
 * **Terraform**: Terraform can use machine image to provision infrastructure.
 * When to involve Packer?
-    * To shorten deployment time by baking needed functionality into AMI
-    * To simplify or avoid logic in Terraform needed for installing additional tooling, monitoring, logging, etc. on top of base AMI.
+  * To shorten deployment time by baking needed functionality into AMI
+  * To simplify or avoid logic in Terraform needed for installing additional tooling, monitoring, logging, etc. on top of base AMI.
 
 ### Terraform and Consul
+
 Do I need to involve a state backend?
+
 * **Consul**: It is provided by Harshicorp. It can be used to store state data in a backend to improve team collaboration. It is one of the configuration backend supported by Terraform. Effectively, it is a key-value store installed on a dedicated server.
 * When to involve Consul?
   * When your team works on Terraform configuration in parallel and runs into potential conflicts a lot.

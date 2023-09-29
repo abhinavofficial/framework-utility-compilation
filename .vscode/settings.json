@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
         "debuginfo",
+        "Dockerfiles",
+        "Harshicorp",
         "Lamport",
         "linearizable",
         "PACELC",
@@ -11,6 +13,10 @@
         "Qdrant",
         "rustc",
         "serializability",
+        "tfstate",
+        "tfswitch",
+        "tfvars",
+        "untaint",
         "Xomnia",
         "zstd"
     ]
