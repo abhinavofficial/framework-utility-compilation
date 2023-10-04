@@ -209,6 +209,7 @@ These updates and changes do not impact the core operations of Docker.
 > If you remove the image from docker, corresponding layers would also get removed from storage driver
 
 * [Getting Started](getting-started.md)
+* [Docker Images](images.md)
 
 ## Further reading
 

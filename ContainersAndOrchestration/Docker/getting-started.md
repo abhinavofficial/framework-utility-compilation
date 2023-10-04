@@ -74,7 +74,9 @@ Your can use them in combinations
 * `docker logs --tail 3 <container_id>` to see the last 3 lines
 * `docker logs --tail 3 --follow <container_id>` to follow along.
 
-You can use `attach` command to attach to a container `docker attach <container prefix>`
+You can use `attach` command to attach to a container `docker attach <container prefix>`. You should use this command if you intend to send input to the container. If you just want to see the output of a container, use `docker logs --tail 1 --follow <container id>`
+
+* `docker start <container id>` - when a container has exited, it in the stopped state. It can then be restarted using this command. The container will be restarted using the same options you launched it with.
 
 ## Step 4: Stop our container
 
