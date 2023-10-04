@@ -208,6 +208,8 @@ These updates and changes do not impact the core operations of Docker.
 
 > If you remove the image from docker, corresponding layers would also get removed from storage driver
 
+* [Getting Started](getting-started.md)
+
 ## Further reading
 
 * [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)

@@ -2,8 +2,8 @@
 
 * Cloud scale generic batch processing framework
   * Elastic scaling - Independent auto-scaling at each pipeline stage
-  * High availability - Multi-master redundancy coupled with fault-tolerance at node level 
-  * Pay-as-you-go - Avoids wasteful capex cost, use (rent) servers only when needed 
+  * High availability - Multi-master redundancy coupled with fault-tolerance at node level
+  * Pay-as-you-go - Avoids wasteful capex cost, use (rent) servers only when needed
   * Quick startup and repeatable runs, reducing initial cost and effort
 * Supports multiple paradigms like Spark, Hive, Flink, etc.
 * Ability to create complex workflows using different tools at various stages

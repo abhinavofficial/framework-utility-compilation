@@ -7,6 +7,7 @@ MongoDB is a document-oriented NoSQL database used to store large amounts of dat
 MongoDB compass is nothing but a graphical user interface that can be connected to the MongoDB database and used to find, analyze, modify, visualize the data stored in the database without requiring any knowledge of queries. MongoDB compass acts as an alternative to Mongo Shell. Mongo Shell can also perform all the aforementioned tasks but requires a lot of technical expertise. MongoDB is GUI-based whereas Shell is more technicality based i.e. it uses specific commands and queries. MongoDB Compass is present in the Github repo since it is an open-source tool.
 
 Benefits of MongoDB Compass:
+
 * All the data stored in the database can be visualized and explored.
 * Data stored in the database can be modified, created, updated, deleted.
 * Shows the Server Statistics in Real-time. 
@@ -45,13 +46,15 @@ You can opt-out by running the disableTelemetry() command.
 ```
 
 ## Installing mongodb Compass
+
 MongoDB Compass is a GUI application to access the DB and collection and data stored inside it. Similar to MySql Workbench
 
-Again this is an open-source software which you can get from its official website. 
+Again this is an open-source software which you can get from its official website.
 
 * [Install Guide Official Page](https://docs.mongodb.com/compass/master/install)
 
 ## Initial Commands
+
 ```shell
 abhinavofficial@ubuntu:~sudo systemctl start mongod
 abhinavofficial@ubuntu:~$ sudo systemctl status mongod

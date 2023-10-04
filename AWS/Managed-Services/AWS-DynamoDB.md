@@ -2,6 +2,7 @@
 
 
 ## What is DynamoDB
+
 * Fully Managed - No installation, upgrade, capacity planning, or manual provisioning needed
 * NoSQL data model - Key-value and document models supported, in-build memory caching, support for multiple complex data types
 * Access based optimization - Partition and Sort keys for efficient single or range pickup
@@ -12,10 +13,11 @@
 * Egress - Base for batch processing and analytics services, item-level change streaming to Kinesis
 
 ## Salient Features
+
 * Tables - DynamoDB stores data (Structured Data) in tables
 * Items - Each table contains multiple items. An item is a group of attributes that is uniquely identifiable among all of the other items (yes like rows)
 * Attribute - is a fundamental data element, something that does not need to be broken down any further (like columns). It is usually scalar (single values). It can also support nested attribute upto 32 level deep (nested JSON is a good way to visualize)
-* Allows low latency read and write access to items ranges from 1 byte up to 400KN (Key & Value put together). This is because the data is actually saved as a hash map. 
+* Allows low latency read and write access to items ranges from 1 byte up to 400KN (Key & Value put together). This is because the data is actually saved as a hash map.
 * Stored on SSD which ensure high performance, spread across 3 different distinct availability zones (DC) (highly resilient, availability)
 * Query Driven or Access Pattern Based Design principles. Please see the notes.
 * Supports Eventual consistent reads / Strongly consistent reads (app needs to decide)
@@ -23,9 +25,9 @@
 * Also, supports auto scale to handle variable demand
 * Can have a downloadable version that helps in development without the need for cloud services, hence reduced development costs
 * Primary Key - uniquely identifies each item in the table (must be scalar) is composed of
-    * Partition Key (PK) or Row Key (RK) - hashed to find out which partition the data will be stored. This should be designed not only to handle volume, but also reads and writes.
-    * Sort Key (SK) - items with the same partition key are stored together, in sorted order by sort key value
-* Other than primary key, we can also use indexes to fetch the date. There are two supported index - Global and Local Index. Global Index is where partition key and sort key are different which can be created anytime. Global Index is where partition key is same and sort key are different which can be created during create table. 
+  * Partition Key (PK) or Row Key (RK) - hashed to find out which partition the data will be stored. This should be designed not only to handle volume, but also reads and writes.
+  * Sort Key (SK) - items with the same partition key are stored together, in sorted order by sort key value
+* Other than primary key, we can also use indexes to fetch the date. There are two supported index - Global and Local Index. Global Index is where partition key and sort key are different which can be created anytime. Global Index is where partition key is same and sort key are different which can be created during create table.
   * There can be at maximum, 5 global and 5 local indexes.
   * In DynamoDB, you can query from secondary Index table which contains projected columns from the base table and thereby improving reads from this table.
   * Insert may take slight hit on performance since it has to maintain sync of secondary and base table.
@@ -36,6 +38,7 @@
 ### Capacity Unit
 
 DynamoDB read requests can be either strongly consistent, eventually consistent, or transactional.
+
 * A _strongly consistent_ read request of up to 4 KB requires one read request unit.
 * An _eventually consistent_ read request of up to 4 KB requires one-half read request unit.
 * A **transactional** read request of up to 4 KB requires two read request units.
@@ -45,15 +48,15 @@ For provisioned mode tables, you specify throughput capacity in terms of read ca
 * **One read capacity unit** represents one strongly consistent read per second, or two eventually consistent reads per second, for an item up to 4 KB in size. Transactional read requests require two read capacity units to perform one read per second for items up to 4 KB. If you need to read an item that is larger than 4 KB, DynamoDB must consume additional read capacity units. The total number of read capacity units required depends on the item size, and whether you want an eventually consistent or strongly consistent read. For example, if your item size is 8 KB, you require 2 read capacity units to sustain one strongly consistent read per second, 1 read capacity unit if you choose eventually consistent reads, or 4 read capacity units for a transactional read request.
 * **One write capacity unit** represents one write per second for an item up to 1 KB in size. If you need to write an item that is larger than 1 KB, DynamoDB must consume additional write capacity units. Transactional write requests require 2 write capacity units to perform one write per second for items up to 1 KB. The total number of write capacity units required depends on the item size. For example, if your item size is 2 KB, you require 2 write capacity units to sustain one write request per second or 4 write capacity units for a transactional write request.
 
-Manual - 
+Manual -
 Auto - You can specify to increase RCU / WRU if it hits the 80% / 60% of current RCU / WRU.
 
 When RCU or WRU increases, the partition begins to split internally.
 
 Autoscaling should be used when there is gradual increase or decrease of capacity else you would run into the constant split and compaction of partitions. In fluctuating workload, calculate the peak usage (using some metrics), and then setting initial RCU and WRU manually.
 
-
 ## DynamoDB Streams
+
 * DynamoDB Streams is an optional feature that captures data modification events in DynamoDB tables (think of CDC)
 * If enabled
   * If a new item is added to the table, the stream captures an image of the entire team, including all of its attributes
@@ -64,6 +67,7 @@ Autoscaling should be used when there is gradual increase or decrease of capacit
   * If a new customer is created then the Lambda can use SES to send a welcome email
 
 ## Global Tables
+
 * Global tables are a managed solution for deploying a multi-region, multi-master database, without having to build and maintain your own replication solution
 * Ideal for massively scaled applications, with globally dispersed users
 * It is a collection of one or more replica tables, all owned by a single AWS account
@@ -72,6 +76,7 @@ Autoscaling should be used when there is gradual increase or decrease of capacit
 * You cannot selectively replicate the data attributes across regions - all or none is the only supported option.
 
 ## Best Practices
+
 This section is updated per [**AWS Best Practices for DynamoDB**](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html)
 
 ### Key Concepts for NoSQL Design
@@ -88,9 +93,11 @@ By default, every partition in the table will strive to deliver the full capacit
 DynamoDB provides some flexibility for your throughput provisioning with burst capacity. DynamoDB currently retains up to 5 minutes (300 seconds) of unused read and write capacity. During an occasional burst of read or write activity, these extra capacity units can be consumed quickly—even faster than the per-second provisioned throughput capacity that you've defined for your table.
 
 ### Best practices for using sort keys to organize data
+
 In an Amazon DynamoDB table, the primary key that uniquely identifies each item in the table can be composed not only of a partition key, but also of a sort key.
 
 Well-designed sort keys have two key benefits:
+
 * They gather related information together in one place where it can be queried efficiently. Careful design of the sort key lets you retrieve commonly needed groups of related items using range queries with operators such as ```begins_with```, ```between```, ```>```, ```<```, and so on.
 * Composite sort keys let you define hierarchical (one-to-many) relationships in your data that you can query at any level of the hierarchy. For example, in a table listing geographical locations, you might structure the sort key as follows.```[country]#[region]#[state]#[county]#[city]#[neighborhood]```. This would let you make efficient range queries for a list of locations at any one of these levels of aggregation, from ```country```, to a ```neighborhood```, and everything in between.
 
@@ -116,13 +123,14 @@ DynamoDB is schema. So, you can put a key and anything else in DynamoDB. However
 | Set              | collection types- SS(string set)type, NS(number set)type, or BS(binary set)type. |
 
 ## Additional features and notes
+
 ### Transaction Support
 
 DynamoDB has support of transactions, however, we need to understand the significant overheads of transactions in a massively scalable distributed system. Therefore, even though the transaction support is available it has certain limitations, eg the total number of entities participating in the transaction is significantly less than that of a classical relational database. You can read more in this article.
 
 [More](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html)
 
-### Autoscale Capability
+### Auto-scale Capability
 
 As with any system, DynamoDB is also evolving and constantly getting better and feature rich. A significant pain point in any self managed NoSQL is that it needs constant monitoring to help us manage and also take a decision at some point to add more capacity. Autoscaling is one of the many powerful feature of DynamoDB. This allows automatic scaling of the infrastructure depending on the system load. However, adding more nodes (AWS will do that) will mean redistribution of data and that can add more stress to the system. Hence, we should not be adding and removing capacity at a rapid rate. You can read more in this article.
 
@@ -141,6 +149,7 @@ To avoid hot partitions (DynamoDB instance) and throttling, optimize your table 
 [More](https://aws.amazon.com/premiumsupport/knowledge-center/dynamodb-table-throttled/)
 
 #### PartiQL (Open source)
+
 It is a SQL-compatible access to relational, semi-structured, and nested data. [Read more here]( https://partiql.org/)
 
 DynamoDB supports PartiQL, a SQL-compatible query language, to select, insert, update, and delete data in DynamoDB. Using PartiQL, you can easily interact with DynamoDB tables and run ad hoc queries using the AWS Management Console, AWS CLI, and DynamoDB APIs for PartiQL.
@@ -152,6 +161,5 @@ Due to this feature programmers can now work with DynamoDB data using SQL which 
 Using DynamoDB table export, you can export data from a DynamoDB table from any time within your point-in-time recovery window to an S3 bucket. Exporting a DynamoDB table to an S3 bucket enables you to perform analytics and complex queries on your data using other AWS services such as Athena, AWS Glue, and Lake Formation. DynamoDB table export is a fully managed solution for exporting DynamoDB tables at scale, and is much faster than other workarounds involving table scans.
 
 Exporting a table does not consume read capacity on the table, and has no impact on table performance and availability. You can export table data to an S3 bucket owned by another AWS account, and to a different region than the one your table is in. Your data is always encrypted end-to-end. A short exercise by AWS can be found [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataExport.Requesting.html)
-
 
 [AWS Doc on DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)

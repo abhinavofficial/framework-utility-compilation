@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "Cypher",
         "debuginfo",
         "Dockerfiles",
         "Harshicorp",
@@ -7,6 +8,7 @@
         "linearizable",
         "PACELC",
         "Parameterizing",
+        "Partitioner",
         "Paxos",
         "Pijul",
         "playload",

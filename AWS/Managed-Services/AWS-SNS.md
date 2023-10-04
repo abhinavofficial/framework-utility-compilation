@@ -1,9 +1,11 @@
 # AWS SNS - Simple Notification Service
+
 Trigger from any component.
 
 It is a push based message service like SQS. It allows applications to send time-critical messages to multiple subscribers. It uses PUSH mechanism and hence, period polling is not required.
 
 SNS can push notifications to following end-points:
+
 * http(s) end points
 * Lambda
 * email
@@ -33,6 +35,9 @@ Please follow the below step to ensure that S3 or other systems are able to push
     Under the next subtopic "Define who can subscribe to this topic", select "Everyone"
 
 The above steps are mandatory to ensure that messages can be published for the exercises in this course. Alternatively you can create a specific policy JSON to allow selected users/principals to be able to publish messages instead of "everyone".
-************************************
 
-https://docs.aws.amazon.com/sns/latest/dg/welcome.html
+<hr>
+
+## Further reading
+
+[SNS](https://docs.aws.amazon.com/sns/latest/dg/welcome.html)

@@ -11,10 +11,12 @@ Let's understand the limitation of RDBMS to get to understand the need for NoSQL
 ### Need for Flexible schema
 
 RDBMS offered a very rigid and Opinionated Schema which turned out
+
 * Suboptimal for some use cases: Hierarchical, Geospatial, Graph, Semi-Structured, Unstructured
 * Schema updates are harder, might require downtime
 
 With advent of internet, Big Data became more relevant and requires
+
 * Large amount of structured, semi-structured and polymorphic data
 * Better concurrency handling
 * Flexible schema
@@ -24,17 +26,20 @@ With Agile picking up pace, the need to rapidly adapt to changing environment fu
 NoSQL provides all these
 
 ### Scaling
+
 * Vertical Scaling (Default): Expensive, Disruptive, Limited
 * Horizontal Scaling: Unwieldy, Mismatched with core RDBMS principles
 
 We need practically limitless scalability. NoSQL databases provides Inbuilt, responsive horizontal scaling.
 
 ### Single Point of Failure
+
 RDBMS is a single place where all the data is present and certainly susceptible to failure if not replicated well.
 
 NoSQL databases are typically distributed and hence it provides required fault tolerance and replicated data for desired resilience. It is focused on high availability.
 
 ### ACID (Atomicity, Consistency, Isolated and Durability) Compliance
+
 * Great for specific use cases
 * Imposes structural cost thereby limiting scaling options
 
@@ -80,6 +85,7 @@ NoSQL databases are typically distributed and hence it provides required fault t
 ## Types of NoSQL Databases
 
 Broadly classified in 4 types:
+
 * Key-Value: 2 Column Database
 * Document: Documents like json, bson, etc. and linkage between these documents.
 * Wide Column: Column could be defined on its own - telemetry or time series data, etc.
@@ -202,7 +208,8 @@ Password: hkXnuUPSZG8b6Ummk_rZF-230Q26rux-MaoX5aw5qyA
 * Available skill-set in the team
 * In the beginning, start with whatever you know best.
 
-Technical decision 
+Technical decision
+
 * Data Model - Structure and Flexibility
 * Consistency requirements
 * Availability requirements
@@ -259,7 +266,7 @@ Tunability, Replicability - Cassandra
   * Automated discovery of strongly correlated nodes
 
 ## More on No-SQL databases
+
 * [neo4j](graphdb-neo4j.md)
 * [casandra](wide-column-db-cassandra.md)
 * [scylladb](scylladb.md)
-
