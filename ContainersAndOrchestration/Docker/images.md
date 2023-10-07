@@ -101,8 +101,15 @@ STARS - indicates popularity.
 
 ## What is a layer?
 
-## The various image namespaces
-
 ## How to search and download images
+
+* In DockerHub
+* Have an account on Docker Hub
+* Tag our image accordingly (i.e. username/image_name)
+* `docker push username/image_name`
+
+Anybody can now `docker run username/image_name` from any Docker host.
+
+Images can be set to be private as well.
 
 ## Image tags and when to use them

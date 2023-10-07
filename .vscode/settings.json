@@ -20,6 +20,7 @@
         "tfswitch",
         "tfvars",
         "untaint",
+        "WORKDIR",
         "Xomnia",
         "zstd"
     ]
