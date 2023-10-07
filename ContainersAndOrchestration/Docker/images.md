@@ -92,9 +92,12 @@ STARS - indicates popularity.
 
 ### How to build an image
 
-* Manually - create all 
-* 
-https://learning.oreilly.com/videos/the-docker-video/9781491968246/9781491968246-video248905/
+* Interactive build command
+  * Create a container from a base image
+  * Install manually in the container and turn it into a new image
+  * Then, use `docker commit <container id>` (this create a new image) and `docker tag <image id> <name of the tag>`. You can also do `docker commit <container id> <name of tag>`
+  * Finally, verify using `docker diff <container id` -> it shows all added, changed and deleted files.
+* Automated process using `Dockerfile` - read more here [this](build-using-dockerfile.md)
 
 ## What is a layer?
 
