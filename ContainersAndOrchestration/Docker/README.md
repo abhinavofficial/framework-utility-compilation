@@ -96,7 +96,7 @@ Process of incrementally adding or removing capacity per demand is called scalab
 
 * The origins of the Docker Project
   * dotCloud was operating a PaaS, using a custom container engine
-  * This engine was based on OpenVZ (and later, LXC) and AUFS
+  * This engine was based on OpenVZ (and later, LXC) and aufs
   * It started (circa 2008) as a single Python Script
   * By 2012, the engine had multiple (~10 python components) and ~100 other micro-services
   * End of 2012, dotCloud refactors this container engine.
@@ -119,9 +119,9 @@ Process of incrementally adding or removing capacity per demand is called scalab
     * Docker Compose (formerly "Fig")
     * Docker Machine
     * Docker Swarm
-    * Kitematic
-    * Docker Cloud (formerly "Tumtum")
-    * Docker Datacenter
+    * Kite-matic
+    * Docker Cloud (formerly "Tum-tum")
+    * Docker Data center
     * etc.
   * Docker Inc. launches commercial offers.
 
@@ -176,7 +176,7 @@ Kubernetes comes into picture to show how these containers needs to be controlle
 
 K8S and Docker - scalable, availability, responsiveness to incoming traffic.
 
-AWS provides the managed service across K8S (**E**lastic **K**ubernetes **S**ervice) and Docker (**E**lastic **C**ontainer **S**ervice) and we as developer just need to provide them our application image.
+AWS provides the managed service across K8S (Elastic Kubernetes Service) and Docker (Elastic Container Service) and we as developer just need to provide them our application image.
 
 So, when we interact with docker daemon via docker client and provide the image name. Docker daemon tries to get the image in below order.
 
@@ -213,7 +213,7 @@ These updates and changes do not impact the core operations of Docker.
 
 ## Further reading
 
+* [Docker - Getting started](https://docs.docker.com/get-started/overview/)
+* [Docker - Resources](https://docs.docker.com/get-started/resources/)
+* [Docker - What container](https://www.docker.com/resources/what-container/#/package_software)
 * [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
-* [Docker Getting started](https://docs.docker.com/get-started/overview/)
-* [Docker Resources](https://docs.docker.com/get-started/resources/)
-* [Docker What container](https://www.docker.com/resources/what-container/#/package_software)
