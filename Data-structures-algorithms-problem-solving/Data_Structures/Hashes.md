@@ -1,21 +1,28 @@
 # Hashes
+
 Hashing is the process of mapping any amount of data to a specified size using an algorithm. This is known as a hash value. Hashing is a one-way function, whereas encryption is a two-way function. Unlike encryption, which is intended to protect data in transit, hashing is intended to authenticate that a file or piece of data has not been altered—that it is authentic. In other words, it functions as a checksum.
 
 ## Common hashing algorithms
+
 ### MD5
+
 This is one of the first algorithms that has gained widespread acceptance. MD5 is hashing algorithm made by Ray Rivest that is known to suffer vulnerabilities. It was created in 1992 as the successor to MD4. Currently, MD6 is in the works, but as of 2009 Rivest had removed it from NIST consideration for SHA-3.
 
 ### SHA
+
 SHA stands for Security Hashing Algorithm, and it’s probably best known as the hashing algorithm used in most SSL/TLS cipher suites. A cipher suite is a collection of ciphers and algorithms that are used for SSL/TLS connections. SHA handles the hashing aspects. SHA-1, as we mentioned earlier, is now deprecated. SHA-2 is now mandatory. SHA-2 is sometimes known has SHA-256, though variants with longer bit lengths are also available.
 
 ### SHA256
+
 SHA 256 is a member of the SHA 2 algorithm family, under which SHA stands for Secure Hash Algorithm. It was a collaborative effort between both the NSA and NIST to implement a successor to the SHA 1 family, which was beginning to lose potency against brute force attacks. It was published in 2001.
 The importance of the 256 in the name refers to the final hash digest value, i.e. the hash value will remain 256 bits regardless of the size of the plaintext/clear-text. Other algorithms in the SHA family are similar to SHA 256 in some ways.
 
 ### Luhn
+
 The Luhn algorithm, also renowned as the modulus 10 or mod 10 algorithm, is a straightforward checksum formula used to validate a wide range of identification numbers, including credit card numbers, IMEI numbers, and Canadian Social Insurance Numbers. A community of mathematicians developed the LUHN formula in the late 1960s. Companies offering credit cards quickly followed suit. Since the algorithm is in the public interest, anyone can use it. The algorithm is used by most credit cards and many government identification numbers as a simple method of differentiating valid figures from mistyped or otherwise incorrect numbers. It was created to guard against unintentional errors, not malicious attacks.
 
 ## Python Hash
+
 Python uses siphash24 algorithm for hash calculation. https://peps.python.org/pep-0456/
 
 ```python
@@ -38,12 +45,10 @@ sys.hash_info(width=64, modulus=2305843009213693951, inf=314159, nan=0, imag=100
         return x
 ```
 
-
 /*[clinic input]
 class dict "PyDictObject *" "&PyDict_Type"
 [clinic start generated code]*/
 /*[clinic end generated code: output=da39a3ee5e6b4b0d input=f157a5a0ce9589d6]*/
-
 
 /*
 To ensure the lookup algorithm terminates, there must be at least one Unused slot (NULL key) in the table.
@@ -51,6 +56,7 @@ To avoid slowing down lookups on a near-full table, we resize the table when it'
 */
 
 #define PERTURB_SHIFT 5
+
 /*
 Major subtleties ahead:  Most hash schemes depend on having a "good" hash function, in the sense of simulating randomness.  Python doesn't:  its most important hash functions (for ints) are very regular in common cases:
 
@@ -65,19 +71,25 @@ But catering to unusual cases should not slow the usual ones, so we just take th
 
 The first half of collision resolution is to visit table indices via this recurrence:
 
+```shell
     j = ((5*j) + 1) mod 2**i
+```
 
 For any initial j in range(2**i), repeating that 2**i times generates each int in range(2**i) exactly once (see any text on random-number generation for proof).  By itself, this doesn't help much:  like linear probing (setting j += 1, or j -= 1, on each loop trip), it scans the table entries in a fixed order.  This would be bad, except that's not the only thing we do, and it's actually *good* in the common cases where hash keys are consecutive.  In an example that's really too small to make this entirely clear, for a table of size 2**3 the order of indices is:
 
+```text
     0 -> 1 -> 6 -> 7 -> 4 -> 5 -> 2 -> 3 -> 0 [and here it's repeating]
+```
 
 If two things come in at index 5, the first place we look after is index 2, not 6, so if another comes in at index 6 the collision at 5 didn't hurt it. Linear probing is deadly in this case because there the fixed probe order is the *same* as the order consecutive keys are likely to arrive.  But it's extremely unlikely hash codes will follow a 5*j+1 recurrence by accident, and certain that consecutive hash codes do not.
 
 The other half of the strategy is to get the other bits of the hash code into play.  This is done by initializing a (unsigned) vrbl "perturb" to the full hash code, and changing the recurrence to:
 
+```text
     perturb >>= PERTURB_SHIFT;
     j = (5*j) + 1 + perturb;
     use j % 2**i as the next table index;
+```
 
 Now the probe sequence depends (eventually) on every bit in the hash code, and the pseudo-scrambling property of recurring on 5*j+1 is more valuable, because it quickly magnifies small differences in the bits that didn't affect the initial index.  Note that because perturb is unsigned, if the recurrence is executed often enough perturb eventually becomes and remains 0.  At that point (very rarely reached) the recurrence is on (just) 5*j+1 again, and that's certain to find an empty slot eventually (since it generates every int in range(2**i), and we make sure there's always at least one empty slot).
 

@@ -1,4 +1,5 @@
 # Trie Data Structure
+
 Also known as prefix tree, digital search or retrieval tree or Patricia trie or radix tree
 
 Prefix - a substring which is starting at 0 and end at any index < N-1
@@ -7,9 +8,11 @@ Trie is in essence a tree data structure, in particular a k-ary tree.
 Time complexity of Tries is O(L) where L is the length of the word. It is better than AVL or BST. Hence, it is used for faster search.
 
 ## Implementation
+
 Points to note
+
 * Root is an empty node.
-* Prefix is not repeated. 
+* Prefix is not repeated.
 * Also save the end of word at the node where the word ends.
 
 1. Take the first word
@@ -20,7 +23,7 @@ Points to note
 
 All prefixes of all suffixes or all suffixes of all prefixes are the substring of a string.
 
-Some of the worked out example of how to implement a Trie is shown at https://github.com/abhinavofficial/prep-inteview/blob/main/Trie.py
+Some of the worked out example of how to implement a Trie is shown at [here](https://github.com/abhinavofficial/prep-inteview/blob/main/Trie.py)
 
 In Python, some of these implementation is prebuilt in module pytrie. It exposes basic Trie, SortedTrie, StringTrie and SortedStringTrie with other useful utility functions.
 
@@ -58,9 +61,13 @@ if __name__ == "__main__":
 ```
 
 ## Types of trie
-## Standard Trie 
+
+## Standard Trie
+
 A standard trie have the following properties:
+
 * A Standard Trie has the below structure:
+
 ```python
 class Node:
        def __init__(self):
@@ -69,16 +76,20 @@ class Node:
             # To check for end of string
             isWordEnd: bool = False
 ```
+
 * It is an ordered tree like data structure.
 * Each node(except the root node) in a standard trie is labeled with a character.
 * The children of a node are in alphabetical order.
 * Each node or branch represents a possible character of keys or words.
-* Each node or branch may have multiple branches. 
+* Each node or branch may have multiple branches.
 * The last node of every key or word is used to mark the end of word or node.
 
 ## Compressed Trie
+
 A Compressed trie have the following properties:
+
 * A Compressed Trie has the below structure:
+
 ```java
 class Node {
 
@@ -92,17 +103,20 @@ class Node {
    boolean isEnd;
 }
 ```
-*  A Compressed Trie is an advanced version of the standard trie.
-*  Each node (except the leaf nodes) has at least 2 children.
-*  It is used to achieve space optimization.
-*  To derive a Compressed Trie from a Standard Trie, compression of chains of redundant nodes is performed.
-*  It consists of grouping, re-grouping and un-grouping of keys of characters.
-*  While performing the insertion operation, it may be required to un-group the already grouped characters.
-*  While performing the deletion operation, it may be required to re-group the already grouped characters.
-*  A compressed trie T storing s strings(keys) has s external nodes and O(s) total number of nodes.
+
+* A Compressed Trie is an advanced version of the standard trie.
+* Each node (except the leaf nodes) has at least 2 children.
+* It is used to achieve space optimization.
+* To derive a Compressed Trie from a Standard Trie, compression of chains of redundant nodes is performed.
+* It consists of grouping, re-grouping and un-grouping of keys of characters.
+* While performing the insertion operation, it may be required to un-group the already grouped characters.
+* While performing the deletion operation, it may be required to re-group the already grouped characters.
+* A compressed trie T storing s strings(keys) has s external nodes and O(s) total number of nodes.
 
 ## Suffix trie
+
 * A suffix Trie has the below structure:
+
 ```text
 struct SuffixTreeNode {
     // Array to store the nodes
@@ -122,6 +136,7 @@ struct SuffixTreeNode {
     int suffixIndex; 
 }
 ```
+
 * A Suffix Trie is an advanced version of the compressed trie.
 * The most common application of suffix trie is Pattern Matching.
 * While performing the insertion operation, both the word and its suffixes are stored.
