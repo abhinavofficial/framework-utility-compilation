@@ -2,8 +2,8 @@
 
 * Fundamental data types.
   * Value: collection of objects.
-  * Operations: Simple like insert, remove, iterate, test if empty. 
-  * Intent is clear when we insert. 
+  * Operations: Simple like insert, remove, iterate, test if empty.
+  * Intent is clear when we insert.
   * Which item do we remove?
 
 ![Stack-Queue](../images/stack-queue.png)
@@ -12,7 +12,9 @@
 * Queue. Examine the item least recently added -> FIFO
 
 ## Stack
+
 ### Linked-list representation
+
 Maintain point to first node in a linked list; insert/remove from front.
 
 ```java
@@ -45,6 +47,7 @@ public class LinkedStackOfStrings {
 ```
 
 ### Array implementation
+
 * Use array s[] to store N items on stack
 * push(): add new item at s[N]
 * pop(): remove item from s[N-1]
@@ -87,12 +90,14 @@ public class FixedCapacityStackOfStrings {
 ```
 
 This implementation has an issue, because client has to pass the size of the array. We should implement this within code. There can be a couple of strategies:
+
 * Increase or decrease the size of array by 1 when push or pop command is called. This is expensive, since avg time would be N^2/2
 * If the array is full, create a new array of twice (repeated doubling) the size, and copy items. Inserting first N items takes time proportional to N (not N^2). This is amortized cost analysis, which is average running time per operation over a worst-case sequence of operations. Similar, halve size of the array, when array is one-quarter full. Now, we can make the proposition: Starting from an empty stack, any sequence of M push and pop operations takes time proportional to M.
 
 ## Queue
 
 ### Linked-list representation
+
 ```java
 public class QueueOfStrings {
 
@@ -127,6 +132,7 @@ public class QueueOfStrings {
 ```
 
 ### Array implementation
+
 * Use array q[] to store N items in queue
 * enqueue(): add new item at q[tail]
 * dequeue(): remove item from q[head]
