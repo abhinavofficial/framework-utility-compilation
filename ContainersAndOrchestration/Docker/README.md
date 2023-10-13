@@ -210,7 +210,7 @@ These updates and changes do not impact the core operations of Docker.
 
 * [Getting Started](getting-started.md)
 * [Docker Images](images.md)
-* [Using multiple images together](multi-image.md)
+* [Using multiple containers together](multi-containers.md)
 
 ## Further reading
 
