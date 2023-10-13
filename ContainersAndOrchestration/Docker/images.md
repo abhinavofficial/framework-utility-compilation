@@ -103,7 +103,8 @@ STARS - indicates popularity.
 
 ## How to search and download images
 
-* In DockerHub
+If you wish to publish your image in DockerHub
+
 * Have an account on Docker Hub
 * Tag our image accordingly (i.e. username/image_name)
 * `docker push username/image_name`

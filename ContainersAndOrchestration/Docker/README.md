@@ -210,10 +210,8 @@ These updates and changes do not impact the core operations of Docker.
 
 * [Getting Started](getting-started.md)
 * [Docker Images](images.md)
+* [Using multiple images together](multi-image.md)
 
 ## Further reading
 
-* [Docker - Getting started](https://docs.docker.com/get-started/overview/)
-* [Docker - Resources](https://docs.docker.com/get-started/resources/)
-* [Docker - What container](https://www.docker.com/resources/what-container/#/package_software)
 * [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
