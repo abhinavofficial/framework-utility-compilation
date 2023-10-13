@@ -57,7 +57,7 @@ In summary, "pet" servers are manually managed, long-lived, and receive individu
 
 ## Step 3: Running container in the background
 
-`$ docker run -d busybox` -> `-d` prompts the system run the container in the background. It returns the container id for further tracking.
+`$ docker run -d busybox` -> `-d` prompts the system run the container in the background (detach / daemonize). It returns the container id for further tracking.
 
 > Please note that from docker's point of view, all the containers are the same - it does not distinguish between background and foreground containers. It is possible to detach and reattach to a container. Analogy - attaching to a container is like plugging a keyboard and screen to a physical server.
 
