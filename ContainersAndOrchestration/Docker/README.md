@@ -211,6 +211,8 @@ These updates and changes do not impact the core operations of Docker.
 * [Getting Started](getting-started.md)
 * [Docker Images](images.md)
 * [Using multiple containers together](multi-containers.md)
+* [Local Development Workflow with Docker](developing-with-docker.md)
+* [More on volume](volume-deep-dive.md)
 
 ## Further reading
 

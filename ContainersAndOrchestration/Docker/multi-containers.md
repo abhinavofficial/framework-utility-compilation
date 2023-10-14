@@ -145,3 +145,36 @@ docker run -d --net dev --name redis -d redis
 ```
 
 The features we have seen so far only work when all containers are on a single host. It containers span multiple hosts, we need an `overlay` network to connect them together.
+
+Docker ships with a default network plugin, *overlay*, implementing an overlay network leveraging VXLAN and a key/value store. Other plugins (Weaves, Calico...) can provide overlay networks as well. Once you have an overlay network, all the features that we have used in above would work identically.
+
+## Connecting Containers with Links
+
+Links were the legacy way of connecting containers (before the implementation of CNM). They are still useful in some scenarios.
+
+The key difference between links and the the other model is that links are created between the containers. A link is created from one container to the other and exists only between those two containers.
+
+Order of creation of container becomes important - you have to create the server first and then you create the client connecting to it because you would give the link information to the client.
+
+Links also give away to access the environment of the server. Docker will automatically set environment variables in our container, giving extra details about the linked container. Each variable is prefixed with link alias, *redis* for example below. This includes connection information PLUS any environment variable set in the *datastore* container via ENV instructions.
+
+```shell
+docker run --link datastore:redis alpine dev
+
+PATH=/usr/local/bin...
+HOSTNAME=09388jhjdj99d
+REDIS_PORT=tcp://172.17.9.120:6379
+REDIS_PORT_6379_TCP=tcp://172.17.9.120:6379
+REDIS_PORT_6379_TCP_ADDR=172.17.9.120
+REDIS_PORT_6379_TCP_PORT=6379
+REDIS_PORT_6379_TCP_PROTO=tcp
+...
+```
+
+### Differences between network aliases and links
+
+* With network aliases, you can start container in any order. With links, you have to start the server first.
+* With network aliases, you cannot change the name of the server once it is running. If you want to add a new, you have to create a new container. With links, you can give new names to an existing container.
+* Network aliases require the use of a custom network. Links can be used on the default bridge network.
+* Network aliases work across multi-host networking. Links (as of Engine 1.11) only work with local containers (but this might be changed in the future)
+* Network aliases don't populate environment variables. Links give access to the environment of the target container.
