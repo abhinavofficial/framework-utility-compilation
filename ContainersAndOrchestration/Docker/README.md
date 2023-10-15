@@ -213,7 +213,16 @@ These updates and changes do not impact the core operations of Docker.
 * [Using multiple containers together](multi-containers.md)
 * [Local Development Workflow with Docker](developing-with-docker.md)
 * [More on volume](volume-deep-dive.md)
+* [Compose deep dive](compose-deep-dive.md)
 
 ## Further reading
 
 * [Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
+* [Container Training](https://github.com/jpetazzo/container.training)
+* [Docker homepage](http://www.docker.com)
+* [Docker Hub](hub.docker.com)
+* [Docker Blog](blog.docker.com)
+* [Docker Documentation](docs.docker.com)
+* [Docker code](github.com/docker/docker)
+* [Docker mailing list](groups.google.com/forum/#!forum/docker-user)
+* [Get Docker help on Stack Overflow](stackoverflow.com/search?q=docker)
