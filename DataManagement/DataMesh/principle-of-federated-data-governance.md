@@ -164,3 +164,8 @@ To provide a consistent experience of understanding data products across the dat
 * [Differential Privacy](https://www.thoughtworks.com/radar/techniques/differential-privacy)
 * [RAPPOR: Randomized Aggregatable Privacy-Preserving Ordinal Response](https://research.google/pubs/pub42852/)
 * [Non-Invasive Data Governance](https://kikconsulting.com/non-invasive-data-governance/)
+* Philosophy
+  * [Individualism](https://en.wikipedia.org/wiki/Individualism)
+  * [Utilitarianism](https://en.wikipedia.org/wiki/Utilitarianism)
+  * [The common good](https://plato.stanford.edu/entries/common-good/)
+  * [History of ethics](https://en.wikipedia.org/wiki/History_of_ethics)
