@@ -4,7 +4,7 @@ A distributed system is **a set of independent processes that work together, and
 
 * No shared memory
 * No common global clock (Each node is using its local clock and synchronization can become an issue and hence notion of time become very important in distributed systems)
-* No shared OS
+* No shared Operating System
 
 Processes interact with each other using messages over the network. There is a possibility of shared memory distributed systems, but we will ignore it for now. For us, the abstraction is a node which is a computing system with storage which is connected to another node via network.
 

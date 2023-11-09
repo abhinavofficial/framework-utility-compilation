@@ -5,6 +5,8 @@
   * [Principle of Data as Product](principles/data-as-product.md)
   * [Principle of the Self-Serve Data Platform](principles/self-serve-data-platform.md)
   * [Principle of Federated Computational Governance](principles/principle-of-federated-data-governance.md)
+* Implementations:
+  * [Logical Architecture](implementations/logical-architecture.md)
 
 ## Except from article by Adam Bellemare
 

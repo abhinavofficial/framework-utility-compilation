@@ -13,6 +13,7 @@ Byzantine failure: Loss of a system device, when byzantine fault occurs. It is t
 The whole byzantine fault and problem stems its from Byzantine Generals Problem and is a game theory problem.
 
 ## Byzantine Generals Problem
+
 Let's understand byzantine generals' problem in a simple form. Imagine several byzantine army divisions camped outside enemy city. There is a general per division. They can win if every general attacks or else will lose. Generals can agree to retreat as well. They are far off from each other and hence must communicate via messengers. There could be traitors among the generals, and they could act arbitrarily and may sabotage the plan. They may cast votes in favor of retreat and attack at the same time. Loyal generals must reach a consensus for a plan irrespective of traitors.
 
 A commanding general must send an order to his n-1 lieutenant generals such that:

@@ -64,7 +64,7 @@ Example - TCP Crash Recover
 
 ### Half Sync - Half Async
 
-This pattern is used to solve the blocking issue that a client faces while the server is processing its request. By doing this, we can increase the parallelism on the client side. This certainly makes most sense if the client can do "something" while waiting for result to be back. 
+This pattern is used to solve the blocking issue that a client faces while the server is processing its request. By doing this, we can increase the parallelism on the client side. This certainly makes most sense if the client can do "something" while waiting for result to be back.
 
 * Server receives request
 * Server returns Future object to client immediately

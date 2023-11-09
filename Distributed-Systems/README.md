@@ -8,6 +8,7 @@
 * [Consistency Models](consistency-models.md)
 * [Read-Write-Quorums](read-write-quoroms.md)
 * [Distributed Architecture Pattern](architecture-pattern.md)
+  * [Microservices As Distributed System](microservices-as-distributed-system.md)
 * [Data Replication](data-replication.md)
 
 ## More References
