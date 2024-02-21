@@ -1,3 +1,4 @@
+# Apache Iceberg Spec
 
 ## Format versioning
 
@@ -106,3 +107,79 @@ A table’s schema is a list of named columns. All data types are either primiti
 * Timestamps without time zone represent a date and time of day regardless of zone: the time value is independent of zone adjustments (2017-11-16 17:10:34 is always retrieved as 2017-11-16 17:10:34). Timestamp values are stored as a long that encodes microseconds from the unix epoch.
 
 ### Default Values
+
+Default values can be tracked for struct fields (both nested structs and the top-level schema's struct). There can be two defaults with a field: `- initial-default` is used to populate the field's value for all records that were written before the field was added to the schema `- write-default` is used to populate the field's value for any records written after the field was added to the schema, if the writer does not supply the field's value.
+
+> The initial-default and write-default produce SQL default value behavior, without rewriting data files. SQL default value behavior when a field is added handles all existing rows as though the rows were written with the new field's default value. Default value changes may only affect future records and all known fields are written into data files. Omitting a known field when writing a data file is never allowed. The write default for a field must be written if a field is not supplied to a write. If the write default for a required field is not set, the writer must fail.
+
+### Schema Evolution
+
+Schemas may be evolved by type promotion / upcasting or adding, deleting, renaming, or reordering fields in structs (both nested structs and the top-level schema’s struct). Evolution applies changes to the table's current schema to produce a new schema that is identified by a unique schema ID, is added to the table's list of schemas, and is set as the table's current schema.
+
+> Field deletion cannot be rolled back unless the field was nullable or if the current snapshot has not changed.
+
+> Grouping a subset of a struct’s fields into a nested struct is not allowed, nor is moving fields from a nested struct into its immediate parent struct (struct<a, b, c> ↔ struct<a, struct<b, c>>).
+
+> Evolving primitive types to structs is not allowed, nor is evolving a single-field struct to a primitive (map<string, int> ↔ map<string, struct<int>>).
+
+Rules for Struct evolution requires the following rules for default values:
+
+* The `initial-default` must be set when a field is added and cannot change
+* The `write-default` must be set when a field is added and may change
+* When a required field is added, both defaults must be set to a non-null value
+* When an optional field is added, the defaults may be null and should be explicitly set
+* When a new field is added to a struct with a default value, updating the struct's default is optional
+* If a field value is missing from a struct's initial-default, the field's initial-default must be used for the field
+* If a field value is missing from a struct's write-default, the field's write-default must be used for the field
+
+### Column Projection
+
+Columns in Iceberg data files are selected by field id. The table schema's column names and order may change after a data file is written, and projection must be done using field ids. If a field id is missing from a data file, its value for each row should be null.
+
+Tables may also define a property `schema.name-mapping.default` with a JSON name mapping containing a list of field mapping objects. These mappings provide fallback field ids to be used when a data file does not contain field id information. Each object should contain
+
+* `names`: A required list of 0 or more names for a field.
+* `field-id`: An optional Iceberg field ID used when a field's name is present in names
+* `fields`: An optional list of field mappings for child field of structs, maps, and lists.
+
+Field mapping fields are constrained by the following rules:
+
+* A `name` may contain '.' but this refers to a literal name, not a nested field. For example, a.b refers to a field named a.b, not child field b of field a.
+* Each child field should be defined with their own field mapping under fields.
+* Multiple values for names may be mapped to a single field ID to support cases where a field may have different names in different data files. For example, all Avro field aliases should be listed in names.
+* Fields which exist only in the Iceberg schema and not in imported data files may use an empty names list.
+* Fields that exist in imported files but not in the Iceberg schema may omit field-id.
+* List types should contain a mapping in fields for element.
+* Map types should contain mappings in fields for key and value.
+* Struct types should contain mappings in fields for their child fields.
+
+### Identifier Fields IDs
+
+A schema can optionally track the set of primitive fields that identify rows in a table, using the property identifier-field-ids (see JSON encoding in Appendix C).
+
+Two rows are the "same"--- that is, the rows represent the same entity ---if the identifier fields are equal. However, uniqueness of rows by this identifier is not guaranteed or required by Iceberg and it is the responsibility of processing engines or data providers to enforce.
+
+ Please not: To avoid null values in identifiers and keep it performant
+
+> Identifier fields may be nested in structs but cannot be nested within maps or lists. 
+
+> Float, double, and optional fields cannot be used as identifier fields, and 
+
+> A nested field cannot be used as an identifier field if it is nested in an optional struct.
+
+### Reserved Field IDs
+
+|Field id  | name      |	Type    |	Description                                                 |
+|----------|-----------|------------|---------------------------------------------------------------|
+|2147483646| _file	   |string      |Path of the file in which a row is stored                      |
+|2147483645| _pos	   |long        |Ordinal position of a row in the source data file              |
+|2147483644| _deleted  |boolean     |Whether the row has been deleted                               |
+|2147483643| _spec_id  |int         |Spec ID used to track the file containing a row                |
+|2147483642| _partition|struct      |Partition to which a row belongs                               |
+|2147483546| file_path |string      |Path of a file, used in position-based delete files            |
+|2147483545| pos       |long        |Ordinal position of a row, used in position-based delete files |
+|2147483544| row       |struct<...> |Deleted row values, used in position-based delete files        |
+
+> Iceberg tables must not use field ids greater than 2147483447 (`Integer.MAX_VALUE` - 200). 200 is just an arbitrary number, to reserve for future.
+
+## Partitioning
