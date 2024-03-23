@@ -36,6 +36,15 @@ The clock is a tiny quartz crystal inside the CPU that 'ticks' at a steady speed
 
 ## Cache
 
+In general data and programs are stored in RAM. Accessing and retrieving data from RAM is pretty fast, but not fast enough at the register level. Hence, a small amount of memory is built in CPU itself, which has data/instruction in progress or about to be used.
+
+These caches are much faster that RAM, but slightly slower than registers. Caches are of three types depending on their speed and performance.
+
+* L1 cache – fastest, but smallest, data and instructions
+* L2 cache – slower, but bigger, data-only
+* L3 cache – slowest, but biggest, data-only
+
+We can use `lscpu` to get more details on these caches. We can also use `lshw` or `dmidecode` to get more info about system include cache under super-user.
 
 ## CPU's job
 
