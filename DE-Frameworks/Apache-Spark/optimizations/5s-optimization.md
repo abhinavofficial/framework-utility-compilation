@@ -1,0 +1,1 @@
+https://medium.com/@chenglong.w1/the-5s-optimization-framework-for-spark-shuffle-optimization-f2b905e09bb0
