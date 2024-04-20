@@ -1,5 +1,11 @@
 # DataSource
 
+https://www.youtube.com/watch?v=GyBnuLl3a5Q
+
+https://www.youtube.com/watch?v=qe8g5HRjfdI
+
+https://www.youtube.com/watch?v=U5n-evWfYSQ
+
 ## DataSourceV2
 
 * Define a set of common logical plans
