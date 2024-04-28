@@ -1,4 +1,7 @@
+# Puffin Spec
+
 ```python
+
 from pyiceberg import Table
 
 # Load an existing Iceberg table
