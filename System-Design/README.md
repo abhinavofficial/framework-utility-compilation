@@ -66,10 +66,50 @@ In summary, a concept:
 * Implicitly sets the design parameters of the system.
 * Implicitly sets the level of technology
 
+## System Architecture
+
+The system concept is simple: It has a low amount of information and complexity. The architecture is quite complex — a lot of information involved.
+
+Stepping Stones in Synthesis
+
+1. Needs - It is vague. It is in the language in common people. It **answers why** are doing.
+2. Functional goals - **Solution-neutral vocabulary**, which can be defined by someone in the system. It **answers what** is the system going to do.
+3. Concept - **How** will the system perform the functional goals.
+4. Architecture - It defines the concept in a **solution-specific vocabulary**.
+
+Concept informs architecture. It not only conveys information about form but also contains information about function. Solution-neutral format by definition does not reference a specific solution. It scopes how broad a design exploration will be. Therefore, it is possible to use a solution-neutral statement that is too broad, which may encourage a team to embark on an exploration that takes too much design time.
+
+See an example of system architecture solving a simple need to removing water from the basement.
+
+![complexity_explained](images/relation_between_concept_architecture.png)
+
+### Decisioning in System Architecture
+
+We have no reason to expect the quality of intuition to improve with the importance of the problem. Perhaps the contrary: high-stake problems are likely to involve powerful emotions and strong impulses to action - Daniel Kahneman.
+
+Engineers must make many design decisions. A subset of these design decisions are architectural decisions — arguably the most important decisions. They relate to
+
+* Mapping function to form
+* Determining the performance envelope
+* Encoding the key trade-offs that become the eventual product.
+
+Lets introduce two more concerns here which would influence decisions feeding into System Architecture - Sensitivity and Connectivity.
+
+**Sensitivity** is a measure of the impact on metrics caused by a given decision.
+**Connectivity** is the degree to which making a given decision influences other decisions. This shows how much rework would be required to make change the decision. A connected architectural decisions affect multiple subsystems or components within the system. In such cases, changing a connected architectural decision is more difficult as time progresses and things are added to the system.
+
+Professor Cameron argues that with two critical criteria you can highlight the architectural decisions for the system. Those architectural decisions should be both highly sensitive as well as highly connected.
+
+![Architectural Decisions](images/architectural_decisions.png)
+
+Quadrant 1 is what we want to solve first - they would help fix my design. Quandrant 4 can be done at the last - these decisions can be done downstream.
+
 ## Questions
 
 1. What is the difference between concept and instruments.
 2. Is function same as process? Is form same as operand?
+3. Professor Cameron argues that the architectural decisions should be both sensitive as well as highly connected. Should the goal be to ensure that designs are less sensitive and less connected.
+4. What is non-architecture decision?
 
 ## Table of Content
 
