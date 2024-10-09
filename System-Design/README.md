@@ -104,12 +104,25 @@ Professor Cameron argues that with two critical criteria you can highlight the a
 
 Quadrant 1 is what we want to solve first - they would help fix my design. Quandrant 4 can be done at the last - these decisions can be done downstream.
 
-## Questions
+## Design Structure Matrix
 
-1. What is the difference between concept and instruments.
-2. Is function same as process? Is form same as operand?
-3. Professor Cameron argues that the architectural decisions should be both sensitive as well as highly connected. Should the goal be to ensure that designs are less sensitive and less connected.
-4. What is non-architecture decision?
+Design Structure Matrix is a method for mapping out or modeling networks of interactions in complex engineering systems. This is used to better manage the development of extensive development projects, which are naturally decomposed or split into different pieces.
+
+- **Decomposition** is the breaking a larger entity into smaller entities.
+- **Process** is a pattern of transformation applied to one or more objects. Generally, processes are creating, destroying, or changing something. They occur over time.
+- **Design Structure Matrix (DSM)** is a simple complacent representation of a system or project in the form of a square matrix. It is the equivalent of an adjacency matrix in graph theory and is used in system engineering and project management to model the structure of complex systems or processes.
+- **System architecture** is the embodiment of the concept that the allocation of physical information function to the elements of form and the definition of relationship among the elements and with the surrounding context.
+- **Interface** is a point where two systems meet and interact. 
+- **Process architecture** is the structural design of general process systems.
+
+Product - Is decomposed into Sub-System and Components
+Process - Is decomposed into Phases and Stages, finally into Work packages and Tasks. Planning-> Concept Development -> System-Level Design -> Design -> Build -> Test -> Production ramp-up
+Organization -> Is decomposed into people and team to execute the process to create the system.
+
+
+Product/System DSM is a square matrix which lists components on x and y axis, and denote interfaces with x, and squares to denote the sub-systems, and common interfaces with runs throughout the systems.
+
+Process Architecture DSM
 
 ## Table of Content
 
