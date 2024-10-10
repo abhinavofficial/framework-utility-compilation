@@ -106,6 +106,8 @@ Quadrant 1 is what we want to solve first - they would help fix my design. Quand
 
 ## Design Structure Matrix
 
+You can learn more about DSM at their [website](https://dsmweb.org/)
+
 Design Structure Matrix is a method for mapping out or modeling networks of interactions in complex engineering systems. This is used to better manage the development of extensive development projects, which are naturally decomposed or split into different pieces.
 
 - **Decomposition** is the breaking a larger entity into smaller entities.
@@ -119,10 +121,14 @@ Product - Is decomposed into Sub-System and Components
 Process - Is decomposed into Phases and Stages, finally into Work packages and Tasks. Planning-> Concept Development -> System-Level Design -> Design -> Build -> Test -> Production ramp-up
 Organization -> Is decomposed into people and team to execute the process to create the system.
 
+### Type of DSM
 
-Product/System DSM is a square matrix which lists components on x and y axis, and denote interfaces with x, and squares to denote the sub-systems, and common interfaces with runs throughout the systems.
+**Product/System DSM** is a square matrix which lists components on x and y axis, and denoting interfaces with x. You would note a pattern of how x are placed, and some related components may denote the sub-systems, and common or integrating components which run throughout the system.
 
-Process Architecture DSM
+**Process Architecture DSM** is an activity to activity square matrix.
+
+**Organizational DSM**
+
 
 ## Table of Content
 
