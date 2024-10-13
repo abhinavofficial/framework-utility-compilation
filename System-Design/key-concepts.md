@@ -167,3 +167,11 @@ Within the suites of potential system analysis tools, DSM offers some salient ad
 
 ### Creating a System Architecture DSM
 
+The steps covered can be generalized to provide a basic framework for building a product architecture DSM:
+1. Decompose the system into elements.
+2. Understand and document the interactions between the elements.
+3. Layout the square DSM with components, labeling the rows and the columns.
+4. Analyze potential groupings of the elements via clustering. The clustering should be done in such a way that it promotes interactions within the cluster and minimizes outside ones.
+
+### Creating a Process Architecture DSM
+
