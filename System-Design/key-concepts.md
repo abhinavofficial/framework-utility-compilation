@@ -194,7 +194,12 @@ In Process Architecture DSM, the inputs are in the row and outputs are in the co
 |G| |X|X| | | |G| |
 |H| | | | |X| | |H|
 
-Which task should go first? Well, it may the one with no input or minimum inputs. Once that task is complete, we can find the ones which needs the output of this with no other or minimum inputs. We can thereby sequence the entire process. Once you put the DSM in that sequence, we can move across to diagonal to see when the task can be done in sequence, parallel, or are coupled. So, lets create the algorithm for the same.
+Which task should go first? Well, it may the one with no input or minimum inputs. Once that task is complete, we can find the ones which needs the output of this with no other or minimum inputs. We can thereby sequence the entire process. Once you put the DSM in that sequence, we can move across to diagonal to see when the task can be done in sequence, parallel, or are coupled. So, process DSM can help identify -
+1. Tasks that can be executed in parallel
+2. The order in which tasks should be executed
+3. Tasks that have to be performed together as a logical group because of their dependencies
+
+Lets create the algorithm for the same.
 
 **DSM Sequencing model**
 
@@ -204,3 +209,13 @@ Which task should go first? Well, it may the one with no input or minimum inputs
 4. Repeat steps 1-3 until all the tasks and loops have been sequenced.
 
 // Task - Create a python program to do so.
+
+Process DSM allows us to answer the question - where are the iterations in an engineering process? There are planned and unplanned iterations. Planned iterations are the ones where we group task together to iterate to get the best outcome. Our job to make them happen faster. Unplanned iterations are hard to predict when it would take place. We can plan to remove or plan not to create the knock down impact.
+
+> Any activity that lies above the diagonal in the process DSM is a feedback activity.
+
+> Any feedback activity that is not part of a logical group leads to unplanned iteration.
+
+> Any feedforward or feedback activities happening inside a logical group are part of planned iterations.
+
+> Sometimes if a process contains all uncoupled tasks, then restructuring the DSM will not lead to other improvements. Rearranging the DSM may not always help. If a process contains only uncoupled tasks, then restructuring the DSM will not lead to other improvements. Note that the use of logical groups defines what is planned/unplanned. Therefore, what is outside the logical groups is unplanned. For iterative processes, in theory you could illustrate the whole DSM as a logical group, but in practice when performing tasks, in the second iteration there may be differences from the first iteration.
