@@ -175,3 +175,32 @@ The steps covered can be generalized to provide a basic framework for building a
 
 ### Creating a Process Architecture DSM
 
+Process Architecture represents the flow of information between tasks that makes up the development process. There are three kinds of relationship possible between two tasks
+
+* Sequential: Task A provides information to task B, and hence must complete before B. Task B is dependent on A, and A and B are therefore, sequential.
+* Parallel: If Task A and B are independent of each other, so both can be done at once in parallel.
+* Coupled: Task A and B can be interdependent - this means, A needs something from B and B needs something from A. They must be done together and hence are coupled.
+
+In Process Architecture DSM, the inputs are in the row and outputs are in the column. In the diagram below, Task D requires input from E, F, and H. Task B's output goes to C, E and G  
+
+|x|A|B|C|D|E|F|G|H|
+|-|-|-|-|-|-|-|-|-|
+|A|A| | | |X| | | |
+|B| |B| |X| |X|X| |
+|C| |X|C|X| | | |X|
+|D| | | |D|X|X| |X|
+|E| |X| | |E| | | |
+|F| | | | |X|F| | |
+|G| |X|X| | | |G| |
+|H| | | | |X| | |H|
+
+Which task should go first? Well, it may the one with no input or minimum inputs. Once that task is complete, we can find the ones which needs the output of this with no other or minimum inputs. We can thereby sequence the entire process. Once you put the DSM in that sequence, we can move across to diagonal to see when the task can be done in sequence, parallel, or are coupled. So, lets create the algorithm for the same.
+
+**DSM Sequencing model**
+
+1. Find any empty rows and move them to the front.
+2. Find any empty columns and move them to the end.
+3. Find any loop (if A depends of B and B depends on A, they are looped), collapse it, and schedule it according to step 1 and 2, if possible.
+4. Repeat steps 1-3 until all the tasks and loops have been sequenced.
+
+// Task - Create a python program to do so.
