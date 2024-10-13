@@ -145,6 +145,13 @@ Here, you will begin by adopting the convention with outputs in rows and inputs 
 |G| | |X| | | |G| |
 |H| | | | |X| | |H|
 
+> A DSM can be sorted to identify potential groups that have more connections within the group and fewer connections outside the group.
+> Processes are generally feed forward in nature (represented by marks below the diagonal). Feedback processes that return some input back to an upstream task (represented by marks above the diagonal) are rarer. Mainly validation and verification tasks have a feedback nature. Hence, Process DSMs have more marks below the diagonal than above the diagonal in the DSM square matrix.
+> System architecture DSMs are mostly symmetric. We represent interfaces or interactions between the components, which are generally symmetric in nature. If one component has an interface with another, then vice versa is also true.
+> Process architecture DSMs are mostly asymmetric. Processes are mostly feed forward in nature, i.e., one process's output is required as input for another process. Information, in this case, may not be passed in the opposite direction.
+> A system architecture DSM is often called an N-squared matrix. This refers to the fact that the matrix is square — it has the same number of rows and columns. As shown in the video, it can be used to visualize relationships and with clustering algorithms to produce potential modularizations of the system.
+
+
 ### Advantages of Design Structure Matrix
 
 Within the suites of potential system analysis tools, DSM offers some salient advantages:
