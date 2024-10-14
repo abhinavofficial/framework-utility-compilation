@@ -279,9 +279,10 @@ It is important to track and document Engineering change history. We can them ha
 
 Three dimensions to capture in Engineering change history.
 
-1. Time: Change activity over project timeline
-2. Change Location: Hotspots
-3. Cost: Cost distributions
+1. Time: Change activity over project timeline. If we draw a 2-D plot of change of necessary changes vs time, we may see three patterns. Most changes occur before the finalization of design and tapper down very quickly after the initial set of changes, these are probably good and are called Ripple. We may see another kind where changes occur before finalization of design, but the changes does not really tapper until the middle of the design and may have at the fag end as well. These are called Blossom and not really considered good. The worst kind is when the changes continue to happen even after the change and are called Avalanches.
+2. Change Location: We would like to understand when and where these change are happens. It helps identifying the hotspots in the system.
+3. Cost: Cost distributions. We want to look at which changes are causing additional cost or scope, changes which reduces cost/scope neutral, and changes with are cost/scope neutral against time. It is generally found that any change post design phase and when the build starts increase cost/scope. There is a cost estimate bias - we tend to underestimate the cost escalation due to change, and overestimate the cost saving due to change.
 
 ![Engineering Change Analysis](images/engineering_change_analysis.png)
 
+We should also look into social network of people involved in a system, and the role some of integration/system engineers play during the change process.
