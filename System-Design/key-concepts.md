@@ -283,3 +283,5 @@ Three dimensions to capture in Engineering change history.
 2. Change Location: Hotspots
 3. Cost: Cost distributions
 
+![Engineering Change Analysis](images/engineering_change_analysis.png)
+
