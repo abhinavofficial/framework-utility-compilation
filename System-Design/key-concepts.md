@@ -173,7 +173,7 @@ The steps covered can be generalized to provide a basic framework for building a
 3. Layout the square DSM with components, labeling the rows and the columns.
 4. Analyze potential groupings of the elements via clustering. The clustering should be done in such a way that it promotes interactions within the cluster and minimizes outside ones.
 
-### Creating a Process Architecture DSM
+### Process Architecture DSM
 
 Process Architecture represents the flow of information between tasks that makes up the development process. There are three kinds of relationship possible between two tasks
 
@@ -201,7 +201,7 @@ Which task should go first? Well, it may the one with no input or minimum inputs
 
 Lets create the algorithm for the same.
 
-**DSM Sequencing model**
+#### DSM Sequencing model
 
 1. Find any empty rows and move them to the front.
 2. Find any empty columns and move them to the end.
@@ -219,3 +219,13 @@ Process DSM allows us to answer the question - where are the iterations in an en
 > Any feedforward or feedback activities happening inside a logical group are part of planned iterations.
 
 > Sometimes if a process contains all uncoupled tasks, then restructuring the DSM will not lead to other improvements. Rearranging the DSM may not always help. If a process contains only uncoupled tasks, then restructuring the DSM will not lead to other improvements. Note that the use of logical groups defines what is planned/unplanned. Therefore, what is outside the logical groups is unplanned. For iterative processes, in theory you could illustrate the whole DSM as a logical group, but in practice when performing tasks, in the second iteration there may be differences from the first iteration.
+
+#### How to create a process Architecture DSM
+
+1. Identify the process or of the sub-process to model - the inner working of the sub-systems
+2. Identify the tasks and who is responsible for each one
+3. List the outputs created by each task
+4. Identify the inputs for each task
+5. We can then mark X to match "input requirement for" (rows) and "output created by" (columns).
+6. We can then mark 0 or something to mark special flows like unplanned iteration - they would be typical above the diagnal.
+7. You can then sequence tasks differently, use different colors, markers, etc. to make sense for yourself. There is no right or wrong ones here.
