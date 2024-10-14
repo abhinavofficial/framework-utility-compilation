@@ -229,3 +229,57 @@ Process DSM allows us to answer the question - where are the iterations in an en
 5. We can then mark X to match "input requirement for" (rows) and "output created by" (columns).
 6. We can then mark 0 or something to mark special flows like unplanned iteration - they would be typical above the diagnal.
 7. You can then sequence tasks differently, use different colors, markers, etc. to make sense for yourself. There is no right or wrong ones here.
+
+## Decomposing a System
+
+Architect decides on the decomposition of a system. It is a divide and conquer rule. Once they decide, many things emerge -
+1. Interfaces
+2. Approaches to testing
+3. Ease of integration
+4. Approaches to service
+
+Two key decisions are to be made. The core decision is how many pieces do you want to decompose into, typically 7 +- 2. But the more subtle decision is to determine which **plane** you want to use - is it based on **form**, **function**, **suppliers**, **sequence of operations**, etc. We will get different decomposition based on what we select.
+
+Irrespective of how we decompose, all of these need to derive from top-level system performance requirement.
+
+To decompose, we can use **Two Down, One Up** principle that says the best information about how to cluster or group the system one level down from the reference is present in the structure and interactions two levels down. Therefore, you need to drill down to Level Two to better identify the Level One decomposition.
+
+Level 0 -> Trial Level 1 decomposition -> Trial Level 2 decomposition -> Apply Clustering Algorithm as described in DSM process -> Final Level 1 decomposition
+
+### Key take away
+
+We want to modularize the system, keeping the following things mind -
+
+1. Reduce and simplify the interfaces
+2. Reduce the functional interactions and ensure emergence can take place
+3. Modularize for easy implementation, integration, operation, and service
+4. System changeability over lifetime
+5. Modularize against legacy elements and suppliers
+
+> Remember good modularization is the key to managing complexity in system.
+
+We can have a great architecture if we can -
+1. Decompose that modularize in the same way across all the planes
+2. Create simple interfaces
+3. Have teams aligned with the modules
+
+## Change Propagation
+
+Most products and systems emerge from predecessors and not through clean-sheet design. Understanding how and why changes propagate during engineering design is, therefore, critically important. Even new product development projects are iterative in nature with many build and test cycles that may result in frequent requirement updates. This can cause change propagation within the system. A change request can potentially propagate through a system to other components, leading to increases in project cost and lead time.
+
+**Change propagation** is the process by which change to one part or element of an existing system configuration or design results in one or more additional changes to that same system.
+
+Change propagation often exceeds two generations (child to child) but rarely exceed five generations (child to child to child to child to child). It follow Log-linear distribution - any change deeper than 5 generation are significantly small to be made.
+
+Understanding change propagation impact is important to ensure that we are able to deliver the value (emergence) by the system with time and budget.
+
+// To read - how to predict this efficiently.
+
+It is important to track and document Engineering change history. We can them have an approach to engineering change analysis.
+
+Three dimensions to capture in Engineering change history.
+
+1. Time: Change activity over project timeline
+2. Change Location: Hotspots
+3. Cost: Cost distributions
+
