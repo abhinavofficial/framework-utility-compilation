@@ -8,3 +8,4 @@
 * [Developers staff+ open source](https://www.infoq.com/articles/developers-staff-plus-open-source)
 * [Domain Driven Cloud](https://www.infoq.com/articles/domain-driven-cloud)
 * [https://oindrila-chakraborty88.medium.com/introduction-to-partition-in-apache-spark-66e005c6e15d]
+* [Apache Fury](https://fury.apache.org/) - A blazing-fast cross-language serialization framework powered by just-in-time compilation and zero-copy
