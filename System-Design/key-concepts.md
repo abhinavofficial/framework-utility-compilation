@@ -377,5 +377,11 @@ Now lets move to overview of Value Models
 - **Design space** is the span of possible alternative solutions to the system design problem, from which one or more could be picked and are under the control of the designer, usually consisting of distinct concepts, architectures, and particular designs.
 - **Cost models** evaluate potential design in terms of the resources (usually different types of cost, such as design, develop, manufacture, test, operate, and lifecycle) required for their realization.
 - **Performance models** evaluate potential design in terms of capabilities or performance they provide to help address the underlying goals and objectives. These are usually related to the behavior of the design, such as top speed, range, efficiency, etc.
-- **Value models** assign quantitative scores to potential design in terms of the perceived satisfaction, or benefit at cost, they generate while addressing the underlying goals and objectives. 
+- **Value models** assign quantitative scores to potential design in terms of the perceived satisfaction, or benefit at cost, they generate while addressing the underlying goals and objectives.
+
+> Value Models can be explicit or implicit.
+>
+> Issue with implicit value modes is that it can be subject to biases, change over time, and provide unpredictable or unexplainable results.
+>
+> Explicit Value models promote conversation, and overcome cognitive biases.
 
