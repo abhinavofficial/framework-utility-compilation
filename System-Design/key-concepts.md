@@ -385,3 +385,23 @@ Now lets move to overview of Value Models
 >
 > Explicit Value models promote conversation, and overcome cognitive biases.
 
+**Value** address three aspects:
+- Degree of satisfaction
+- Resources used
+- Degree of importance
+Value in general is the balance of these three things. Value is realized as benefit at cost, and is subjective and context dependent. For example, air-heated car seats may be valueable in winters but not in summer.
+
+### Basic vs Articulated Values
+
+Basic - if we should decompose the systems on the basis of criteria and look at value for each criteria
+Articulated - if we should looks things together and look at its holistic value
+
+Basic values allows us to generate models using individual criteria (value model) that can be pointed to a decision. It is very difficult to create a quantitive model for an articulated value, and difficult to predict goodness of alternatives.
+
+There is another angle to focus on value kind of Value Models.
+
+### Value Models
+
+- Normative Value model tells us how we should make decisions
+- Descriptive Value Model tell is how to do make decision.
+- In Prescriptive Value Model, we use models to help us make better decisions. It is based on rigorous theory, but allows for reality of complex decision making.
