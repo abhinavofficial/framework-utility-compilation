@@ -286,3 +286,83 @@ Three dimensions to capture in Engineering change history.
 ![Engineering Change Analysis](images/engineering_change_analysis.png)
 
 We should also look into social network of people involved in a system, and the role some of integration/system engineers play during the change process.
+
+## Value based decisioning
+
+**Value** is the experienced net benefit at a cost, taking into account the importance and scarcity, that will result from the system. Different stakeholders will perceive value differently and it is likely to vary over time.
+
+When making decisions, people often focus on a single criterion like price, but most decisions actually involve multiple, competing criteria. For instance, buying groceries involves both price and quality. In complex systems like designing a smartphone, multiple stakeholders have different needs. Users prioritize factors like battery life and camera quality, while manufacturers focus on production costs and timelines. It’s challenging to balance these diverse needs, so a structured process is needed to efficiently compare attributes, identify conflicts and synergies, and make better decisions.
+
+### Traceability and Communication Support
+One of the key benefits of engaging with stakeholders early and using value-focused thinking is that it increases the likelihood of success at decision time. Most systems engineering processes have key milestone reviews, the outcome of which are critical decisions that shape what a system can end up becoming. These include decisions such as concept selection, budget, and schedule allocation; requirements encoding; assigning specifications to a design; verification that a particular design meets requirements; and validation that a particular system meets the espoused needs.
+
+Every organization may have a different set of processes and key milestones; however, usually, these are the critical times when preferences (i.e., the values) of critical stakeholders are made known. Sometimes key stakeholder needs are not even known until later in the lifecycle (i.e., new customers using a product after development). In order to reduce delays in the system development processes and increase the chances that the proposed system solutions meet or exceed expectations, you can use quantitative methods to generate compelling and aligned evidence that you are developing good solutions. For example, using quantitative value models as proxies for stakeholder needs ensures alignment of your development efforts in between those critical milestone reviews.
+
+
+An **attribute** is a decision maker’s perceived metric of how well a perceived objective is met.
+
+The Pareto frontier by definition contains alternatives that are the most efficient for a given cost. Therefore, if an alternative has a higher benefit than other alternatives at a given cost, then that alternative will now be a part of the Pareto frontier.
+
+**Budget** and **desires constraints** represent limitations on what is acceptable for the project and system, and they can be used to eliminate alternatives from the decision analysis, since some alternatives will not satisfy them.
+
+Dominated solutions are not the most optimal from the set of all of the available solutions, and therefore they don't maximize the value that could be derived from the system; hence, they could be eliminated. However, if you have any uncertainty about the value metrics, the performance, or cost of the alternatives, or wish to gain insights into the relationships within the tradespace, you should not eliminate dominated solutions, since they might become non-dominated at a later point in time (to be discussed in the coming weeks).
+
+
+
+Multi-Attribute Tradespace exploration
+* Structured framework
+* Large number of alternatives
+* Useful mechanism for stakeholder communication
+
+Finding alternatives on the basis of experience, media, reports, etc.
+
+Differentiating factors:
+
+- Price
+- Styling
+- Reliability
+
+Finding alternatives, and creating differentiation takes time and effort.
+
+Value focused thinking
+1. Starts with rationales
+2. How do you create value?
+3. What is the problem you are trying to solve?
+4. Ideally these are solution neutral.
+
+|Value-Focused|Alternative-Focused|
+|-------------|-------------------|
+|Focuses on value-creating rationale and tries to identify how to maximize the value derived from the system|Tries to identify the best possible solution/answers/designs/alternative for the problem from a set of available alternatives|
+|Starts with the problem|Starts with a potential solution|
+|Tends to be framed as solution-neutral|Tends to be framed as solution-specific|
+|Tends to take longer|Tends to be quicker|
+|We can recast problems into opportunities. It increases likelyhood for solution performance. It also helps in re-aligning scare resources.| It may start with small number of solutions - some of which may be sub-optimal. However, it reduces ambiguity. It may look like solving the problem, but may lead to scare resources and properly justification of why we opted for an alternative|
+
+Value-focused thinking tries to formulate the problem in a more solution-neutral manner, which helps in generating new and innovative solutions that better solve the problem. For example, if your goal is affordable, on-demand transportation from point A to B, then value-focused thinking might ultimately result in the suggestion that you use Uber and Zipcar rather than selecting from a set of car purchase alternatives, since they help save the up-front cost of owning a vehicle. Value-focused thinking tries to provide better solutions for the problem, not necessarily more solutions.
+
+Alternative-focused thinking identifies potential solutions for the problem up front and then compares alternatives to select the one that best solves the given problem. This ensures that it is easier to implement, since concrete solutions are provided up front, and this also helps reduce the ambiguity from the problem being solved. Alternative-focused thinking usually results in a small number of possibly sub-par solutions that are restricted to specific concepts or architectures. Value-focused thinking does not suffer from the same problem and might provide more solutions.
+
+### Evidence Based Systems Engineering
+
+Evidence-based SE is an extension of model-based SE that emphasizes not only using SysML or other system models as a basis of program decisions but also the use of other models to produce evidence that the system models describe a feasible system. Such evidence is generally desired, but it is often not produced because it is not identified as a project deliverable in a data item description (DID). Going forward with such unproven solutions frequently leads to large program overruns.
+
+Based on experience in developing and using such a DID on a very large project, let’s summarize the content and form of such a DID and a rationale for its use. Its basic content is evidence that if a system were produced with the specified architecture, it would:
+
+- Satisfy the specified operational concept and requirements;
+- Be developable within the specified budget and schedule;
+- Provide a superior return on investment over alternatives in terms of mission effectiveness; and
+- Provide satisfactory outcomes for the system's success-critical stakeholders.
+
+One key factor of the DID is that the content of the evidence should be risk-balanced between having too little evidence (often the case today) and having too much (analysis paralysis). Thus, it is not a one-size-fits-all DID, but it is one that has ways to be tailored to a project's most critical evidence needs.
+
+Source - [DID, Conference of Systems Engineering Research](https://www.sciencedirect.com/science/article/pii/S1877050913000951?via%3Dihub)
+
+### Multi-Attribute Tradespace Exploration with Concurrent Design as Value-Centric Framework
+
+Abstract: The complexity inherent in space systems necessarily requires intense expenditures of resources both human and monetary. The high level of ambiguity present in the early design phases of these systems causes long, highly iterative, and costly design cycles, especially due to the need to create robust systems that are inaccessible after deployment. This thesis looks at incorporating decision theory methods into the early design processes to streamline communication of wants and needs among stakeholders and between levels of design. Communication channeled through formal utility interviews and analysis enables engineers to better understand the key drivers for the system and allows for a broad and more thorough exploration of the design tradespace. 
+
+Multi-attribute tradespace exploration (MATE), an evolving process incorporating decision theory into model and simulation-based design, has been applied to several space system projects. The conclusions of these studies indicate that this process can improve the quality of communication to more quickly resolve project ambiguity and enable the engineer to discover better value designs for multiple stakeholders. Sets of design options, as opposed to point designs, in addition to the structure of the solution space, can be analyzed and communicated through the output of this process. 
+
+MATE is also being integrated into a concurrent design environment to facilitate the transfer of knowledge of important drivers into higher fidelity design phases. Formal utility theory provides a mechanism to bridge the language barrier between experts of different backgrounds and differing needs (e.g., scientists, engineers, and managers). MATE with concurrent design (MATE-CON) couples decision makers more closely to the design and, most importantly, maintains their presence between formal reviews. The presence of a MATE-CON chair in the concurrent design environment represents a unique contribution of this process. In addition to the development of the process itself, this thesis uses design structure matrix (DSM) analysis to compare the structure of the MATE-CON process to that of the NASA systems engineering process and that of a US space organization to gain insights into their relative temporal performance. Through both qualitative and quantitative discussions, the MATE-CON process, which is derived from the fundamental concept of engineering, is shown to be a “better” method for delivering value to key decision makers. 
+
+Source - Tradespace Exploration - Local copy.
