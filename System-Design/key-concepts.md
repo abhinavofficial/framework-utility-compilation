@@ -298,16 +298,17 @@ One of the key benefits of engaging with stakeholders early and using value-focu
 
 Every organization may have a different set of processes and key milestones; however, usually, these are the critical times when preferences (i.e., the values) of critical stakeholders are made known. Sometimes key stakeholder needs are not even known until later in the lifecycle (i.e., new customers using a product after development). In order to reduce delays in the system development processes and increase the chances that the proposed system solutions meet or exceed expectations, you can use quantitative methods to generate compelling and aligned evidence that you are developing good solutions. For example, using quantitative value models as proxies for stakeholder needs ensures alignment of your development efforts in between those critical milestone reviews.
 
+A **decision-maker** is a special type of stakeholder who has influence or control over driving the needs and setting up goals for the system.
 
 An **attribute** is a decision maker’s perceived metric of how well a perceived objective is met.
+
+**Value metric** converts the attributes of a design into a measure of preference(s) of the decision-makers, thereby aiding them in choosing between disparate alternatives. Value metrics are quantitative, although they are often dimensionless and may be relative.
 
 The Pareto frontier by definition contains alternatives that are the most efficient for a given cost. Therefore, if an alternative has a higher benefit than other alternatives at a given cost, then that alternative will now be a part of the Pareto frontier.
 
 **Budget** and **desires constraints** represent limitations on what is acceptable for the project and system, and they can be used to eliminate alternatives from the decision analysis, since some alternatives will not satisfy them.
 
 Dominated solutions are not the most optimal from the set of all of the available solutions, and therefore they don't maximize the value that could be derived from the system; hence, they could be eliminated. However, if you have any uncertainty about the value metrics, the performance, or cost of the alternatives, or wish to gain insights into the relationships within the tradespace, you should not eliminate dominated solutions, since they might become non-dominated at a later point in time (to be discussed in the coming weeks).
-
-
 
 Multi-Attribute Tradespace exploration
 * Structured framework
@@ -458,7 +459,19 @@ Once all the alternatives have been compared, each of the +, S and - values for 
 
 **Modified Decision Matrix Method**: The modified decision matrix method is similar to the lexicographic method. First, attributes are ranked by weight according to the stakeholders’ preference. Then, all the alternatives are scored on each of the given attributes either using natural units or by normalizing the units. A weighted score for each attribute for each alternative is then calculated by multiplying each individual attribute score times its attribute weight. Then, the weighted attribute scores are summed for each alternative, resulting in the overall weighted score. Once the overall weighted scores are calculated, each alternative is ranked from the highest to the lowest overall weighted score.
 
+```text
+Normalized attribute values are calculated using the formulas:
+
+In cases where maximum value is the best:
+Normalized Value = (Value - Min) / (Max - Min) 
+
+In cases where minimum value is the best:
+Normalized Value = (Value - Max) / (Min - Max) 
+```
+
 **Multi-Attribute Utility (MAU) Method**: For each attribute, you create a single attribute utility curve for that attribute, which maps the acceptance range for that attribute on a 0 (worst) to 1 (best) scale. Then, you assign weights for each of the attributes based on how well they satisfy the stakeholders’ objectives. Next, find the single attribute utility scores for each attribute across all of the alternatives by interpolating its utility value from the appropriate single attribute utility curve. Finally, create a score for each alternative by summing all of the utility values multiplied by their corresponding attribute weights. The alternatives with the highest score values are ranked first, and so on.
+
+// TO DO - Understand this more.
 
 #### Cost-Benefit Analysis (CBA)
 
@@ -479,3 +492,12 @@ AHP is a method for systematically decomposing a system into a hierarchy of desi
 **Final points**
 
 There are many value models in use. In general, value models are a quantitative proxy for a decision maker, and seek to map “degree of satisfaction” across a possible attribute range or set of ranges. Value models include various single and multiple attribute transformations. The key takeaway is that all value models are abstractions. Use of particular value models should take into account their assumptions and applicability, along with considerations for how they will be used in the decision-making process (e.g., availability of data and transparency of recommendations)
+
+The lexicographic method is the simplest; however, the ranking of the alternatives using the method was not completely reliable, since you only looked at the most important attribute of the system to make the ranking decision. MAU, on the other hand, was the most comprehensive: It not only took into account each individual attribute and nonlinear preferences across them, but it also compared the cumulative score of each alternative (by summing up the single attribute utility scores for each attribute for that alternative) to come up with the more comprehensive ranking. It is important to understand the advantages and limitations of each method before using them.
+
+## Operationalizing Value with Attributes
+
+Measures of value 
+
+- Functional requirements
+- 
