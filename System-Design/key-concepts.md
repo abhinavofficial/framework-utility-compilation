@@ -405,3 +405,77 @@ There is another angle to focus on value kind of Value Models.
 - Normative Value model tells us how we should make decisions
 - Descriptive Value Model tell is how to do make decision.
 - In Prescriptive Value Model, we use models to help us make better decisions. It is based on rigorous theory, but allows for reality of complex decision making.
+
+> There is no such thing like purely objective measure. We are using judgement to figure out which measure to use when we are developing requirements for a system.
+
+### Type of value models
+
+Based on different criteria, there can be different types of value models.
+
+Based on how stakeholders perceive goodness of a solution -
+
+1. Single Criterion - how stakeholder interpret goodness on different level of scale 
+2. Multicriteria - set of criteria as single measure of goodness.
+
+Based on uncertainty of the outcome -
+
+1. Deterministic (value funtions) - outcomes are certain
+2. Uncertain (utility functions) - we keep uncertainty into account.
+
+Based on attributes used in the value models -
+
+1. Net present value
+2. Discounted cashflow
+3. Single-Attribute Utilities and Multi-attribute utilities
+4. Cost-Benefit Analysis
+5. Analytic hierarchy process
+
+#### Net Present Value (NPV) Method
+
+With this approach, you calculate a single number to roll up a time series of a metric (usually a cash flow or other monetary stream). It relies on two mathematical abstractions: time period and discount rate. The time period is the time frame discretization of the time-series metric; the discount rate is the exponential decay rate of loss of perceived benefit of that stream over that time period (i.e., a dollar today is worth more than a dollar tomorrow). Alternatives are scored according to their aggregated NPV, and those with the highest score are deemed the best.
+
+#### Single Attribute Utility (SAU) Method
+
+With this approach, you develop a model that quantifies the level of perceived satisfaction of various levels of an attribute under uncertainty. The axioms of this method require a monotonic curve (increasing or decreasing) that ranges (typically) from 0 (least acceptable level) to 1 (most desirable level) across the acceptance range of the considered attribute. Attribute scores above the most desirable level are assigned a “1,” while attribute scores below the minimum acceptable level are assigned “infeasible.”
+
+Alternatives are assessed in terms of the attribute(s), and a single attribute utility score is interpolated from the SAU function based on the attribute level. Alternatives with the highest SAU scores are the best, although many could tie at 1 and would be considered an equivalently saturating perceived benefit. It is important to recognize that in this implementation of SAU, a score of 0 is still minimally acceptable, while a score of “infeasible” means that an alternative is unacceptable for having an attribute level below the minimum acceptable threshold.
+
+Note: Generally, any function mapping attribute levels to degree of satisfaction is called a “value function.” A utility function is a special case of a value function that also takes into account uncertainty, which is the degree of satisfaction for an attribute level under uncertainty.
+
+**[IMAGE REQUIRED](https://classroom.emeritus.org/courses/10190/pages/example-single-attribute-approaches?module_item_id=1863295)**
+
+#### Multi-Attribute Approaches
+
+You must use multi-attribute approaches when there is more than one attribute that determines value. Various example multi-attribute methods of quantifying and comparing value are provided below. 
+
+**Lexicographic (Decision Matrix) Method**: In this method, attributes or system goals are ranked according to the stakeholders’ preference. Then, all the alternatives are scored based on the most important attribute (as perceived by stakeholders), either using natural units or by normalizing the units. The alternatives are then ranked based on their calculated score. If there is a tie, you break the tie with the second most important attribute score.
+
+**Pugh (Controlled Convergence) Method**: In Pugh, a baseline alternative/solution is first selected. Then, each attribute of the baseline is compared with the corresponding attribute for the other available alternatives and marked with either “+”, “S” or “-”: “+” (Plus) if the attribute value of the alternative is better than that of the baseline; - (Minus) if the attribute value of the alternative is worse than that of the baseline; and S (Same) if it is the same as that of the baseline. 
+
+Once all the alternatives have been compared, each of the +, S and - values for every alternative are summed. The alternative that has the best scores for each of the three comparison values is ranked first, and so on. 
+
+**QFD-Like Method**: In this method, attributes are ranked according to the stakeholders’ preference and assigned weights (they typically add up to 1). The scoring of the alternatives for each of the given attributes is done using a scale with four values: 0 (none), 1 (weak), 3 (moderate), and 9 (strong). Once all the attributes of every alternative have been scored, a weighted sum of the scores based on the attribute ranking is calculated. Alternatives are then ranked according to their weighted sum from the highest to the lowest.
+
+**Modified Decision Matrix Method**: The modified decision matrix method is similar to the lexicographic method. First, attributes are ranked by weight according to the stakeholders’ preference. Then, all the alternatives are scored on each of the given attributes either using natural units or by normalizing the units. A weighted score for each attribute for each alternative is then calculated by multiplying each individual attribute score times its attribute weight. Then, the weighted attribute scores are summed for each alternative, resulting in the overall weighted score. Once the overall weighted scores are calculated, each alternative is ranked from the highest to the lowest overall weighted score.
+
+**Multi-Attribute Utility (MAU) Method**: For each attribute, you create a single attribute utility curve for that attribute, which maps the acceptance range for that attribute on a 0 (worst) to 1 (best) scale. Then, you assign weights for each of the attributes based on how well they satisfy the stakeholders’ objectives. Next, find the single attribute utility scores for each attribute across all of the alternatives by interpolating its utility value from the appropriate single attribute utility curve. Finally, create a score for each alternative by summing all of the utility values multiplied by their corresponding attribute weights. The alternatives with the highest score values are ranked first, and so on.
+
+#### Cost-Benefit Analysis (CBA)
+
+Cost-benefit analysis is a prescriptive methodology that quantifies the net benefits yielded by a system relative to its respective net costs. CBA serves as a useful value-centric tool for cardinally weighting the positive and negative effects of various outcomes and combining them into a single metric. Most often, the costs and benefits are quantified using a monetary metric, which requires that all the direct costs and benefits associated with the system are transformed into monetary units. However, any cardinal scale may be used for CBA.
+
+#### Cumulative Prospect Theory (CPT)
+
+CPT is a descriptive-based tool developed in response to the belief that the normative expected utility theory does not appropriately characterize decision making under uncertainty. It is an improvement on prospect theory. CPT is directly aimed at modifying utility theory to account for observed violations of expected utility theory while making as few modifications as possible. The result of CPT is evident in its respective loss-gain, or “S”, curve, which forms a value function representing the behavioral characteristics of stakeholders under uncertainty, much as utility theory does, but in monetary terms instead. 
+
+#### Value Functions (VFs)
+
+Value functions can be broadly categorized as functions that quantify, in any cardinal unit of measure (although usually in monetary units), the intrinsic value of a system, which in turn is determined under certainty, and VFs may be ascertained so that they exist as an ordinal or cardinal function. VFs capture the elicitation of stakeholder preferences about the outcome of a situation, which is known with certainty, in terms of how much they would be willing to pay to have that outcome occur or not occur. Hence, VFs most often assume a monetary form and embody a stakeholder’s change in wealth relative to a given set of outcomes. 
+
+#### Analytic Hierarchy Process (AHP)
+
+AHP is a method for systematically decomposing a system into a hierarchy of desirable attributes that aggregate to an overarching goal. The manifestation of this is a decision tree (or matrix), where the highest order of the tree/matrix is the goal to be achieved, and logically disseminating from this are a set of decisions, or attributes, where each attribute aggregates a set of attributes that collectively comprise that attribute at the next higher level in the hierarchy. Through a simple algorithm and appropriate weighting of each ensuing node of the decision tree via pairwise comparisons, this hierarchy is then used to mathematically inform decisions as to the most valuable system or decision meeting the overarching goal. 
+
+**Final points**
+
+There are many value models in use. In general, value models are a quantitative proxy for a decision maker, and seek to map “degree of satisfaction” across a possible attribute range or set of ranges. Value models include various single and multiple attribute transformations. The key takeaway is that all value models are abstractions. Use of particular value models should take into account their assumptions and applicability, along with considerations for how they will be used in the decision-making process (e.g., availability of data and transparency of recommendations)
