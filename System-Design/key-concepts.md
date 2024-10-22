@@ -499,5 +499,23 @@ The lexicographic method is the simplest; however, the ranking of the alternativ
 
 Measures of value 
 
-- Functional requirements
-- 
+- Functional requirements, which may be binarily satisfied.
+- Single measures of functionality, which may define the range for satisfaction.
+- Single-attribute utility, which defines degree of satisfaction across a range of an attribute.
+- Multi-attribute utility, which aggregate degree of satisfaction across a set of attributes.
+
+> Please keep it mind that attributes must be defined by the decision makers, and has ranges that reflect the degree of satisfaction across performance. It allows for broad consideration of alternatives
+
+A set of attribute contains 3-7 elements to make sense of various complexity. Sometimes, it may be easy to come up with these elements, and we can use value hierarchy model to decompose our value proposition into smaller sets. In practice, we may have to iterate with stakeholders to come up a good set attributes.
+
+We can influence stakeholders to think of a solution neutral requirements to constitute a blackbox. This blackbox delivers some kind of performance. What are those characteristics for that performance that they actual care about.
+
+A set of attributes need to be
+* Complete
+* Operational
+* Decomposable
+* Non-redundant
+* Minimal
+* Perceived independent - this helps in illustation process. Please note this may not be actually indedpendent.
+
+We can now use single-attribute or multi-attribute value model to up with most desirable satisfaction across multiple alternatives.
