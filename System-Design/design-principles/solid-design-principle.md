@@ -116,3 +116,5 @@ Suppose A and B are types, and T<U> denotes application of a type constructor T 
 ## Further reading
 
 [SOLID Principles in Data Engineering - Part 1](https://blog.det.life/solid-principles-in-data-engineering-part-1-49d6025fe0c9), [SOLID Principles in Data Engineering— Part 2](https://blog.det.life/solid-principles-in-data-engineering-part-2-52b9ce2c7070) and [SOLID Principles in Data Engineering — Part 3](https://blog.det.life/solid-principles-in-data-engineering-part-3-249d5869266f)
+
+[understanding-solid-principles-in-python](https://medium.com/@sajo02/understanding-solid-principles-in-python-a-comprehensive-guide-with-real-world-examples-3bed648edc95)
