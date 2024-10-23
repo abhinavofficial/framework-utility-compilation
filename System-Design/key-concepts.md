@@ -516,6 +516,111 @@ A set of attributes need to be
 * Decomposable
 * Non-redundant
 * Minimal
-* Perceived independent - this helps in illustation process. Please note this may not be actually indedpendent.
+* Perceived independent - this helps in elicitation process. Please note this may not be actually indedpendent.
 
 We can now use single-attribute or multi-attribute value model to up with most desirable satisfaction across multiple alternatives.
+
+### Is cost an attribute?
+
+When you use the term “attributes,” it is always referring to the decision criteria used by a decision maker for making a decision. Technically, it can be on anything from form (e.g., color of car) to engineering measures (e.g., mass of car) to performance (e.g., acceleration time from 0 to 60 mph) to cost (e.g., cost to manufacture). The best practice, however, is to encourage attributes NOT to be on form, as that is likely to pre-constrain the design space in a very alternative-focused way. In practice, it is very useful to separate the attributes that contribute to benefit and those that contribute to cost, since this is the usual top-level trade-off consideration when making a decision.
+
+For example, if you use multi-attribute utility (MAU) as your aggregate benefit metric, then benefit (or utility) attributes would be those that contribute to MAU. If you use multi-attribute expense (MAE) as your aggregate cost metric, then cost (or expense) attributes would be those that contribute to MAE. Additionally, you sometimes divide attributes into categories, such as performance attributes or resource attributes. These labels are a matter of conceptual convenience.
+
+Often, cost is represented as a single dimension (e.g., “lifecycle cost”), and therefore your cost metric can be used without an interpreting model (or aggregation function). This is why it is common to see MAU (benefit) versus lifecycle cost (cost) for top level tradespace representations. You want to be able to answer the question: “What benefit can I get for different levels of cost?” If you were to include “cost” in the multi-attribute utility function (or any other value model), then it would hide the top-level trade-off that might exist between benefit versus cost. This is particularly perilous if different decision makers have different preferences about the benefit and the cost (for information on the challenges of aggregating preferences across decision makers, see the page “Considerations for Multiple Decision Makers”).
+
+## Axioms of Utility Theory
+
+One of the benefits of using an axiomatically based theory is that it is “correct” as long as the axioms hold. Such theories for decision making are deemed to be normative. That is, they describe how people should make decisions (if they adhered to the axioms, usually related to concepts of being “rational”). Research has shown that people do not really make decisions in such a “rational” manner but rather succumb to various heuristics and biases due to limited resources, such as attention, cognitive capacity, memory, training, and available information.
+
+However, after being shown the axioms, decision makers often express a desire to make decisions in such a way that the axioms do hold. This means you can use normative decision theories, such as utility theory, in a prescriptive manner. That is, the decisions made with the assistance of these techniques could be better than those made unassisted. Any user of such decision theories needs to understand the underlying axioms and how to best apply them (i.e., utility theory is unlikely to predict how a decision maker might make a decision if left unassisted).
+
+The existence of single attribute utility theory, as described in the previous section, relies on five basic axioms (de Neufville 1990) — that is, the assumptions about the situations. These axioms are:
+
+### Relative Preference  
+
+As the name suggests, the axiom states the existence of relative preference from a set of all of the outcomes. It is also called the axiom of completeness, and it basically asserts that, for every pair of outcomes from a set of all of the outcomes, a person will either prefer one or the other or will show indifference between the two options. 
+
+Mathematically, this can be represented as one of the following: 
+
+X1 > X2          
+X1 ~ X2
+X1 < X2
+This represents reasonable assumptions. In real life, people may encounter situations where the possible outcomes have slightly different attributes, and thus they may be undecided regarding which solution to pick or to fairly assess or compare them on the same scale. But, even in these situations, they eventually make a decision that is aligned with their preference for the given choices.
+
+### Transitivity
+
+The axiom of transitivity states that you can infer a preference order between a pair of consequences given that you know the preference order between those consequences and a given intermediate consequence. In other words, given X1, X2 and X3, if you know that X1 > X2 and X2 > X3, then you can say that X1 > X3.
+
+This assumption is valid for a group with a common set of attributes or preferences. However, this might not hold for a group that has a diverse set of attributes, since the implied conditions that determine a preference order between one pair of consequences might not be valid for another pair. 
+
+### Monotonicity
+The axiom of monotonicity, in simple terms, states that more of a good thing is better. A more formal definition states that the value of an item in a series is the weighted average of the values of the extreme. Given the greatest and the least value as Xmax and Xmin respectively, for all Xi, Xj within the series, where Xmax >= Xi, Xj >= Xmin, there is a number w that ranges between zero and one (0 w 1), such that some other Xk, lying between Xi and Xj, can be expressed as V(Xk) = wV(Xi) + (1 - w)V(Xj).
+
+This can only be true if the preferences are monotonic. 
+
+### Existence
+This axiom of utility functions is straightforward: it states that the probability of each outcome (consequences) exists and could be quantified for the given set of possible outcomes. The axiom is easy to verify as valid; however, it might be difficult to properly and accurately quantify the probability of some specific outcomes.
+
+### Substitution
+As the name suggests, the probability monotonicity axiom states that a person prefers a greater chance of receiving a prize, given a particular outcome, rather than a lesser chance. In other words, given that we have two choices, each with the same uncertain outcomes X1 and X2, where X1 is preferred to X2, a person will prefer the choice with the greater probability of getting X1 (and the complementary, lesser probability of getting X2). The axiom assumes that the person’s preferences are linear in probability — i.e., for a given outcome, the better (or worse, depending on the criteria) the probability, the more value the person derives.
+
+### Navigation around limitations of utility theory and 
+In addition to ensuring adherence to the assumptions of the theory, it is important to recognize the limitations in implementation as well. Decision makers must have preferences about the attributes for them to be useful. A common mistake made when implementing the multi-attribute utility approach is to select the attributes for the decision makers. The attribute selection process should be performed in close collaboration with decision making, actively involving them in the discussions until an agreed set of attributes have been derived. 
+
+Another issue regarding attributes is the need to ensure that they are the appropriate decision metrics for the process. According to Smith et al. (1990), such sets must satisfy the following characteristics:
+
+- **Completeness**: The set characterizes all important factors to be considered in the decision-making process.
+- **Comprehensiveness**: Each attribute adequately characterizes its associated objective.
+- **Importance**: Each attribute is significant in that it has the potential to affect the preference ordering.
+- **Measurability**: Each attribute can be somehow quantified.
+- **Familiarity**: Decision makers must have a preference about each attribute.
+- **Non-redundancy**: Two attributes should not measure the same objective to avoid double counting.
+- **Independence**: Each attribute must be perceived as independent of one another in order to ensure MAUA form (see Utility Independence Assumption).
+
+> It is important to remember that the human mind can typically only consider 7 ± 2 attributes simultaneously (Miller 1956). Beyond seven attributes, the decision maker will tend to focus solely on the most important attributes and will underweight the additional attributes. (This number will limit the number of attributes that can be considered during the corner point interviews.)
+
+Additionally, it is important to be aware of human cognitive limitations. Kahneman and Tversky (1979) proposed that people in fact do not make decisions based on the absolute level of an outcome but rather in terms of gains or losses. They outlined four biases in how people actually make decisions that are inconsistent with traditional utility theory. These biases are:
+- People make decisions based on changes of wealth rather than the absolute level.
+- People are loss-averse. People weight a loss of $100 about twice as much as a gain of $100.
+- People are risk-seeking in the loss domain and risk-averse in the gain domain.
+- People subjectively interpret probabilities.
+
+When eliciting utility information from decision makers (either formally or informally), it is important to put the interviewee at ease and appreciate the challenge of uncovering latent value models when a person is limited by the above issues. In particular, there are a number of techniques developed over the years to help reduce the stress of an interview, speed up the process itself, and provide for validation of the results. Typically interviews involve three rounds: 
+
+1. Conversation around what the decision criteria might be (e.g., brainstorming, value-focused thinking, or value hierarchies) and results in a ranked list of attributes with their associated acceptance ranges.
+2. Confirmation of the attributes and elicitation of their single attribute utility functions, usually via a lottery-based questionnaire (see de Neufville 1990, for example) and weights for the multi-attribute utility function.
+3. Validation of the single and multi-attribute utility functions via a number of alternatives rank comparisons (i.e., decision maker ranks alternatives by judgment and is compared to rankings by utility functions) and consistency checks (e.g., re-elicitation of points within utility functions). A caution here is that utility theory is normative and not descriptive, and therefore unaided decision making is likely to diverge from the predictions of the theory. This means that “validation” is more of a conversation rather than a simple check that the utility approach comes to the same conclusion as the decision maker.
+
+### Use cases for Utility Theory
+
+Axioms of Utility Theory is rooted in economics but also extends to other fields. Below is a breakdown of where and how they are applied across various domains:
+
+**Economics and Finance** 
+- Consumer Choice Theory: The axioms (like completeness, transitivity, and continuity) explain how consumers make rational decisions between different bundles of goods.
+- Game Theory: Utility helps model strategic interactions where participants maximize payoffs or outcomes.
+- Expected Utility Theory (EUT): Used in decision-making under risk and uncertainty (e.g., portfolio selection in finance).
+- Behavioral Economics: While classical utility theory assumes rationality, behavioral economists critique it, exploring deviations through prospect theory.
+
+**Psychology and Behavioral Science**
+- Decision Theory: Utility models describe human preferences and choices, such as subjective well-being or satisfaction with outcomes.
+- Risk Aversion Studies: Helps analyze how people perceive risk and uncertainty in everyday life, not just in economics.
+
+**Artificial Intelligence and Machine Learning**
+- Reinforcement Learning: Agents maximize cumulative utility (or reward) over time, following a utility-based framework.
+- Preference Learning: Systems learn user preferences based on utility-like functions to recommend personalized content.
+
+**Operations Research and Management Science**
+- Optimization Models: Utility functions are used in resource allocation problems, like how to efficiently distribute limited resources to maximize benefit.
+- Supply Chain Management: Utility theory underpins vendor selection and inventory control, considering trade-offs between cost, time, and service levels.
+
+**Healthcare and Public Policy**
+- Health Economics: Utility theory underlies cost-benefit and cost-utility analysis to determine the value of healthcare interventions (e.g., Quality-Adjusted Life Years, QALYs).
+- Public Policy Decision Making: Used to evaluate different policies by quantifying the utility or disutility they bring to society.
+
+**Engineering and Systems Design**
+- Utility-based Design: Used in systems engineering to model trade-offs between performance, cost, and user satisfaction.
+- Risk and Safety Engineering: Utility theory helps in evaluating the trade-offs between risk mitigation and system performance.
+
+**Ethics and Philosophy**
+- Utilitarian Ethics: Rooted in utility theory, this philosophical approach suggests that decisions should aim to maximize overall happiness or utility.
+- Moral Psychology: Researchers explore how individuals weigh outcomes in terms of utility when making moral decisions.
