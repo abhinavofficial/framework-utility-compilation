@@ -624,3 +624,42 @@ Axioms of Utility Theory is rooted in economics but also extends to other fields
 **Ethics and Philosophy**
 - Utilitarian Ethics: Rooted in utility theory, this philosophical approach suggests that decisions should aim to maximize overall happiness or utility.
 - Moral Psychology: Researchers explore how individuals weigh outcomes in terms of utility when making moral decisions.
+
+## Considerations for Multiple Decision Makers
+
+One of the biggest concerns when applying decision analysis is effectively managing the issue of multiple decision makers. Different decision makers might access a system on different attributes, or they might have a different preference hierarchy for the attributes. In either case, a different utility function for each of the stakeholders is required, and it is difficult to compare values across these different utility functions. Only by making certain value assumptions can a single aggregate utility metric be defined.
+
+For example, preferences of people can be stack ranked from the most important to the least important, which allows you to aggregate utility using weighted preference. Keeney and Raiffa (1993) recommend using a “supra-decision maker” model, where one person creates a multi-attribute utility function whose single attribute utility functions are the multi-attribute utility functions of each decision maker. The weights for each decision maker are then subjectively determined by the supra-decision maker.
+
+Economist Kenneth Arrow won the Nobel Prize partly for showing that no aggregation method exists without making someone dictator (i.e., imposing preferences on others); or, in other words, no consistent, equitable method for social choice exists (Arrow 1963). Scott and Antonosson (2000), however, propose that Arrow’s Theorem may not apply to engineering design, since it is not a “social choice problem.” Comparisons of strength of preference, coupled with questioning the necessity of equity for engineering design, may allow for the creation of aggregate decision maker functions for design.
+
+Objective Requirements -> Problems -> What do I want?
+Individual Value Problem -> SAU/MAU -> What can I get?
+Multi-Stakeholder Problem -> Question necessity -> What can we agree on?
+
+It is often most useful to keep decision maker preferences separate, as this avoids potential imposition of preferences and running afoul of the issues above. Not aggregating the decision makers avoids the creation of intransitivity of the group preference, allowing the decision makers to resolve conflicts via negotiation (Fitzgerald and Ross 2014). In this way, the designers would avoid biasing the decision tools and instead highlight important tensions in the preferences and their consequences on the set of alternatives.
+
+References
+
+Keeney, R. L. and Raiffa, H. 1993. Decisions with Multiple Objectives — Preferences and Value Trade-Offs. Cambridge, Cambridge University Press.
+Arrow, K. J. 1963. Social Choice and Individual Values. New Haven, Yale University Press.
+Scott, M. J. and Antonosson, E. K. 2000. Arrow's Theorem and Engineering Design Decision Making. Research in Engineering Design 11(4): 218-228.
+
+## Using Value Hierarchies
+
+Value hierarchies are a very useful concept, and that allows us to decompose a more complex problem into a number of sub-problems. This may be the case if we 
+have a value proposition that has more than 3-5 attributes. If that's the case, we're going to run into cognitive limitations. That is, we'll be ignoring the additional attributes that exceed our 3-5 attribute threshold. For the elicitation and multiattribute utility functions, this is a particular challenge since we must think about all of the attributes simultaneously. And if they're more than 3-5, then a decision maker is likely to neglect the least important ones, undervaluing those attributes.
+
+At a basic level, it is a visual tree representation of concepts (parents) that are decomposed into sub-concepts (children). From bottom to top, the children's contributions are aggregated into the parent contribution. 
+
+Sometimes, value hierarchies are described as starting with a “fundamental objective” (also referred to as the “value proposition”), which can then be decomposed into “functions” (how you might achieve the fundamental objective), which are then further decomposed into “objectives” (how you judge the goodness of each function), which are then decomposed into “value measures” (also referred to as attributes).
+
+In general, a value hierarchy can be decomposed in multiple different ways. For example, you could start with a top-level objective, decompose that into sub-objectives, decompose those into goals, decompose those goals into one or more attributes which are those metrics upon which we're going to evaluate our alternatives. 
+
+And once we have a value hierarchy that represents the decomposition of different objectives to meet our ultimate top-level objective, we then need to have a basis for rolling up, that is, evaluate our alternatives in terms of these attributes, how do we gain that top value metric? The most common means for aggregating children's contributions is to use a linear weighted sum. To explain further, for a value hierarchy, the number of weights are assigned to each of the leaves. That is, for each of the nodes on the hierarchy, we have a weight that describes the maximum value contribution of that node relative to its sister node. All of the children of a given parent have weights that add up to one. Every one of the children node are multiplied by their weights and added up in order to aggregate up to the parent node.
+
+Now, there are two different types of weights that show up in a value hierarchy. There are local weights. Those always sum up to 1 at a given level. Well, global weights: global weights represent the maximum value at the top that's contributed by each of the leaf nodes below. They're calculated by multiplying each parent weight by the child's weight, and so forth.The reason this matters is because it gives you insight into the relative contribution of each of the attributes to top-level value. An attribute that has a very low weight means that any performance level for alternatives on the basis is going to have very little effect on the top-level value. This allows you to prioritize your modelling efforts to focus on those attributes that are going to have the most impact.
+
+
+
+> Now one caution, using a value hierarchy in this way, assumes that each attribute at the bottom level contributes independently to value at the top.
