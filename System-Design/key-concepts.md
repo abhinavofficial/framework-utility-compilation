@@ -443,7 +443,7 @@ Alternatives are assessed in terms of the attribute(s), and a single attribute u
 
 Note: Generally, any function mapping attribute levels to degree of satisfaction is called a “value function.” A utility function is a special case of a value function that also takes into account uncertainty, which is the degree of satisfaction for an attribute level under uncertainty.
 
-**[IMAGE REQUIRED](https://classroom.emeritus.org/courses/10190/pages/example-single-attribute-approaches?module_item_id=1863295)**
+[Single-Attribute-Utility](images/single_attribute_utility.png)
 
 #### Multi-Attribute Approaches
 
@@ -660,6 +660,7 @@ And once we have a value hierarchy that represents the decomposition of differen
 
 Now, there are two different types of weights that show up in a value hierarchy. There are local weights. Those always sum up to 1 at a given level. Well, global weights: global weights represent the maximum value at the top that's contributed by each of the leaf nodes below. They're calculated by multiplying each parent weight by the child's weight, and so forth.The reason this matters is because it gives you insight into the relative contribution of each of the attributes to top-level value. An attribute that has a very low weight means that any performance level for alternatives on the basis is going to have very little effect on the top-level value. This allows you to prioritize your modelling efforts to focus on those attributes that are going to have the most impact.
 
+[Value Hierarchy](images/Value_Hierarchy.png)
 
 
 > Now one caution, using a value hierarchy in this way, assumes that each attribute at the bottom level contributes independently to value at the top.
