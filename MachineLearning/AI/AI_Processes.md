@@ -137,7 +137,8 @@ Here also we make two key decisions -
 
 We need to plan on how to minimize the impact of these five cancers.
 
-Fields of AI
+## Fields of AI
 
 - Computer Vision
 - Natural Language Processing
+- Agentic AI
