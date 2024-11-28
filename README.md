@@ -4,6 +4,8 @@
 
 ## To read - temp
 
+* [Markdown Math cheatsheet](https://www.upyesp.org/posts/makrdown-vscode-math-notation/)
+
 * [Is Your Data Ready for Generative AI](https://www.dataversity.net/is-your-data-ready-for-generative-ai/)
 * [Developers staff+ open source](https://www.infoq.com/articles/developers-staff-plus-open-source)
 * [Domain Driven Cloud](https://www.infoq.com/articles/domain-driven-cloud)
