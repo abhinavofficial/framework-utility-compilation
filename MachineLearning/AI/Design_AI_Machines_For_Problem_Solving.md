@@ -25,4 +25,21 @@ AI can use NLP techniques to:
 ## Stages
 
 ### Stage 1
+Identification of problem statement
+Metrics: 90% biomarker accuracy on disease discrimination
+Scope: Current medical best practices
 
+#### Alzheimer and Covid
+![Stage_1](../images/Stage1_Alzheimer.png)
+
+AI can be used to diagnose the early onset of COVID. The design of an AI intelligence would record (i.e., listen to) human coughing behavior into a device and categorize it as one belonging to a person with bronchitis, COVID-19, asthma, and so on.
+
+### Stage 2: Strategy and Operations
+
+Next is to define of **strategy** where we want to be in -
+1. Best product where you want to produce an AI pipeline that is best at the AI diagnosis or want to have the best audio diagnostic pipeline available for Azheimer's or Covid.
+2. Network externalities if you want to have the largest database of Alzheimer's voice samples or make Covid patients' info available quickly
+3. Full customer solution where you want to target AI discrimination efforts or access the effectiveness of a specific drug in a given cohert.
+
+In terms of **operation**, we must also come up with one business process where this tool can be used. For example, the objective is to develop biomarkers that can track progress between doctor assessments in the early phases of the illness. The advantage of doing this is to be able to help demonstrate whether a given drug helps stop disease progression.
+> The cost of putting AI to work may be many times more than cost of developing it.
