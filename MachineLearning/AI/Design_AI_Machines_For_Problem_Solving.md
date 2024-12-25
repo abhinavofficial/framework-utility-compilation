@@ -43,3 +43,36 @@ Next is to define of **strategy** where we want to be in -
 
 In terms of **operation**, we must also come up with one business process where this tool can be used. For example, the objective is to develop biomarkers that can track progress between doctor assessments in the early phases of the illness. The advantage of doing this is to be able to help demonstrate whether a given drug helps stop disease progression.
 > The cost of putting AI to work may be many times more than cost of developing it.
+
+![Operations](../images/Clinical_Trial_Ops.png)
+
+These business operations form collateral assets, the investment in which is critical to the success of IT projects.
+
+Covid is a special case where AI can be relevant only for a brief period of time (say 1 or 2 years) - it is possible to have its advantage in such future pandemics. Advantages of Covid AI detectors -
+1. Run the test on a mobile device - no one at risk
+2. Reduce implementation cost and deployment time
+3. Get immediate response
+4. Repetitive - take the test as many times as you wish
+5. Has negligible variable cost
+6. Instant - can be done from anywhere by downloading from the internet or by running it on a web page
+7. Network externalities - cough data can be collected simultaneously, thereby allowing algorithms to be more useful.
+
+Operational possibilities for COVID-19 AI Discriminator
+1. Pre-screening the general population
+2. Pre-screening entryways
+3. Pool testing
+
+Accuracy rate is very important. We should be hitting a 99% accuracy in a binary classification task. The two important parameters used to tune AI — specificity and sensitivity.
+
+Specificity targets lowering false positives. It means if out of 100 negative cases, 10 are marked positive - meaning 10% false positives, we call the specificity is 90%.
+
+Sensitivity targets lowering false negatives. It means if out of 100 positive cases, 10 are marked negative - meaning 10% false negatives, we call sensitivity is 90%.
+
+The table given below is called a table of confusion (sometimes also called a confusion matrix). A confusion matrix is a table that is often used to describe the performance of a classification model (or "classifier") on a set of test data for which the true values are known. It has two rows and two columns that report the number of false positives, false negatives, true positives, and true negatives in an experiment.
+
+
+
+
+Onset is the earliest any method can detect the presence of the disease.
+Biomarkers are metrics or markers that can track the progression of a disease in a biological system. Temperature measures by a thermometer is one such biomarkers. Longitudinal biomarkers are biomarkers that evolve and give you an idea of disease progression.
+
