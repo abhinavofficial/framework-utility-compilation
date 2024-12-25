@@ -13,3 +13,16 @@ Detecting Tracheobronchitis, Vocal fold polyps, Broncopulmonary dysplasia can be
 
 ### Car Manufacture
 Phone can detect if there is an imbalance between the car wheels.
+
+## Using Natural Language Processing
+
+AI can use NLP techniques to:
+* Identify the possible indicators of cognition decay
+* Establish a dementia scale
+* - Identify the onset and progression of the disease
+  - Identify finer metrics associated with each type of dementia (not yet achieved)
+ 
+## Stages
+
+### Stage 1
+
