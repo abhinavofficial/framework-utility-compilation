@@ -206,6 +206,10 @@ AI can be used to streamline many different processes. However, it comes with it
 * **Explainability**. Diseases have multiple causes and symptoms, so without an explanation, the prediction sounds "concidental".
 * **Bias**: Biomarkers have gender and cultural bias.
 
+## Summary
+
+![Summary](../images/Summary_AI_Solving_business_problems.png)
+
 ## Appendix
 
 The following web pages will help in this activity:
