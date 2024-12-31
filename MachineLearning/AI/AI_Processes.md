@@ -96,7 +96,7 @@ These technologies combine to create an architecture to accomplish the AI’s ob
 
 Key thing in Data Strategy is metadata - date, time, collection mechanism, and content description. If metadata is not appropriate, you can at best do is Unsupervised learning.
 
-FAANGs have a data strategy which gives them netwoek externalities allowing them to test any of the machine learning approaches. Below is a framework that establishes a path toward natural AI data monopolies. Companies that align their AI strategies to accommodate these forces can gain a natural long-term sustainable advantage.
+FAANGs have a data strategy which gives them network externalities allowing them to test any of the machine learning approaches. Below is a framework that establishes a path toward natural AI data monopolies. Companies that align their AI strategies to accommodate these forces can gain a natural long-term sustainable advantage.
 
 ![Natural_Data_AI_Monopolies](../images/Natural_Data_AI_Monopolies.png)
 
